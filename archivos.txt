@@ -1,4 +1,4 @@
-http://localhost/Katherine/login.html
-http://localhost/Katherine/forgot-password.html
-http://localhost/Katherine/register.html
-http://localhost/Katherine/vendors/images/deskapp-logo.svg
+login.html
+forgot-password.html
+register.html
+vendors/images/deskapp-logo.svg
