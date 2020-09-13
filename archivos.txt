@@ -1,4 +1,0 @@
-login.html
-forgot-password.html
-register.html
-vendors/images/deskapp-logo.svg

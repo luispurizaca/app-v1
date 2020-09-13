@@ -46,12 +46,12 @@ header('location: index.php');
 		<div class="container-fluid d-flex justify-content-between align-items-center">
 			<div class="brand-logo">
 				<a href="login.html">
-					<img src="vendors/images/deskapp-logo.svg" alt="">
+                                    <img src="vendors/images/icono.png" alt="" style="width: 70px; height: auto;">
 				</a>
 			</div>
 			<div class="login-menu">
 				<ul>
-					<li><a href="register.html">Register</a></li>
+					<li><a href="register.html">Registrarme</a></li>
 				</ul>
 			</div>
 		</div>
@@ -99,7 +99,7 @@ $clave_return = '';
 }
 ?>
 						<div class="login-title">
-							<h2 class="text-center text-primary">Iniciar Sesi&oacute;n</h2>
+                                                    <h2 class="text-center" style="color: #95cf32;">Iniciar Sesi&oacute;n</h2>
 						</div>
 <form method="POST" accept-charset="utf-8" action="login.php" name="loginform" autocomplete="off" role="form">
 							<div class="select-role">
@@ -148,7 +148,7 @@ $clave_return = '';
 											use code for form submit
 											<input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
 										-->
-										<button type="submit" name="login" class="btn btn-primary btn-lg btn-block">Iniciar Sesi&oacute;n</button>
+                                                                                <button type="submit" name="login" class="btn btn-lg btn-block" style="background: #95cf32; color: white;">Iniciar Sesi&oacute;n</button>
 									</div>
 									<div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">O</div>
 									<div class="input-group mb-0">
