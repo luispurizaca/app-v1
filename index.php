@@ -34,9 +34,6 @@ require_once(__DIR__.'/config/content.php');
 <?php
 //FOOTER
 require_once(__DIR__.'/config/footer.php');
-
-//PROGRESS
-require_once(__DIR__.'/config/progress.php');
 ?>
 </body>
 </html>

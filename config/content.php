@@ -19,53 +19,53 @@ Hola <div class="font-30" style="color: #95cf32; font-weight: bold;"><?php echo 
 </div>
 </div>
 <div class="row">
-<div class="col-xl-3 mb-30">
+<div class="col-xl-3 mb-30" onclick="location.href='pacientes.php'" style="cursor: pointer;">
 <div class="card-box height-100-p widget-style1">
 <div class="d-flex flex-wrap align-items-center">
 <div class="progress-data">
 <div id="chart"></div>
 </div>
 <div class="widget-data">
-<div class="h4 mb-0">30</div>
+<div class="h4 mb-0">80/100</div>
 <div class="weight-600 font-14">Pacientes</div>
 </div>
 </div>
 </div>
 </div>
-<div class="col-xl-3 mb-30">
+<div class="col-xl-3 mb-30" onclick="location.href='pacientes.php?id=1'" style="cursor: pointer;">
 <div class="card-box height-100-p widget-style1">
 <div class="d-flex flex-wrap align-items-center">
 <div class="progress-data">
 <div id="chart2"></div>
 </div>
 <div class="widget-data">
-<div class="h4 mb-0">20</div>
+<div class="h4 mb-0">56/80</div>
 <div class="weight-600 font-14">Pacientes Activos</div>
 </div>
 </div>
 </div>
 </div>
-<div class="col-xl-3 mb-30">
+<div class="col-xl-3 mb-30" onclick="location.href='pacientes.php?id=2'" style="cursor: pointer;">
 <div class="card-box height-100-p widget-style1">
 <div class="d-flex flex-wrap align-items-center">
 <div class="progress-data">
 <div id="chart3"></div>
 </div>
 <div class="widget-data">
-<div class="h4 mb-0">10</div>
+<div class="h4 mb-0">60/80</div>
 <div class="weight-600 font-14">Pacientes Inactivos</div>
 </div>
 </div>
 </div>
 </div>
-<div class="col-xl-3 mb-30">
+<div class="col-xl-3 mb-30" onclick="location.href='controles.php'" style="cursor: pointer;">
 <div class="card-box height-100-p widget-style1">
 <div class="d-flex flex-wrap align-items-center">
 <div class="progress-data">
 <div id="chart4"></div>
 </div>
 <div class="widget-data">
-<div class="h4 mb-0">267</div>
+<div class="h4 mb-0">227/267</div>
 <div class="weight-600 font-14">Controles Realizados</div>
 </div>
 </div>
@@ -338,6 +338,88 @@ Ayuno 16 hrs noche interdiario: 02 patitas
 </tr>
 </table>
 </div>
+</div>
+</div>
+<?php
+}
+if($view_controller == 4){
+?>
+<style>
+.tr-hover:hover{
+background: rgba(149, 207, 50, 0.5) !important;
+}
+</style>
+<!-- Export Datatable start -->
+<div class="card-box mb-30">
+<div class="card-box pd-20 height-100-p mb-30" style="">
+<table style="width: 70%; margin: 0 auto; border: 2px solid #FF9C00;">
+<tr>
+<td style="background: #95cf32; color: #111; text-align: center; padding: 20px; font-size: 17px;"><b style="font-style: italic;">HORA</b></td>
+<td style="background: #95cf32; color: #111; text-align: center; padding: 20px; font-size: 17px;"><b style="font-style: italic;">VIERNES, DOMINGO Y MARTES</b></td>
+<td style="background: #95cf32; color: #111; text-align: center; padding: 20px; font-size: 17px;"><b style="font-style: italic;">JUEVES, LUNES</b></td>
+</tr>
+<tr>
+<td style="vertical-align: middle; padding: 20px; text-align: center;">
+<b style="font-size: 17px;">DESAYUNO<br>7:00 AM</b>
+</td>
+<td style="vertical-align: middle; padding: 20px; text-align: left;">
+<b>Opci&oacute;n 1:</b> 1 und tostada integral  ½ palta c/ 01 und huevo frito + 10 unds almendras + 1 tz infusión ( 200ml)<br><br>
+<b>Opci&oacute;n 2:</b> Ensalada de frutas (1 und manzana + 1 und naranja en rodajas) c/ 1 cdrta canela + 2 claras de huevo + 01 tza de café ( 200ml) 
+</td>
+<td style="vertical-align: middle; padding: 20px; text-align: left;">
+<b>Opci&oacute;n 1:</b> 1 und tostada integral  ½ palta c/ 01 und huevo frito + 10 unds almendras + 1 tz infusión ( 200ml)<br><br>
+<b>Opci&oacute;n 2:</b> Ensalada de frutas (1 und manzana + 1 und naranja en rodajas) c/ 1 cdrta canela + 2 claras de huevo + 01 tza de café ( 200ml) 
+</td>
+</tr>
+<tr>
+<td style="vertical-align: middle; padding: 10px; text-align: center; background: #FF9C00;">
+<b style="font-size: 10px;">MEDIA MAÑANA<br>7:00 AM</b>
+</td>
+<td style="vertical-align: middle; padding: 20px; text-align: center; background: #FF9C00;">
+500 ml de hierba luisa
+</td>
+<td style="vertical-align: middle; padding: 20px; text-align: center; background: #FF9C00;">
+500 ml de agua pura
+</td>
+</tr>
+<tr>
+<td style="vertical-align: middle; padding: 20px; text-align: center;">
+<b style="font-size: 17px;">ALMUERZO<br>7:00 AM</b>
+</td>
+<td style="vertical-align: middle; padding: 20px; text-align: left;">
+<b>Opci&oacute;n 1:</b> 1 und tostada integral  ½ palta c/ 01 und huevo frito + 10 unds almendras + 1 tz infusión ( 200ml)<br><br>
+<b>Opci&oacute;n 2:</b> Ensalada de frutas (1 und manzana + 1 und naranja en rodajas) c/ 1 cdrta canela + 2 claras de huevo + 01 tza de café ( 200ml) 
+</td>
+<td style="vertical-align: middle; padding: 20px; text-align: left;">
+<b>Opci&oacute;n 1:</b> 1 und tostada integral  ½ palta c/ 01 und huevo frito + 10 unds almendras + 1 tz infusión ( 200ml)<br><br>
+<b>Opci&oacute;n 2:</b> Ensalada de frutas (1 und manzana + 1 und naranja en rodajas) c/ 1 cdrta canela + 2 claras de huevo + 01 tza de café ( 200ml) 
+</td>
+</tr>
+<tr>
+<td style="vertical-align: middle; padding: 10px; text-align: center; background: #FF9C00;">
+<b style="font-size: 12px;">MEDIA TARDE<br>7:00 AM</b>
+</td>
+<td style="vertical-align: middle; padding: 10px; text-align: center; background: #FF9C00;">
+500 ml de hierba luisa
+</td>
+<td style="vertical-align: middle; padding: 10px; text-align: center; background: #FF9C00;">
+500 ml de agua pura
+</td>
+</tr>
+<tr>
+<td style="vertical-align: middle; padding: 20px; text-align: center;">
+<b style="font-size: 17px;">CENA<br>7:00 AM</b>
+</td>
+<td style="vertical-align: middle; padding: 20px; text-align: left;">
+<b>Opci&oacute;n 1:</b> 1 und tostada integral  ½ palta c/ 01 und huevo frito + 10 unds almendras + 1 tz infusión ( 200ml)<br><br>
+<b>Opci&oacute;n 2:</b> Ensalada de frutas (1 und manzana + 1 und naranja en rodajas) c/ 1 cdrta canela + 2 claras de huevo + 01 tza de café ( 200ml) 
+</td>
+<td style="vertical-align: middle; padding: 20px; text-align: left;">
+<b>Opci&oacute;n 1:</b> 1 und tostada integral  ½ palta c/ 01 und huevo frito + 10 unds almendras + 1 tz infusión ( 200ml)<br><br>
+<b>Opci&oacute;n 2:</b> Ensalada de frutas (1 und manzana + 1 und naranja en rodajas) c/ 1 cdrta canela + 2 claras de huevo + 01 tza de café ( 200ml) 
+</td>
+</tr>
+</table>
 </div>
 </div>
 <?php

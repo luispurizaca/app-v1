@@ -51,7 +51,7 @@ header('location: index.php');
 			</div>
 			<div class="login-menu">
 				<ul>
-					<li><a href="register.html">Registrarme</a></li>
+                                    <li><a href="register.html" style="color: #95cf32;">Registrarme</a></li>
 				</ul>
 			</div>
 		</div>
@@ -106,13 +106,13 @@ $clave_return = '';
 								<div class="btn-group btn-group-toggle" data-toggle="buttons">
 									<label class="btn active">
 										<input type="radio" name="options" id="admin">
-										<div class="icon"><img src="vendors/images/briefcase.svg" class="svg" alt=""></div>
+                                                                                <span class="input-group-text icon"><i class="icon-copy dw dw-user1"></i></span>
 										<span>Soy</span>
 										Nutricionista
 									</label>
 									<label class="btn">
 										<input type="radio" name="options" id="user">
-										<div class="icon"><img src="vendors/images/person.svg" class="svg" alt=""></div>
+                                                                                <span class="input-group-text icon"><i class="icon-copy dw dw-user1"></i></span>
 										<span>Soy</span>
 										Paciente
 									</label>
@@ -152,7 +152,7 @@ $clave_return = '';
 									</div>
 									<div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">O</div>
 									<div class="input-group mb-0">
-										<a class="btn btn-outline-primary btn-lg btn-block" href="register.html">Crear mi cuenta</a>
+                                                                            <a class="btn btn-outline-primary btn-lg btn-block" href="register.html" style="background: white; color: #95cf32; border-color: #95cf32;">Crear mi cuenta</a>
 									</div>
 								</div>
 							</div>
