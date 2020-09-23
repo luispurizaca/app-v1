@@ -3,7 +3,7 @@
 error_reporting(E_ALL ^ E_NOTICE);
 
 //VIEW CONTROLLER
-$view_controller = 4;
+$view_controller = 3;
 
 //REQUIRES
 require_once(__DIR__.'/config/is_logged.php');

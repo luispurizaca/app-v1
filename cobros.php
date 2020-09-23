@@ -3,8 +3,7 @@
 error_reporting(E_ALL ^ E_NOTICE);
 
 //VIEW CONTROLLER
-$view_controller = 2;
-$activos = (int)$_GET['activos'];
+$view_controller = 6;
 
 //REQUIRES
 require_once(__DIR__.'/config/is_logged.php');

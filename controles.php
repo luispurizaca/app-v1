@@ -3,7 +3,9 @@
 error_reporting(E_ALL ^ E_NOTICE);
 
 //VIEW CONTROLLER
-$view_controller = 3;
+$view_controller = 5;
+$fn_id_paciente = (int)$_GET['paciente'];
+$fn_id_suscripcion = (int)$_GET['suscripcion'];
 
 //REQUIRES
 require_once(__DIR__.'/config/is_logged.php');

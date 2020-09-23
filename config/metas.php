@@ -2,11 +2,12 @@
 if(isset($con)){
 //1. inicio.php
 //2. pacientes.php
-//3. controles.php
-//4. planes.php
-//5. recetas.php
-//6. agendas.php
-//7. configuracion.php
+//3. planes.php
+//4. suscripciones.php
+//5. controles.php
+//6. recetas.php
+//7. agendas.php
+//8. configuracion.php
 
 //TITULO
 if($view_controller == 1){
@@ -16,18 +17,24 @@ if($view_controller == 2){
 $title = 'Pacientes';
 }
 if($view_controller == 3){
-$title = 'Controles';
-}
-if($view_controller == 4){
 $title = 'Planes de Alimentaci&oacute;n';
 }
+if($view_controller == 4){
+$title = 'Suscripciones';
+}
 if($view_controller == 5){
-$title = 'Recetas';
+$title = 'Controles';
 }
 if($view_controller == 6){
-$title = 'Agendas';
+$title = 'Cobros';
 }
 if($view_controller == 7){
+$title = 'Recetas';
+}
+if($view_controller == 8){
+$title = 'Agendas';
+}
+if($view_controller == 9){
 $title = 'Configuraci&oacute;n';
 }
 ?>
@@ -43,6 +50,10 @@ $title = 'Configuraci&oacute;n';
 
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- JQUERY -->
+<script src="src/scripts/jquery.min.js"></script>
+
 <?php
 if(
 $view_controller == 1 ||
@@ -51,7 +62,9 @@ $view_controller == 3 ||
 $view_controller == 4 ||
 $view_controller == 5 ||
 $view_controller == 6 ||
-$view_controller == 7
+$view_controller == 7 ||
+$view_controller == 8 ||
+$view_controller == 9
 ){
 ?>
 <!-- CSS -->
@@ -59,7 +72,20 @@ $view_controller == 7
 <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
 <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="src/plugins/fullcalendar/fullcalendar.css">
 <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+
+<script src="vendors/scripts/core.js"></script>
+<script src="vendors/scripts/script.min.js"></script>
+<script src="vendors/scripts/layout-settings.js"></script>
+<script src="src/plugins/apexcharts/apexcharts.min.js"></script>
+<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<script src="src/plugins/fullcalendar/fullcalendar.min.js"></script>
+<script src="vendors/scripts/calendar-setting.js"></script>
+<script src="src/plugins/apexcharts/apexcharts.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 <script>
