@@ -42,7 +42,10 @@ usuario.direccion AS DIRECCION,
 usuario.distrito AS DISTRITO,
 usuario.provincia AS PROVINCIA,
 usuario.departamento AS DEPARTAMENTO,
-usuario.residencia AS RESIDENCIA
+usuario.residencia AS RESIDENCIA,
+usuario.maximo_pacientes AS MAXIMO_PACIENTES,
+usuario.peso_meta AS PESO_META,
+usuario.talla AS TALLA
 FROM usuario
 WHERE activo = 1";
 
@@ -250,6 +253,9 @@ $ret_distrito = $sql_general_row[16];
 $ret_provincia = $sql_general_row[17];
 $ret_departamento = $sql_general_row[18];
 $ret_residencia = $sql_general_row[19];
+$ret_maximo_pacientes = (int)$sql_general_row[20];
+$ret_peso_meta = (float)$sql_general_row[21];
+$ret_talla = (float)$sql_general_row[22];
 
 //GENERO
 if($ret_genero == 1){
@@ -265,6 +271,65 @@ $texto_estado = 'Activo';
 } else {
 $css_color = '#F26C3C';
 $texto_estado = 'Inactivo';
+}
+
+//DATOS ANTROPOMETRICOS ACTUALES DEL PACIENTE
+$row_peso_actual = mysqli_fetch_array(mysqli_query($con, "SELECT peso, imc FROM control WHERE id_suscripcion IN (SELECT id FROM suscripcion_programa WHERE id_paciente = '$ret_id_usuario' ORDER BY id DESC) ORDER BY id DESC LIMIT 1"));
+$ret_peso_actual = $row_peso_actual[0];
+
+//IMC ACTUAL
+$ret_imc_actual = $ret_peso_actual / ($ret_talla * $ret_talla);
+
+//EDAD EN MESES
+$fecha_nac = new DateTime(date('Y/m/d', strtotime($ret_fecha_nacimiento)));
+$fecha_hoy =  new DateTime(date('Y/m/d', time()));
+$edad = date_diff($fecha_hoy, $fecha_nac);
+$ret_edad_en_anos = $edad->format('%Y');
+$ret_edad_en_meses = $edad->format('%m');
+$ret_edad_total_anos = $ret_edad_en_anos + ($ret_edad_en_meses / 12);
+
+//VALIDAD PUNTOS DE CORTE CARTILLA AZUL
+$ret_edad_total_anos_primera_cartilla = 59 + (9 / 12);
+
+if($ret_edad_total_anos <= $ret_edad_total_anos_primera_cartilla){
+
+if($ret_imc_actual >= 40){
+$diagnostico = 'Obesidad III';
+} elseif($ret_imc_actual >= 35){
+$diagnostico = 'Obesidad II';
+} elseif($ret_imc_actual >= 30){
+$diagnostico = 'Obesidad I';
+} elseif($ret_imc_actual >= 25){
+$diagnostico = 'Sobrepeso';
+} elseif($ret_imc_actual >= 18.5){
+$diagnostico = 'Normal';
+} elseif($ret_imc_actual >= 17){
+$diagnostico = 'Delgadez I';
+} elseif($ret_imc_actual >= 16){
+$diagnostico = 'Delgadez II';
+} elseif($ret_imc_actual < 16){
+$diagnostico = 'Delgadez III';
+}
+}
+
+//VALIDAD PUNTOS DE CORTE CARTILLA AMARILLA
+elseif($ret_edad_en_anos >= 60){
+
+if($ret_imc_actual >= 32){
+$diagnostico = 'Obesidad';
+} elseif($ret_imc_actual >= 28 && $ret_imc_actual <= 32){
+$diagnostico = 'Sobrepeso';
+} elseif($ret_imc_actual >= 23 && $ret_imc_actual <= 28){
+$diagnostico = 'Normal';
+} elseif($ret_imc_actual >= 21 && $ret_imc_actual <= 23){
+$diagnostico = 'Delgadez';
+} elseif($ret_imc_actual >= 19 && $ret_imc_actual <= 21){
+$diagnostico = 'Delgadez';
+} elseif($ret_imc_actual < 9){
+$diagnostico = 'Delgadez';
+}
+} else {
+$diagnostico = 'Sin Diagn&oacute;stico';
 }
 
 //EDAD
@@ -299,7 +364,15 @@ $ret_direccion,
 $ret_distrito,
 $ret_provincia,
 $ret_departamento,
-$ret_residencia
+$ret_residencia,
+$ret_maximo_pacientes,
+$ret_peso_meta,
+$ret_peso_actual,
+$ret_talla,
+$ret_imc_actual,
+$ret_edad_en_anos,
+$ret_edad_en_meses,
+$diagnostico
 );
 }
 

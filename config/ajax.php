@@ -57,6 +57,14 @@ $ret_distrito = $row[20];
 $ret_provincia = $row[21];
 $ret_departamento = $row[22];
 $ret_residencia = $row[23];
+$ret_maximo_pacientes = $row[24];
+$ret_peso_meta = $row[25];
+$ret_peso_actual = $row[26];
+$ret_talla = $row[27];
+$ret_imc_actual = $row[28];
+$ret_edad_en_anos = $row[29];
+$ret_edad_en_meses = $row[30];
+$diagnostico = $row[31];
 }
 
 //4. SUSCRIPCIONES
@@ -235,79 +243,114 @@ $css_condicion_color = '#F26C3C';
 }
 ?>
 </table>
-<br>
-<div class="bg-white pd-20 card-box mb-30">
-<div id="chart1"></div>
+<div class="col-md-12 text-center" style="padding-top: 10px;">
+<h4 class="font-20 weight-500 mb-10 text-capitalize">
+<div style="padding-left: 15px;">
+<hr>
+<table style="width: 250px; margin: 0 auto; border: 1px solid #95cf32;">
+<tr>
+<td style="width: 100% !important; text-align: center; background: #95cf32;" colspan="2"><span style="color: #fff; font-size: 16px;">Meta Final</span></td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Peso Meta Final</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_peso_meta; ?> KG</span></td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Peso Actual</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_peso_actual; ?> KG</span></td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Plan de acci&oacute;n</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: Perder <?php echo ($ret_peso_actual - $ret_peso_meta); ?> KG</span></td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Diagn&oacute;stico</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $diagnostico; ?></span></td>
+</tr>
+</table>
 </div>
+</h4>
+<div id="chart1"></div>
 <script>
 var options = {
-series: [{
-name: 'Peso',
-data: [75, 72, 65, 60]
-}],
-chart: {
-height: 350,
-type: 'area',
-toolbar: {
-show: false,
-}
-},
-grid: {
-show: false,
-padding: {
-left: 0,
-right: 0
-}
-},
-stroke: {
-width: 7,
-curve: 'smooth'
-},
-xaxis: {
-categories: ['06/09/2020', '15/09/2020', '01/10/2020', '05/10/2020'],
-},
+
+//TITULO DEL CHART
 title: {
-text: 'Evoluci\u00F3n',
-align: 'left',
+text: 'Evoluci\u00F3n General',
+align: 'center',
 style: {
 fontSize: "16px",
 color: '#95cf32'
 }
 },
-fill: {
-type: 'gradient',
-gradient: {
-shade: '#95cf32',
-gradientToColors: [ '#95cf32'],
-shadeIntensity: 1,
-type: 'horizontal',
-opacityFrom: 1,
-opacityTo: 1,
-stops: [0, 100, 100, 100]
-},
-},
-markers: {
-size: 4,
-colors: ["#95cf32"],
-strokeColors: "#95cf32",
-strokeWidth: 2,
-hover: {
-size: 7,
+
+//CONFIGURACION DEL CHART
+chart: {
+height: 400,
+width: 700,
+type: 'line',
+toolbar: {
+show: false
 }
 },
-yaxis: {
-min: 0,
-max: 100,
-title: {
-text: 'PESO (KG)',
+
+//DATOS EJE X
+xaxis: {
+categories: ['06/09/2020', '15/09/2020', '01/10/2020', '05/10/2020', '07/10/2020', '10/10/2020', '23/10/2020', '30/10/2020']
 },
+
+//CONFIGURACION EJE Y
+yaxis: {
+min: 55,
+max: 80,
+title: {
+text: 'PESO (KG)'
+}
+},
+
+//DATOS EJE Y
+series: [
+{
+name: 'Peso',
+data: [75, 72, 65, 60, 60, 62, 70, 60]
+}
+],
+
+//GRID: Fondo de Malla
+grid: {
+show: true,
+padding: {
+left: 10,
+right: 10
+}
+},
+
+//GROSOR DE LINEAS O BARRAS
+stroke: {
+width: 1,
+curve: 'straight'
+},
+
+//TIPO DE LINEAS O BARRAS
+fill: {
+type: 'solid'
+},
+
+//TAMAÑO PUNTOS DE RELACION (BOLITAS)
+markers: {
+size: 3,
+colors: ["#95cf32"],
+strokeColors: "#95cf32",
+strokeWidth: 1,
+hover: {
+size: 5
+}
 }
 };
 var chart = new ApexCharts(document.querySelector('#chart1'), options);
 chart.render();
 </script>
-<div class="col-md-12 text-center" style="padding-top: 40px;">
-<div class="btn-group">
+<div class="btn-group" style="display: none;">
 <button onclick="location.href = 'controles.php?paciente=<?php echo $id_registro ?>'" class="btn buttons-pdf" tabindex="0" type="button" style="background: #95cf32; color: white; padding: 8px; font-size: 16px;"><span>Ver controles del paciente</span></button>
 </div>
 </div>
