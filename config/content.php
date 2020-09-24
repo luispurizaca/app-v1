@@ -1,4 +1,25 @@
 <?php
+$negocia_operacion = (int)$_GET['negocia_operacion'];
+$negocia_tipo = (int)$_GET['negocia_tipo'];
+if($negocia_operacion == 1){
+
+//NUTRICIONISTA
+if($negocia_tipo == 1){
+$title = 'Nutricionista';
+}
+
+//PACIENTE
+if($negocia_tipo == 2){
+$title = 'Paciente';
+}
+?>
+<h4 class="font-20 weight-500 text-capitalize">
+Nuevo <div class="font-30" style="color: #95cf32; font-weight: bold;"><?php echo $title; ?></div>
+</h4>
+<?php
+exit();
+exit();
+}
 if(isset($con)){
 //1. inicio.php
 
@@ -9,7 +30,7 @@ if($view_controller == 1){
 <div class="col-md-4 text-center">
 <img src="vendors/images/icono.png" alt="">
 </div>
-<div class="col-md-8">
+<div id="div_ajax" class="col-md-8">
 <h4 class="font-20 weight-500 mb-10 text-capitalize">
 Hola <div class="font-30" style="color: #95cf32; font-weight: bold;"><?php echo ucwords($_SESSION['usuario_nombres']); ?>!</div>
 </h4>
@@ -17,13 +38,13 @@ Hola <div class="font-30" style="color: #95cf32; font-weight: bold;"><?php echo 
 if($_SESSION['ID_TIPO_USUARIO'] == 3){
 ?>
 <div style="margin-top: 30px; margin-bottom: 20px;">
-<button class="btn buttons-csv" tabindex="0" type="button" style="background: #95cf32; color: white; font-size: 12px; padding: 8px; margin-right: 20px;">
+<button onclick="nuevo_registro(1)" class="btn buttons-csv" tabindex="0" type="button" style="background: #95cf32; color: white; font-size: 12px; padding: 8px; margin-right: 20px;">
 <i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
-<span style="font-size: 17px;">CREAR NUTRICIONISTA</span>
+<span style="font-size: 17px;">NUEVO NUTRICIONISTA</span>
 </button>
-<button class="btn buttons-pdf" tabindex="0" type="button" style="background: #F26C3C; color: white; font-size: 12px; padding: 8px; margin-right: 20px;">
+<button onclick="nuevo_registro(2)" class="btn buttons-pdf" tabindex="0" type="button" style="background: #F26C3C; color: white; font-size: 12px; padding: 8px; margin-right: 20px;">
 <i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
-<span style="font-size: 17px;">CREAR PACIENTE</span>
+<span style="font-size: 17px;">NUEVO PACIENTE</span>
 </button>
 <button class="btn buttons-pdf" tabindex="0" type="button" style="background: #818181; color: white; font-size: 12px; padding: 8px;">
 <i class="icon-copy dw dw-user1" style="font-size: 20px;"></i>
@@ -35,6 +56,18 @@ if($_SESSION['ID_TIPO_USUARIO'] == 3){
 }
 ?>
 </div>
+<script>
+//NUEVO REGISTRO
+function nuevo_registro(id){
+$.ajax({
+type: 'POST',
+url: 'config/content.php?negocia_operacion=1&negocia_tipo='+id,
+success: function(datos){
+$('#div_ajax').html(datos).fadeIn('slow');
+}
+});
+}
+</script>
 </div>
 </div>
 <?php
