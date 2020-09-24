@@ -129,19 +129,19 @@ $nombre_documento = $row_tipo_documento[1];
 <input id="form_distrito" name="form_distrito" class="form-control n-form-control" type="text" placeholder="Distrito">
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-4 col-sm-12" style="<?php if($negocia_tipo == 1){?> display: none; <?php } ?>">
 <div class="form-group">
 <label class="n-label">Talla</label>
 <input id="form_talla" name="form_talla" class="form-control n-form-control" type="text" placeholder="Talla">
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-4 col-sm-12" style="<?php if($negocia_tipo == 1){?> display: none; <?php } ?>">
 <div class="form-group">
 <label class="n-label">Peso Meta</label>
 <input id="form_peso_meta" name="form_peso_meta" class="form-control n-form-control" type="text" placeholder="Peso Meta">
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-4 col-sm-12" style="<?php if($negocia_tipo == 2){?> display: none; <?php } ?>">
 <div class="form-group">
 <label class="n-label">N&#176; M&aacute;x. Pac.</label>
 <input id="form_maximo_pacientes" name="form_maximo_pacientes" class="form-control n-form-control" type="text" placeholder="N&#176; M&aacute;x. Pac.">
