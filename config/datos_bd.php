@@ -36,3 +36,11 @@ $_SESSION['total_controles'] = $total_controles;
 //TOTAL DE CONTROLES REALIZADOS
 $num_rows_controles_realizados = mysqli_num_rows(mysqli_query($con, "SELECT id FROM control WHERE id_suscripcion IN (SELECT id FROM suscripcion_programa WHERE id_nutricionista = '".$_SESSION['ID_USUARIO']."')"));
 $_SESSION['usuario_controles_realizados'] = $num_rows_controles_realizados;
+
+//NUMERO TOTAL DE NUTRICIONISTAS
+$num_rows_nutricionistas = mysqli_num_rows(mysqli_query($con, "SELECT id FROM usuario WHERE id_tipo_usuario = 1 OR id_tipo_usuario = 2"));
+$_SESSION['admin_total_nutricionistas'] = $num_rows_nutricionistas;
+
+//NUMERO TOTAL DE PACIENTES
+$num_rows_pacientes = mysqli_num_rows(mysqli_query($con, "SELECT id FROM usuario WHERE id_tipo_usuario = 2"));
+$_SESSION['admin_total_pacientes'] = $num_rows_pacientes;
