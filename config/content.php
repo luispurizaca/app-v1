@@ -3,6 +3,8 @@ $negocia_operacion = (int)$_GET['negocia_operacion'];
 $negocia_tipo = (int)$_GET['negocia_tipo'];
 if($negocia_operacion == 1){
 
+require_once (__DIR__.'/conexion_bd.php');
+
 //NUTRICIONISTA
 if($negocia_tipo == 1){
 $title = 'Nutricionista';
@@ -54,7 +56,18 @@ padding-left: 3px !important;
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">Tipo Doc.</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<select id="form_tipo_documento" name="form_tipo_documento" class="form-control n-form-control">
+<?php
+$query_tipo_documento = mysqli_query($con, "SELECT id, nombre FROM tipo_documento ORDER BY id ASC");
+while($row_tipo_documento = mysqli_fetch_array($query_tipo_documento)){
+$id_tipo_documento = $row_tipo_documento[0];
+$nombre_documento = $row_tipo_documento[1];
+?>
+<option value="<?php echo $id_tipo_documento; ?>"><?php echo $nombre_documento; ?></option>
+<?php
+}
+?>
+</select>
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
