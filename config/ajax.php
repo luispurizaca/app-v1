@@ -243,33 +243,8 @@ $css_condicion_color = '#F26C3C';
 }
 ?>
 </table>
-<div class="col-md-12 text-center" style="padding-top: 10px;">
-<h4 class="font-20 weight-500 mb-10 text-capitalize">
-<div style="padding-left: 15px;">
-<hr>
-<table style="width: 250px; margin: 0 auto; border: 1px solid #95cf32;">
-<tr>
-<td style="width: 100% !important; text-align: center; background: #95cf32;" colspan="2"><span style="color: #fff; font-size: 16px;">Meta Final</span></td>
-</tr>
-<tr>
-<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Peso Meta Final</span></td>
-<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_peso_meta; ?> KG</span></td>
-</tr>
-<tr>
-<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Peso Actual</span></td>
-<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_peso_actual; ?> KG</span></td>
-</tr>
-<tr>
-<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Plan de acci&oacute;n</span></td>
-<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: Perder <?php echo ($ret_peso_actual - $ret_peso_meta); ?> KG</span></td>
-</tr>
-<tr>
-<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Diagn&oacute;stico</span></td>
-<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $diagnostico; ?></span></td>
-</tr>
-</table>
-</div>
-</h4>
+<div class="row">
+<div class="col-md-6 text-center" style="padding-top: 10px;">
 <div id="chart1"></div>
 <script>
 var options = {
@@ -296,7 +271,10 @@ show: false
 
 //DATOS EJE X
 xaxis: {
-categories: ['06/09/2020', '15/09/2020', '01/10/2020', '05/10/2020', '07/10/2020', '10/10/2020', '23/10/2020', '30/10/2020']
+categories: [['06/09/2020', 'C001', 'RPF'], ['10/09/2020', 'C002', 'RPF'], ['12/09/2020', 'C003', 'RPF'], ['15/09/2020', 'C004', 'RPF'], ['18/09/2020', 'C005', 'RPM'], ['20/09/2020', 'C006', 'RPM'], ['22/09/2020', 'C007', 'RPM'], ['23/09/2020', 'C008', 'RPM']],
+labels: {
+rotate: 0
+}
 },
 
 //CONFIGURACION EJE Y
@@ -352,6 +330,31 @@ chart.render();
 </script>
 <div class="btn-group" style="display: none;">
 <button onclick="location.href = 'controles.php?paciente=<?php echo $id_registro ?>'" class="btn buttons-pdf" tabindex="0" type="button" style="background: #95cf32; color: white; padding: 8px; font-size: 16px;"><span>Ver controles del paciente</span></button>
+</div>
+</div>
+<div class="col-md-6 text-center" style="padding-top: 10px;">
+<hr>
+<table style="width: 250px; margin: 0 auto; border: 1px solid #95cf32;">
+<tr>
+<td style="width: 100% !important; text-align: center; background: #95cf32;" colspan="2"><span style="color: #fff; font-size: 16px;">Meta Final</span></td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Peso Meta Final</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_peso_meta; ?> KG</span></td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Peso Actual</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_peso_actual; ?> KG</span></td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Plan de acci&oacute;n</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: Perder <?php echo ($ret_peso_actual - $ret_peso_meta); ?> KG</span></td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Diagn&oacute;stico</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $diagnostico; ?></span></td>
+</tr>
+</table>
 </div>
 </div>
 <?php
