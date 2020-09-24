@@ -724,8 +724,8 @@ $total_pages = ceil($numrows/$per_page);
 
 if($numrows > 0){
 
-//PACIENTES
-if($view_controller == 2){
+//PACIENTES Y NUTRICIONISTAS
+if($view_controller == 2 || $view_controller == 10){
 ?>
 <table style="width: 1000px !important; margin: 0 auto;">
 <tr>

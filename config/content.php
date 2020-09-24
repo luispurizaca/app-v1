@@ -322,11 +322,11 @@ if($_SESSION['ID_TIPO_USUARIO'] == 3){
 <tr>
 <td style="width: 100% !important; text-align: center; background: #95cf32;" colspan="2"><span style="color: #fff; font-size: 16px;">Datos Generales</span></td>
 </tr>
-<tr>
+<tr onclick="location.href='nutricionistas.php?all'" style="cursor: pointer;">
 <td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">N&#176; Nutricionistas</span></td>
-<td style="width: 50% !important; text-align: lecft; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['admin_total_nutricionistas']; ?></span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['admin_total_nutricionistas']; ?></span></td>
 </tr>
-<tr>
+<tr onclick="location.href='pacientes.php?all'" style="cursor: pointer;">
 <td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">N&#176; Pacientes</span></td>
 <td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['admin_total_pacientes']; ?></span></td>
 </tr>
@@ -728,7 +728,7 @@ chart.render();
 <?php
 }
 }
-if($view_controller >= 2 && $view_controller <= 7 && $view_controller != 3){
+if(($view_controller >= 2 && $view_controller <= 7 && $view_controller != 3) || ($view_controller == 10)){
 ?>
 <style>
 .tr-hover:hover{

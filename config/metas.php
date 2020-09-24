@@ -37,6 +37,9 @@ $title = 'Agendas';
 if($view_controller == 9){
 $title = 'Configuraci&oacute;n';
 }
+if($view_controller == 10){
+$title = 'Nutricionistas';
+}
 ?>
 <meta charset="utf-8">
 
@@ -54,19 +57,6 @@ $title = 'Configuraci&oacute;n';
 <!-- JQUERY -->
 <script src="src/scripts/jquery.min.js"></script>
 
-<?php
-if(
-$view_controller == 1 ||
-$view_controller == 2 ||
-$view_controller == 3 ||
-$view_controller == 4 ||
-$view_controller == 5 ||
-$view_controller == 6 ||
-$view_controller == 7 ||
-$view_controller == 8 ||
-$view_controller == 9
-){
-?>
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
 <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
@@ -97,9 +87,6 @@ gtag('js', new Date());
 gtag('config', 'UA-119386393-1');
 </script>
 -->
-<?php
-}
-?>
 <title><?php echo $title; ?></title>
 <?php
 }

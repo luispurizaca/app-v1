@@ -10,6 +10,9 @@ global $con;
 $view_controler = (int)$array_filtros[0];
 $activos = (int)$array_filtros[1];
 $id_tipo_usuario = (int)$array_filtros[2];
+if($view_controler == 10){
+$id_tipo_usuario = 1;
+}
 $offset = $array_filtros[3];
 $per_page = $array_filtros[4];
 $id_registro = (int)$array_filtros[5];
@@ -18,7 +21,7 @@ $fn_id_suscripcion = (int)$array_filtros[7];
 
 
 //CONSULTA PACIENTES
-if($view_controler == 2){
+if($view_controler == 2 || $view_controler == 10){
 
 //CONSULTA PRINCIPAL
 $consulta_sql_general = "
@@ -57,16 +60,20 @@ $consulta_sql_general .= " AND usuario.id = '$id_registro'";
 //FILTRO ACTIVOS / INACTIVOS
 if(!empty($activos)){
 if($activos == 1){
-$consulta_sql_general .= " AND usuario.estado = 1 ";
+$consulta_sql_general .= " AND (usuario.estado = 1)";
 }
 if($activos == 2){
-$consulta_sql_general .= " AND usuario.estado = 0 ";
+$consulta_sql_general .= " AND (usuario.estado = 0)";
 }
 }
 
 //FILTRO ID TIPO DE USUARIO
 if(!empty($id_tipo_usuario)){
-$consulta_sql_general .= " AND usuario.id_tipo_usuario = '$id_tipo_usuario'";
+if($id_tipo_usuario == 1){
+$consulta_sql_general .= " AND (usuario.id_tipo_usuario = '1' OR usuario.id_tipo_usuario = '3')";
+} else {
+$consulta_sql_general .= " AND (usuario.id_tipo_usuario = 2)";
+}
 }
 
 //ORDER BY
@@ -232,7 +239,7 @@ $query_sql_general = mysqli_query($con, $consulta_sql_general.$consulta_sql_gene
 while($sql_general_row = mysqli_fetch_array($query_sql_general)){
 
 //DATOS - PACIENTES
-if($view_controler == 2){
+if($view_controler == 2 || $view_controler == 10){
 $ret_codigo = $sql_general_row[0];
 $ret_nombres = $sql_general_row[1];
 $ret_apellidos = $sql_general_row[2];
