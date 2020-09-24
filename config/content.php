@@ -13,9 +13,155 @@ if($negocia_tipo == 2){
 $title = 'Paciente';
 }
 ?>
-<h4 class="font-20 weight-500 text-capitalize">
-Nuevo <div class="font-30" style="color: #95cf32; font-weight: bold;"><?php echo $title; ?></div>
-</h4>
+<div class="pd-20 card-box mb-30">
+<div class="clearfix">
+<div class="pull-left">
+<h4 class="weight-500 text-capitalize" style="font-size: 17px;">
+Nuevo <div style="color: #95cf32; font-weight: bold; font-size: 22px;"><?php echo $title; ?></div>
+</h4><hr>
+</div>
+</div>
+<style>
+.n-form-control{
+padding: 4px !important;
+height: 25px !important;
+font-size: 12px !important;
+}
+.n-label{
+padding-left: 3px !important;
+}
+</style>
+<form>
+<div class="row">
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">N&#176; Socio</label>
+<input id="form_codigo" name="form_codigo" class="form-control n-form-control" type="text" placeholder="C&oacute;digo">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Nombres</label>
+<input id="form_nombres" name="form_nombres" class="form-control n-form-control" type="text" placeholder="Nombres">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Apellidos</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Tipo Doc.</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">N&uacute;mero Doc.</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Fecha Nac.</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">G&eacute;nero</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Instagram</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Direcci&oacute;n</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Departamento</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Provincia</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Distrito</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Talla</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Peso Meta</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">N&#176; M&aacute;x. Pac.</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12 col-sm-12">
+<div class="form-group">
+<div class="pull-left">
+<h4 class="weight-500" style="font-size: 17px;">
+<div style="color: #95cf32; font-weight: bold; font-size: 22px;">Inicio de Sesi&oacute;n</div>
+</h4><hr>
+</div>
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Correo Electr&oacute;nico</label>
+<input id="form_correo" name="form_correo" class="form-control n-form-control" type="text" placeholder="Correo electr&oacute;nico">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Contrase&ntilde;a</label>
+<input id="form_clave" name="form_clave" class="form-control n-form-control" type="text" placeholder="Contrase&ntilde;a">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Residencia</label>
+<input id="form_residencia" name="form_residencia" class="form-control n-form-control" type="text" placeholder="ejm: PE">
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12 col-sm-12 text-center" style="padding-top: 20px;">
+<div class="form-group">
+<button type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar Datos</button>
+</div>
+</div>
+</div>
+</form>
+</div>
 <?php
 exit();
 exit();
