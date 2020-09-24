@@ -449,6 +449,13 @@ text-align: center;
 </table>
 <div id="reporte_tabla"></div>
 </div>
+<div class="row">
+<div class="col-md-3 hidden-xs"></div>
+<div class="col-md-6 col-xs-12">
+<div id="chart1"></div>
+</div>
+<div class="col-md-3 hidden-xs"></div>
+</div>
 <script>
 //LOAD
 function load(page){

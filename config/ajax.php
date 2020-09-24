@@ -261,8 +261,7 @@ color: '#95cf32'
 
 //CONFIGURACION DEL CHART
 chart: {
-height: 400,
-width: 700,
+height: 350,
 type: 'line',
 toolbar: {
 show: false
@@ -849,7 +848,7 @@ if($view_controller == 5){
 <hr>
 <h4 class="font-20 weight-500 mb-10 text-capitalize">
 <div style="text-align: center;">
-<span style="color: #333; font-weight: bold; font-size: 13px;">Peso:&nbsp;&nbsp;</span><span style="color: #95cf32; font-weight: bold; font-size: 13px;">60 KG</span>
+<span style="color: #333; font-weight: bold; font-size: 13px;">Peso Actual:&nbsp;&nbsp;</span><span style="color: #95cf32; font-weight: bold; font-size: 13px;">60 KG</span>
 </div>
 <div style="text-align: center;">
 <span style="color: #333; font-weight: bold; font-size: 13px;">Perdiste:&nbsp;&nbsp;</span><span style="color: #333; font-weight: bold; font-size: 13px;">15 KG</span>
@@ -937,72 +936,82 @@ $ret_pantorrilla = $row[17];
 <td class="reportes_th_tabla_principal" style="text-align: right !important;" colspan="14"><?php echo paginate($page, $total_pages, $adjacents, 'load'); ?></td>
 </tr>
 </table>
-<div class="bg-white pd-20 card-box mb-30">
-<div id="chart1"></div>
-</div>
 <script>
 var options = {
-series: [{
-name: 'Peso',
-data: [75, 72, 65, 60]
-}],
-chart: {
-height: 400,
-width: 400,
-type: 'line',
-toolbar: {
-show: false,
-}
-},
-grid: {
-show: false,
-padding: {
-left: 0,
-right: 0
-}
-},
-stroke: {
-width: 2,
-curve: 'smooth'
-},
-xaxis: {
-categories: ['06/09/2020', '15/09/2020', '01/10/2020', '05/10/2020'],
-},
+
+//TITULO DEL CHART
 title: {
-text: 'Evoluci\u00F3n',
-align: 'left',
+text: 'Evoluci\u00F3n del Paquete',
+align: 'center',
 style: {
 fontSize: "16px",
 color: '#95cf32'
 }
 },
-fill: {
-type: 'gradient',
-gradient: {
-shade: '#95cf32',
-gradientToColors: [ '#95cf32'],
-shadeIntensity: 1,
-type: 'horizontal',
-opacityFrom: 1,
-opacityTo: 1,
-stops: [0, 100, 100, 100]
-},
-},
-markers: {
-size: 4,
-colors: ["#95cf32"],
-strokeColors: "#95cf32",
-strokeWidth: 2,
-hover: {
-size: 7,
+
+//CONFIGURACION DEL CHART
+chart: {
+height: 350,
+type: 'line',
+toolbar: {
+show: false
 }
 },
+
+//DATOS EJE X
+xaxis: {
+categories: [['06/09/2020', 'C001', 'RPF'], ['10/09/2020', 'C002', 'RPF'], ['12/09/2020', 'C003', 'RPF'], ['15/09/2020', 'C004', 'RPF']],
+labels: {
+rotate: 0
+}
+},
+
+//CONFIGURACION EJE Y
 yaxis: {
 min: 55,
 max: 80,
 title: {
-text: 'PESO (KG)',
+text: 'PESO (KG)'
+}
 },
+
+//DATOS EJE Y
+series: [
+{
+name: 'Peso',
+data: [75, 72, 65, 60]
+}
+],
+
+//GRID: Fondo de Malla
+grid: {
+show: true,
+padding: {
+left: 10,
+right: 10
+}
+},
+
+//GROSOR DE LINEAS O BARRAS
+stroke: {
+width: 1,
+curve: 'straight'
+},
+
+//TIPO DE LINEAS O BARRAS
+fill: {
+type: 'solid'
+},
+
+//TAMAÑO PUNTOS DE RELACION (BOLITAS)
+markers: {
+size: 3,
+colors: ["#95cf32"],
+strokeColors: "#95cf32",
+strokeWidth: 1,
+hover: {
+size: 5
+}
 }
 };
 var chart = new ApexCharts(document.querySelector('#chart1'), options);
