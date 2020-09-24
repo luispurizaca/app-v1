@@ -1,6 +1,5 @@
 <?php
 $negocia_operacion = (int)$_GET['negocia_operacion'];
-$negocia_tipo = (int)$_GET['negocia_tipo'];
 if($negocia_operacion == 1 || $negocia_operacion == 2){
 
 //CONEXION
@@ -9,6 +8,9 @@ require_once (__DIR__.'/conexion_bd.php');
 
 //FORMULARIO NUEVO REGISTRO
 if($negocia_operacion == 1){
+
+//TIPO DE USUARIO
+$negocia_tipo = (int)$_GET['negocia_tipo'];
 
 //NUTRICIONISTA
 if($negocia_tipo == 1){
@@ -226,7 +228,8 @@ form_peso_meta : form_peso_meta,
 form_maximo_pacientes : form_maximo_pacientes,
 form_correo : form_correo,
 form_clave : form_clave,
-form_residencia : form_residencia
+form_residencia : form_residencia,
+form_tipo_usuario : <?php echo $negocia_tipo; ?>
 },
 success: function(datos){
 $('#div_ajax').html(datos).fadeIn('slow');
@@ -262,9 +265,16 @@ $form_maximo_pacientes  = (int)$_POST['form_maximo_pacientes'];
 $form_correo  = $_POST['form_correo'];
 $form_clave  = $_POST['form_clave'];
 $form_residencia  = $_POST['form_residencia'];
+$form_tipo_usuario  = (int)$_POST['form_tipo_usuario'];
+
+//AGREGAR A LA BD
+mysqli_query($con, "INSERT INTO usuario (id_tipo_usuario, codigo, correo, clave, nombres, apellidos, fecha_nacimiento, genero, estado, activo, id_tipo_documento, numero_documento, date_added, instagram, direccion, distrito, provincia, departamento, residencia, maximo_pacientes, peso_meta, talla)
+VALUES 
+('$form_tipo_usuario', '".$form_codigo."', '".$form_correo."', '".$form_clave."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '0', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$form_maximo_pacientes."', '".$form_peso_meta."', '".$form_talla."')"
+);
 ?>
 <script>
-location.href = 'index.php';
+location.href = 'index.php?success';
 </script>
 <?php
 exit();
@@ -282,6 +292,13 @@ if($view_controller == 1){
 <img src="vendors/images/icono.png" alt="">
 </div>
 <div id="div_ajax" class="col-md-8">
+<?php
+if(isset($_GET['success'])){
+?>
+<div class="font-30" style="color: #95cf32; font-weight: bold; font-size: 14px;">Registro Exitoso!</div>
+<?php
+}
+?>
 <h4 class="font-20 weight-500 mb-10 text-capitalize">
 Hola <div class="font-30" style="color: #95cf32; font-weight: bold;"><?php echo ucwords($_SESSION['usuario_nombres']); ?>!</div>
 </h4>
@@ -291,16 +308,16 @@ if($_SESSION['ID_TIPO_USUARIO'] == 3){
 <div style="margin-top: 30px; margin-bottom: 20px;">
 <button onclick="nuevo_registro(1)" class="btn buttons-csv" tabindex="0" type="button" style="background: #95cf32; color: white; font-size: 12px; padding: 8px; margin-right: 20px;">
 <i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
-<span style="font-size: 17px;">NUEVO NUTRICIONISTA</span>
+<span style="font-size: 15px;">NUEVO NUTRICIONISTA</span>
 </button>
 <button onclick="nuevo_registro(2)" class="btn buttons-pdf" tabindex="0" type="button" style="background: #F26C3C; color: white; font-size: 12px; padding: 8px; margin-right: 20px;">
 <i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
-<span style="font-size: 17px;">NUEVO PACIENTE</span>
+<span style="font-size: 15px;">NUEVO PACIENTE</span>
 </button>
 <button class="btn buttons-pdf" tabindex="0" type="button" style="background: #818181; color: white; font-size: 12px; padding: 8px;">
 <i class="icon-copy dw dw-user1" style="font-size: 20px;"></i>
 <i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
-<span style="font-size: 17px;">ASOCIAR PACIENTES</span>
+<span style="font-size: 15px;">ASOCIAR PACIENTES</span>
 </button>
 </div>
 <?php
