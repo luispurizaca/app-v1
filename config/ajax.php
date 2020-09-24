@@ -662,8 +662,8 @@ if(isset($_GET['id'])){
 $id = (int)$_GET['id'];
 
 //UPDATE
-if($view_controller == 2){
-$query_datos_movimiento = mysqli_query($con, "UPDATE usuario SET activo = '0' WHERE id_tipo_usuario = 2 AND id = '$id'");
+if($view_controller == 2 || $view_controller == 10){
+$query_datos_movimiento = mysqli_query($con, "UPDATE usuario SET activo = '0' WHERE id_tipo_usuario != 3 AND id = '$id'");
 }
 if($view_controller == 3){
 $query_datos_movimiento = mysqli_query($con, "DELETE FROM plan_alimentacion WHERE id = '$id'");
@@ -773,7 +773,13 @@ $ret_texto_edad = $row[16].' a&ntilde;os';
 <td class="td-content" style="width: 11.11% !important;" onclick="visualizar(<?php echo $ret_id_usuario; ?>)"><?php echo $texto_estado; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
 <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit" style="font-size: 13px; margin-right: 5px;"></i></a>
+<?php
+if($ret_id_tipo_usuario != 3){
+?>
 <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="eliminar(<?php echo $ret_id_usuario; ?>)"><i class="fa fa-trash-o" style="font-size: 13px;"></i></a>
+<?php
+}
+?>
 </td>
 </tr>
 <?php

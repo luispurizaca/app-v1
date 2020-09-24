@@ -370,6 +370,19 @@ if($_SESSION['ID_TIPO_USUARIO'] == 1 || $_SESSION['ID_TIPO_USUARIO'] == 3){
 <div id="chart"></div>
 </div>
 <?php
+//VALIDACIONES
+if(empty($_SESSION['usuario_total_pacientes'])){
+
+//PORCENTAJE PACIENTES
+$porcentaje_uno = 0;
+
+//PORCENTAJE PACIENTES ACTIVOS
+$porcentaje_dos = 0;
+
+//PORCENTAJE PACIENTES INACTIVOS
+$porcentaje_tres = 0;
+} else {
+
 //PORCENTAJE PACIENTES
 $porcentaje_uno = round(($_SESSION['usuario_total_pacientes'] / $_SESSION['usuario_maximo_pacientes']), 2) * 100;
 
@@ -378,9 +391,14 @@ $porcentaje_dos = round(($_SESSION['usuario_total_pacientes_activos'] / $_SESSIO
 
 //PORCENTAJE PACIENTES INACTIVOS
 $porcentaje_tres = round(($_SESSION['usuario_total_pacientes_inactivos'] / $_SESSION['usuario_total_pacientes']), 2) * 100;
+}
 
 //PORCENTAJE CONTROLES REALIZADOS
+if(empty($_SESSION['total_controles'])){
+$porcentaje_cuatro = 0;
+} else {
 $porcentaje_cuatro = round(($_SESSION['usuario_controles_realizados'] / $_SESSION['total_controles']), 2) * 100;
+}
 ?>
 <div class="widget-data">
 <div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes']; ?>/<?php echo $_SESSION['usuario_maximo_pacientes']; ?></div>
