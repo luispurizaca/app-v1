@@ -15,12 +15,20 @@ $negocia_tipo = (int)$_GET['negocia_tipo'];
 //NUTRICIONISTA
 if($negocia_tipo == 1){
 $title = 'Nutricionista';
+$query_add = 'id_tipo_usuario = 1 OR id_tipo_usuario = 3';
+$letra_add = 'N-';
 }
 
 //PACIENTE
 if($negocia_tipo == 2){
 $title = 'Paciente';
+$query_add = 'id_tipo_usuario = 2';
+$letra_add = 'P-';
 }
+
+//ULTIMO CODIGO REGISTRADO
+$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT MAX(codigo) FROM usuario WHERE $query_add ORDER BY MAX(codigo) DESC LIMIT 1"));
+$codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
 ?>
 <div class="pd-20 card-box mb-30">
 <div class="clearfix">
@@ -45,19 +53,7 @@ padding-left: 3px !important;
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">N&#176; Socio</label>
-<input id="form_codigo" name="form_codigo" class="form-control n-form-control" type="text" placeholder="C&oacute;digo">
-</div>
-</div>
-<div class="col-md-4 col-sm-12">
-<div class="form-group">
-<label class="n-label">Nombres</label>
-<input id="form_nombres" name="form_nombres" class="form-control n-form-control" type="text" placeholder="Nombres">
-</div>
-</div>
-<div class="col-md-4 col-sm-12">
-<div class="form-group">
-<label class="n-label">Apellidos</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<input id="form_codigo" name="form_codigo" class="form-control n-form-control" type="text" placeholder="C&oacute;digo" value="<?php echo $codigo_registro;?>" readonly="readonly" style="cursor: no-drop;">
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
@@ -80,7 +76,51 @@ $nombre_documento = $row_tipo_documento[1];
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">N&uacute;mero Doc.</label>
-<input id="form_numero_documento" name="form_numero_documento" class="form-control n-form-control" type="text" placeholder="N&uacute;mero">
+<input id="form_numero_documento" name="form_numero_documento" class="form-control n-form-control" type="text" placeholder="N&uacute;mero" onkeyup="consultar_doc()">
+</div>
+</div>
+<script>
+function consultar_doc(){
+var form_tipo_documento = $('#form_tipo_documento').val();
+var form_numero_documento = $('#form_numero_documento').val();
+var doc;
+
+//FUNCIONA SOLO SI
+if((form_tipo_documento == 1 && form_numero_documento.length == 8) || (form_tipo_documento == 2 && form_numero_documento.length == 11)){
+
+//DNI
+if(form_tipo_documento == 1 && form_numero_documento.length == 8){
+doc = 'DNI';
+}
+
+//RUC
+if(form_tipo_documento == 2 && form_numero_documento.length == 11){
+doc = 'RUC';
+}
+
+//ALERT
+swal({
+title: 'Extraer datos del '+doc+'?',
+type: 'info',
+showCancelButton: true,
+confirmButtonClass: "btn btn-success",
+confirmButtonText: "OK",
+cancelButtonText: "NO",
+confirmButtonColor: '#95cf32'
+});
+}
+}
+</script>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Nombres</label>
+<input id="form_nombres" name="form_nombres" class="form-control n-form-control" type="text" placeholder="Nombres">
+</div>
+</div>
+<div class="col-md-4 col-sm-12">
+<div class="form-group">
+<label class="n-label">Apellidos</label>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
