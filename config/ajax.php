@@ -244,7 +244,7 @@ $css_condicion_color = '#F26C3C';
 ?>
 </table>
 <div class="row">
-<div class="col-md-6 text-center" style="padding-top: 10px;">
+<div class="col-md-6 text-center" style="padding-top: 40px;">
 <div id="chart1"></div>
 <script>
 var options = {
@@ -327,12 +327,8 @@ size: 5
 var chart = new ApexCharts(document.querySelector('#chart1'), options);
 chart.render();
 </script>
-<div class="btn-group" style="display: none;">
-<button onclick="location.href = 'controles.php?paciente=<?php echo $id_registro ?>'" class="btn buttons-pdf" tabindex="0" type="button" style="background: #95cf32; color: white; padding: 8px; font-size: 16px;"><span>Ver controles del paciente</span></button>
 </div>
-</div>
-<div class="col-md-6 text-center" style="padding-top: 10px;">
-<hr>
+<div class="col-md-6 text-center" style="padding-top: 70px;">
 <table style="width: 250px; margin: 0 auto; border: 1px solid #95cf32;">
 <tr>
 <td style="width: 100% !important; text-align: center; background: #95cf32;" colspan="2"><span style="color: #fff; font-size: 16px;">Meta Final</span></td>
@@ -354,6 +350,10 @@ chart.render();
 <td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $diagnostico; ?></span></td>
 </tr>
 </table>
+<br>
+<div class="btn-group">
+<button onclick="location.href = 'controles.php?paciente=<?php echo $id_registro ?>'" class="btn buttons-pdf" tabindex="0" type="button" style="background: #95cf32; color: white; padding: 5px; font-size: 14px;"><span>Ver todos los controles</span></button>
+</div>
 </div>
 </div>
 <?php
@@ -941,7 +941,7 @@ var options = {
 
 //TITULO DEL CHART
 title: {
-text: 'Evoluci\u00F3n del Paquete',
+text: 'Evoluci\u00F3n <?php if(!empty($_GET['suscripcion'])){ ?> del Paquete <?php } ?>',
 align: 'center',
 style: {
 fontSize: "16px",
@@ -960,7 +960,7 @@ show: false
 
 //DATOS EJE X
 xaxis: {
-categories: [['06/09/2020', 'C001', 'RPF'], ['10/09/2020', 'C002', 'RPF'], ['12/09/2020', 'C003', 'RPF'], ['15/09/2020', 'C004', 'RPF']],
+categories: [['06/09/20', 'C001', 'RPF'], ['10/09/20', 'C002', 'RPF'], ['12/09/20', 'C003', 'RPF'], ['15/09/20', 'C004', 'RPF']],
 labels: {
 rotate: 0
 }
@@ -1014,8 +1014,166 @@ size: 5
 }
 }
 };
+var options_2 = {
+
+//TITULO DEL CHART
+title: {
+text: '(%) Grasa Corporal',
+align: 'center',
+style: {
+fontSize: "16px",
+color: '#95cf32'
+}
+},
+
+//CONFIGURACION DEL CHART
+chart: {
+height: 350,
+type: 'line',
+toolbar: {
+show: false
+}
+},
+
+//DATOS EJE X
+xaxis: {
+categories: [['06/09/20', 'C001', 'RPF'], ['10/09/20', 'C002', 'RPF'], ['12/09/20', 'C003', 'RPF'], ['15/09/20', 'C004', 'RPF']],
+labels: {
+rotate: 0
+}
+},
+
+//CONFIGURACION EJE Y
+yaxis: {
+min: 55,
+max: 80,
+title: {
+text: '(%) GRASA CORPORAL'
+}
+},
+
+//DATOS EJE Y
+series: [
+{
+name: '(%) Grasa Corporal',
+data: [75, 72, 65, 60]
+}
+],
+
+//GRID: Fondo de Malla
+grid: {
+show: true,
+padding: {
+left: 10,
+right: 10
+}
+},
+
+//GROSOR DE LINEAS O BARRAS
+stroke: {
+width: 1,
+curve: 'straight'
+},
+
+//TIPO DE LINEAS O BARRAS
+fill: {
+type: 'solid'
+},
+
+//TAMAÑO PUNTOS DE RELACION (BOLITAS)
+markers: {
+size: 3,
+colors: ["#95cf32"],
+strokeColors: "#95cf32",
+strokeWidth: 1,
+hover: {
+size: 5
+}
+}
+};
+var options_3 = {
+
+//TITULO DEL CHART
+title: {
+text: 'MM',
+align: 'center',
+style: {
+fontSize: "16px",
+color: '#95cf32'
+}
+},
+
+//CONFIGURACION DEL CHART
+chart: {
+height: 350,
+type: 'line',
+toolbar: {
+show: false
+}
+},
+
+//DATOS EJE X
+xaxis: {
+categories: [['06/09/20', 'C001', 'RPF'], ['10/09/20', 'C002', 'RPF'], ['12/09/20', 'C003', 'RPF'], ['15/09/20', 'C004', 'RPF']],
+labels: {
+rotate: 0
+}
+},
+
+//CONFIGURACION EJE Y
+yaxis: {
+min: 55,
+max: 80,
+title: {
+text: 'MM'
+}
+},
+
+//DATOS EJE Y
+series: [
+{
+name: 'MM',
+data: [75, 72, 65, 60]
+}
+],
+
+//GRID: Fondo de Malla
+grid: {
+show: true,
+padding: {
+left: 10,
+right: 10
+}
+},
+
+//GROSOR DE LINEAS O BARRAS
+stroke: {
+width: 1,
+curve: 'straight'
+},
+
+//TIPO DE LINEAS O BARRAS
+fill: {
+type: 'solid'
+},
+
+//TAMAÑO PUNTOS DE RELACION (BOLITAS)
+markers: {
+size: 3,
+colors: ["#95cf32"],
+strokeColors: "#95cf32",
+strokeWidth: 1,
+hover: {
+size: 5
+}
+}
+};
 var chart = new ApexCharts(document.querySelector('#chart1'), options);
 chart.render();
+var chart_2 = new ApexCharts(document.querySelector('#chart2'), options_2);
+chart_2.render();
+var chart_3 = new ApexCharts(document.querySelector('#chart3'), options_3);
+chart_3.render();
 </script>
 <?php
 }

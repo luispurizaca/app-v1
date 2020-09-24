@@ -450,11 +450,21 @@ text-align: center;
 <div id="reporte_tabla"></div>
 </div>
 <div class="row">
-<div class="col-md-3 hidden-xs"></div>
-<div class="col-md-6 col-xs-12">
+<div class="col-md-1 hidden-xs"></div>
+<div class="col-md-10 col-xs-12">
 <div id="chart1"></div>
 </div>
-<div class="col-md-3 hidden-xs"></div>
+<div class="col-md-1 hidden-xs"></div>
+</div>
+<div class="row">
+<div class="col-md-1 hidden-xs"></div>
+<div class="col-md-5 col-xs-12">
+<div id="chart2"></div>
+</div>
+<div class="col-md-5 col-xs-12">
+<div id="chart3"></div>
+</div>
+<div class="col-md-1 hidden-xs"></div>
 </div>
 <script>
 //LOAD
