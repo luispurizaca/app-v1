@@ -1,9 +1,14 @@
 <?php
 $negocia_operacion = (int)$_GET['negocia_operacion'];
 $negocia_tipo = (int)$_GET['negocia_tipo'];
-if($negocia_operacion == 1){
+if($negocia_operacion == 1 || $negocia_operacion == 2){
 
+//CONEXION
 require_once (__DIR__.'/conexion_bd.php');
+}
+
+//FORMULARIO NUEVO REGISTRO
+if($negocia_operacion == 1){
 
 //NUTRICIONISTA
 if($negocia_tipo == 1){
@@ -73,67 +78,71 @@ $nombre_documento = $row_tipo_documento[1];
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">N&uacute;mero Doc.</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<input id="form_numero_documento" name="form_numero_documento" class="form-control n-form-control" type="text" placeholder="N&uacute;mero">
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">Fecha Nac.</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<input id="form_fecha_nacimiento" name="form_fecha_nacimiento" class="form-control n-form-control" type="date" placeholder="Fecha de Nacimiento">
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">G&eacute;nero</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<select id="form_genero" name="form_genero" class="form-control n-form-control">
+<option value="0" hidden="hidden">Seleccione</option>
+<option value="1">Masculino</option>
+<option value="2">Femenino</option>
+</select>
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">Instagram</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<input id="form_instagram" name="form_instagram" class="form-control n-form-control" type="text" placeholder="Instagram">
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">Direcci&oacute;n</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<input id="form_direccion" name="form_direccion" class="form-control n-form-control" type="text" placeholder="Direcci&oacute;n">
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">Departamento</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<input id="form_departamento" name="form_departamento" class="form-control n-form-control" type="text" placeholder="Departamento">
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">Provincia</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<input id="form_provincia" name="form_provincia" class="form-control n-form-control" type="text" placeholder="Provincia">
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">Distrito</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<input id="form_distrito" name="form_distrito" class="form-control n-form-control" type="text" placeholder="Distrito">
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">Talla</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<input id="form_talla" name="form_talla" class="form-control n-form-control" type="text" placeholder="Talla">
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">Peso Meta</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<input id="form_peso_meta" name="form_peso_meta" class="form-control n-form-control" type="text" placeholder="Peso Meta">
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">N&#176; M&aacute;x. Pac.</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<input id="form_maximo_pacientes" name="form_maximo_pacientes" class="form-control n-form-control" type="text" placeholder="N&#176; M&aacute;x. Pac.">
 </div>
 </div>
 </div>
@@ -156,7 +165,7 @@ $nombre_documento = $row_tipo_documento[1];
 <div class="col-md-4 col-sm-12">
 <div class="form-group">
 <label class="n-label">Contrase&ntilde;a</label>
-<input id="form_clave" name="form_clave" class="form-control n-form-control" type="text" placeholder="Contrase&ntilde;a">
+<input id="form_clave" name="form_clave" class="form-control n-form-control" type="password" placeholder="Contrase&ntilde;a">
 </div>
 </div>
 <div class="col-md-4 col-sm-12">
@@ -169,17 +178,99 @@ $nombre_documento = $row_tipo_documento[1];
 <div class="row">
 <div class="col-md-12 col-sm-12 text-center" style="padding-top: 20px;">
 <div class="form-group">
-<button type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar Datos</button>
+<button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar Datos</button>
 <button onclick="window.location='index.php'" type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Cancelar</button>
 </div>
 </div>
 </div>
 </form>
 </div>
+<script>
+$('#btn_guardar_datos').on('click', function(){
+var form_codigo = $('#form_codigo').val();
+var form_nombres = $('#form_nombres').val();
+var form_apellidos = $('#form_apellidos').val();
+var form_tipo_documento = $('#form_tipo_documento').val();
+var form_numero_documento = $('#form_numero_documento').val();
+var form_fecha_nacimiento = $('#form_fecha_nacimiento').val();
+var form_genero = $('#form_genero').val();
+var form_instagram = $('#form_instagram').val();
+var form_direccion = $('#form_direccion').val();
+var form_departamento = $('#form_departamento').val();
+var form_provincia = $('#form_provincia').val();
+var form_distrito = $('#form_distrito').val();
+var form_talla = $('#form_talla').val();
+var form_peso_meta = $('#form_peso_meta').val();
+var form_maximo_pacientes = $('#form_maximo_pacientes').val();
+var form_correo = $('#form_correo').val();
+var form_clave = $('#form_clave').val();
+var form_residencia = $('#form_residencia').val();
+$.ajax({
+type: 'POST',
+url: 'config/content.php?negocia_operacion=2',
+data: {
+form_codigo: form_codigo,
+form_nombres: form_nombres,
+form_apellidos : form_apellidos,
+form_tipo_documento : form_tipo_documento,
+form_numero_documento : form_numero_documento,
+form_fecha_nacimiento : form_fecha_nacimiento,
+form_genero : form_genero,
+form_instagram : form_instagram,
+form_direccion : form_direccion,
+form_departamento : form_departamento,
+form_provincia : form_provincia,
+form_distrito : form_distrito,
+form_talla : form_talla,
+form_peso_meta : form_peso_meta,
+form_maximo_pacientes : form_maximo_pacientes,
+form_correo : form_correo,
+form_clave : form_clave,
+form_residencia : form_residencia
+},
+success: function(datos){
+$('#div_ajax').html(datos).fadeIn('slow');
+}
+});
+});
+</script>
 <?php
 exit();
 exit();
 }
+
+//GUARDAR NUEVO REGISTRO
+if($negocia_operacion == 2){
+$form_codigo = $_POST['form_codigo'];
+$form_nombres = $_POST['form_nombres'];
+$form_apellidos  = $_POST['form_apellidos'];
+$form_tipo_documento  = (int)$_POST['form_tipo_documento'];
+$form_numero_documento  = $_POST['form_numero_documento'];
+$form_fecha_nacimiento  = $_POST['form_fecha_nacimiento'];
+if(!empty($_POST['form_fecha_nacimiento'])){
+$form_fecha_nacimiento  = date('Y-m-d', strtotime($_POST['form_fecha_nacimiento']));
+}
+$form_genero  = (int)$_POST['form_genero'];
+$form_instagram  = $_POST['form_instagram'];
+$form_direccion  = $_POST['form_direccion'];
+$form_departamento  = $_POST['form_departamento'];
+$form_provincia  = $_POST['form_provincia'];
+$form_distrito  = $_POST['form_distrito'];
+$form_talla  = (float)str_replace(' ', '', str_replace(',', '.', $_POST['form_talla']));
+$form_peso_meta  = (float)str_replace(' ', '', str_replace(',', '.', $_POST['form_peso_meta']));
+$form_maximo_pacientes  = (int)$_POST['form_maximo_pacientes'];
+$form_correo  = $_POST['form_correo'];
+$form_clave  = $_POST['form_clave'];
+$form_residencia  = $_POST['form_residencia'];
+?>
+<script>
+location.href = 'index.php';
+</script>
+<?php
+exit();
+exit();
+}
+
 if(isset($con)){
 //1. inicio.php
 
