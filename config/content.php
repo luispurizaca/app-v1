@@ -124,12 +124,12 @@ padding-left: 3px !important;
 </div>
 </div>
 </div>
-<div class="row">
+<div class="row" style="padding-top: 15px;">
 <div class="col-md-12 col-sm-12">
 <div class="form-group">
 <div class="pull-left">
-<h4 class="weight-500" style="font-size: 17px;">
-<div style="color: #95cf32; font-weight: bold; font-size: 22px;">Inicio de Sesi&oacute;n</div>
+<h4 class="weight-500">
+<div style="color: #95cf32; font-weight: bold; font-size: 18px;">Inicio de Sesi&oacute;n</div>
 </h4><hr>
 </div>
 </div>
@@ -157,6 +157,7 @@ padding-left: 3px !important;
 <div class="col-md-12 col-sm-12 text-center" style="padding-top: 20px;">
 <div class="form-group">
 <button type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar Datos</button>
+<button onclick="window.location='index.php'" type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Cancelar</button>
 </div>
 </div>
 </div>
