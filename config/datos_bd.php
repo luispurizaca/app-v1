@@ -38,7 +38,7 @@ $num_rows_controles_realizados = mysqli_num_rows(mysqli_query($con, "SELECT id F
 $_SESSION['usuario_controles_realizados'] = $num_rows_controles_realizados;
 
 //NUMERO TOTAL DE NUTRICIONISTAS
-$num_rows_nutricionistas = mysqli_num_rows(mysqli_query($con, "SELECT id FROM usuario WHERE id_tipo_usuario = 1 OR id_tipo_usuario = 2"));
+$num_rows_nutricionistas = mysqli_num_rows(mysqli_query($con, "SELECT id FROM usuario WHERE id_tipo_usuario = 1 OR id_tipo_usuario = 3"));
 $_SESSION['admin_total_nutricionistas'] = $num_rows_nutricionistas;
 
 //NUMERO TOTAL DE PACIENTES
