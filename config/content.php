@@ -311,14 +311,14 @@ confirmButtonText: 'OK'
 <?php
 }
 ?>
-<h4 class="font-20 weight-500 mb-10 text-capitalize">
+<h4 class="font-20 weight-500 mb-10 text-capitalize" style="padding-left: 65px;">
 Hola <div class="font-30" style="color: #95cf32; font-weight: bold;"><?php echo ucwords($_SESSION['usuario_nombres']); ?>!</div>
 </h4>
 <?php
 if($_SESSION['ID_TIPO_USUARIO'] == 3){
 ?>
 <div style="margin-top: 30px; margin-bottom: 20px;">
-<table style="width: 250px; border: 1px solid #95cf32;">
+<table style="width: 250px; border: 1px solid #95cf32; margin-left: 25px;">
 <tr>
 <td style="width: 100% !important; text-align: center; background: #95cf32;" colspan="2"><span style="color: #fff; font-size: 16px;">Datos Generales</span></td>
 </tr>
@@ -334,16 +334,11 @@ if($_SESSION['ID_TIPO_USUARIO'] == 3){
 <br>
 <button onclick="nuevo_registro(1)" class="btn buttons-csv" tabindex="0" type="button" style="background: #95cf32; color: white; font-size: 12px; padding: 8px; margin-right: 20px;">
 <i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
-<span style="font-size: 15px;">NUEVO NUTRICIONISTA</span>
+<span style="font-size: 15px;">(+) NUTRICIONISTA</span>
 </button>
-<button onclick="nuevo_registro(2)" class="btn buttons-pdf" tabindex="0" type="button" style="background: #F26C3C; color: white; font-size: 12px; padding: 8px; margin-right: 20px;">
+<button onclick="nuevo_registro(2)" class="btn buttons-pdf" tabindex="0" type="button" style="background: #F26C3C; color: white; font-size: 12px; padding: 8px;">
 <i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
-<span style="font-size: 15px;">NUEVO PACIENTE</span>
-</button>
-<button class="btn buttons-pdf" tabindex="0" type="button" style="background: #818181; color: white; font-size: 12px; padding: 8px;">
-<i class="icon-copy dw dw-user1" style="font-size: 20px;"></i>
-<i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
-<span style="font-size: 15px;">ASOCIAR PACIENTES</span>
+<span style="font-size: 15px;">(+) PACIENTE</span>
 </button>
 </div>
 <?php
