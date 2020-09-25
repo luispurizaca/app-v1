@@ -1471,6 +1471,60 @@ if($view_controller == 11){
 <div class="card-box mb-30">
 <div class="card-box pd-20 height-100-p mb-30">
 <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+<table style="width: 400px; margin-left: 25px; margin-top: 40px;">
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;">
+<input id="form_busqueda_paciente" name="form_busqueda_paciente" class="form-control n-form-control" type="text" placeholder="Buscar">
+<div id="resultado_busqueda"></div>
+<script>
+//AUTOCOMPLETE
+$(function(){
+$('#form_busqueda_paciente').autocomplete({
+source: function(request, response){
+$.ajax({
+url: 'config/content.php?negocia_operacion=3',
+type: 'POST',
+dataType: 'JSON',
+data: {
+search: request.term
+},
+success: function(data){
+response(data);
+}
+});
+},
+select: function(event, ui){
+//complete_datos(ui.item.value);
+$('#form_busqueda_paciente').val(ui.item.label);
+return false;
+}
+});
+});
+</script>
+</td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;">
+<span style="color: #111; font-weight: bold; font-size: 13px;"></span>
+</td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;">
+<br>
+<span style="color: #111; font-weight: bold; font-size: 13px;">N&#176; de Socio:</span>
+</td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;">
+<span id="result_codigo_paciente" style="color: #111; font-weight: bold; font-size: 13px;"></span>
+</td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;">
+<span style="color: #111; font-weight: bold; font-size: 13px;">Nombres y Apellidos:</span>
+</td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;">
+<span id="result_nombres_paciente" style="color: #111; font-weight: bold; font-size: 13px;"></span>
+</td>
+</tr>
+</table>
+<div id="div_plan_paciente"></div>
 <button onclick="nuevo_registro(2)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Paciente Nuevo</button>
 <button type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Renovaci&oacute;n</button>
 </div>
