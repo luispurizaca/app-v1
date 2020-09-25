@@ -175,6 +175,12 @@ confirmButtonColor: '#95cf32'
 <input id="form_residencia" name="form_residencia" class="form-control n-form-control" type="text" placeholder="ejm: PE">
 </div>
 </div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Tel&eacute;fono</label>
+<input id="form_telefono" name="form_telefono" class="form-control n-form-control" type="text" placeholder="ejm: 999999999">
+</div>
+</div>
 <div class="col-md-3 col-sm-6" style="<?php if($negocia_tipo == 1 || $_SESSION['ID_TIPO_USUARIO'] == 4){?> display: none; <?php } ?>">
 <div class="form-group">
 <label class="n-label">Talla</label>
