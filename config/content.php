@@ -1,4 +1,5 @@
 <?php
+session_start();
 $negocia_operacion = (int)$_GET['negocia_operacion'];
 if($negocia_operacion >= 1 && $negocia_operacion <= 4){
 
@@ -174,13 +175,13 @@ confirmButtonColor: '#95cf32'
 <input id="form_residencia" name="form_residencia" class="form-control n-form-control" type="text" placeholder="ejm: PE">
 </div>
 </div>
-<div class="col-md-3 col-sm-6" style="<?php if($negocia_tipo == 1){?> display: none; <?php } ?>">
+<div class="col-md-3 col-sm-6" style="<?php if($negocia_tipo == 1 || $_SESSION['ID_TIPO_USUARIO'] == 4){?> display: none; <?php } ?>">
 <div class="form-group">
 <label class="n-label">Talla</label>
 <input id="form_talla" name="form_talla" class="form-control n-form-control" type="text" placeholder="Talla">
 </div>
 </div>
-<div class="col-md-3 col-sm-6" style="<?php if($negocia_tipo == 1){?> display: none; <?php } ?>">
+<div class="col-md-3 col-sm-6" style="<?php if($negocia_tipo == 1 || $_SESSION['ID_TIPO_USUARIO'] == 4){?> display: none; <?php } ?>">
 <div class="form-group">
 <label class="n-label">Peso Meta</label>
 <input id="form_peso_meta" name="form_peso_meta" class="form-control n-form-control" type="text" placeholder="Peso Meta">
@@ -362,16 +363,14 @@ var form_maximo_pacientes = $('#form_maximo_pacientes').val();
 var form_correo = $('#form_correo').val();
 var form_clave = $('#form_clave').val();
 var form_residencia = $('#form_residencia').val();
-
 var form_id_programa = $('#form_id_programa').val();
 var form_id_paquete = $('#form_id_paquete').val();
-var form_residencia = $('#form_residencia').val();
-var form_residencia = $('#form_residencia').val();
-var form_residencia = $('#form_residencia').val();
-var form_residencia = $('#form_residencia').val();
-var form_residencia = $('#form_residencia').val();
-var form_residencia = $('#form_residencia').val();
-var form_residencia = $('#form_residencia').val();
+var form_fecha_suscripcion = $('#form_fecha_suscripcion').val();
+var form_id_nutricionista = $('#form_id_nutricionista').val();
+var form_fecha_pago = $('#form_fecha_pago').val();
+var form_monto = $('#form_monto').val();
+var form_id_medio_pago = $('#form_id_medio_pago').val();
+var form_id_banco = $('#form_id_banco').val();
 
 $.ajax({
 type: 'POST',
@@ -395,7 +394,15 @@ form_maximo_pacientes : form_maximo_pacientes,
 form_correo : form_correo,
 form_clave : form_clave,
 form_residencia : form_residencia,
-form_tipo_usuario : <?php echo $negocia_tipo; ?>
+form_tipo_usuario : <?php echo $negocia_tipo; ?>,
+form_id_programa : form_id_programa,
+form_id_paquete : form_id_paquete,
+form_fecha_suscripcion : form_fecha_suscripcion,
+form_id_nutricionista : form_id_nutricionista,
+form_fecha_pago : form_fecha_pago,
+form_monto : form_monto,
+form_id_medio_pago : form_id_medio_pago,
+form_id_banco : form_id_banco
 },
 success: function(datos){
 $('#div_ajax').html(datos).fadeIn('slow');
@@ -432,6 +439,15 @@ $form_correo  = $_POST['form_correo'];
 $form_clave  = $_POST['form_clave'];
 $form_residencia  = $_POST['form_residencia'];
 $form_tipo_usuario  = (int)$_POST['form_tipo_usuario'];
+
+$form_id_programa = $_POST['form_id_programa'];
+$form_id_paquete = $_POST['form_id_paquete'];
+$form_fecha_suscripcion = $_POST['form_fecha_suscripcion'];
+$form_id_nutricionista = $_POST['form_id_nutricionista'];
+$form_fecha_pago = $_POST['form_fecha_pago'];
+$form_monto = $_POST['form_monto'];
+$form_id_medio_pago = $_POST['form_id_medio_pago'];
+$form_id_banco = $_POST['form_id_banco'];
 
 //AGREGAR A LA BD
 mysqli_query($con, "
