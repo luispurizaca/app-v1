@@ -65,7 +65,7 @@ if($_SESSION['ID_TIPO_USUARIO'] == 4){
 </li>
 <li>
 <a href="pacientes-v.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
-<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Registros</span>
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Registro</span>
 </a>
 </li>
 <li>
