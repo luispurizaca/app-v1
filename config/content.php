@@ -15,19 +15,29 @@ $negocia_tipo = (int)$_GET['negocia_tipo'];
 //NUTRICIONISTA
 if($negocia_tipo == 1){
 $title = 'Nutricionista';
-$query_add = 'id_tipo_usuario = 1 OR id_tipo_usuario = 3';
 $letra_add = 'N-';
 }
 
 //PACIENTE
 if($negocia_tipo == 2){
 $title = 'Paciente';
-$query_add = 'id_tipo_usuario = 2';
 $letra_add = 'P-';
 }
 
+//ADMINISTRADOR
+if($negocia_tipo == 3){
+$title = 'Administrador';
+$letra_add = 'A-';
+}
+
+//VENDEDOR
+if($negocia_tipo == 4){
+$title = 'Vendedor';
+$letra_add = 'V-';
+}
+
 //ULTIMO CODIGO REGISTRADO
-$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT MAX(codigo) FROM usuario WHERE $query_add ORDER BY MAX(codigo) DESC LIMIT 1"));
+$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT MAX(codigo) FROM usuario WHERE id_tipo_usuario = '$negocia_tipo' ORDER BY MAX(codigo) DESC LIMIT 1"));
 $codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
 ?>
 <div class="pd-20 card-box mb-30">
@@ -38,15 +48,14 @@ Nuevo <div style="color: #95cf32; font-weight: bold; font-size: 22px;"><?php ech
 </h4><hr>
 </div>
 </div>
-<form>
 <div class="row">
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">N&#176; Socio</label>
-<input id="form_codigo" name="form_codigo" class="form-control n-form-control" type="text" placeholder="C&oacute;digo" value="<?php echo $codigo_registro;?>" readonly="readonly" style="cursor: no-drop;">
+<input id="form_codigo" name="form_codigo" class="form-control n-form-control" type="text" placeholder="C&oacute;digo" value="<?php echo $codigo_registro; ?>" readonly="readonly" style="cursor: no-drop;">
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Tipo Doc.</label>
 <select id="form_tipo_documento" name="form_tipo_documento" class="form-control n-form-control">
@@ -63,10 +72,16 @@ $nombre_documento = $row_tipo_documento[1];
 </select>
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">N&uacute;mero Doc.</label>
 <input id="form_numero_documento" name="form_numero_documento" class="form-control n-form-control" type="text" placeholder="N&uacute;mero" onkeyup="consultar_doc()">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Fecha Nac.</label>
+<input id="form_fecha_nacimiento" name="form_fecha_nacimiento" class="form-control n-form-control" type="date" placeholder="Fecha de Nacimiento">
 </div>
 </div>
 <script>
@@ -101,25 +116,19 @@ confirmButtonColor: '#95cf32'
 }
 }
 </script>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Nombres</label>
 <input id="form_nombres" name="form_nombres" class="form-control n-form-control" type="text" placeholder="Nombres">
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Apellidos</label>
 <input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
-<div class="form-group">
-<label class="n-label">Fecha Nac.</label>
-<input id="form_fecha_nacimiento" name="form_fecha_nacimiento" class="form-control n-form-control" type="date" placeholder="Fecha de Nacimiento">
-</div>
-</div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">G&eacute;nero</label>
 <select id="form_genero" name="form_genero" class="form-control n-form-control">
@@ -129,49 +138,55 @@ confirmButtonColor: '#95cf32'
 </select>
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Instagram</label>
 <input id="form_instagram" name="form_instagram" class="form-control n-form-control" type="text" placeholder="Instagram">
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Direcci&oacute;n</label>
 <input id="form_direccion" name="form_direccion" class="form-control n-form-control" type="text" placeholder="Direcci&oacute;n">
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Departamento</label>
 <input id="form_departamento" name="form_departamento" class="form-control n-form-control" type="text" placeholder="Departamento">
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Provincia</label>
 <input id="form_provincia" name="form_provincia" class="form-control n-form-control" type="text" placeholder="Provincia">
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Distrito</label>
 <input id="form_distrito" name="form_distrito" class="form-control n-form-control" type="text" placeholder="Distrito">
 </div>
 </div>
-<div class="col-md-4 col-sm-12" style="<?php if($negocia_tipo == 1){?> display: none; <?php } ?>">
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Residencia</label>
+<input id="form_residencia" name="form_residencia" class="form-control n-form-control" type="text" placeholder="ejm: PE">
+</div>
+</div>
+<div class="col-md-3 col-sm-6" style="<?php if($negocia_tipo == 1){?> display: none; <?php } ?>">
 <div class="form-group">
 <label class="n-label">Talla</label>
 <input id="form_talla" name="form_talla" class="form-control n-form-control" type="text" placeholder="Talla">
 </div>
 </div>
-<div class="col-md-4 col-sm-12" style="<?php if($negocia_tipo == 1){?> display: none; <?php } ?>">
+<div class="col-md-3 col-sm-6" style="<?php if($negocia_tipo == 1){?> display: none; <?php } ?>">
 <div class="form-group">
 <label class="n-label">Peso Meta</label>
 <input id="form_peso_meta" name="form_peso_meta" class="form-control n-form-control" type="text" placeholder="Peso Meta">
 </div>
 </div>
-<div class="col-md-4 col-sm-12" style="<?php if($negocia_tipo == 2){?> display: none; <?php } ?>">
+<div class="col-md-3 col-sm-6" style="<?php if($negocia_tipo == 2){?> display: none; <?php } ?>">
 <div class="form-group">
 <label class="n-label">N&#176; M&aacute;x. Pac.</label>
 <input id="form_maximo_pacientes" name="form_maximo_pacientes" class="form-control n-form-control" type="text" placeholder="N&#176; M&aacute;x. Pac.">
@@ -183,27 +198,138 @@ confirmButtonColor: '#95cf32'
 <div class="form-group">
 <div class="pull-left">
 <h4 class="weight-500">
-<div style="color: #95cf32; font-weight: bold; font-size: 18px;">Inicio de Sesi&oacute;n</div>
+<div style="color: #95cf32; font-weight: bold; font-size: 18px;">Datos de la suscripci&oacute;n</div>
 </h4><hr>
 </div>
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Plan Rekupera</label>
+<select id="form_id_programa" name="form_id_programa" class="form-control n-form-control">
+<?php
+$query_plan = mysqli_query($con, "SELECT id, nombre FROM programa ORDER BY id ASC");
+while($row_plan = mysqli_fetch_array($query_plan)){
+$id_plan = $row_plan[0];
+$nombre_plan = $row_plan[1];
+?>
+<option value="<?php echo $id_plan; ?>"><?php echo $nombre_plan; ?></option>
+<?php
+}
+?>
+</select>
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Paquete</label>
+<select id="form_id_paquete" name="form_id_paquete" class="form-control n-form-control">
+<option value="1">Paquete Socio</option>
+<option value="2">Paquete VIP</option>
+</select>
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Fecha de Inicio</label>
+<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Nutricionista</label>
+<select id="form_id_nutricionista" name="form_id_nutricionista" class="form-control n-form-control">
+<?php
+$query_id_n = mysqli_query($con, "SELECT id, CONCAT(apellidos, ' ', nombres) FROM usuario WHERE activo = 1 AND id_tipo_usuario = 1 ORDER BY id ASC");
+while($row_id_n = mysqli_fetch_array($query_id_n)){
+$id_cb = $row_id_n[0];
+$nombre_cb = $row_id_n[1];
+?>
+<option value="<?php echo $id_cb; ?>"><?php echo $nombre_cb; ?></option>
+<?php
+}
+?>
+</select>
+</div>
+</div>
+</div>
+<div class="row" style="padding-top: 15px;">
+<div class="col-md-12 col-sm-12">
+<div class="form-group">
+<div class="pull-left">
+<h4 class="weight-500">
+<div style="color: #95cf32; font-weight: bold; font-size: 18px;">Datos de la venta</div>
+</h4><hr>
+</div>
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Fecha de Pago</label>
+<input id="form_fecha_pago" name="form_fecha_pago" class="form-control n-form-control" type="date" placeholder="Fecha de Pago" value="<?php echo date('Y-m-d'); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Monto</label>
+<input id="form_monto" name="form_monto" class="form-control n-form-control" type="number" step="any" placeholder="ejm: 350.00">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Medio de Pago</label>
+<select id="form_id_medio_pago" name="form_id_medio_pago" class="form-control n-form-control">
+<?php
+$query_mp = mysqli_query($con, "SELECT id, nombre FROM medios_pago ORDER BY id ASC");
+while($row_mp = mysqli_fetch_array($query_mp)){
+$id_mp = $row_mp[0];
+$nombre_mp = $row_mp[1];
+?>
+<option value="<?php echo $id_mp; ?>"><?php echo $nombre_mp; ?></option>
+<?php
+}
+?>
+</select>
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Banco</label>
+<select id="form_id_banco" name="form_id_banco" class="form-control n-form-control">
+<?php
+$query_cb = mysqli_query($con, "SELECT id, banco FROM cuenta_bancaria ORDER BY id ASC");
+while($row_cb = mysqli_fetch_array($query_cb)){
+$id_cb = $row_cb[0];
+$nombre_cb = $row_cb[1];
+?>
+<option value="<?php echo $id_cb; ?>"><?php echo $nombre_cb; ?></option>
+<?php
+}
+?>
+</select>
+</div>
+</div>
+</div>
+<div class="row" style="padding-top: 15px;">
+<div class="col-md-12 col-sm-12">
+<div class="form-group">
+<div class="pull-left">
+<h4 class="weight-500">
+<div style="color: #95cf32; font-weight: bold; font-size: 18px;">Crear Cuenta</div>
+</h4><hr>
+</div>
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Correo Electr&oacute;nico</label>
 <input id="form_correo" name="form_correo" class="form-control n-form-control" type="text" placeholder="Correo electr&oacute;nico">
 </div>
 </div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Contrase&ntilde;a</label>
-<input id="form_clave" name="form_clave" class="form-control n-form-control" type="password" placeholder="Contrase&ntilde;a">
-</div>
-</div>
-<div class="col-md-4 col-sm-12">
-<div class="form-group">
-<label class="n-label">Residencia</label>
-<input id="form_residencia" name="form_residencia" class="form-control n-form-control" type="text" placeholder="ejm: PE">
+<input id="form_clave" name="form_clave" class="form-control n-form-control" type="password" placeholder="Contrase&ntilde;a" value="<?php echo $codigo_registro; ?>12345">
 </div>
 </div>
 </div>
@@ -215,7 +341,6 @@ confirmButtonColor: '#95cf32'
 </div>
 </div>
 </div>
-</form>
 </div>
 <script>
 $('#btn_guardar_datos').on('click', function(){
@@ -1309,6 +1434,33 @@ San Diego, CA 92115
 </div>
 </div>
 </div>
+<?php
+}
+
+//PACIENTES - VENDEDOR
+if($view_controller == 11){
+?>
+<div class="card-box mb-30">
+<div class="card-box pd-20 height-100-p mb-30">
+<div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+<button onclick="nuevo_registro(2)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Paciente Nuevo</button>
+<button type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Renovaci&oacute;n</button>
+</div>
+</div>
+</div>
+<div id="div_ajax"></div>
+<script>
+//NUEVO REGISTRO
+function nuevo_registro(id){
+$.ajax({
+type: 'POST',
+url: 'config/content.php?negocia_operacion=1&negocia_tipo='+id,
+success: function(datos){
+$('#div_ajax').html(datos).fadeIn('slow');
+}
+});
+}
+</script>
 <?php
 }
 }

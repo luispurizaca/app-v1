@@ -102,22 +102,6 @@ $clave_return = '';
                                                     <h2 class="text-center" style="color: #95cf32;">Iniciar Sesi&oacute;n</h2>
 						</div>
 <form method="POST" accept-charset="utf-8" action="login.php" name="loginform" autocomplete="off" role="form">
-							<div class="select-role">
-								<div class="btn-group btn-group-toggle" data-toggle="buttons">
-									<label class="btn active">
-										<input type="radio" name="options" id="admin">
-                                                                                <span class="input-group-text icon"><i class="icon-copy dw dw-user1"></i></span>
-										<span>Soy</span>
-										Nutricionista
-									</label>
-									<label class="btn">
-										<input type="radio" name="options" id="user">
-                                                                                <span class="input-group-text icon"><i class="icon-copy dw dw-user1"></i></span>
-										<span>Soy</span>
-										Paciente
-									</label>
-								</div>
-							</div>
 							<div class="input-group custom">
 								<input type="text" class="form-control form-control-lg" placeholder="C&oacute;digo / Correo electr&oacute;nico" name="user_name" value="<?php echo $usuario_return; ?>">
 								<div class="input-group-append custom">

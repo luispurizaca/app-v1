@@ -49,7 +49,7 @@ if(!$this->db_connection->connect_errno){
 $user_name = $this->db_connection->real_escape_string($_POST['user_name']);
 
 //CONSULTA VALIDAR
-$sql = "SELECT usuario.id AS ID_USUARIO, usuario.clave AS CLAVE, usuario.id_tipo_usuario AS ID_TIPO_USUARIO, usuario.estado AS ESTADO_USUARIO FROM usuario WHERE (usuario.codigo = '".$user_name."' OR usuario.correo = '".$user_name."') ORDER BY usuario.id ASC LIMIT 1";
+$sql = "SELECT usuario.id AS ID_USUARIO, usuario.clave AS CLAVE, usuario.id_tipo_usuario AS ID_TIPO_USUARIO, usuario.estado AS ESTADO_USUARIO, usuario.activo AS ACTIVO FROM usuario WHERE (usuario.codigo = '".$user_name."' OR usuario.correo = '".$user_name."') ORDER BY usuario.id ASC LIMIT 1";
 
 $result_of_login_check = $this->db_connection->query($sql);
 if($result_of_login_check->num_rows == 1){
@@ -60,18 +60,26 @@ $ID_USUARIO = $result_row->ID_USUARIO;
 $CLAVE = $result_row->CLAVE;
 $ID_TIPO_USUARIO = $result_row->ID_TIPO_USUARIO;
 $ESTADO_USUARIO = $result_row->ESTADO_USUARIO;
+$ACTIVO = $result_row->ACTIVO;
 
 //NOMBRE DEL TIPO DE USUARIO
 if($ID_TIPO_USUARIO == 1){
 $NOMBRE_TIPO_USUARIO = 'nutricionista';
-} else {
+}
+if($ID_TIPO_USUARIO == 2){
 $NOMBRE_TIPO_USUARIO = 'paciente';
+}
+if($ID_TIPO_USUARIO == 3){
+$NOMBRE_TIPO_USUARIO = 'administrador';
+}
+if($ID_TIPO_USUARIO == 4){
+$NOMBRE_TIPO_USUARIO = 'vendedor';
 }
 
 //VALIDAR NEGOCIA
-if($ESTADO_USUARIO != 1){
+if($ACTIVO != 1){
 $this->errors[] = 'Usuario Restringido.';
-} elseif($ESTADO_USUARIO == 1){
+} elseif($ACTIVO == 1){
 if(password_verify($_POST['user_password'], $CLAVE)){
 
 //CREAR LAS VARIABLES DE LA SESION

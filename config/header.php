@@ -19,7 +19,6 @@ if(isset($con)){
 <a href="#">
 <img src="vendors/images/img.jpg" alt="">
 <h3><?php echo ucwords($_SESSION['usuario_nombres']); ?></h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 </a>
 </li>
 </ul>
@@ -56,6 +55,27 @@ if(isset($con)){
 <div class="menu-block customscroll" style="height: calc(100vh - 110px); background: #818181;">
 <div class="sidebar-menu">
 <ul id="accordion-menu">
+<?php
+if($_SESSION['ID_TIPO_USUARIO'] == 4){
+?>
+<li>
+<a href="index.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Inicio</span>
+</a>
+</li>
+<li>
+<a href="pacientes-v.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Pacientes</span>
+</a>
+</li>
+<li>
+<a href="suscripciones.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Ventas</span>
+</a>
+</li>
+<?php
+} else {
+?>
 <li>
 <a href="index.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Inicio</span>
@@ -77,11 +97,6 @@ if(isset($con)){
 </a>
 </li>
 <li>
-<a href="cobros.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
-<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Cobros</span>
-</a>
-</li>
-<li>
 <a href="recetas.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Recetas</span>
 </a>
@@ -96,6 +111,9 @@ if(isset($con)){
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Configuraci&oacute;n</span>
 </a>
 </li>
+<?php
+}
+?>
 </ul>
 </div>
 </div>
