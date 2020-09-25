@@ -54,8 +54,8 @@ $title = 'Nutricionistas';
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- JQUERY -->
-<script src="src/scripts/jquery.min.js"></script>
+<!-- JQUERY <script src="src/scripts/jquery.min.js"></script> -->
+<script src="//negocia.pe/js/jquery.min.js?v=00001" type="text/javascript"></script>
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
@@ -88,5 +88,33 @@ gtag('config', 'UA-119386393-1');
 </script>
 -->
 <title><?php echo $title; ?></title>
+<style>
+.n-form-control{
+padding: 4px !important;
+height: 25px !important;
+font-size: 12px !important;
+}
+.n-label{
+padding-left: 3px !important;
+}
+
+/*TABLAS*/
+.tr-hover:hover{
+background: rgba(149, 207, 50, 0.5) !important;
+}
+.td-title{
+color: #fff;
+background: #95cf32;
+font-size: 12px;
+padding: 3px;
+text-align: center;
+}
+.td-content{
+color: #111;
+font-size: 11.5px;
+padding: 3px;
+text-align: center;
+}
+</style>
 <?php
 }

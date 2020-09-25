@@ -1,6 +1,6 @@
 <?php
 $negocia_operacion = (int)$_GET['negocia_operacion'];
-if($negocia_operacion == 1 || $negocia_operacion == 2){
+if($negocia_operacion >= 1 && $negocia_operacion <= 4){
 
 //CONEXION
 require_once (__DIR__.'/conexion_bd.php');
@@ -38,16 +38,6 @@ Nuevo <div style="color: #95cf32; font-weight: bold; font-size: 22px;"><?php ech
 </h4><hr>
 </div>
 </div>
-<style>
-.n-form-control{
-padding: 4px !important;
-height: 25px !important;
-font-size: 12px !important;
-}
-.n-label{
-padding-left: 3px !important;
-}
-</style>
 <form>
 <div class="row">
 <div class="col-md-4 col-sm-12">
@@ -317,6 +307,98 @@ VALUES
 ?>
 <script>
 location.href = 'index.php?success';
+</script>
+<?php
+exit();
+exit();
+}
+
+//BUSQUEDA AUTOCOMPLETE
+if($negocia_operacion == 3){
+
+$search = $_POST['search'];
+
+//FILTRO DE BUSQUEDA AVANZADO
+$filtro_texto_busqueda = '';
+if(!empty($search)){
+$array_texto_busqueda = explode(' ', $search);
+$i = 1;
+$and = '';
+foreach($array_texto_busqueda as $id_valor){
+$valor_texto_busqueda = $id_valor;
+if($i != 1){
+$and = ' AND ';
+}
+$filtro_texto_busqueda .= $and." (CODIGO LIKE '%$valor_texto_busqueda%' OR NOMBRES LIKE '%$valor_texto_busqueda%' OR APELLIDOS LIKE '%$valor_texto_busqueda%')";
+$i++;
+}
+}
+
+//CONSULTA SQL
+$sql  = " SELECT usuario.id AS ID_PACIENTE, usuario.codigo AS CODIGO, usuario.nombres AS NOMBRES, usuario.apellidos AS APELLIDOS";
+$sql .= " FROM usuario";
+$sql .= " WHERE usuario.id_tipo_usuario = 2";
+$sql .= " HAVING 1=1";
+if(!empty($filtro_texto_busqueda)){
+$sql .= " AND (".$filtro_texto_busqueda.")";
+}
+$sql .= " ORDER BY usuario.apellidos ASC LIMIT 20";
+
+$result = mysqli_query($con, $sql);
+
+
+$response = array();
+while($row = mysqli_fetch_array($result)){
+
+$id_paciente = (int)$row[0];
+$codigo_paciente = $row[1];
+$nombres_paciente = $row[2];
+$apellidos_paciente = $row[3];
+
+$mostrar_producto = '('.$codigo_paciente.') '.$apellidos_paciente.' '.$nombres_paciente;
+
+
+
+$response[] = array("value" => $id_paciente, "label" => $mostrar_producto);
+}
+echo json_encode($response);
+exit();
+exit();
+}
+
+//OBTENER DATOS DEL PACIENTE
+if($negocia_operacion == 4){
+
+//PARAMETRO
+$id_paciente  = (int)$_GET['id_paciente'];
+
+//CONSULTA SQL
+$sql  = " SELECT usuario.id AS ID_PACIENTE, usuario.codigo AS CODIGO, usuario.nombres AS NOMBRES, usuario.apellidos AS APELLIDOS";
+$sql .= " FROM usuario";
+$sql .= " WHERE usuario.id_tipo_usuario = 2";
+$sql .= " AND usuario.id = '$id_paciente'";
+$sql .= " ORDER BY usuario.apellidos ASC LIMIT 1";
+
+//OBTENER DATOS
+$row_datos_paciente = mysqli_fetch_array(mysqli_query($con, $sql));
+
+//DATOS DEL PACIENTE
+$paciente_id = $row_datos_paciente[0];
+$paciente_codigo = $row_datos_paciente[1];
+$paciente_nombres = $row_datos_paciente[2];
+$paciente_apellidos = $row_datos_paciente[3];
+?>
+<script>
+$('#result_nombres_paciente').html('<?php echo $paciente_nombres.' '.$paciente_apellidos; ?>');
+
+//PLANES DETOX / ALIMENTACION
+$.ajax({
+type: 'POST',
+url: 'config/ajax.php?negocia_operacion=2&id_paciente=<?php echo $paciente_id; ?>&plan=1',
+success: function(datos){
+$('#div_plan_paciente').html(datos).fadeIn('slow');
+}
+});
 </script>
 <?php
 exit();
@@ -788,24 +870,6 @@ chart.render();
 }
 if(($view_controller >= 2 && $view_controller <= 7 && $view_controller != 3) || ($view_controller == 10)){
 ?>
-<style>
-.tr-hover:hover{
-background: rgba(149, 207, 50, 0.5) !important;
-}
-.td-title{
-color: #fff;
-background: #95cf32;
-font-size: 12px;
-padding: 3px;
-text-align: center;
-}
-.td-content{
-color: #111;
-font-size: 11.5px;
-padding: 3px;
-text-align: center;
-}
-</style>
 <div class="card-box mb-30">
 <div class="card-box pd-20 height-100-p mb-30">
 <div id="resultado" class="row align-items-center"></div>
@@ -897,14 +961,64 @@ if($view_controller == 3){
 <div class="card-box mb-30">
 <div class="card-box pd-20 height-100-p mb-30">
 <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
-<button class="btn buttons-csv" tabindex="0" type="button" style="background: #95cf32; color: white; font-size: 12px; padding: 8px; margin-right: 20px;">
-<i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
-<span style="font-size: 17px;">PACIENTE NUEVO</span>
-</button>
-<button class="btn buttons-pdf" tabindex="0" type="button" style="background: #F26C3C; color: white; font-size: 12px; padding: 8px;">
-<i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
-<span style="font-size: 17px;">PACIENTE SOCIO</span>
-</button>
+<button type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Planes DETOX</button>
+<button type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Planes de Alimentaci&oacute;n</button>
+<table style="width: 400px; margin-left: 25px; margin-top: 40px;">
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;">
+<span style="color: #111; font-weight: bold; font-size: 13px;">N&#176; de Socio:</span>
+</td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;">
+<input id="form_busqueda_paciente" name="form_busqueda_paciente" class="form-control n-form-control" type="text" placeholder="ejm: P-1">
+<div id="resultado_busqueda"></div>
+<script>
+//AUTOCOMPLETE
+$(function(){
+$('#form_busqueda_paciente').autocomplete({
+source: function(request, response){
+$.ajax({
+url: 'config/content.php?negocia_operacion=3',
+type: 'POST',
+dataType: 'JSON',
+data: {
+search: request.term
+},
+success: function(data){
+response(data);
+}
+});
+},
+select: function(event, ui){
+complete_datos(ui.item.value);
+$('#form_busqueda_paciente').val(ui.item.label);
+return false;
+}
+});
+});
+
+//FUNCION COMPLETE
+function complete_datos(id_paciente){
+$.ajax({
+type: 'POST',
+url: 'config/content.php?negocia_operacion=4&id_paciente='+id_paciente,
+success: function(datos){
+$('#resultado_busqueda').html(datos).fadeIn('slow');
+}
+});
+}
+</script>
+</td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;">
+<span style="color: #111; font-weight: bold; font-size: 13px;">Nombres y Apellidos:</span>
+</td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;">
+<span id="result_nombres_paciente" style="color: #111; font-weight: bold; font-size: 13px;"></span>
+</td>
+</tr>
+</table>
+<div id="div_plan_paciente"></div>
 </div>
 </div>
 </div>

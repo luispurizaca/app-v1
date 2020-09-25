@@ -120,9 +120,6 @@ $title = '('.$ret_codigo.') '.$ret_nombres.' '.$ret_apellidos;
 ?>
 <div class="col-md-12" style="padding-top: 25px;">
 <div style="padding-left: 15px; color: #95cf32; font-weight: bold; font-size: 20px;">
-<button type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;" onclick="plan_paciente(<?php echo $ret_id_usuario; ?>, 1)">Planes DETOX</button>
-<button type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;" onclick="plan_paciente(<?php echo $ret_id_usuario; ?>, 2)">Planes de Alimentaci&oacute;n</button>
-<br><br>
 <?php echo $title; ?>
 <br><hr>
 </div>
@@ -363,18 +360,6 @@ chart.render();
 ?>
 </div>
 </div>
-<script>
-//PLANES DETOX / ALIMENTACION
-function plan_paciente(id, plan){
-$.ajax({
-type: 'POST',
-url: 'config/ajax.php?negocia_operacion=2&id_paciente='+id+'&plan='+plan,
-success: function(datos){
-$('#div_plan_paciente').html(datos).fadeIn('slow');
-}
-});
-}
-</script>
 <?php
 }
 
@@ -600,7 +585,93 @@ $dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
 </td>
 </tr>
 </table>
-<br>
+</div>
+<?php
+}
+?>
+<div class="col-md-12 text-right" style="padding-top: 40px;">
+<div class="btn-group">
+<button onclick="location.href = '<?php echo $location_atras; ?>'" class="btn buttons-pdf" tabindex="0" type="button" style="background: #95cf32; color: white; padding: 8px; font-size: 16px;"><span><- Atr&aacute;s</span></button>
+</div>
+</div>
+<?php
+exit();
+exit();
+}
+
+//2. PLANES DETOX / ALIMENTACION
+if($negocia_operacion == 2){
+
+//DATOS A CONSULTAR
+$id_paciente = (int)$_GET['id_paciente'];
+$id_plan = (int)$_GET['plan'];
+?>
+<table style="width: 1000px !important; margin: 0 auto; margin-bottom: 15px;">
+<tr>
+<td style="width: 100% !important;">
+<button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, <?php echo $id_plan; ?>)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">+ Agregar</button>
+</td>
+</tr>
+</table>
+<script>
+//PLANES DETOX / ALIMENTACION
+function agregar_plan_paciente(id_paciente, id_plan){
+$.ajax({
+type: 'POST',
+url: 'config/ajax.php?negocia_operacion=3&id_paciente='+id_paciente+'&id_plan='+id_plan,
+success: function(datos){
+$('#div_plan_paciente').html(datos).fadeIn('slow');
+}
+});
+}
+</script>
+<?php
+
+//CONSULTA
+$query_planes_alimentacion = mysqli_query($con, "SELECT id, codigo, fecha_envio FROM plan_alimentacion WHERE tipo_plan = '$id_plan' ORDER BY id ASC");
+if(mysqli_num_rows($query_planes_alimentacion) > 0){
+?>
+<table style="width: 1000px !important; margin: 0 auto;">
+<tr>
+<td class="td-title" style="width: 33.3% !important;">Planes DETOX</td>
+<td class="td-title" style="width: 33.3% !important;">Fecha de Env&iacute;o</td>
+<td class="td-title" style="width: 33.3% !important;">Acci&oacute;n</td>
+</tr>
+<?php
+while($row_suscripcion = mysqli_fetch_array($query_planes_alimentacion)){
+$id_plan = $row_suscripcion[0];
+$codigo_plan = $row_suscripcion[1];
+$fecha_envio = $row_suscripcion[2];
+if(!empty($row_suscripcion[2])){
+$fecha_envio = date('d/m/Y', strtotime($row_suscripcion[2]));
+}
+?>
+<tr class="tr-hover" style="cursor: pointer;">
+<td class="td-content" style="width: 33.3% !important;"><?php echo $codigo_plan; ?></td>
+<td class="td-content" style="width: 33.3% !important;"><?php echo $fecha_envio; ?></td>
+<td class="td-content" style="width: 33.3% !important; font-weight: bold;">
+<a href="javascript:void(0)"><i class="fa fa-eye" style="font-size: 13px;"></i></a>
+</td>
+</tr>
+<?php
+}
+?>
+</table>
+<?php
+} else {
+echo 'No hay resultados.';
+}
+exit();
+exit();
+}
+
+//3. NUEVO PLAN
+if($negocia_operacion == 3){
+
+//DATOS A CONSULTAR
+$id_paciente = (int)$_GET['id_paciente'];
+$id_plan = (int)$_GET['id_plan'];
+?>
 <h4 class="font-20 weight-500 mb-10 text-capitalize">
 <div style="padding-left: 15px; color: #111; font-weight: bold; font-size: 20px;">Plan de DETOX</div>
 </h4>
@@ -656,68 +727,20 @@ $dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
 </td>
 </tr>
 </table>
-</div>
-<?php
-}
-?>
-<div class="col-md-12 text-right" style="padding-top: 40px;">
-<div class="btn-group">
-<button onclick="location.href = '<?php echo $location_atras; ?>'" class="btn buttons-pdf" tabindex="0" type="button" style="background: #95cf32; color: white; padding: 8px; font-size: 16px;"><span><- Atr&aacute;s</span></button>
-</div>
-</div>
-<?php
-exit();
-exit();
-}
 
-//2. PLANES DETOX / ALIMENTACION
-if($negocia_operacion == 2){
-
-//DATOS A CONSULTAR
-$id_paciente = (int)$_GET['id_paciente'];
-$id_plan = (int)$_GET['plan'];
-?>
-<table style="width: 1000px !important; margin: 0 auto; margin-bottom: 15px;">
-<tr>
-<td style="width: 100% !important;">
-<button type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">+ Agregar</button>
-</td>
-</tr>
-</table>
-<?php
-
-//CONSULTA
-$query_planes_alimentacion = mysqli_query($con, "SELECT id, codigo, fecha_envio FROM plan_alimentacion WHERE tipo_plan = '$id_plan' ORDER BY id ASC");
-if(mysqli_num_rows($query_planes_alimentacion) > 0){
-?>
-<table style="width: 1000px !important; margin: 0 auto;">
-<tr>
-<td class="td-title" style="width: 33.3% !important;">Planes DETOX</td>
-<td class="td-title" style="width: 33.3% !important;">Fecha de Env&iacute;o</td>
-<td class="td-title" style="width: 33.3% !important;">Acci&oacute;n</td>
-</tr>
-<?php
-while($row_suscripcion = mysqli_fetch_array($query_planes_alimentacion)){
-$id_plan = $row_suscripcion[0];
-$codigo_plan = $row_suscripcion[1];
-$fecha_envio = $row_suscripcion[2];
-if(!empty($row_suscripcion[2])){
-$fecha_envio = date('d/m/Y', strtotime($row_suscripcion[2]));
+<script>
+//PLANES DETOX / ALIMENTACION
+function agregar_plan_paciente(id_paciente, id_plan){
+$.ajax({
+type: 'POST',
+url: 'config/ajax.php?negocia_operacion=3&id_paciente='+id_paciente+'&id_plan='+id_plan,
+success: function(datos){
+$('#div_plan_paciente').html(datos).fadeIn('slow');
 }
-?>
-<tr class="tr-hover" style="cursor: pointer;">
-<td class="td-content" style="width: 33.3% !important;"><?php echo $codigo_plan; ?></td>
-<td class="td-content" style="width: 33.3% !important;"><?php echo $fecha_envio; ?></td>
-<td class="td-content" style="width: 33.3% !important; font-weight: bold;">
-<a href="javascript:void(0)"><i class="fa fa-eye" style="font-size: 13px;"></i></a>
-</td>
-</tr>
-<?php
+});
 }
-?>
-</table>
+</script>
 <?php
-}
 exit();
 exit();
 }
