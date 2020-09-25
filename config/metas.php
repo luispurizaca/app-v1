@@ -115,6 +115,25 @@ font-size: 11.5px;
 padding: 3px;
 text-align: center;
 }
+
+/*PLANES DE ALIMENTACION*/
+.n-input-plan-alimentacion{
+text-align: center;
+width: 80px;
+}
+.n-form-control-text-area-plan{
+padding: 4px !important;
+height: 90px !important;
+font-size: 12px !important;
+width: 100% !important;
+}
+.n-form-control-text-area-plan-2{
+padding: 4px !important;
+height: 40px !important;
+font-size: 12px !important;
+width: 100% !important;
+text-align: center;
+}
 </style>
 <?php
 }

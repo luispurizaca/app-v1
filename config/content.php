@@ -337,7 +337,7 @@ $i++;
 //CONSULTA SQL
 $sql  = " SELECT usuario.id AS ID_PACIENTE, usuario.codigo AS CODIGO, usuario.nombres AS NOMBRES, usuario.apellidos AS APELLIDOS";
 $sql .= " FROM usuario";
-$sql .= " WHERE usuario.id_tipo_usuario = 2";
+$sql .= " WHERE usuario.activo = 1 AND usuario.id_tipo_usuario = 2";
 $sql .= " HAVING 1=1";
 if(!empty($filtro_texto_busqueda)){
 $sql .= " AND (".$filtro_texto_busqueda.")";

@@ -606,9 +606,9 @@ if($negocia_operacion == 2){
 $id_paciente = (int)$_GET['id_paciente'];
 $id_plan = (int)$_GET['plan'];
 ?>
-<table style="width: 1000px !important; margin: 0 auto; margin-bottom: 15px;">
+<table style="width: 1000px !important; margin: 25px auto; margin-bottom: 15px;">
 <tr>
-<td style="width: 100% !important;">
+<td style="width: 100% !important; text-align: left;">
 <button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, <?php echo $id_plan; ?>)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">+ Agregar</button>
 </td>
 </tr>
@@ -671,9 +671,43 @@ if($negocia_operacion == 3){
 //DATOS A CONSULTAR
 $id_paciente = (int)$_GET['id_paciente'];
 $id_plan = (int)$_GET['id_plan'];
+
+//DATOS DEL PLAN DE ALIMENTACION
+$row_plan_alimentacion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = '$id_plan' AND id_paciente = '$id_paciente' ORDER BY id DESC LIMIT 1"));
+
+
+$horario_1 = $row_plan_alimentacion['horario_1'];
+$horario_2 = $row_plan_alimentacion['horario_2'];
+$hora_desayuno = $row_plan_alimentacion['hora_desayuno'];
+$hora_media_manana = $row_plan_alimentacion['hora_media_manana'];
+$hora_almuerzo = $row_plan_alimentacion['hora_almuerzo'];
+$hora_media_tarde = $row_plan_alimentacion['hora_media_tarde'];
+$hora_cena = $row_plan_alimentacion['hora_cena'];
+
+$uno_opcion_1_desayuno = $row_plan_alimentacion['1_opcion_1_desayuno'];
+$uno_opcion_2_desayuno = $row_plan_alimentacion['1_opcion_2_desayuno'];
+$uno_opcion_1_media_manana = $row_plan_alimentacion['1_opcion_1_media_manana'];
+$uno_opcion_2_media_manana = $row_plan_alimentacion['1_opcion_2_media_manana'];
+$uno_opcion_1_almuerzo = $row_plan_alimentacion['1_opcion_1_almuerzo'];
+$uno_opcion_2_almuerzo = $row_plan_alimentacion['1_opcion_2_almuerzo'];
+$uno_opcion_1_media_tarde = $row_plan_alimentacion['1_opcion_1_media_tarde'];
+$uno_opcion_2_media_tarde = $row_plan_alimentacion['1_opcion_2_media_tarde'];
+$uno_opcion_1_cena = $row_plan_alimentacion['1_opcion_1_cena'];
+$uno_opcion_2_cena = $row_plan_alimentacion['1_opcion_2_cena'];
+
+$dos_opcion_1_desayuno = $row_plan_alimentacion['2_opcion_1_desayuno'];
+$dos_opcion_2_desayuno = $row_plan_alimentacion['2_opcion_2_desayuno'];
+$dos_opcion_1_media_manana = $row_plan_alimentacion['2_opcion_1_media_manana'];
+$dos_opcion_2_media_manana = $row_plan_alimentacion['2_opcion_2_media_manana'];
+$dos_opcion_1_almuerzo = $row_plan_alimentacion['2_opcion_1_almuerzo'];
+$dos_opcion_2_almuerzo = $row_plan_alimentacion['2_opcion_2_almuerzo'];
+$dos_opcion_1_media_tarde = $row_plan_alimentacion['2_opcion_1_media_tarde'];
+$dos_opcion_2_media_tarde = $row_plan_alimentacion['2_opcion_2_media_tarde'];
+$dos_opcion_1_cena = $row_plan_alimentacion['2_opcion_1_cena'];
+$dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
 ?>
 <h4 class="font-20 weight-500 mb-10 text-capitalize">
-<div style="padding-left: 15px; color: #111; font-weight: bold; font-size: 20px;">Plan de DETOX</div>
+<div style="padding-left: 15px; color: #111; font-weight: bold; font-size: 20px;">Plan DETOX</div>
 </h4>
 <table style="width: 70%; margin: 0 auto;">
 <tr>
@@ -685,33 +719,72 @@ $id_plan = (int)$_GET['id_plan'];
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
-<b style="font-size: 17px;">DESAYUNO<br><?php echo $hora_desayuno; ?></b>
+<b style="font-size: 17px;">DESAYUNO<br><input id="fp_hora_desayuno" class="n-form-control n-input-plan-alimentacion" type="text" value="<?php echo $hora_desayuno; ?>"></b>
 </td>
 <td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
-<b>Opci&oacute;n 1:</b> <?php echo $uno_opcion_1_desayuno; ?><br><br>
-<b>Opci&oacute;n 2:</b> <?php echo $uno_opcion_2_desayuno; ?>
+<table style="width: 100%; margin: 0 auto;">
+<tr>
+<td style="width: 20%; text-align: center;">
+<b>Opci&oacute;n 1:</b>
+</td>
+<td style="width: 80%;">
+<textarea id="fp_uno_opcion_1_desayuno" class="n-form-control-text-area-plan"><?php echo $uno_opcion_1_desayuno; ?></textarea>
+</td>
+</tr>
+<tr>
+<td style="width: 20%; text-align: center;">
+<b>Opci&oacute;n 2:</b>
+</td>
+<td style="width: 80%;">
+<textarea id="fp_uno_opcion_2_desayuno" class="n-form-control-text-area-plan"><?php echo $uno_opcion_2_desayuno; ?></textarea>
+</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
-<b style="font-size: 12px;">MEDIA MA&Ntilde;ANA<br><?php echo $hora_media_manana; ?></b>
+<b style="font-size: 12px;">MEDIA MA&Ntilde;ANA<br><input id="fp_hora_media_manana" class="n-form-control n-input-plan-alimentacion" type="text" value="<?php echo $hora_media_manana; ?>"></b>
 </td>
 <td style="vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
-<?php echo $uno_opcion_1_media_manana; ?>
+<table style="width: 100%; margin: 0 auto;">
+<tr>
+<td style="width: 20%; text-align: center;"></td>
+<td style="width: 80%;">
+<textarea id="fp_uno_opcion_1_media_manana" class="n-form-control-text-area-plan-2"><?php echo $uno_opcion_1_media_manana; ?></textarea>
+</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
-<b style="font-size: 17px;">ALMUERZO<br><?php echo $hora_almuerzo; ?></b>
+<b style="font-size: 17px;">ALMUERZO<br><input id="fp_hora_almuerzo" class="n-form-control n-input-plan-alimentacion" type="text" value="<?php echo $hora_almuerzo; ?>"></b>
 </td>
 <td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
-<b>Opci&oacute;n 1:</b> <?php echo $uno_opcion_1_almuerzo; ?><br><br>
-<b>Opci&oacute;n 2:</b> <?php echo $uno_opcion_2_almuerzo; ?>
+<table style="width: 100%; margin: 0 auto;">
+<tr>
+<td style="width: 20%; text-align: center;">
+<b>Opci&oacute;n 1:</b>
+</td>
+<td style="width: 80%;">
+<textarea id="fp_uno_opcion_1_almuerzo" class="n-form-control-text-area-plan"><?php echo $uno_opcion_1_almuerzo; ?></textarea>
+</td>
+</tr>
+<tr>
+<td style="width: 20%; text-align: center;">
+<b>Opci&oacute;n 2:</b>
+</td>
+<td style="width: 80%;">
+<textarea id="fp_uno_opcion_2_almuerzo" class="n-form-control-text-area-plan"><?php echo $uno_opcion_2_almuerzo; ?></textarea>
+</td>
+</tr>
+</table>
 </td>
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
-<b style="font-size: 12px;">MEDIA TARDE<br><?php echo $hora_media_tarde; ?></b>
+<b style="font-size: 12px;">MEDIA TARDE<br><input id="fp_hora_media_tarde" class="n-form-control n-input-plan-alimentacion" type="text" value="<?php echo $hora_media_tarde; ?>"></b>
 </td>
 <td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
 <?php echo $uno_opcion_1_media_tarde; ?>
@@ -719,15 +792,30 @@ $id_plan = (int)$_GET['id_plan'];
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
-<b style="font-size: 17px;">CENA<br><?php echo $hora_cena; ?></b>
+<b style="font-size: 17px;">CENA<br><input id="fp_hora_cena" class="n-form-control n-input-plan-alimentacion" type="text" value="<?php echo $hora_cena; ?>"></b>
 </td>
 <td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
-<b>Opci&oacute;n 1:</b> <?php echo $uno_opcion_1_cena; ?><br><br>
-<b>Opci&oacute;n 2:</b> <?php echo $uno_opcion_2_cena; ?>
+<table style="width: 100%; margin: 0 auto;">
+<tr>
+<td style="width: 20%; text-align: center;">
+<b>Opci&oacute;n 1:</b>
+</td>
+<td style="width: 80%;">
+<textarea id="fp_uno_opcion_1_cena" class="n-form-control-text-area-plan"><?php echo $uno_opcion_1_cena; ?></textarea>
+</td>
+</tr>
+<tr>
+<td style="width: 20%; text-align: center;">
+<b>Opci&oacute;n 2:</b>
+</td>
+<td style="width: 80%;">
+<textarea id="fp_uno_opcion_2_cena" class="n-form-control-text-area-plan"><?php echo $uno_opcion_2_cena; ?></textarea>
 </td>
 </tr>
 </table>
-
+</td>
+</tr>
+</table>
 <script>
 //PLANES DETOX / ALIMENTACION
 function agregar_plan_paciente(id_paciente, id_plan){
