@@ -362,6 +362,17 @@ var form_maximo_pacientes = $('#form_maximo_pacientes').val();
 var form_correo = $('#form_correo').val();
 var form_clave = $('#form_clave').val();
 var form_residencia = $('#form_residencia').val();
+
+var form_id_programa = $('#form_id_programa').val();
+var form_id_paquete = $('#form_id_paquete').val();
+var form_residencia = $('#form_residencia').val();
+var form_residencia = $('#form_residencia').val();
+var form_residencia = $('#form_residencia').val();
+var form_residencia = $('#form_residencia').val();
+var form_residencia = $('#form_residencia').val();
+var form_residencia = $('#form_residencia').val();
+var form_residencia = $('#form_residencia').val();
+
 $.ajax({
 type: 'POST',
 url: 'config/content.php?negocia_operacion=2',
