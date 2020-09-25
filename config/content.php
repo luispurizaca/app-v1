@@ -209,10 +209,10 @@ confirmButtonColor: '#95cf32'
 <label class="n-label">Plan Rekupera</label>
 <select id="form_id_programa" name="form_id_programa" class="form-control n-form-control">
 <?php
-$query_plan = mysqli_query($con, "SELECT id, nombre FROM programa ORDER BY id ASC");
+$query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
 while($row_plan = mysqli_fetch_array($query_plan)){
 $id_plan = $row_plan[0];
-$nombre_plan = $row_plan[1];
+$nombre_plan = $row_plan[1].'('.$row_plan[2].')';
 ?>
 <option value="<?php echo $id_plan; ?>"><?php echo $nombre_plan; ?></option>
 <?php
