@@ -1240,6 +1240,26 @@ if(($view_controller >= 2 && $view_controller <= 7 && $view_controller != 3) || 
 <div id="resultado" class="row align-items-center"></div>
 </div>
 <div class="pb-20" style="padding-left: 20px; padding-right: 20px; padding-top: 20px;">
+<nav class="text-center">
+<ul>
+<li style="display: inline-block;">
+<button type="button" id="filtro_diario" onclick="filtro_fechas(1);" title="Hoy" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Ventas del d&iacute;a</button>
+</li>
+<li style="display: inline-block;">
+<button type="button" id="filtro_semanal" onclick="filtro_fechas(2);" title="Esta Semana" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Ventas de la semana</button>
+</li>
+<li style="display: inline-block;">
+<button type="button" id="filtro_mensual" onclick="filtro_fechas(3);" title="Este Mes" style="border: none; padding: 5px; font-size: 12px; background: #818181; color: white; outline: none;">Ventas del mes</button>
+</li>
+<li style="display: inline-block;">
+<button type="button" id="filtro_anual" onclick="filtro_fechas(4);" title="Este Año" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Ventas del an&ntilde;o</button>
+</li>
+<li style="display: inline-block; margin-left: 10px;">
+<button type="button" class="btn btn_modal_fechas_dashboard" title="Rango de Fechas" style="border: none; font-size: 23px; background: transparent; padding: 0; color: #818181; outline: none;"><i class="fa fa-calendar"></i></button>
+</li>
+</ul>
+</nav>
+<div style="display: none;">
 <div class="table-responsive">
 <table id="tabla_filtros" style="width: 1000px !important; margin: 0 auto; display: none;">
 <tr>
@@ -1317,6 +1337,7 @@ $('#tabla_filtros').css('display', 'none');
 
 load(1);
 </script>
+</div>
 </div>
 </div>
 <?php
