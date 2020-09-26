@@ -37,6 +37,7 @@ $registro_tipo_documento = $row_codigo_registro[3];
 $registro_numero_documento = $row_codigo_registro[4];
 }
 ?>
+<div id="div_guardar_paciente"></div>
 <div class="pd-20 card-box mb-30">
 <div class="clearfix">
 <div class="pull-left">
@@ -177,19 +178,19 @@ confirmButtonColor: '#95cf32'
 <input id="form_telefono" name="form_telefono" class="form-control n-form-control" type="text" placeholder="ejm: 999999999">
 </div>
 </div>
-<div class="col-md-3 col-sm-6" style="<?php if($negocia_tipo == 1 || $_SESSION['ID_TIPO_USUARIO'] == 4){?> display: none; <?php } ?>">
+<div class="col-md-3 col-sm-6" style="display: none;">
 <div class="form-group">
 <label class="n-label">Talla</label>
 <input id="form_talla" name="form_talla" class="form-control n-form-control" type="text" placeholder="Talla">
 </div>
 </div>
-<div class="col-md-3 col-sm-6" style="<?php if($negocia_tipo == 1 || $_SESSION['ID_TIPO_USUARIO'] == 4){?> display: none; <?php } ?>">
+<div class="col-md-3 col-sm-6" style="display: none;">
 <div class="form-group">
 <label class="n-label">Peso Meta</label>
 <input id="form_peso_meta" name="form_peso_meta" class="form-control n-form-control" type="text" placeholder="Peso Meta">
 </div>
 </div>
-<div class="col-md-3 col-sm-6" style="<?php if($negocia_tipo == 2){?> display: none; <?php } ?>">
+<div class="col-md-3 col-sm-6" style="display: none;">
 <div class="form-group">
 <label class="n-label">N&#176; M&aacute;x. Pac.</label>
 <input id="form_maximo_pacientes" name="form_maximo_pacientes" class="form-control n-form-control" type="text" placeholder="N&#176; M&aacute;x. Pac.">
@@ -332,7 +333,7 @@ $nombre_cb = $row_cb[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Contrase&ntilde;a</label>
-<input id="form_clave" name="form_clave" class="form-control n-form-control" type="password" placeholder="Contrase&ntilde;a" value="<?php echo $codigo_registro; ?>12345">
+<input id="form_clave" name="form_clave" class="form-control n-form-control" type="text" placeholder="Contrase&ntilde;a" value="<?php echo $codigo_registro; ?>12345">
 </div>
 </div>
 </div>
@@ -397,7 +398,7 @@ form_maximo_pacientes : form_maximo_pacientes,
 form_correo : form_correo,
 form_clave : form_clave,
 form_residencia : form_residencia,
-form_tipo_usuario : <?php echo $negocia_tipo; ?>,
+form_tipo_usuario : 2,
 form_id_programa : form_id_programa,
 form_id_paquete : form_id_paquete,
 form_fecha_suscripcion : form_fecha_suscripcion,
@@ -408,7 +409,7 @@ form_id_medio_pago : form_id_medio_pago,
 form_id_banco : form_id_banco
 },
 success: function(datos){
-$('#div_ajax').html(datos).fadeIn('slow');
+$('#div_guardar_paciente').html(datos).fadeIn('slow');
 }
 });
 });
@@ -422,14 +423,64 @@ exit();
 if($negocia_operacion == 2){
 $form_codigo = $_POST['form_codigo'];
 $form_nombres = $_POST['form_nombres'];
+if(empty($form_nombres)){
+?>
+<script>
+alert('Ingrese: Nombres');
+$('#form_nombres').focus();
+</script>
+<?php
+exit();
+exit();
+}
 $form_apellidos  = $_POST['form_apellidos'];
+if(empty($form_apellidos)){
+?>
+<script>
+alert('Ingrese: Apellidos');
+$('#form_apellidos').focus();
+</script>
+<?php
+exit();
+exit();
+}
 $form_tipo_documento  = (int)$_POST['form_tipo_documento'];
 $form_numero_documento  = $_POST['form_numero_documento'];
+if(empty($form_numero_documento)){
+?>
+<script>
+alert('Ingrese: Numero de documento');
+$('#form_numero_documento').focus();
+</script>
+<?php
+exit();
+exit();
+}
 $form_fecha_nacimiento  = $_POST['form_fecha_nacimiento'];
-if(!empty($_POST['form_fecha_nacimiento'])){
+if(empty($form_fecha_nacimiento)){
+?>
+<script>
+alert('Ingrese: Fecha de Nacimiento');
+$('#form_fecha_nacimiento').focus();
+</script>
+<?php
+exit();
+exit();
+}
+if(empty($_POST['form_fecha_nacimiento'])){
 $form_fecha_nacimiento  = date('Y-m-d', strtotime($_POST['form_fecha_nacimiento']));
 }
 $form_genero  = (int)$_POST['form_genero'];
+if(empty($form_genero)){
+?>
+<script>
+alert('Seleccione: G\u00E9nero');
+$('#form_genero').focus();
+</script>
+<?php
+exit();
+exit();
+}
 $form_instagram  = $_POST['form_instagram'];
 $form_direccion  = $_POST['form_direccion'];
 $form_departamento  = $_POST['form_departamento'];
@@ -439,24 +490,78 @@ $form_talla  = (float)str_replace(' ', '', str_replace(',', '.', $_POST['form_ta
 $form_peso_meta  = (float)str_replace(' ', '', str_replace(',', '.', $_POST['form_peso_meta']));
 $form_maximo_pacientes  = (int)$_POST['form_maximo_pacientes'];
 $form_correo  = $_POST['form_correo'];
+if(empty($form_correo)){
+?>
+<script>
+alert('Ingrese: Correo');
+$('#form_correo').focus();
+</script>
+<?php
+exit();
+exit();
+}
 $form_clave  = $_POST['form_clave'];
+if(empty($form_clave)){
+?>
+<script>
+alert('Ingrese: Clave');
+$('#form_clave').focus();
+</script>
+<?php
+exit();
+exit();
+}
 $form_residencia  = $_POST['form_residencia'];
 $form_tipo_usuario  = (int)$_POST['form_tipo_usuario'];
 
 $form_id_programa = $_POST['form_id_programa'];
 $form_id_paquete = $_POST['form_id_paquete'];
-$form_fecha_suscripcion = $_POST['form_fecha_suscripcion'];
+$form_fecha_suscripcion = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion']));
 $form_id_nutricionista = $_POST['form_id_nutricionista'];
-$form_fecha_pago = $_POST['form_fecha_pago'];
+$form_fecha_pago = date('Y-m-d', strtotime($_POST['form_fecha_pago']));
 $form_monto = $_POST['form_monto'];
+if(empty($form_monto)){
+?>
+<script>
+alert('Ingrese: Monto');
+$('#form_monto').focus();
+</script>
+<?php
+exit();
+exit();
+}
 $form_id_medio_pago = $_POST['form_id_medio_pago'];
 $form_id_banco = $_POST['form_id_banco'];
 
-//AGREGAR A LA BD
+//AGREGAR A LA BD USUARIO
 mysqli_query($con, "
 INSERT INTO usuario (id_tipo_usuario, codigo, correo, clave, nombres, apellidos, fecha_nacimiento, genero, estado, activo, id_tipo_documento, numero_documento, date_added, instagram, direccion, distrito, provincia, departamento, residencia, maximo_pacientes, peso_meta, talla)
 VALUES 
 ('".$form_tipo_usuario."', '".$form_codigo."', '".$form_correo."', '".password_hash($form_clave, PASSWORD_DEFAULT)."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '0', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$form_maximo_pacientes."', '".$form_peso_meta."', '".$form_talla."')
+"
+);
+
+//ULTIMO ID PACIENTE
+$row_id = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM usuario WHERE id_tipo_usuario = 2 ORDER BY id DESC LIMIT 1"));
+$ultimo_id = (int)$row_id[0];
+
+//AGREGAR A LA BD SUSCRIPCION
+mysqli_query($con, "
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones)
+VALUES 
+('".$form_id_programa."', '".$form_id_nutricionista."', '".$ultimo_id."', '".$form_fecha_suscripcion."', '',  '1', '')
+"
+);
+
+//ULTIMO ID SUSCRIPCION
+$row_id_s = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM suscripcion_programa WHERE estado = 1 ORDER BY id DESC LIMIT 1"));
+$ultimo_id_s = (int)$row_id_s[0];
+
+//AGREGAR A LA BD COBROS
+mysqli_query($con, "
+INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria)
+VALUES 
+('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."')
 "
 );
 ?>
@@ -650,11 +755,11 @@ if($_SESSION['ID_TIPO_USUARIO'] == 3){
 </tr>
 </table>
 <br>
-<button onclick="nuevo_registro(1)" class="btn buttons-csv" tabindex="0" type="button" style="background: #95cf32; color: white; font-size: 12px; padding: 8px; margin-right: 20px;">
+<button onclick="nuevo_registro()" class="btn buttons-csv" tabindex="0" type="button" style="background: #95cf32; color: white; font-size: 12px; padding: 8px; margin-right: 20px;">
 <i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
 <span style="font-size: 15px;">(+) NUTRICIONISTA</span>
 </button>
-<button onclick="nuevo_registro(2)" class="btn buttons-pdf" tabindex="0" type="button" style="background: #F26C3C; color: white; font-size: 12px; padding: 8px;">
+<button onclick="nuevo_registro(0)" class="btn buttons-pdf" tabindex="0" type="button" style="background: #F26C3C; color: white; font-size: 12px; padding: 8px;">
 <i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
 <span style="font-size: 15px;">(+) PACIENTE</span>
 </button>
@@ -1543,7 +1648,7 @@ response(data);
 },
 select: function(event, ui){
 if(ui.item.value == 0){
-nuevo_registro(2);
+nuevo_registro(0);
 } else {
 nuevo_registro(ui.item.value);
 $('#form_busqueda_paciente_1').val(ui.item.label);
@@ -1582,7 +1687,7 @@ response(data);
 },
 select: function(event, ui){
 if(ui.item.value == 0){
-nuevo_registro(2);
+nuevo_registro(0);
 } else {
 nuevo_registro(ui.item.value);
 $('#form_busqueda_paciente_2').val(ui.item.label);
@@ -1621,7 +1726,7 @@ response(data);
 },
 select: function(event, ui){
 if(ui.item.value == 0){
-nuevo_registro(2);
+nuevo_registro(0);
 } else {
 nuevo_registro(ui.item.value);
 $('#form_busqueda_paciente_3').val(ui.item.label);
@@ -1639,7 +1744,7 @@ return false;
 </div>
 <div class="col-md-6" style="text-align: left; padding-top: 70px !important;">
 <p id="mensaje_404"></p>
-<button onclick="nuevo_registro(2)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">(+) Registrar Nuevo Paciente </button>
+<button onclick="nuevo_registro(0)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">(+) Registrar Nuevo Paciente </button>
 </div>
 </div>
 </div>
