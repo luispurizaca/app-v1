@@ -80,7 +80,7 @@ $NOMBRE_TIPO_USUARIO = 'vendedor';
 if($ACTIVO != 1){
 $this->errors[] = 'Usuario Restringido.';
 } elseif($ACTIVO == 1){
-if(password_verify($_POST['user_password'], $CLAVE)){
+if($_POST['user_password'] == $CLAVE){
 
 //CREAR LAS VARIABLES DE LA SESION
 session_regenerate_id();

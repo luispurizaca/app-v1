@@ -46,7 +46,7 @@ $registro_clave = $codigo_registro.'12345';
 
 //CODIGO DEL PACIENTE
 $row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo, nombres, apellidos, id_tipo_documento, numero_documento, fecha_nacimiento,
-genero, instagram, direccion, departamento, provincia, distrito, residencia, telefono, talla, peso_meta, maximo_pacientes, correo
+genero, instagram, direccion, departamento, provincia, distrito, residencia, telefono, talla, peso_meta, maximo_pacientes, correo, clave
 FROM usuario WHERE id = '$id_paciente' ORDER BY id DESC LIMIT 1"));
 
 $codigo_registro = $row_codigo_registro[0];
@@ -68,7 +68,7 @@ $registro_talla = $row_codigo_registro[14];
 $registro_peso_meta = $row_codigo_registro[15];
 $registro_maximo_pacientes = $row_codigo_registro[16];
 $registro_correo = $row_codigo_registro[17];
-$registro_clave = '';
+$registro_clave = $row_codigo_registro[18];
 }
 ?>
 <div id="div_guardar_paciente"></div>
@@ -604,7 +604,7 @@ if(empty($form_id_paciente)){
 mysqli_query($con, "
 INSERT INTO usuario (id_tipo_usuario, codigo, correo, clave, nombres, apellidos, fecha_nacimiento, genero, estado, activo, id_tipo_documento, numero_documento, date_added, instagram, direccion, distrito, provincia, departamento, residencia, maximo_pacientes, peso_meta, talla, telefono, id_vendedor)
 VALUES 
-('".$form_tipo_usuario."', '".$form_codigo."', '".$form_correo."', '".password_hash($form_clave, PASSWORD_DEFAULT)."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '0', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$form_maximo_pacientes."', '".$form_peso_meta."', '".$form_talla."', '".$form_telefono."', '".$_SESSION['ID_USUARIO']."')
+('".$form_tipo_usuario."', '".$form_codigo."', '".$form_correo."', '".$form_clave."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '0', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$form_maximo_pacientes."', '".$form_peso_meta."', '".$form_talla."', '".$form_telefono."', '".$_SESSION['ID_USUARIO']."')
 "
 );
 
@@ -613,7 +613,7 @@ $row_id = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM usuario WHERE id
 $ultimo_id = (int)$row_id[0];
 } else {
 mysqli_query($con, "UPDATE usuario SET
-correo = '".$form_correo."', clave = '".password_hash($form_clave, PASSWORD_DEFAULT)."',
+correo = '".$form_correo."',
 nombres = '".$form_nombres."', apellidos = '".$form_apellidos."',
 fecha_nacimiento = '".$form_fecha_nacimiento."', genero = '".$form_genero."',
 id_tipo_documento = '".$form_tipo_documento."', numero_documento = '".$form_numero_documento."',
@@ -625,7 +625,7 @@ WHERE id = '$form_id_paciente' AND id_tipo_usuario = 2");
 //ACTUALIZAR CLAVE
 if(!empty($form_clave) && !empty($form_id_paciente)){
 mysqli_query($con, "UPDATE usuario SET
-clave = '".password_hash($form_clave, PASSWORD_DEFAULT)."'
+clave = '".$form_clave."'
 WHERE id = '$form_id_paciente' AND id_tipo_usuario = 2");
 }
 }

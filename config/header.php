@@ -69,6 +69,11 @@ if($_SESSION['ID_TIPO_USUARIO'] == 4){
 </a>
 </li>
 <li>
+<a href="pacientes.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Lista de Socios</span>
+</a>
+</li>
+<li>
 <a href="suscripciones.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Reporte de Ventas</span>
 </a>
