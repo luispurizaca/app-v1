@@ -136,15 +136,29 @@ if(form_tipo_documento == 2 && form_numero_documento.length == 11){
 doc = 'RUC';
 }
 
-//ALERT
-swal({
-title: 'Extraer datos del '+doc+'?',
-type: 'info',
-showCancelButton: true,
-confirmButtonClass: "btn btn-success",
-confirmButtonText: "OK",
-cancelButtonText: "NO",
-confirmButtonColor: '#95cf32'
+//CONSULTA NEGOCIA
+if(form_numero_documento.length == 11){
+var tipo_documento = 222;
+} else {
+var tipo_documento = 111;
+}
+$.ajax({
+url: '//negocia.pe/functions/fn_consultas.php?tipo_documento='+tipo_documento+'&numero_documento='+doc,
+dataType: "JSON",
+beforeSend: function(){
+swal('Extrayendo datos');
+},
+success: function(data){
+if(tipo_documento == 111){
+$('#form_nombres').val(data.nombres);
+$('#form_apellidos').val(data.nombres);
+}
+if(tipo_documento == 222){
+$('#form_nombres').val(data.razon_social);
+$('#form_apellidos').val(data.nombre_comercial);
+$('#form_direccion').val(data.domicilio_fiscal);
+}
+}
 });
 }
 }
@@ -578,9 +592,9 @@ $form_telefono = $_POST['form_telefono'];
 if(empty($form_id_paciente)){
 
 mysqli_query($con, "
-INSERT INTO usuario (id_tipo_usuario, codigo, correo, clave, nombres, apellidos, fecha_nacimiento, genero, estado, activo, id_tipo_documento, numero_documento, date_added, instagram, direccion, distrito, provincia, departamento, residencia, maximo_pacientes, peso_meta, talla, telefono)
+INSERT INTO usuario (id_tipo_usuario, codigo, correo, clave, nombres, apellidos, fecha_nacimiento, genero, estado, activo, id_tipo_documento, numero_documento, date_added, instagram, direccion, distrito, provincia, departamento, residencia, maximo_pacientes, peso_meta, talla, telefono, id_vendedor)
 VALUES 
-('".$form_tipo_usuario."', '".$form_codigo."', '".$form_correo."', '".password_hash($form_clave, PASSWORD_DEFAULT)."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '0', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$form_maximo_pacientes."', '".$form_peso_meta."', '".$form_talla."', '".$form_telefono."')
+('".$form_tipo_usuario."', '".$form_codigo."', '".$form_correo."', '".password_hash($form_clave, PASSWORD_DEFAULT)."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '0', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$form_maximo_pacientes."', '".$form_peso_meta."', '".$form_talla."', '".$form_telefono."', '".$_SESSION['ID_USUARIO']."')
 "
 );
 
@@ -611,9 +625,9 @@ WHERE id = '$form_id_paciente' AND id_tipo_usuario = 2");
 
 //AGREGAR A LA BD SUSCRIPCION
 mysqli_query($con, "
-INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones)
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor)
 VALUES 
-('".$form_id_programa."', '".$form_id_nutricionista."', '".$ultimo_id."', '".$form_fecha_suscripcion."', '',  '1', '')
+('".$form_id_programa."', '".$form_id_nutricionista."', '".$ultimo_id."', '".$form_fecha_suscripcion."', '',  '1', '', '".$_SESSION['ID_USUARIO']."')
 "
 );
 
@@ -623,9 +637,9 @@ $ultimo_id_s = (int)$row_id_s[0];
 
 //AGREGAR A LA BD COBROS
 mysqli_query($con, "
-INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria)
+INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria, id_vendedor)
 VALUES 
-('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."')
+('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$_SESSION['ID_USUARIO']."')
 "
 );
 ?>
@@ -1252,14 +1266,14 @@ if(($view_controller >= 2 && $view_controller <= 7 && $view_controller != 3) || 
 <button type="button" id="filtro_mensual" onclick="filtro_fechas(3);" title="Este Mes" style="border: none; padding: 5px; font-size: 12px; background: #818181; color: white; outline: none;">Ventas del mes</button>
 </li>
 <li style="display: inline-block;">
-<button type="button" id="filtro_anual" onclick="filtro_fechas(4);" title="Este Año" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Ventas del an&ntilde;o</button>
+<button type="button" id="filtro_anual" onclick="filtro_fechas(4);" title="Este Año" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Ventas del a&ntilde;o</button>
 </li>
 <li style="display: inline-block; margin-left: 10px;">
 <button type="button" class="btn btn_modal_fechas_dashboard" title="Rango de Fechas" style="border: none; font-size: 23px; background: transparent; padding: 0; color: #818181; outline: none;"><i class="fa fa-calendar"></i></button>
 </li>
 </ul>
 </nav>
-<div style="display: none;">
+<div style="margin-top: 20px;">
 <div class="table-responsive">
 <table id="tabla_filtros" style="width: 1000px !important; margin: 0 auto; display: none;">
 <tr>

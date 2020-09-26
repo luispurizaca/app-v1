@@ -97,7 +97,7 @@ suscripcion_programa.fecha_fin AS FECHA_FIN,
 suscripcion_programa.estado AS ESTADO,
 suscripcion_programa.indicaciones AS INDICACIONES
 FROM suscripcion_programa
-WHERE suscripcion_programa.id_nutricionista = '".$_SESSION['ID_USUARIO']."'";
+WHERE suscripcion_programa.id_vendedor = '".$_SESSION['ID_USUARIO']."'";
 
 //FILTRO ID REGISTRO
 if(!empty($id_registro)){
