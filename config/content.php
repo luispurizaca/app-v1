@@ -1,7 +1,7 @@
 <?php
 session_start();
 $negocia_operacion = (int)$_GET['negocia_operacion'];
-if($negocia_operacion >= 1 && $negocia_operacion <= 4){
+if($negocia_operacion >= 1 && $negocia_operacion <= 5){
 
 //CONEXION
 require_once (__DIR__.'/conexion_bd.php');
@@ -228,7 +228,7 @@ $nombre_plan = $row_plan[2].' ('.$row_plan[1].')';
 <label class="n-label">Paquete</label>
 <select id="form_id_paquete" name="form_id_paquete" class="form-control n-form-control">
 <option value="1">Paquete Socio</option>
-<option value="2">Paquete VIP</option>
+<option value="2">Paquete Socio VIP</option>
 </select>
 </div>
 </div>
@@ -471,6 +471,7 @@ exit();
 //BUSQUEDA AUTOCOMPLETE
 if($negocia_operacion == 3){
 
+
 $search = $_POST['search'];
 
 //FILTRO DE BUSQUEDA AVANZADO
@@ -501,7 +502,6 @@ $sql .= " ORDER BY usuario.apellidos ASC LIMIT 20";
 
 $result = mysqli_query($con, $sql);
 
-
 $response = array();
 while($row = mysqli_fetch_array($result)){
 
@@ -516,7 +516,6 @@ $mostrar_producto = '('.$codigo_paciente.') '.$apellidos_paciente.' '.$nombres_p
 
 $response[] = array("value" => $id_paciente, "label" => $mostrar_producto);
 }
-$response[] = array("value" => 0, "label" => 'No hay resultados');
 echo json_encode($response);
 exit();
 exit();
@@ -557,6 +556,47 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 });
 </script>
 <?php
+exit();
+exit();
+}
+
+if($negocia_operacion == 5){
+
+$search = $_GET['value'];
+
+//FILTRO DE BUSQUEDA AVANZADO
+$filtro_texto_busqueda = '';
+if(!empty($search)){
+$array_texto_busqueda = explode(' ', $search);
+$i = 1;
+$and = '';
+foreach($array_texto_busqueda as $id_valor){
+$valor_texto_busqueda = $id_valor;
+if($i != 1){
+$and = ' AND ';
+}
+$filtro_texto_busqueda .= $and." (CODIGO LIKE '%$valor_texto_busqueda%' OR NOMBRES LIKE '%$valor_texto_busqueda%' OR APELLIDOS LIKE '%$valor_texto_busqueda%')";
+$i++;
+}
+}
+
+//CONSULTA SQL
+$sql  = " SELECT usuario.id AS ID_PACIENTE, usuario.codigo AS CODIGO, usuario.nombres AS NOMBRES, usuario.apellidos AS APELLIDOS";
+$sql .= " FROM usuario";
+$sql .= " WHERE usuario.activo = 1 AND usuario.id_tipo_usuario = 2";
+$sql .= " HAVING 1=1";
+if(!empty($filtro_texto_busqueda)){
+$sql .= " AND (".$filtro_texto_busqueda.")";
+}
+$sql .= " ORDER BY usuario.apellidos ASC LIMIT 20";
+
+$result = mysqli_query($con, $sql);
+
+//NUUM ROWS
+$num_rows = mysqli_num_rows($result);
+if(empty($num_rows)){
+echo '<b>El paciente no se encuentra registrado.</b>';
+}
 exit();
 exit();
 }
@@ -1482,7 +1522,7 @@ if($view_controller == 11){
 <span style="color: #111; font-weight: bold; font-size: 13px;">N&#176; de Socio:</span>
 </td>
 <td style="width: 50% !important; text-align: left; padding-left: 5px; padding-bottom: 10px;">
-<input id="form_busqueda_paciente_1" name="form_busqueda_paciente_1" class="form-control n-form-control" type="text" placeholder="N&#176; de Socio:">
+<input id="form_busqueda_paciente_1" name="form_busqueda_paciente_1" class="form-control n-form-control" type="text" placeholder="N&#176; de Socio:" onkeyup="mensaje_404(this.value)">
 <div id="resultado_busqueda_1"></div>
 <script>
 //AUTOCOMPLETE
@@ -1521,7 +1561,7 @@ return false;
 <span style="color: #111; font-weight: bold; font-size: 13px;">Nombres:</span>
 </td>
 <td style="width: 50% !important; text-align: left; padding-left: 5px; padding-bottom: 10px;">
-<input id="form_busqueda_paciente_2" name="form_busqueda_paciente_2" class="form-control n-form-control" type="text" placeholder="Nombres:">
+<input id="form_busqueda_paciente_2" name="form_busqueda_paciente_2" class="form-control n-form-control" type="text" placeholder="Nombres:" onkeyup="mensaje_404(this.value)">
 <div id="resultado_busqueda_2"></div>
 <script>
 //AUTOCOMPLETE
@@ -1560,7 +1600,7 @@ return false;
 <span style="color: #111; font-weight: bold; font-size: 13px;">Apellidos:</span>
 </td>
 <td style="width: 50% !important; text-align: left; padding-left: 5px; padding-bottom: 10px;">
-<input id="form_busqueda_paciente_3" name="form_busqueda_paciente_3" class="form-control n-form-control" type="text" placeholder="Apellidos:">
+<input id="form_busqueda_paciente_3" name="form_busqueda_paciente_3" class="form-control n-form-control" type="text" placeholder="Apellidos:" onkeyup="mensaje_404(this.value)">
 <div id="resultado_busqueda_3"></div>
 <script>
 //AUTOCOMPLETE
@@ -1598,6 +1638,7 @@ return false;
 <div id="div_plan_paciente"></div>
 </div>
 <div class="col-md-6" style="text-align: left; padding-top: 70px !important;">
+<p id="mensaje_404"></p>
 <button onclick="nuevo_registro(2)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">(+) Registrar Nuevo Paciente </button>
 </div>
 </div>
@@ -1614,6 +1655,16 @@ url: 'config/content.php?negocia_operacion=1&negocia_tipo='+id,
 success: function(datos){
 $('#div_ajax').html(datos).fadeIn('slow');
 $('#displaynone_1').css('display', 'none');
+}
+});
+}
+
+function mensaje_404(value){
+$.ajax({
+type: 'POST',
+url: 'config/content.php?negocia_operacion=5&value='+value,
+success: function(datos){
+$('#mensaje_404').html(datos).fadeIn('slow');
 }
 });
 }
