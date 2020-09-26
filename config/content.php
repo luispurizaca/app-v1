@@ -21,20 +21,55 @@ $registro_apellidos = '';
 $registro_tipo_documento = '';
 $registro_numero_documento = '';
 
+$registro_fecha_nacimiento = '';
+$registro_genero = '';
+$registro_instagram = '';
+$registro_direccion = '';
+$registro_departamento = '';
+$registro_provincia = '';
+$registro_distrito = '';
+$registro_residencia = '';
+$registro_telefono = '';
+$registro_talla = '';
+$registro_peso_meta = '';
+$registro_maximo_pacientes = '';
+$registro_correo = '';
+$registro_clave = '';
+
 if(empty($id_paciente)){
 
 //ULTIMO CODIGO REGISTRADO
 $row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT MAX(codigo) FROM usuario WHERE id_tipo_usuario = '2' ORDER BY MAX(codigo) DESC LIMIT 1"));
 $codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
+
+$registro_clave = $codigo_registro.'12345';
 } else {
 
 //CODIGO DEL PACIENTE
-$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo, nombres, apellidos, id_tipo_documento, numero_documento FROM usuario WHERE id = '$id_paciente' ORDER BY id DESC LIMIT 1"));
+$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo, nombres, apellidos, id_tipo_documento, numero_documento, fecha_nacimiento,
+genero, instagram, direccion, departamento, provincia, distrito, residencia, telefono, talla, peso_meta, maximo_pacientes, correo
+FROM usuario WHERE id = '$id_paciente' ORDER BY id DESC LIMIT 1"));
+
 $codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
 $registro_nombres = $row_codigo_registro[1];
 $registro_apellidos = $row_codigo_registro[2];
 $registro_tipo_documento = $row_codigo_registro[3];
 $registro_numero_documento = $row_codigo_registro[4];
+
+$registro_fecha_nacimiento = $row_codigo_registro[5];
+$registro_genero = $row_codigo_registro[6];
+$registro_instagram = $row_codigo_registro[7];
+$registro_direccion = $row_codigo_registro[8];
+$registro_departamento = $row_codigo_registro[9];
+$registro_provincia = $row_codigo_registro[10];
+$registro_distrito = $row_codigo_registro[11];
+$registro_residencia = $row_codigo_registro[12];
+$registro_telefono = $row_codigo_registro[13];
+$registro_talla = $row_codigo_registro[14];
+$registro_peso_meta = $row_codigo_registro[15];
+$registro_maximo_pacientes = $row_codigo_registro[16];
+$registro_correo = $row_codigo_registro[17];
+$registro_clave = '';
 }
 ?>
 <div id="div_guardar_paciente"></div>
@@ -79,7 +114,7 @@ $nombre_documento = $row_tipo_documento[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha Nac.</label>
-<input id="form_fecha_nacimiento" name="form_fecha_nacimiento" class="form-control n-form-control" type="date" placeholder="Fecha de Nacimiento">
+<input id="form_fecha_nacimiento" name="form_fecha_nacimiento" class="form-control n-form-control" type="date" placeholder="Fecha de Nacimiento" value="<?php echo $registro_fecha_nacimiento; ?>">
 </div>
 </div>
 <script>
@@ -131,69 +166,69 @@ confirmButtonColor: '#95cf32'
 <label class="n-label">G&eacute;nero</label>
 <select id="form_genero" name="form_genero" class="form-control n-form-control">
 <option value="0" hidden="hidden">Seleccione</option>
-<option value="1">Masculino</option>
-<option value="2">Femenino</option>
+<option value="1" <?php if($registro_genero == 1){ ?> selected="selected" <?php } ?>>Masculino</option>
+<option value="2" <?php if($registro_genero == 2){ ?> selected="selected" <?php } ?>>Femenino</option>
 </select>
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Instagram</label>
-<input id="form_instagram" name="form_instagram" class="form-control n-form-control" type="text" placeholder="Instagram">
+<input id="form_instagram" name="form_instagram" class="form-control n-form-control" type="text" placeholder="Instagram" value="<?php echo $registro_instagram; ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Direcci&oacute;n</label>
-<input id="form_direccion" name="form_direccion" class="form-control n-form-control" type="text" placeholder="Direcci&oacute;n">
+<input id="form_direccion" name="form_direccion" class="form-control n-form-control" type="text" placeholder="Direcci&oacute;n" value="<?php echo $registro_direccion; ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Departamento</label>
-<input id="form_departamento" name="form_departamento" class="form-control n-form-control" type="text" placeholder="Departamento">
+<input id="form_departamento" name="form_departamento" class="form-control n-form-control" type="text" placeholder="Departamento" value="<?php echo $registro_departamento; ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Provincia</label>
-<input id="form_provincia" name="form_provincia" class="form-control n-form-control" type="text" placeholder="Provincia">
+<input id="form_provincia" name="form_provincia" class="form-control n-form-control" type="text" placeholder="Provincia" value="<?php echo $registro_provincia; ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Distrito</label>
-<input id="form_distrito" name="form_distrito" class="form-control n-form-control" type="text" placeholder="Distrito">
+<input id="form_distrito" name="form_distrito" class="form-control n-form-control" type="text" placeholder="Distrito" value="<?php echo $registro_distrito; ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Residencia</label>
-<input id="form_residencia" name="form_residencia" class="form-control n-form-control" type="text" placeholder="ejm: PE">
+<input id="form_residencia" name="form_residencia" class="form-control n-form-control" type="text" placeholder="ejm: PE" value="<?php echo $registro_residencia; ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Tel&eacute;fono</label>
-<input id="form_telefono" name="form_telefono" class="form-control n-form-control" type="text" placeholder="ejm: 999999999">
+<input id="form_telefono" name="form_telefono" class="form-control n-form-control" type="text" placeholder="ejm: 999999999" value="<?php echo $registro_telefono; ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6" style="display: none;">
 <div class="form-group">
 <label class="n-label">Talla</label>
-<input id="form_talla" name="form_talla" class="form-control n-form-control" type="text" placeholder="Talla">
+<input id="form_talla" name="form_talla" class="form-control n-form-control" type="text" placeholder="Talla" value="<?php echo $registro_talla; ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6" style="display: none;">
 <div class="form-group">
 <label class="n-label">Peso Meta</label>
-<input id="form_peso_meta" name="form_peso_meta" class="form-control n-form-control" type="text" placeholder="Peso Meta">
+<input id="form_peso_meta" name="form_peso_meta" class="form-control n-form-control" type="text" placeholder="Peso Meta" value="<?php echo $registro_peso_meta; ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6" style="display: none;">
 <div class="form-group">
 <label class="n-label">N&#176; M&aacute;x. Pac.</label>
-<input id="form_maximo_pacientes" name="form_maximo_pacientes" class="form-control n-form-control" type="text" placeholder="N&#176; M&aacute;x. Pac.">
+<input id="form_maximo_pacientes" name="form_maximo_pacientes" class="form-control n-form-control" type="text" placeholder="N&#176; M&aacute;x. Pac." value="<?php echo $registro_maximo_pacientes; ?>">
 </div>
 </div>
 </div>
@@ -327,13 +362,13 @@ $nombre_cb = $row_cb[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Correo Electr&oacute;nico</label>
-<input id="form_correo" name="form_correo" class="form-control n-form-control" type="text" placeholder="Correo electr&oacute;nico">
+<input id="form_correo" name="form_correo" class="form-control n-form-control" type="text" placeholder="Correo electr&oacute;nico" value="<?php echo $registro_correo; ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Contrase&ntilde;a</label>
-<input id="form_clave" name="form_clave" class="form-control n-form-control" type="text" placeholder="Contrase&ntilde;a" value="<?php echo $codigo_registro; ?>12345">
+<input id="form_clave" name="form_clave" class="form-control n-form-control" type="text" placeholder="Contrase&ntilde;a" value="<?php echo $registro_clave; ?>">
 </div>
 </div>
 </div>
@@ -375,6 +410,8 @@ var form_fecha_pago = $('#form_fecha_pago').val();
 var form_monto = $('#form_monto').val();
 var form_id_medio_pago = $('#form_id_medio_pago').val();
 var form_id_banco = $('#form_id_banco').val();
+var form_id_paciente = <?php echo $id_paciente; ?>;
+var form_telefono = $('#form_telefono').val();
 
 $.ajax({
 type: 'POST',
@@ -406,7 +443,9 @@ form_id_nutricionista : form_id_nutricionista,
 form_fecha_pago : form_fecha_pago,
 form_monto : form_monto,
 form_id_medio_pago : form_id_medio_pago,
-form_id_banco : form_id_banco
+form_id_banco : form_id_banco,
+form_id_paciente : form_id_paciente,
+form_telefono : form_telefono
 },
 success: function(datos){
 $('#div_guardar_paciente').html(datos).fadeIn('slow');
@@ -481,15 +520,15 @@ $('#form_genero').focus();
 exit();
 exit();
 }
-$form_instagram  = $_POST['form_instagram'];
-$form_direccion  = $_POST['form_direccion'];
-$form_departamento  = $_POST['form_departamento'];
-$form_provincia  = $_POST['form_provincia'];
-$form_distrito  = $_POST['form_distrito'];
-$form_talla  = (float)str_replace(' ', '', str_replace(',', '.', $_POST['form_talla']));
-$form_peso_meta  = (float)str_replace(' ', '', str_replace(',', '.', $_POST['form_peso_meta']));
-$form_maximo_pacientes  = (int)$_POST['form_maximo_pacientes'];
-$form_correo  = $_POST['form_correo'];
+$form_instagram = $_POST['form_instagram'];
+$form_direccion = $_POST['form_direccion'];
+$form_departamento = $_POST['form_departamento'];
+$form_provincia = $_POST['form_provincia'];
+$form_distrito = $_POST['form_distrito'];
+$form_talla = (float)str_replace(' ', '', str_replace(',', '.', $_POST['form_talla']));
+$form_peso_meta = (float)str_replace(' ', '', str_replace(',', '.', $_POST['form_peso_meta']));
+$form_maximo_pacientes = (int)$_POST['form_maximo_pacientes'];
+$form_correo = $_POST['form_correo'];
 if(empty($form_correo)){
 ?>
 <script>
@@ -501,7 +540,7 @@ exit();
 exit();
 }
 $form_clave  = $_POST['form_clave'];
-if(empty($form_clave)){
+if(empty($form_clave) && !empty($form_id_paciente)){
 ?>
 <script>
 alert('Ingrese: Clave');
@@ -532,18 +571,43 @@ exit();
 }
 $form_id_medio_pago = $_POST['form_id_medio_pago'];
 $form_id_banco = $_POST['form_id_banco'];
+$form_id_paciente = (int)$_POST['form_id_paciente'];
+$form_telefono = $_POST['form_telefono'];
 
 //AGREGAR A LA BD USUARIO
+if(empty($form_id_paciente)){
+
 mysqli_query($con, "
-INSERT INTO usuario (id_tipo_usuario, codigo, correo, clave, nombres, apellidos, fecha_nacimiento, genero, estado, activo, id_tipo_documento, numero_documento, date_added, instagram, direccion, distrito, provincia, departamento, residencia, maximo_pacientes, peso_meta, talla)
+INSERT INTO usuario (id_tipo_usuario, codigo, correo, clave, nombres, apellidos, fecha_nacimiento, genero, estado, activo, id_tipo_documento, numero_documento, date_added, instagram, direccion, distrito, provincia, departamento, residencia, maximo_pacientes, peso_meta, talla, telefono)
 VALUES 
-('".$form_tipo_usuario."', '".$form_codigo."', '".$form_correo."', '".password_hash($form_clave, PASSWORD_DEFAULT)."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '0', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$form_maximo_pacientes."', '".$form_peso_meta."', '".$form_talla."')
+('".$form_tipo_usuario."', '".$form_codigo."', '".$form_correo."', '".password_hash($form_clave, PASSWORD_DEFAULT)."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '0', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$form_maximo_pacientes."', '".$form_peso_meta."', '".$form_talla."', '".$form_telefono."')
 "
 );
 
 //ULTIMO ID PACIENTE
 $row_id = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM usuario WHERE id_tipo_usuario = 2 ORDER BY id DESC LIMIT 1"));
 $ultimo_id = (int)$row_id[0];
+} else {
+mysqli_query($con, "UPDATE usuario SET
+correo = '".$form_correo."', clave = '".password_hash($form_clave, PASSWORD_DEFAULT)."',
+nombres = '".$form_nombres."', apellidos = '".$form_apellidos."',
+fecha_nacimiento = '".$form_fecha_nacimiento."', genero = '".$form_genero."',
+id_tipo_documento = '".$form_tipo_documento."', numero_documento = '".$form_numero_documento."',
+instagram = '".$form_instagram."', direccion = '".$form_direccion."', distrito = '".$form_distrito."',
+provincia = '".$form_provincia."', departamento = '".$form_departamento."', residencia = '".$form_residencia."',
+maximo_pacientes = '".$form_maximo_pacientes."', peso_meta = '".$form_peso_meta."', talla = '".$form_talla."', telefono = '".$form_telefono."'
+WHERE id = '$form_id_paciente' AND id_tipo_usuario = 2");
+
+//ACTUALIZAR CLAVE
+if(!empty($form_clave) && !empty($form_id_paciente)){
+mysqli_query($con, "UPDATE usuario SET
+clave = '".password_hash($form_clave, PASSWORD_DEFAULT)."'
+WHERE id = '$form_id_paciente' AND id_tipo_usuario = 2");
+}
+}
+
+
+
 
 //AGREGAR A LA BD SUSCRIPCION
 mysqli_query($con, "
