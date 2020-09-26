@@ -1477,9 +1477,9 @@ if($view_controller == 11){
 <table style="width: 400px; margin-left: 25px; margin-top: 40px;">
 <tr>
 <td style="width: 50% !important; text-align: left; padding-left: 10px;">
-<span style="color: #111; font-weight: bold; font-size: 13px;">N&#176; de Socio</span>
+<span style="color: #111; font-weight: bold; font-size: 13px;">N&#176; de Socio:</span>
 </td>
-<td style="width: 50% !important; text-align: left; padding-left: 5px;">
+<td style="width: 50% !important; text-align: left; padding-left: 5px; padding-bottom: 10px;">
 <input id="form_busqueda_paciente_1" name="form_busqueda_paciente_1" class="form-control n-form-control" type="text" placeholder="N&#176; de Socio:">
 <div id="resultado_busqueda_1"></div>
 <script>
@@ -1515,10 +1515,10 @@ return false;
 </td>
 </tr>
 <tr>
-<td style="width: 50% !important; text-align: left; padding-left: 10px;">
-<span style="color: #111; font-weight: bold; font-size: 13px;">Nombres</span>
+<td style="width: 50% !important; text-align: left; padding-left: 10px; padding-bottom: 10px;">
+<span style="color: #111; font-weight: bold; font-size: 13px;">Nombres:</span>
 </td>
-<td style="width: 50% !important; text-align: left; padding-left: 5px;">
+<td style="width: 50% !important; text-align: left; padding-left: 5px; padding-bottom: 10px;">
 <input id="form_busqueda_paciente_2" name="form_busqueda_paciente_2" class="form-control n-form-control" type="text" placeholder="Nombres:">
 <div id="resultado_busqueda_2"></div>
 <script>
@@ -1554,10 +1554,10 @@ return false;
 </td>
 </tr>
 <tr>
-<td style="width: 50% !important; text-align: left; padding-left: 10px;">
-<span style="color: #111; font-weight: bold; font-size: 13px;">Apellidos</span>
+<td style="width: 50% !important; text-align: left; padding-left: 10px; padding-bottom: 10px;">
+<span style="color: #111; font-weight: bold; font-size: 13px;">Apellidos:</span>
 </td>
-<td style="width: 50% !important; text-align: left; padding-left: 5px;">
+<td style="width: 50% !important; text-align: left; padding-left: 5px; padding-bottom: 10px;">
 <input id="form_busqueda_paciente_3" name="form_busqueda_paciente_3" class="form-control n-form-control" type="text" placeholder="Apellidos:">
 <div id="resultado_busqueda_3"></div>
 <script>
