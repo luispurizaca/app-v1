@@ -520,6 +520,7 @@ $mostrar_producto = '('.$codigo_paciente.') '.$apellidos_paciente.' '.$nombres_p
 
 $response[] = array("value" => $id_paciente, "label" => $mostrar_producto);
 }
+$response[] = array("value" => 0, "label" => 'No hay resultados');
 echo json_encode($response);
 exit();
 exit();
@@ -1500,8 +1501,17 @@ response(data);
 });
 },
 select: function(event, ui){
-//complete_datos(ui.item.value);
+
 $('#form_busqueda_paciente').val(ui.item.label);
+
+if(ui.item.value == 0){
+nuevo_registro(2);
+
+} else {
+nuevo_registro(2);
+
+}
+//complete_datos(ui.item.value);
 return false;
 }
 });
@@ -1531,8 +1541,6 @@ return false;
 </tr>
 </table>
 <div id="div_plan_paciente"></div>
-<button onclick="nuevo_registro(2)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Paciente Nuevo</button>
-<button type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Renovaci&oacute;n</button>
 </div>
 </div>
 </div>
