@@ -11,35 +11,31 @@ require_once (__DIR__.'/conexion_bd.php');
 if($negocia_operacion == 1){
 
 //TIPO DE USUARIO
-$negocia_tipo = (int)$_GET['negocia_tipo'];
+$id_paciente = (int)$_GET['negocia_tipo'];
 
-//NUTRICIONISTA
-if($negocia_tipo == 1){
-$title = 'Nutricionista';
-$letra_add = 'N-';
-}
-
-//PACIENTE
-if($negocia_tipo == 2){
+//DATOS DEL PACIENTE
 $title = 'Paciente';
 $letra_add = 'P-';
-}
+$registro_nombres = '';
+$registro_apellidos = '';
+$registro_tipo_documento = '';
+$registro_numero_documento = '';
 
-//ADMINISTRADOR
-if($negocia_tipo == 3){
-$title = 'Administrador';
-$letra_add = 'A-';
-}
-
-//VENDEDOR
-if($negocia_tipo == 4){
-$title = 'Vendedor';
-$letra_add = 'V-';
-}
+if(empty($id_paciente)){
 
 //ULTIMO CODIGO REGISTRADO
-$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT MAX(codigo) FROM usuario WHERE id_tipo_usuario = '$negocia_tipo' ORDER BY MAX(codigo) DESC LIMIT 1"));
+$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT MAX(codigo) FROM usuario WHERE id_tipo_usuario = '2' ORDER BY MAX(codigo) DESC LIMIT 1"));
 $codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
+} else {
+
+//CODIGO DEL PACIENTE
+$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo, nombres, apellidos, tipo_documento, numero_documento FROM usuario WHERE id = '$id_paciente' ORDER BY id DESC LIMIT 1"));
+$codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
+$registro_nombres = $row_codigo_registro[1];
+$registro_apellidos = $row_codigo_registro[2];
+$registro_tipo_documento = $row_codigo_registro[3];
+$registro_numero_documento = $row_codigo_registro[4];
+}
 ?>
 <div class="pd-20 card-box mb-30">
 <div class="clearfix">
@@ -76,7 +72,7 @@ $nombre_documento = $row_tipo_documento[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">N&uacute;mero Doc.</label>
-<input id="form_numero_documento" name="form_numero_documento" class="form-control n-form-control" type="text" placeholder="N&uacute;mero" onkeyup="consultar_doc()">
+<input id="form_numero_documento" name="form_numero_documento" class="form-control n-form-control" type="text" placeholder="N&uacute;mero" onkeyup="consultar_doc()" value="<?php echo $registro_numero_documento; ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
@@ -120,13 +116,13 @@ confirmButtonColor: '#95cf32'
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Nombres</label>
-<input id="form_nombres" name="form_nombres" class="form-control n-form-control" type="text" placeholder="Nombres">
+<input id="form_nombres" name="form_nombres" class="form-control n-form-control" type="text" placeholder="Nombres" value="<?php echo $registro_nombres; ?>>
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Apellidos</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos">
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos" value="<?php echo $registro_apellidos; ?>>
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
@@ -1506,10 +1502,8 @@ $('#form_busqueda_paciente').val(ui.item.label);
 
 if(ui.item.value == 0){
 nuevo_registro(2);
-
 } else {
-nuevo_registro(2);
-
+nuevo_registro(ui.item.value);
 }
 //complete_datos(ui.item.value);
 return false;
