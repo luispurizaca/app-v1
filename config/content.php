@@ -871,6 +871,304 @@ $('#div_ajax').html(datos).fadeIn('slow');
 </div>
 </div>
 <?php
+if($_SESSION['ID_TIPO_USUARIO'] == 4){
+?>
+<div class="row">
+<div class="col-xl-4 mb-30" onclick="location.href='pacientes.php'" style="cursor: pointer;">
+<div class="card-box height-100-p widget-style1">
+<div class="d-flex flex-wrap align-items-center">
+<div class="progress-data">
+<div id="chart"></div>
+</div>
+<?php
+//VALIDACIONES
+if(empty($_SESSION['usuario_total_pacientes'])){
+
+//PORCENTAJE PACIENTES
+$porcentaje_uno = 0;
+
+//PORCENTAJE PACIENTES ACTIVOS
+$porcentaje_dos = 0;
+
+//PORCENTAJE PACIENTES INACTIVOS
+$porcentaje_tres = 0;
+} else {
+
+//PORCENTAJE PACIENTES
+$porcentaje_uno = round(($_SESSION['usuario_total_pacientes'] / $_SESSION['usuario_maximo_pacientes']), 2) * 100;
+
+//PORCENTAJE PACIENTES ACTIVOS
+$porcentaje_dos = round(($_SESSION['usuario_total_pacientes_activos'] / $_SESSION['usuario_total_pacientes']), 2) * 100;
+
+//PORCENTAJE PACIENTES INACTIVOS
+$porcentaje_tres = round(($_SESSION['usuario_total_pacientes_inactivos'] / $_SESSION['usuario_total_pacientes']), 2) * 100;
+}
+
+//PORCENTAJE CONTROLES REALIZADOS
+if(empty($_SESSION['total_controles'])){
+$porcentaje_cuatro = 0;
+} else {
+$porcentaje_cuatro = round(($_SESSION['usuario_controles_realizados'] / $_SESSION['total_controles']), 2) * 100;
+}
+?>
+<div class="widget-data">
+<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes']; ?>/<?php echo $_SESSION['usuario_maximo_pacientes']; ?></div>
+<div class="weight-600 font-14">Total Membres&iacute;as</div>
+</div>
+</div>
+</div>
+<script>
+var options = {
+series: [<?php echo $porcentaje_uno; ?>],
+grid: {
+padding: {
+top: 0,
+right: 0,
+bottom: 0,
+left: 0
+},
+},
+chart: {
+height: 100,
+width: 70,
+type: 'radialBar',
+},	
+plotOptions: {
+radialBar: {
+hollow: {
+size: '50%',
+},
+dataLabels: {
+name: {
+show: false,
+color: '#fff'
+},
+value: {
+show: true,
+color: '#333',
+offsetY: 5,
+fontSize: '15px'
+}
+}
+}
+},
+colors: ['#818181'],
+fill: {
+type: 'gradient',
+gradient: {
+shade: 'dark',
+type: 'diagonal1',
+shadeIntensity: 0.8,
+gradientToColors: ['#95cf32'],
+inverseColors: false,
+opacityFrom: [1, 0.2],
+opacityTo: 1,
+stops: [0, 100],
+}
+},
+states: {
+normal: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+hover: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+active: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+}
+};
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+chart.render();
+</script>
+</div>
+<div class="col-xl-4 mb-30" onclick="location.href='pacientes.php'" style="cursor: pointer;">
+<div class="card-box height-100-p widget-style1">
+<div class="d-flex flex-wrap align-items-center">
+<div class="progress-data">
+<div id="chart2"></div>
+</div>
+<div class="widget-data">
+<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes_activos']; ?>/<?php echo $_SESSION['usuario_total_pacientes']; ?></div>
+<div class="weight-600 font-14">Membres&iacute;as Nuevas</div>
+</div>
+</div>
+</div>
+<script>
+var options = {
+series: [<?php echo $porcentaje_dos; ?>],
+grid: {
+padding: {
+top: 0,
+right: 0,
+bottom: 0,
+left: 0
+},
+},
+chart: {
+height: 100,
+width: 70,
+type: 'radialBar',
+},	
+plotOptions: {
+radialBar: {
+hollow: {
+size: '50%',
+},
+dataLabels: {
+name: {
+show: false,
+color: '#fff'
+},
+value: {
+show: true,
+color: '#333',
+offsetY: 5,
+fontSize: '15px'
+}
+}
+}
+},
+colors: ['#818181'],
+fill: {
+type: 'gradient',
+gradient: {
+shade: 'dark',
+type: 'diagonal1',
+shadeIntensity: 0.8,
+gradientToColors: ['#95cf32'],
+inverseColors: false,
+opacityFrom: [1, 0.2],
+opacityTo: 1,
+stops: [0, 100],
+}
+},
+states: {
+normal: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+hover: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+active: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+}
+};
+
+var chart = new ApexCharts(document.querySelector("#chart2"), options);
+chart.render();
+</script>
+</div>
+<div class="col-xl-4 mb-30" onclick="location.href='pacientes.php'" style="cursor: pointer;">
+<div class="card-box height-100-p widget-style1">
+<div class="d-flex flex-wrap align-items-center">
+<div class="progress-data">
+<div id="chart3"></div>
+</div>
+<div class="widget-data">
+<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes_inactivos']; ?>/<?php echo $_SESSION['usuario_total_pacientes']; ?></div>
+<div class="weight-600 font-14">Membres&iacute;as Renovaci&oacute;n</div>
+</div>
+</div>
+</div>
+<script>
+var options = {
+series: [<?php echo $porcentaje_tres; ?>],
+grid: {
+padding: {
+top: 0,
+right: 0,
+bottom: 0,
+left: 0
+},
+},
+chart: {
+height: 100,
+width: 70,
+type: 'radialBar',
+},	
+plotOptions: {
+radialBar: {
+hollow: {
+size: '50%',
+},
+dataLabels: {
+name: {
+show: false,
+color: '#fff'
+},
+value: {
+show: true,
+color: '#333',
+offsetY: 5,
+fontSize: '15px'
+}
+}
+}
+},
+colors: ['#818181'],
+fill: {
+type: 'gradient',
+gradient: {
+shade: 'dark',
+type: 'diagonal1',
+shadeIntensity: 0.8,
+gradientToColors: ['#95cf32'],
+inverseColors: false,
+opacityFrom: [1, 0.2],
+opacityTo: 1,
+stops: [0, 100],
+}
+},
+states: {
+normal: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+hover: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+active: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+}
+};
+
+var chart = new ApexCharts(document.querySelector("#chart3"), options);
+chart.render();
+</script>
+</div>
+</div>
+<?php
+}
 if($_SESSION['ID_TIPO_USUARIO'] == 1 || $_SESSION['ID_TIPO_USUARIO'] == 3){
 ?>
 <div class="row">
