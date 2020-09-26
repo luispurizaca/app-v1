@@ -116,13 +116,13 @@ confirmButtonColor: '#95cf32'
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Nombres</label>
-<input id="form_nombres" name="form_nombres" class="form-control n-form-control" type="text" placeholder="Nombres" value="<?php echo $registro_nombres; ?>>
+<input id="form_nombres" name="form_nombres" class="form-control n-form-control" type="text" placeholder="Nombres" value="<?php echo $registro_nombres; ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Apellidos</label>
-<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos" value="<?php echo $registro_apellidos; ?>>
+<input id="form_apellidos" name="form_apellidos" class="form-control n-form-control" type="text" placeholder="Apellidos" value="<?php echo $registro_apellidos; ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
