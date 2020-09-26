@@ -49,7 +49,7 @@ $row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo, nom
 genero, instagram, direccion, departamento, provincia, distrito, residencia, telefono, talla, peso_meta, maximo_pacientes, correo
 FROM usuario WHERE id = '$id_paciente' ORDER BY id DESC LIMIT 1"));
 
-$codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
+$codigo_registro = $row_codigo_registro[0];
 $registro_nombres = $row_codigo_registro[1];
 $registro_apellidos = $row_codigo_registro[2];
 $registro_tipo_documento = $row_codigo_registro[3];
