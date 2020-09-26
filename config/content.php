@@ -433,6 +433,7 @@ var form_id_medio_pago = $('#form_id_medio_pago').val();
 var form_id_banco = $('#form_id_banco').val();
 var form_id_paciente = <?php echo $id_paciente; ?>;
 var form_telefono = $('#form_telefono').val();
+var form_fecha_suscripcion_fin = $('#form_fecha_suscripcion_fin').val();
 
 $.ajax({
 type: 'POST',
@@ -466,7 +467,8 @@ form_monto : form_monto,
 form_id_medio_pago : form_id_medio_pago,
 form_id_banco : form_id_banco,
 form_id_paciente : form_id_paciente,
-form_telefono : form_telefono
+form_telefono : form_telefono,
+form_fecha_suscripcion_fin : form_fecha_suscripcion_fin
 },
 success: function(datos){
 $('#div_guardar_paciente').html(datos).fadeIn('slow');
@@ -594,6 +596,8 @@ $form_id_medio_pago = $_POST['form_id_medio_pago'];
 $form_id_banco = $_POST['form_id_banco'];
 $form_id_paciente = (int)$_POST['form_id_paciente'];
 $form_telefono = $_POST['form_telefono'];
+$form_fecha_suscripcion_fin = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion_fin']));
+
 
 //AGREGAR A LA BD USUARIO
 if(empty($form_id_paciente)){
@@ -634,7 +638,7 @@ WHERE id = '$form_id_paciente' AND id_tipo_usuario = 2");
 mysqli_query($con, "
 INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor)
 VALUES 
-('".$form_id_programa."', '".$form_id_nutricionista."', '".$ultimo_id."', '".$form_fecha_suscripcion."', '',  '1', '', '".$_SESSION['ID_USUARIO']."')
+('".$form_id_programa."', '".$form_id_nutricionista."', '".$ultimo_id."', '".$form_fecha_suscripcion."', '".$form_fecha_suscripcion_fin."',  '1', '', '".$_SESSION['ID_USUARIO']."')
 "
 );
 
