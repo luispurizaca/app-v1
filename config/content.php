@@ -29,7 +29,7 @@ $codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 
 } else {
 
 //CODIGO DEL PACIENTE
-$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo, nombres, apellidos, tipo_documento, numero_documento FROM usuario WHERE id = '$id_paciente' ORDER BY id DESC LIMIT 1"));
+$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo, nombres, apellidos, id_tipo_documento, numero_documento FROM usuario WHERE id = '$id_paciente' ORDER BY id DESC LIMIT 1"));
 $codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
 $registro_nombres = $row_codigo_registro[1];
 $registro_apellidos = $row_codigo_registro[2];
@@ -1471,9 +1471,11 @@ San Diego, CA 92115
 //PACIENTES - VENDEDOR
 if($view_controller == 11){
 ?>
-<div class="card-box mb-30">
+<div class="card-box mb-30" id="displaynone_1">
 <div class="card-box pd-20 height-100-p mb-30">
 <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+<div class="row">
+<div class="col-md-6">
 <table style="width: 400px; margin-left: 25px; margin-top: 40px;">
 <tr>
 <td style="width: 50% !important; text-align: left; padding-left: 10px;">
@@ -1595,6 +1597,11 @@ return false;
 </table>
 <div id="div_plan_paciente"></div>
 </div>
+<div class="col-md-6" style="text-align: left; padding-top: 70px !important;">
+<button onclick="nuevo_registro(2)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">(+) Registrar Nuevo Paciente </button>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="div_ajax"></div>
@@ -1606,6 +1613,7 @@ type: 'POST',
 url: 'config/content.php?negocia_operacion=1&negocia_tipo='+id,
 success: function(datos){
 $('#div_ajax').html(datos).fadeIn('slow');
+$('#displaynone_1').css('display', 'none');
 }
 });
 }
