@@ -1590,42 +1590,33 @@ if(($view_controller >= 2 && $view_controller <= 7 && $view_controller != 3) || 
 <div id="resultado" class="row align-items-center"></div>
 </div>
 <div class="pb-20" style="padding-left: 20px; padding-right: 20px; padding-top: 20px;">
+<?php
+if($view_controller == 2 || $view_controller == 4){
+?>
 <nav class="text-center">
 <ul>
 <li style="display: inline-block;">
-<button type="button" id="filtro_diario" onclick="filtro_fechas(1);" title="Hoy" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Ventas del d&iacute;a</button>
+<button type="button" id="filtro_diario" onclick="filtro_fechas(1);" title="Hoy" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Vencen Hoy</button>
 </li>
 <li style="display: inline-block;">
-<button type="button" id="filtro_semanal" onclick="filtro_fechas(2);" title="Esta Semana" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Ventas de la semana</button>
+<button type="button" id="filtro_semanal" onclick="filtro_fechas(2);" title="Esta Semana" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Vencen &eacute;sta semana</button>
 </li>
 <li style="display: inline-block;">
-<button type="button" id="filtro_mensual" onclick="filtro_fechas(3);" title="Este Mes" style="border: none; padding: 5px; font-size: 12px; background: #818181; color: white; outline: none;">Ventas del mes</button>
+<button type="button" id="filtro_mensual" onclick="filtro_fechas(3);" title="Este Mes" style="border: none; padding: 5px; font-size: 12px; background: #818181; color: white; outline: none;">Vencen &eacute;ste mes</button>
 </li>
 <li style="display: inline-block;">
-<button type="button" id="filtro_anual" onclick="filtro_fechas(4);" title="Este Año" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Ventas del a&ntilde;o</button>
+<button type="button" id="filtro_anual" onclick="filtro_fechas(4);" title="Este Año" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Vencen &eacute;stw a&ntilde;o</button>
 </li>
 <li style="display: inline-block; margin-left: 10px;">
 <button type="button" class="btn btn_modal_fechas_dashboard" title="Rango de Fechas" style="border: none; font-size: 23px; background: transparent; padding: 0; color: #818181; outline: none;"><i class="fa fa-calendar"></i></button>
 </li>
 </ul>
 </nav>
+<?php
+}
+?>
 <div style="margin-top: 20px;">
 <div class="table-responsive">
-<table id="tabla_filtros" style="width: 1000px !important; margin: 0 auto; display: none;">
-<tr>
-<td style="width: 50% !important; border: 1px solid white; padding-top: 3px; padding-bottom: 3px; text-align: left; padding-bottom: 20px;" colspan="4">
-<div class="btn-group">
-<button class="btn buttons-csv" tabindex="0" type="button" style="background: #95cf32; color: white; font-size: 12px; padding: 8px;"><span>NUEVO</span></button>
-</div>
-</td>
-<td style="width: 50% !important; border: 1px solid white; padding-top: 3px; padding-bottom: 3px; text-align: right; padding-bottom: 20px;" colspan="4">
-<div class="btn-group">
-<button class="btn buttons-csv" tabindex="0" type="button" style="background: #95cf32; color: white; font-size: 12px; padding: 8px;"><span>EXCEL</span></button>
-<button class="btn buttons-pdf" tabindex="0" type="button" style="background: #F26C3C; color: white; font-size: 12px; padding: 8px;"><span>PDF</span></button>
-</div>
-</td>
-</tr>
-</table>
 <div id="reporte_tabla"></div>
 </div>
 <div class="row">

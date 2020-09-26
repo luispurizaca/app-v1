@@ -53,28 +53,7 @@ FROM usuario
 WHERE activo = 1";
 
 //FILTRO ID USUARIO
-if(!empty($id_registro)){
-$consulta_sql_general .= " AND usuario.id = '$id_registro'";
-}
-
-//FILTRO ACTIVOS / INACTIVOS
-if(!empty($activos)){
-if($activos == 1){
-$consulta_sql_general .= " AND (usuario.estado = 1)";
-}
-if($activos == 2){
-$consulta_sql_general .= " AND (usuario.estado = 0)";
-}
-}
-
-//FILTRO ID TIPO DE USUARIO
-if(!empty($id_tipo_usuario)){
-if($id_tipo_usuario == 1){
-$consulta_sql_general .= " AND (usuario.id_tipo_usuario = '1' OR usuario.id_tipo_usuario = '3')";
-} else {
-$consulta_sql_general .= " AND (usuario.id_tipo_usuario = 2)";
-}
-}
+$consulta_sql_general .= " AND usuario.id_vendedor = '".$_SESSION['ID_USUARIO']."'";
 
 //ORDER BY
 $consulta_sql_general .= "
@@ -285,7 +264,11 @@ $row_peso_actual = mysqli_fetch_array(mysqli_query($con, "SELECT peso, imc FROM 
 $ret_peso_actual = $row_peso_actual[0];
 
 //IMC ACTUAL
+if(empty($ret_talla)){
+$ret_imc_actual = 0;
+} else {
 $ret_imc_actual = $ret_peso_actual / ($ret_talla * $ret_talla);
+}
 
 //EDAD EN MESES
 $fecha_nac = new DateTime(date('Y/m/d', strtotime($ret_fecha_nacimiento)));
