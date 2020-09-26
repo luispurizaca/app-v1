@@ -257,21 +257,7 @@ $('#form_direccion').val(data.domicilio_fiscal);
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label">Fecha de Inicio</label>
-<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
-</div>
-</div>
-<div class="col-md-3 col-sm-6">
-<div class="form-group">
-<label class="n-label">Fecha de Fin</label>
-<input id="form_fecha_suscripcion_fin" name="form_fecha_suscripcion_fin" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
-</div>
-</div>
-<div class="col-md-3 col-sm-6"></div>
-<div class="col-md-3 col-sm-6"></div>
-<div class="col-md-3 col-sm-6">
-<div class="form-group">
-<label class="n-label">Plan Rekupera</label>
+<label class="n-label">Planes</label>
 <select id="form_id_programa" name="form_id_programa" class="form-control n-form-control">
 <?php
 $query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
@@ -310,6 +296,19 @@ $nombre_cb = $row_id_n[1];
 }
 ?>
 </select>
+</div>
+</div>
+<div class="col-md-3 col-sm-6"></div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Fecha de Inicio</label>
+<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Fecha de Fin</label>
+<input id="form_fecha_suscripcion_fin" name="form_fecha_suscripcion_fin" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
 </div>
 </div>
 </div>
