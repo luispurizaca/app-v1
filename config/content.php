@@ -1593,22 +1593,95 @@ if(($view_controller >= 2 && $view_controller <= 7 && $view_controller != 3) || 
 <?php
 if($view_controller == 2 || $view_controller == 4){
 ?>
+<div class="modal fade" id="modalFechas">
+<div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 0; margin-bottom: 2px;">
+<div class="modal-content">
+<div class="modal-body">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+<div class="row">
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2"></div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+<table style="width: 100%; border: 0; padding: 0;" cellpadding="5" cellspacing="0" border="0">
+<tr>
+<td style="width: 50%; padding: 10px; vertical-align: middle;">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Desde:</label>
+<input type="date" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="n_fecha_desde" placeholder="Desde">
+</td>
+<td style="width: 50%; padding: 10px; vertical-align: middle;">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Hasta:</label>
+<input type="date" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="n_fecha_hasta" placeholder="Hasta">
+</td>
+</tr>
+</table>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <nav class="text-center">
 <ul>
 <li style="display: inline-block;">
-<button type="button" id="filtro_diario" onclick="filtro_fechas(1);" title="Hoy" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Vencen Hoy</button>
+<button type="button" id="filtro_diario" onclick="filtro_fechas(1)" title="Hoy" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Vencen Hoy</button>
 </li>
 <li style="display: inline-block;">
-<button type="button" id="filtro_semanal" onclick="filtro_fechas(2);" title="Esta Semana" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Vencen &eacute;sta semana</button>
+<button type="button" id="filtro_semanal" onclick="filtro_fechas(2)" title="Esta Semana" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Vencen &eacute;sta semana</button>
 </li>
 <li style="display: inline-block;">
-<button type="button" id="filtro_mensual" onclick="filtro_fechas(3);" title="Este Mes" style="border: none; padding: 5px; font-size: 12px; background: #818181; color: white; outline: none;">Vencen &eacute;ste mes</button>
+<button type="button" id="filtro_mensual" onclick="filtro_fechas(3)" title="Este Mes" style="border: none; padding: 5px; font-size: 12px; background: #818181; color: white; outline: none;">Vencen &eacute;ste mes</button>
 </li>
 <li style="display: inline-block;">
-<button type="button" id="filtro_anual" onclick="filtro_fechas(4);" title="Este Año" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Vencen &eacute;stw a&ntilde;o</button>
+<button type="button" id="filtro_anual" onclick="filtro_fechas(4)" title="Este Año" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Vencen &eacute;ste a&ntilde;o</button>
 </li>
 <li style="display: inline-block; margin-left: 10px;">
 <button type="button" class="btn btn_modal_fechas_dashboard" title="Rango de Fechas" style="border: none; font-size: 23px; background: transparent; padding: 0; color: #818181; outline: none;"><i class="fa fa-calendar"></i></button>
+<script>
+//FILTROS DE FECHAS
+function filtro_fechas(id){
+$('#filtro_diario').css('background', '#95cf32');
+$('#filtro_semanal').css('background', '#95cf32');
+$('#filtro_mensual').css('background', '#95cf32');
+$('#filtro_anual').css('background', '#95cf32');
+if(id == 1){
+$('#n_fecha_desde').val('<?php echo date('Y-m-d'); ?>');
+$('#n_fecha_hasta').val('<?php echo date('Y-m-d'); ?>');
+$('#filtro_diario').css('background', '#818181');
+} else if(id == 2){
+$('#n_fecha_desde').val('<?php echo date('Y-m-d', strtotime('last Monday', strtotime(date('Y-m-d')))); ?>');
+$('#n_fecha_hasta').val('<?php echo date('Y-m-d', strtotime('next Sunday', strtotime(date('Y-m-d')))); ?>');
+$('#filtro_semanal').css('background', '#818181');
+} else if(id == 3){
+$('#n_fecha_desde').val('<?php echo date('Y-m-d', strtotime('first day of this month', strtotime(date('Y-m-d')))); ?>');
+$('#n_fecha_hasta').val('<?php echo date('Y-m-d', strtotime('last day of this month', strtotime(date('Y-m-d')))); ?>');
+$('#filtro_mensual').css('background', '#818181');
+} else if(id == 4){
+$('#n_fecha_desde').val('<?php echo date('Y-m-d', strtotime('first day of this month', strtotime(date('Y').'-01-01'))); ?>');
+$('#n_fecha_hasta').val('<?php echo date('Y-m-d', strtotime('last day of this month', strtotime(date('Y').'-12-01'))); ?>');
+$('#filtro_anual').css('background', '#818181');
+}
+
+//EJECUTAR LOAD
+ejecutar_load();
+}
+
+$('.btn_modal_fechas_dashboard').on('click', function(){
+$('#modalFechas').modal();
+});
+$('#btn_consultar_fechas').on('click', function(){
+
+//EJECUTAR LOAD
+ejecutar_load();
+$('#filtro_diario').css('background', '#95cf32');
+$('#filtro_semanal').css('background', '#95cf32');
+$('#filtro_mensual').css('background', '#95cf32');
+$('#filtro_anual').css('background', '#95cf32');
+$('#modalFechas').modal('hide');
+});
+filtro_fechas(3);
+</script>
 </li>
 </ul>
 </nav>
