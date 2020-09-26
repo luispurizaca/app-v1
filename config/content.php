@@ -14,7 +14,6 @@ if($negocia_operacion == 1){
 $id_paciente = (int)$_GET['negocia_tipo'];
 
 //DATOS DEL PACIENTE
-$title = 'Paciente';
 $letra_add = 'P-';
 $registro_nombres = '';
 $registro_apellidos = '';
@@ -77,7 +76,7 @@ $registro_clave = '';
 <div class="clearfix">
 <div class="pull-left">
 <h4 class="weight-500 text-capitalize" style="font-size: 17px;">
-Nuevo <div style="color: #95cf32; font-weight: bold; font-size: 22px;"><?php echo $title; ?></div>
+<div style="color: #95cf32; font-weight: bold; font-size: 18px;">Datos Personales</div>
 </h4><hr>
 </div>
 </div>
@@ -258,6 +257,20 @@ $('#form_direccion').val(data.domicilio_fiscal);
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
+<label class="n-label">Fecha de Inicio</label>
+<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Fecha de Fin</label>
+<input id="form_fecha_suscripcion_fin" name="form_fecha_suscripcion_fin" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6"></div>
+<div class="col-md-3 col-sm-6"></div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
 <label class="n-label">Plan Rekupera</label>
 <select id="form_id_programa" name="form_id_programa" class="form-control n-form-control">
 <?php
@@ -280,12 +293,6 @@ $nombre_plan = $row_plan[2].' ('.$row_plan[1].')';
 <option value="1">Paquete Socio</option>
 <option value="2">Paquete Socio VIP</option>
 </select>
-</div>
-</div>
-<div class="col-md-3 col-sm-6">
-<div class="form-group">
-<label class="n-label">Fecha de Inicio</label>
-<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
