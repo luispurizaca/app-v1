@@ -635,9 +635,9 @@ WHERE id = '$form_id_paciente' AND id_tipo_usuario = 2");
 
 //AGREGAR A LA BD SUSCRIPCION
 mysqli_query($con, "
-INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor)
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete)
 VALUES 
-('".$form_id_programa."', '".$form_id_nutricionista."', '".$ultimo_id."', '".$form_fecha_suscripcion."', '".$form_fecha_suscripcion_fin."',  '1', '', '".$_SESSION['ID_USUARIO']."')
+('".$form_id_programa."', '".$form_id_nutricionista."', '".$ultimo_id."', '".$form_fecha_suscripcion."', '".$form_fecha_suscripcion_fin."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete')
 "
 );
 
@@ -1591,7 +1591,7 @@ if(($view_controller >= 2 && $view_controller <= 7 && $view_controller != 3) || 
 </div>
 <div class="pb-20" style="padding-left: 20px; padding-right: 20px; padding-top: 20px;">
 <?php
-if($view_controller == 2 || $view_controller == 4){
+if($view_controller == 4){
 ?>
 <div class="modal fade" id="modalFechas">
 <div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 0; margin-bottom: 2px;">
@@ -1612,6 +1612,11 @@ if($view_controller == 2 || $view_controller == 4){
 <td style="width: 50%; padding: 10px; vertical-align: middle;">
 <label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Hasta:</label>
 <input type="date" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="n_fecha_hasta" placeholder="Hasta">
+</td>
+</tr>
+<tr>
+<td colspan="2" style="width: 100%; padding: 10px; vertical-align: middle; text-align: center;">
+<button id="btn_consultar_fechas" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 12px;"><i class="fa fa-search"></i>&nbsp;&nbsp;CONSULTAR</button>
 </td>
 </tr>
 </table>
@@ -1664,7 +1669,7 @@ $('#filtro_anual').css('background', '#818181');
 }
 
 //EJECUTAR LOAD
-ejecutar_load();
+load(1);
 }
 
 $('.btn_modal_fechas_dashboard').on('click', function(){
@@ -1673,14 +1678,13 @@ $('#modalFechas').modal();
 $('#btn_consultar_fechas').on('click', function(){
 
 //EJECUTAR LOAD
-ejecutar_load();
+load(1);
 $('#filtro_diario').css('background', '#95cf32');
 $('#filtro_semanal').css('background', '#95cf32');
 $('#filtro_mensual').css('background', '#95cf32');
 $('#filtro_anual').css('background', '#95cf32');
 $('#modalFechas').modal('hide');
 });
-filtro_fechas(3);
 </script>
 </li>
 </ul>
@@ -1712,10 +1716,25 @@ filtro_fechas(3);
 <script>
 //LOAD
 function load(page){
+if($('#n_fecha_desde').length > 0){
+var n_fecha_desde = $('#n_fecha_desde').val();
+} else {
+var n_fecha_desde = '';
+}
+if($('#n_fecha_hasta').length > 0){
+var n_fecha_hasta = $('#n_fecha_hasta').val();
+} else {
+var n_fecha_hasta = '';
+}
 $.ajax({
 type: 'POST',
 url: 'config/ajax.php?view_controller=<?php echo $view_controller; ?>',
-data: {action: 'ajax' , page: page, activos : '<?php echo $activos; ?>'},
+data: {
+action: 'ajax',
+page: page,
+n_fecha_desde : n_fecha_desde,
+n_fecha_hasta : n_fecha_hasta
+},
 success: function(datos){
 $('#reporte_tabla').html(datos).fadeIn('slow');
 }
@@ -1749,6 +1768,7 @@ $('#tabla_filtros').css('display', 'none');
 });
 }
 
+//POR DEFECTO REPORTE MENSUAL
 load(1);
 </script>
 </div>

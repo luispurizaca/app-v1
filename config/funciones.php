@@ -18,6 +18,8 @@ $per_page = $array_filtros[4];
 $id_registro = (int)$array_filtros[5];
 $fn_id_paciente = (int)$array_filtros[6];
 $fn_id_suscripcion = (int)$array_filtros[7];
+$n_fecha_desde = $array_filtros[8];
+$n_fecha_hasta = $array_filtros[9];
 
 
 //CONSULTA PACIENTES
@@ -74,23 +76,22 @@ suscripcion_programa.id_paciente AS ID_PACIENTE,
 suscripcion_programa.fecha_inicio AS FECHA_INICIO,
 suscripcion_programa.fecha_fin AS FECHA_FIN,
 suscripcion_programa.estado AS ESTADO,
-suscripcion_programa.indicaciones AS INDICACIONES
+(SELECT cobro.fecha_pago FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS FECHA_VENTA,
+(SELECT cobro.monto FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS MONTO_VENTA,
+(SELECT cobro.id_medio_pago FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS ID_MEDIO_PAGO,
+(SELECT cobro.id_cuenta_bancaria FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS ID_CUENTA_BANCARIA,
+suscripcion_programa.id_paquete AS ID_PAQUETE
 FROM suscripcion_programa
 WHERE suscripcion_programa.id_vendedor = '".$_SESSION['ID_USUARIO']."'";
 
-//FILTRO ID REGISTRO
-if(!empty($id_registro)){
-$consulta_sql_general .= " AND suscripcion_programa.id = '$id_registro'";
-}
-
-//FILTRO ACTIVOS / INACTIVOS
-if(!empty($activos)){
-$consulta_sql_general .= " AND suscripcion_programa.condicion = '$activos'";
+//FILTRO FECHAS
+if(!empty($n_fecha_desde) && !empty($n_fecha_hasta)){
+$consulta_sql_general .= " AND (DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') BETWEEN DATE_FORMAT('$n_fecha_desde', '%Y-%m-%d') AND DATE_FORMAT('$n_fecha_hasta', '%Y-%m-%d'))";
 }
 
 //ORDER BY
 $consulta_sql_general .= "
-ORDER BY suscripcion_programa.id DESC
+ORDER BY FECHA_VENTA DESC
 ";
 }
 
@@ -375,7 +376,11 @@ $ret_id_paciente = (int)$sql_general_row[3];
 $ret_fecha_inicio = $sql_general_row[4];
 $ret_fecha_fin = $sql_general_row[5];
 $ret_estado = (int)$sql_general_row[6];
-$ret_indicaciones = $sql_general_row[7];
+$ret_fecha_venta = $sql_general_row[7];
+$ret_monto_venta = $sql_general_row[8];
+$ret_id_medio_pago = $sql_general_row[9];
+$ret_id_cuenta_bancaria = $sql_general_row[10];
+$ret_id_paquete = $sql_general_row[11];
 
 //NOMBRE DEL PROGRAMA
 $row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM programa WHERE id = '$ret_id_programa' LIMIT 1"));
@@ -384,6 +389,26 @@ $ret_nombre_programa = $row_nombre_programa[0];
 //NOMBRE DEL PACIENTE
 $row_nombre_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT CONCAT(nombres, ' ' ,apellidos) FROM usuario WHERE id_tipo_usuario = 2 AND id = '$ret_id_paciente' LIMIT 1"));
 $ret_nombre_paciente = $row_nombre_paciente[0];
+
+//NOMBRE DEL NUTRICIONISTA
+$row_nombre_nutricionista = mysqli_fetch_array(mysqli_query($con, "SELECT CONCAT(nombres, ' ' ,apellidos) FROM usuario WHERE id_tipo_usuario = 1 AND id = '$ret_id_nutricionista' LIMIT 1"));
+$ret_nombre_nutricionista = $row_nombre_nutricionista[0];
+
+//NOMBRE DEL MEDIO DE PAGO
+$row_nombre_medio_pago = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM medios_pago WHERE id = '$ret_id_medio_pago' LIMIT 1"));
+$ret_nombre_medio_pago = $row_nombre_medio_pago[0];
+
+//NOMBRE DE LA CUENTA BANCARIA
+$row_nombre_cuenta_bancaria = mysqli_fetch_array(mysqli_query($con, "SELECT banco FROM cuenta_bancaria WHERE id = '$ret_id_cuenta_bancaria' LIMIT 1"));
+$ret_nombre_cuenta_bancaria = $row_nombre_cuenta_bancaria[0];
+
+//NOMBRE DEL PAQUETE
+if($ret_id_paquete == 1){
+$ret_nombre_paquete = 'SOCIO';
+}
+if($ret_id_paquete == 2){
+$ret_nombre_paquete = 'SOCIO VIP';
+}
 
 //ESTADO
 if($ret_estado == 1){
@@ -404,11 +429,19 @@ $ret_id_paciente,
 $ret_fecha_inicio,
 $ret_fecha_fin,
 $ret_estado,
-$ret_indicaciones,
 $ret_nombre_paciente,
+$ret_nombre_nutricionista,
 $ret_nombre_programa,
 $css_color,
-$texto_estado
+$texto_estado,
+$ret_fecha_venta,
+$ret_monto_venta,
+$ret_id_medio_pago,
+$ret_id_cuenta_bancaria,
+$ret_nombre_medio_pago,
+$ret_nombre_cuenta_bancaria,
+$ret_id_paquete,
+$ret_nombre_paquete
 );
 }
 
