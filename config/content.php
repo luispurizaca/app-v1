@@ -1166,6 +1166,34 @@ var chart = new ApexCharts(document.querySelector("#chart3"), options);
 chart.render();
 </script>
 </div>
+<div class="col-xl-12 mb-30">
+<div style="font-size: 20px; width: 100%; font-weight: bold; color: white; padding-left: 25px; background: rgba(242, 108, 60, 1); padding-top: 20px; padding-bottom: 20px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+<i class="icon-copy dw dw-notification" style="font-size: 18px; font-weight: bolder;"></i>
+Alertas!
+</div>
+<div class="card-box height-100-p widget-style1">
+<div class="d-flex flex-wrap align-items-center" style="padding-top: 20px;">
+<ul>
+<li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px;">
+<span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
+La membres&iacute;a de Diego Peralta vence el 29/09/2020.
+</li>
+<li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px;">
+<span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
+La membres&iacute;a de Diego Peralta vence el 29/09/2020.
+</li>
+<li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px;">
+<span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
+La membres&iacute;a de Diego Peralta vence el 29/09/2020.
+</li>
+<li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px;">
+<span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
+La membres&iacute;a de Diego Peralta vence el 29/09/2020.
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <?php
 }
