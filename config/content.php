@@ -2310,4 +2310,48 @@ $('#mensaje_404').html(datos).fadeIn('slow');
 </script>
 <?php
 }
+
+//HISTORIA CLINICA
+if($view_controller == 12){
+?>
+<div class="card-box pd-20 height-100-p mb-30">
+<div class="row align-items-center">
+<div class="col-md-4 text-center">
+<img src="vendors/images/icono.png" alt="">
+</div>
+<div class="col-md-8">
+<h4 class="weight-500 mb-10 text-capitalize" style="font-size: 14px; font-weight: bolder;">
+HISTORIA CL&Iacute;NICA<br><br><div style="color: #111; font-size: 23px; font-weight: normal;"><?php echo ucwords($_SESSION['usuario_nombres']).' '.ucwords($_SESSION['usuario_apellidos']); ?></div>
+</h4>
+<div class="row" style="padding-top: 15px;">
+<div class="col-md-12 col-sm-12">
+<div class="form-group">
+<div class="pull-left">
+<h4 class="weight-500">
+<div style="color: #95cf32; font-weight: bold; font-size: 18px;">Rutina Diaria de consumo de alimentos</div>
+</h4><hr>
+</div>
+</div>
+</div>
+<div class="col-md-12 col-sm-12">
+<div class="form-group">
+<label class="n-label">Alimentos que consumo diariamente</label>
+<textarea id="form_comidas_preferidas" name="form_comidas_preferidas" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute; los alimentos que consumes diariamente:"></textarea>
+</div>
+</div>
+<div class="col-md-12 col-sm-12">
+<div class="form-group">
+<label class="n-label">Comidas Preferidas</label>
+<textarea id="form_comidas_preferidas" name="form_comidas_preferidas" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute; tus comidas preferidas:"></textarea>
+</div>
+</div>
+<div class="col-md-12 col-sm-12 text-center">
+<button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Siguiente -></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<?php
+}
 }
