@@ -5,6 +5,13 @@ error_reporting(E_ALL ^ E_NOTICE);
 //VIEW CONTROLLER
 $view_controller = 4;
 
+//GETS
+if(isset($_GET['pacientes'])){
+$ver_pacientes = 1;
+} else {
+$ver_pacientes = 0;
+}
+
 //REQUIRES
 require_once(__DIR__.'/config/is_logged.php');
 require_once(__DIR__.'/config/conexion_bd.php');

@@ -1584,6 +1584,13 @@ chart.render();
 }
 }
 if(($view_controller >= 2 && $view_controller <= 7 && $view_controller != 3) || ($view_controller == 10)){
+
+//VENDEDOR
+if(isset($ver_pacientes)){
+$ver_pacientes == 1;
+} else {
+$ver_pacientes == 0;
+}
 ?>
 <div class="card-box mb-30">
 <div class="card-box pd-20 height-100-p mb-30">
@@ -1733,7 +1740,8 @@ data: {
 action: 'ajax',
 page: page,
 n_fecha_desde : n_fecha_desde,
-n_fecha_hasta : n_fecha_hasta
+n_fecha_hasta : n_fecha_hasta,
+ver_pacientes : <?php echo $ver_pacientes;?>
 },
 success: function(datos){
 $('#reporte_tabla').html(datos).fadeIn('slow');

@@ -382,13 +382,50 @@ $ret_id_medio_pago = $sql_general_row[9];
 $ret_id_cuenta_bancaria = $sql_general_row[10];
 $ret_id_paquete = $sql_general_row[11];
 
+//CAMPOS NUEVOS
+$ret_codigo = $sql_general_row[12];
+$ret_nombres = $sql_general_row[13];
+$ret_apellidos = $sql_general_row[14];
+$ret_genero = $sql_general_row[15];
+$ret_edad_paciente = $sql_general_row[16];
+$ret_correo = $sql_general_row[17];
+$ret_telefono = $sql_general_row[18];
+$ret_texto_estado = $sql_general_row[19];
+
 //NOMBRE DEL PROGRAMA
 $row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM programa WHERE id = '$ret_id_programa' LIMIT 1"));
 $ret_nombre_programa = $row_nombre_programa[0];
 
 //NOMBRE DEL PACIENTE
-$row_nombre_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT CONCAT(nombres, ' ' ,apellidos) FROM usuario WHERE id_tipo_usuario = 2 AND id = '$ret_id_paciente' LIMIT 1"));
-$ret_nombre_paciente = $row_nombre_paciente[0];
+$row_nombre_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT codigo, nombres, apellidos, genero, fecha_nacimiento, correo, telefono, estado FROM usuario WHERE id_tipo_usuario = 2 AND id = '$ret_id_paciente' LIMIT 1"));
+$ret_codigo = $row_nombre_paciente[0];
+$ret_nombres = $row_nombre_paciente[1];
+$ret_apellidos = $row_nombre_paciente[2];
+$ret_id_genero = $row_nombre_paciente[3];
+if($ret_id_genero == 1){
+$ret_genero = 'Masculino';
+} else {
+$ret_genero = 'Femenino';
+}
+$ret_fecha_nacimiento = $row_nombre_paciente[4];
+$fecha_nacimiento = new DateTime($ret_fecha_nacimiento);
+$hoy = new DateTime();
+$edad = $hoy->diff($fecha_nacimiento);
+$ret_texto_edad = $edad->y;
+
+$ret_correo = $row_nombre_paciente[5];
+$ret_telefono = $row_nombre_paciente[6];
+$ret_id_estado = $row_nombre_paciente[7];
+if($ret_id_estado == 1){
+$css_paciente_color = '#95cf32';
+$ret_texto_estado = 'Activo';
+} else {
+$css_paciente_color = '#F26C3C';
+$ret_texto_estado = 'Inactivo';
+}
+
+$ret_nombre_paciente = $ret_nombres.' '.$ret_apellidos;
+
 
 //NOMBRE DEL NUTRICIONISTA
 $row_nombre_nutricionista = mysqli_fetch_array(mysqli_query($con, "SELECT CONCAT(nombres, ' ' ,apellidos) FROM usuario WHERE id_tipo_usuario = 1 AND id = '$ret_id_nutricionista' LIMIT 1"));
@@ -441,7 +478,16 @@ $ret_id_cuenta_bancaria,
 $ret_nombre_medio_pago,
 $ret_nombre_cuenta_bancaria,
 $ret_id_paquete,
-$ret_nombre_paquete
+$ret_nombre_paquete,
+$ret_codigo,
+$ret_nombres,
+$ret_apellidos,
+$ret_genero,
+$ret_texto_edad,
+$ret_correo,
+$ret_telefono,
+$ret_texto_estado,
+$css_paciente_color
 );
 }
 

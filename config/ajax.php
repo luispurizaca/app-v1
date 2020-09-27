@@ -974,8 +974,26 @@ if($ret_id_tipo_usuario != 3){
 
 //SUSCRIPCIONES
 if($view_controller == 4){
+$ver_pacientes = (int)$_POST['ver_pacientes'];
 ?>
 <table style="width: 1000px !important; margin: 0 auto;">
+<?php
+if($ver_pacientes == 1){
+?>
+<tr>
+<td class="td-title" style="width: 11.11% !important;">N&#176; Socio</td>
+<td class="td-title" style="width: 11.11% !important;">Nombres</td>
+<td class="td-title" style="width: 11.11% !important;">Apellidos</td>
+<td class="td-title" style="width: 11.11% !important;">G&eacute;nero</td>
+<td class="td-title" style="width: 11.11% !important;">Edad</td>
+<td class="td-title" style="width: 11.11% !important;">Correo</td>
+<td class="td-title" style="width: 11.11% !important;">Tel&eacute;fono</td>
+<td class="td-title" style="width: 11.11% !important;">Estado</td>
+<td class="td-title" style="width: 11.11% !important;">Acci&oacute;n</td>
+</tr>
+<?php
+} else {
+?>
 <tr>
 <td class="td-title" style="width: 140px !important;">Fecha Venta</td>
 <td class="td-title" style="width: 140px !important;">Paciente</td>
@@ -989,6 +1007,9 @@ if($view_controller == 4){
 <td class="td-title" style="width: 140px !important;">Nutricionista</td>
 <td class="td-title" style="width: 100px !important;">Acci&oacute;n</td>
 </tr>
+<?php
+}
+?>
 <?php
 $array_funcion = $funcion_datos[1];
 foreach($array_funcion as $row){
@@ -1014,25 +1035,52 @@ $ret_nombre_medio_pago = $row[16];
 $ret_nombre_cuenta_bancaria = $row[17];
 $ret_id_paquete = $row[18];
 $ret_nombre_paquete = $row[19];
+
+//NUEVOS CAMPOS
+$ret_codigo = $row[20];
+$ret_nombres = $row[21];
+$ret_apellidos = $row[22];
+$ret_genero = $row[23];
+$ret_edad_paciente = $row[24];
+$ret_correo = $row[25];
+$ret_telefono = $row[26];
+$ret_texto_estado = $row[27];
+
+if($ver_pacientes == 1){
 ?>
 <tr class="tr-hover" style="cursor: pointer;">
-<td class="td-content" style="width: 11.11% !important;" onclick="visualizar(<?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_venta; ?></td>
-<td class="td-content" style="width: 11.11% !important;" onclick="visualizar(<?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_nombre_paciente; ?></td>
-<td class="td-content" style="width: 11.11% !important;" onclick="visualizar(<?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_monto_venta; ?></td>
-<td class="td-content" style="width: 11.11% !important;" onclick="visualizar(<?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_nombre_medio_pago; ?></td>
-<td class="td-content" style="width: 11.11% !important;" onclick="visualizar(<?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_nombre_cuenta_bancaria; ?></td>
-<td class="td-content" style="width: 11.11% !important;" onclick="visualizar(<?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_nombre_paquete; ?></td>
-<td class="td-content" style="width: 11.11% !important;" onclick="visualizar(<?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_nombre_programa; ?></td>
-<td class="td-content" style="width: 11.11% !important;" onclick="visualizar(<?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_inicio; ?></td>
-<td class="td-content" style="width: 11.11% !important;" onclick="visualizar(<?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_fin; ?></td>
-<td class="td-content" style="width: 11.11% !important;" onclick="visualizar(<?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_nombre_nutricionista; ?></td>
-
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_codigo; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombres; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_apellidos; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_genero; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_edad_paciente; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_correo; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_telefono; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_texto_estado; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
-<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit" style="font-size: 13px; margin-right: 5px;"></i></a>
 <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="eliminar(<?php echo $ret_id_suscripcion; ?>)"><i class="fa fa-trash-o" style="font-size: 13px;"></i></a>
 </td>
 </tr>
 <?php
+} else {
+?>
+<tr class="tr-hover" style="cursor: pointer;">
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_venta; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paciente; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_monto_venta; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_medio_pago; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_cuenta_bancaria; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paquete; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_programa; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_inicio; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_fin; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_nutricionista; ?></td>
+<td class="td-content" style="width: 11.11% !important;">
+<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="eliminar(<?php echo $ret_id_suscripcion; ?>)"><i class="fa fa-trash-o" style="font-size: 13px;"></i></a>
+</td>
+</tr>
+<?php
+}
 }
 ?>
 <tr>
