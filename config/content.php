@@ -1162,6 +1162,48 @@ var chart = new ApexCharts(document.querySelector("#chart3"), options);
 chart.render();
 </script>
 </div>
+<?php
+$query_por_vencer = mysqli_query($con, 
+"
+(
+SELECT '1' AS TIPO_SQL,
+id AS ID_SUSCRIPCION,
+id_programa AS ID_PROGRAMA,
+id_nutricionista AS ID_NUTRICIONISTA,
+id_paciente AS ID_PACIENTE,
+fecha_inicio AS FECHA_INICIO,
+fecha_fin AS FECHA_FIN,
+estado AS ESTADO,
+id_vendedor AS ID_VENDEDOR,
+id_paquete AS ID_PAQUETE,
+id_tipo_suscripcion AS ID_TIPO_SUSCRIPCION
+FROM suscripcion_programa 
+WHERE id_vendedor = '".$_SESSION['ID_USUARIO']."'
+AND DATE_FORMAT(fecha_fin, '%Y-%m-%d') BETWEEN DATE_FORMAT(CURDATE(), '%Y-%m-%d') AND DATE_ADD(CURDATE(), INTERVAL 3 DAY)
+ORDER BY DATE_FORMAT(fecha_fin, '%Y-%m-%d') ASC
+)
+UNION ALL
+(
+SELECT '2' AS TIPO_SQL,
+id AS ID_SUSCRIPCION,
+id_programa AS ID_PROGRAMA,
+id_nutricionista AS ID_NUTRICIONISTA,
+id_paciente AS ID_PACIENTE,
+fecha_inicio AS FECHA_INICIO,
+fecha_fin AS FECHA_FIN,
+estado AS ESTADO,
+id_vendedor AS ID_VENDEDOR,
+id_paquete AS ID_PAQUETE,
+id_tipo_suscripcion AS ID_TIPO_SUSCRIPCION
+FROM suscripcion_programa 
+WHERE id_vendedor = '".$_SESSION['ID_USUARIO']."'
+AND DATE_FORMAT(fecha_fin, '%Y-%m-%d') BETWEEN DATE_SUB(CURDATE(), INTERVAL 3 DAY) AND DATE_FORMAT(CURDATE(), '%Y-%m-%d')
+ORDER BY DATE_FORMAT(fecha_fin, '%Y-%m-%d') ASC
+)
+"
+);
+if(mysqli_num_rows($query_por_vencer) > 0){
+?>
 <div class="col-xl-12 mb-30">
 <div style="font-size: 20px; width: 100%; font-weight: bold; color: white; padding-left: 25px; background: rgba(242, 108, 60, 1); padding-top: 20px; padding-bottom: 20px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
 <i class="icon-copy dw dw-notification" style="font-size: 18px; font-weight: bolder;"></i>
@@ -1170,26 +1212,43 @@ Alertas!
 <div class="card-box height-100-p widget-style1">
 <div class="d-flex flex-wrap align-items-center" style="padding-top: 20px;">
 <ul>
-<li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px;">
+<?php
+while($row_por_vencer = mysqli_fetch_array($query_por_vencer)){
+$tipo_sql = $row_por_vencer[0];
+if($tipo_sql == 1){
+$mostrar_verbo = 'vence';
+$css_estado = 'color: #111;';
+} else {
+$mostrar_verbo = 'venci&oacute;';
+$css_estado = 'color: #F26C3C; font-weight: bolder;';
+}
+$id = $row_por_vencer[1];
+$id_programa = $row_por_vencer[2];
+$id_nutricionista = $row_por_vencer[3];
+$id_paciente = $row_por_vencer[4];
+$row_datos_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT codigo, nombres, apellidos FROM usuario WHERE id = '$id_paciente' LIMIT 1"));
+$mostrar_paciente = $row_datos_paciente[1].' '.$row_datos_paciente[2].' ('.$row_datos_paciente[0].')';
+$fecha_inicio = $row_por_vencer[5];
+$fecha_fin = date('d/m/Y', strtotime($row_por_vencer[6]));
+$estado = $row_por_vencer[7];
+$id_vendedor = $row_por_vencer[8];
+$id_paquete = $row_por_vencer[9];
+$id_tipo_suscripcion = $row_por_vencer[10];
+?>
+<li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px; <?php echo $css_estado; ?>">
 <span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
-La membres&iacute;a de Diego Peralta vence el 29/09/2020.
+La membres&iacute;a de <?php echo $mostrar_paciente; ?> <?php echo $mostrar_verbo; ?> el <?php echo $fecha_fin; ?>.
 </li>
-<li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px;">
-<span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
-La membres&iacute;a de Diego Peralta vence el 29/09/2020.
-</li>
-<li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px;">
-<span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
-La membres&iacute;a de Diego Peralta vence el 29/09/2020.
-</li>
-<li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px;">
-<span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
-La membres&iacute;a de Diego Peralta vence el 29/09/2020.
-</li>
+<?php
+}
+?>
 </ul>
 </div>
 </div>
 </div>
+<?php
+}
+?>
 </div>
 <?php
 }
