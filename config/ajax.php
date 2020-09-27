@@ -984,10 +984,10 @@ if($ver_pacientes == 1){
 <td class="td-title" style="width: 11.11% !important;">N&#176; Socio</td>
 <td class="td-title" style="width: 11.11% !important;">Paciente</td>
 <td class="td-title" style="width: 11.11% !important;">Fecha Venta</td>
+<td class="td-title" style="width: 11.11% !important;">Paquete</td>
 <td class="td-title" style="width: 11.11% !important;">Plan</td>
 <td class="td-title" style="width: 11.11% !important;">Fecha Cuota</td>
 <td class="td-title" style="width: 11.11% !important;">D&iacute;as Vencimiento</td>
-<td class="td-title" style="width: 11.11% !important;">Monto total</td>
 <td class="td-title" style="width: 11.11% !important;">Acci&oacute;n</td>
 </tr>
 <?php
@@ -1054,10 +1054,10 @@ $ret_dias_vencimiento = $diff->days . ' d&iacute;as';
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_codigo; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paciente; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_venta; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paquete; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_programa; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_fin; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_dias_vencimiento; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_monto_venta; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
 <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="eliminar(<?php echo $ret_id_suscripcion; ?>)"><i class="fa fa-trash-o" style="font-size: 13px;"></i></a>
 </td>

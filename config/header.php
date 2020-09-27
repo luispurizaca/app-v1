@@ -55,14 +55,33 @@ if(isset($con)){
 <div class="menu-block customscroll" style="height: calc(100vh - 110px); background: #818181;">
 <div class="sidebar-menu">
 <ul id="accordion-menu">
-<?php
-if($_SESSION['ID_TIPO_USUARIO'] == 4){
-?>
 <li>
 <a href="index.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Inicio</span>
 </a>
 </li>
+<?php
+if($_SESSION['ID_TIPO_USUARIO'] == 2){
+?>
+<li>
+<a href="historia.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Historia Cl&iacute;nica</span>
+</a>
+</li>
+<li>
+<a href="medidas.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Registro de Peso y Medidas</span>
+</a>
+</li>
+<li>
+<a href="evolucion.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Evoluci&oacute;n</span>
+</a>
+</li>
+<?php
+}
+elseif($_SESSION['ID_TIPO_USUARIO'] == 4){
+?>
 <li>
 <a href="pacientes-v.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Registro</span>
@@ -79,13 +98,9 @@ if($_SESSION['ID_TIPO_USUARIO'] == 4){
 </a>
 </li>
 <?php
-} else {
+}
+else {
 ?>
-<li>
-<a href="index.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
-<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Inicio</span>
-</a>
-</li>
 <li>
 <a href="pacientes.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Mis Pacientes</span>
