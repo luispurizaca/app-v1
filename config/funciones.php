@@ -20,6 +20,7 @@ $fn_id_paciente = (int)$array_filtros[6];
 $fn_id_suscripcion = (int)$array_filtros[7];
 $n_fecha_desde = $array_filtros[8];
 $n_fecha_hasta = $array_filtros[9];
+$ver_pacientes = (int)$array_filtros[10];
 
 
 //CONSULTA PACIENTES
@@ -85,8 +86,14 @@ FROM suscripcion_programa
 WHERE suscripcion_programa.id_vendedor = '".$_SESSION['ID_USUARIO']."'";
 
 //FILTRO FECHAS
-if(!empty($n_fecha_desde) && !empty($n_fecha_hasta)){
+if(!empty($n_fecha_desde) && !empty($n_fecha_hasta) && $ver_pacientes == 1){
 $consulta_sql_general .= " AND (DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') BETWEEN DATE_FORMAT('$n_fecha_desde', '%Y-%m-%d') AND DATE_FORMAT('$n_fecha_hasta', '%Y-%m-%d'))";
+}
+
+$consulta_sql_general .= " HAVING 1 = 1";
+//FILTRO FECHAS
+if(!empty($n_fecha_desde) && !empty($n_fecha_hasta) && $ver_pacientes != 1){
+$consulta_sql_general .= " AND (DATE_FORMAT(FECHA_VENTA, '%Y-%m-%d') BETWEEN DATE_FORMAT('$n_fecha_desde', '%Y-%m-%d') AND DATE_FORMAT('$n_fecha_hasta', '%Y-%m-%d'))";
 }
 
 //ORDER BY

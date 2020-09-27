@@ -889,9 +889,10 @@ $id_tipo_usuario = 2;
 $id_registro = 0;
 $n_fecha_desde = $_POST['n_fecha_desde'];
 $n_fecha_hasta = $_POST['n_fecha_hasta'];
+$ver_pacientes = (int)$_POST['ver_pacientes'];
 
 //ARRAY FILTROS
-$array_filtros = array($view_controller, $activos, $id_tipo_usuario, $offset, $per_page, $id_registro, $fn_id_paciente, $fn_id_suscripcion, $n_fecha_desde, $n_fecha_hasta);
+$array_filtros = array($view_controller, $activos, $id_tipo_usuario, $offset, $per_page, $id_registro, $fn_id_paciente, $fn_id_suscripcion, $n_fecha_desde, $n_fecha_hasta, $ver_pacientes);
 
 //FUNCION
 $funcion_datos = consulta($array_filtros);
@@ -974,7 +975,6 @@ if($ret_id_tipo_usuario != 3){
 
 //SUSCRIPCIONES
 if($view_controller == 4){
-$ver_pacientes = (int)$_POST['ver_pacientes'];
 ?>
 <table style="width: 1000px !important; margin: 0 auto;">
 <?php
@@ -982,30 +982,28 @@ if($ver_pacientes == 1){
 ?>
 <tr>
 <td class="td-title" style="width: 11.11% !important;">N&#176; Socio</td>
-<td class="td-title" style="width: 11.11% !important;">Nombres</td>
-<td class="td-title" style="width: 11.11% !important;">Apellidos</td>
-<td class="td-title" style="width: 11.11% !important;">G&eacute;nero</td>
-<td class="td-title" style="width: 11.11% !important;">Edad</td>
-<td class="td-title" style="width: 11.11% !important;">Correo</td>
-<td class="td-title" style="width: 11.11% !important;">Tel&eacute;fono</td>
-<td class="td-title" style="width: 11.11% !important;">Estado</td>
+<td class="td-title" style="width: 11.11% !important;">Paciente</td>
+<td class="td-title" style="width: 11.11% !important;">Fecha Venta</td>
+<td class="td-title" style="width: 11.11% !important;">Plan</td>
+<td class="td-title" style="width: 11.11% !important;">Fecha Cuota</td>
+<td class="td-title" style="width: 11.11% !important;">D&iacute;as Vencimiento</td>
+<td class="td-title" style="width: 11.11% !important;">Monto total</td>
 <td class="td-title" style="width: 11.11% !important;">Acci&oacute;n</td>
 </tr>
 <?php
 } else {
 ?>
 <tr>
-<td class="td-title" style="width: 140px !important;">Fecha Venta</td>
-<td class="td-title" style="width: 140px !important;">Paciente</td>
-<td class="td-title" style="width: 140px !important;">Monto</td>
-<td class="td-title" style="width: 140px !important;">Medio Pago</td>
-<td class="td-title" style="width: 140px !important;">Banco</td>
-<td class="td-title" style="width: 140px !important;">Paquete</td>
-<td class="td-title" style="width: 140px !important;">Plan</td>
-<td class="td-title" style="width: 140px !important;">Fecha Inicio</td>
-<td class="td-title" style="width: 140px !important;">Fecha Fin</td>
-<td class="td-title" style="width: 140px !important;">Nutricionista</td>
-<td class="td-title" style="width: 100px !important;">Acci&oacute;n</td>
+<td class="td-title" style="width: 11.11% !important;">Fecha Venta</td>
+<td class="td-title" style="width: 11.11% !important;">Paciente</td>
+<td class="td-title" style="width: 11.11% !important;">Paquete</td>
+<td class="td-title" style="width: 11.11% !important;">Plan</td>
+<td class="td-title" style="width: 11.11% !important;">Fecha Inicio</td>
+<td class="td-title" style="width: 11.11% !important;">Fecha Fin</td>
+<td class="td-title" style="width: 11.11% !important;">Banco</td>
+<td class="td-title" style="width: 11.11% !important;">Medio Pago</td>
+<td class="td-title" style="width: 11.11% !important;">Nutricionista</td>
+<td class="td-title" style="width: 11.11% !important;">Acci&oacute;n</td>
 </tr>
 <?php
 }
@@ -1047,16 +1045,19 @@ $ret_telefono = $row[26];
 $ret_texto_estado = $row[27];
 
 if($ver_pacientes == 1){
+$date1 = new DateTime(date('Y-m-d'));
+$date2 = new DateTime($row[5]);
+$diff = $date1->diff($date2);
+$ret_dias_vencimiento = $diff->days . ' d&iacute;as';
 ?>
 <tr class="tr-hover" style="cursor: pointer;">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_codigo; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombres; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_apellidos; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_genero; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_edad_paciente; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_correo; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_telefono; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_texto_estado; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paciente; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_venta; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_programa; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_fin; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_dias_vencimiento; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_monto_venta; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
 <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="eliminar(<?php echo $ret_id_suscripcion; ?>)"><i class="fa fa-trash-o" style="font-size: 13px;"></i></a>
 </td>
@@ -1067,13 +1068,12 @@ if($ver_pacientes == 1){
 <tr class="tr-hover" style="cursor: pointer;">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_venta; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paciente; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_monto_venta; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_medio_pago; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_cuenta_bancaria; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paquete; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_programa; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_inicio; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_fin; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_cuenta_bancaria; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_medio_pago; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_nutricionista; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
 <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="eliminar(<?php echo $ret_id_suscripcion; ?>)"><i class="fa fa-trash-o" style="font-size: 13px;"></i></a>

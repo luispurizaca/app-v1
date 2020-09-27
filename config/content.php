@@ -1586,10 +1586,17 @@ chart.render();
 if(($view_controller >= 2 && $view_controller <= 7 && $view_controller != 3) || ($view_controller == 10)){
 
 //VENDEDOR
-if(isset($ver_pacientes)){
-$ver_pacientes == 1;
+global $ver_pacientes;
+if($ver_pacientes == 1){
+$texto_diario = 'Vencen hoy';
+$texto_semanal = 'Vencen &eacute;sta semana';
+$texto_mensual = 'Vencen &eacute;ste mes';
+$texto_anual = 'Vencen &eacute;ste a&ntilde;o';
 } else {
-$ver_pacientes == 0;
+$texto_diario = 'Ventas del d&iacute;a';
+$texto_semanal = 'Ventas de la semana';
+$texto_mensual = 'Ventas del mes';
+$texto_anual = 'Ventas del a&ntilde;o';
 }
 ?>
 <div class="card-box mb-30">
@@ -1637,16 +1644,16 @@ if($view_controller == 4){
 <nav class="text-center">
 <ul>
 <li style="display: inline-block;">
-<button type="button" id="filtro_diario" onclick="filtro_fechas(1)" title="Hoy" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Vencen Hoy</button>
+<button type="button" id="filtro_diario" onclick="filtro_fechas(1)" title="Hoy" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;"><?php echo $texto_diario; ?></button>
 </li>
 <li style="display: inline-block;">
-<button type="button" id="filtro_semanal" onclick="filtro_fechas(2)" title="Esta Semana" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Vencen &eacute;sta semana</button>
+<button type="button" id="filtro_semanal" onclick="filtro_fechas(2)" title="Esta Semana" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;"><?php echo $texto_semanal; ?></button>
 </li>
 <li style="display: inline-block;">
-<button type="button" id="filtro_mensual" onclick="filtro_fechas(3)" title="Este Mes" style="border: none; padding: 5px; font-size: 12px; background: #818181; color: white; outline: none;">Vencen &eacute;ste mes</button>
+<button type="button" id="filtro_mensual" onclick="filtro_fechas(3)" title="Este Mes" style="border: none; padding: 5px; font-size: 12px; background: #818181; color: white; outline: none;"><?php echo $texto_mensual; ?></button>
 </li>
 <li style="display: inline-block;">
-<button type="button" id="filtro_anual" onclick="filtro_fechas(4)" title="Este Año" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;">Vencen &eacute;ste a&ntilde;o</button>
+<button type="button" id="filtro_anual" onclick="filtro_fechas(4)" title="Este Año" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;"><?php echo $texto_anual; ?></button>
 </li>
 <li style="display: inline-block; margin-left: 10px;">
 <button type="button" class="btn btn_modal_fechas_dashboard" title="Rango de Fechas" style="border: none; font-size: 23px; background: transparent; padding: 0; color: #818181; outline: none;"><i class="fa fa-calendar"></i></button>
@@ -1741,7 +1748,7 @@ action: 'ajax',
 page: page,
 n_fecha_desde : n_fecha_desde,
 n_fecha_hasta : n_fecha_hasta,
-ver_pacientes : <?php echo $ver_pacientes;?>
+ver_pacientes : <?php echo $ver_pacientes; ?>
 },
 success: function(datos){
 $('#reporte_tabla').html(datos).fadeIn('slow');
