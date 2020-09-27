@@ -36,7 +36,11 @@ $num_rows_total_pacientes = mysqli_num_rows(mysqli_query($con, "SELECT id FROM u
 $_SESSION['admin_total_pacientes'] = $num_rows_total_pacientes;
 
 //NUMERO TOTAL DE PACIENTES
+if($_SESSION['ID_TIPO_USUARIO'] == 4){
+$num_rows_pacientes = mysqli_num_rows(mysqli_query($con, "SELECT id FROM suscripcion_programa WHERE id_vendedor = '".$_SESSION['ID_USUARIO']."' AND id_paciente IN (SELECT id FROM usuario WHERE activo = 1 AND id_tipo_usuario = 2)"));
+} else {
 $num_rows_pacientes = mysqli_num_rows(mysqli_query($con, "SELECT id FROM nutricionista_paciente WHERE id_nutricionista = '".$_SESSION['ID_USUARIO']."' AND id_paciente IN (SELECT id FROM usuario WHERE activo = 1 AND id_tipo_usuario = 2)"));
+}
 $_SESSION['usuario_total_pacientes'] = $num_rows_pacientes;
 
 //TOTAL DE PACIENTES ACTIVOS
@@ -46,3 +50,11 @@ $_SESSION['usuario_total_pacientes_activos'] = $num_rows_pacientes_activos;
 //TOTAL DE PACIENTES INACTIVOS
 $num_rows_pacientes_inactivos = mysqli_num_rows(mysqli_query($con, "SELECT id FROM nutricionista_paciente WHERE id_nutricionista = '".$_SESSION['ID_USUARIO']."' AND id_paciente IN (SELECT id FROM usuario WHERE activo = 1 AND id_tipo_usuario = 2 AND estado != 1)"));
 $_SESSION['usuario_total_pacientes_inactivos'] = $num_rows_pacientes_inactivos;
+
+//NUMERO TOTAL DE SUSCRIPCIONES NUEVAS
+$num_rows_suscripciones_nuevas = mysqli_num_rows(mysqli_query($con, "SELECT id FROM suscripcion_programa WHERE id_tipo_suscripcion = 1 AND id_vendedor = '".$_SESSION['ID_USUARIO']."' AND id_paciente IN (SELECT id FROM usuario WHERE activo = 1 AND id_tipo_usuario = 2)"));
+$_SESSION['usuario_total_suscripciones_nuevas'] = $num_rows_suscripciones_nuevas;
+
+//NUMERO TOTAL DE SUSCRIPCIONES RENOVADAS
+$num_rows_suscripciones_renovadas = mysqli_num_rows(mysqli_query($con, "SELECT id FROM suscripcion_programa WHERE id_tipo_suscripcion = 2 AND id_vendedor = '".$_SESSION['ID_USUARIO']."' AND id_paciente IN (SELECT id FROM usuario WHERE activo = 1 AND id_tipo_usuario = 2)"));
+$_SESSION['usuario_total_suscripciones_renovadas'] = $num_rows_suscripciones_renovadas;

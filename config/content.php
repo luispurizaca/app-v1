@@ -600,6 +600,7 @@ $form_fecha_suscripcion_fin = date('Y-m-d', strtotime($_POST['form_fecha_suscrip
 
 //AGREGAR A LA BD USUARIO
 if(empty($form_id_paciente)){
+$suscripcion_nueva = 1;
 
 mysqli_query($con, "
 INSERT INTO usuario (id_tipo_usuario, codigo, correo, clave, nombres, apellidos, fecha_nacimiento, genero, estado, activo, id_tipo_documento, numero_documento, date_added, instagram, direccion, distrito, provincia, departamento, residencia, maximo_pacientes, peso_meta, talla, telefono, id_vendedor)
@@ -612,6 +613,8 @@ VALUES
 $row_id = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM usuario WHERE id_tipo_usuario = 2 ORDER BY id DESC LIMIT 1"));
 $ultimo_id = (int)$row_id[0];
 } else {
+$suscripcion_nueva = 2;
+
 mysqli_query($con, "UPDATE usuario SET
 correo = '".$form_correo."',
 nombres = '".$form_nombres."', apellidos = '".$form_apellidos."',
@@ -635,9 +638,9 @@ WHERE id = '$form_id_paciente' AND id_tipo_usuario = 2");
 
 //AGREGAR A LA BD SUSCRIPCION
 mysqli_query($con, "
-INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete)
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete, id_tipo_suscripcion)
 VALUES 
-('".$form_id_programa."', '".$form_id_nutricionista."', '".$ultimo_id."', '".$form_fecha_suscripcion."', '".$form_fecha_suscripcion_fin."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete')
+('".$form_id_programa."', '".$form_id_nutricionista."', '".$ultimo_id."', '".$form_fecha_suscripcion."', '".$form_fecha_suscripcion_fin."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete', '$suscripcion_nueva')
 "
 );
 
@@ -898,17 +901,10 @@ $porcentaje_tres = 0;
 $porcentaje_uno = round(($_SESSION['usuario_total_pacientes'] / $_SESSION['usuario_maximo_pacientes']), 2) * 100;
 
 //PORCENTAJE PACIENTES ACTIVOS
-$porcentaje_dos = round(($_SESSION['usuario_total_pacientes_activos'] / $_SESSION['usuario_total_pacientes']), 2) * 100;
+$porcentaje_dos = round(($_SESSION['usuario_total_suscripciones_nuevas'] / $_SESSION['usuario_total_pacientes']), 2) * 100;
 
 //PORCENTAJE PACIENTES INACTIVOS
-$porcentaje_tres = round(($_SESSION['usuario_total_pacientes_inactivos'] / $_SESSION['usuario_total_pacientes']), 2) * 100;
-}
-
-//PORCENTAJE CONTROLES REALIZADOS
-if(empty($_SESSION['total_controles'])){
-$porcentaje_cuatro = 0;
-} else {
-$porcentaje_cuatro = round(($_SESSION['usuario_controles_realizados'] / $_SESSION['total_controles']), 2) * 100;
+$porcentaje_tres = round(($_SESSION['usuario_total_suscripciones_renovadas'] / $_SESSION['usuario_total_pacientes']), 2) * 100;
 }
 ?>
 <div class="widget-data">
@@ -999,7 +995,7 @@ chart.render();
 <div id="chart2"></div>
 </div>
 <div class="widget-data">
-<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes_activos']; ?>/<?php echo $_SESSION['usuario_total_pacientes']; ?></div>
+<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_suscripciones_nuevas']; ?>/<?php echo $_SESSION['usuario_total_pacientes']; ?></div>
 <div class="weight-600 font-14">Membres&iacute;as Nuevas</div>
 </div>
 </div>
@@ -1086,7 +1082,7 @@ chart.render();
 <div id="chart3"></div>
 </div>
 <div class="widget-data">
-<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes_inactivos']; ?>/<?php echo $_SESSION['usuario_total_pacientes']; ?></div>
+<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_suscripciones_renovadas']; ?>/<?php echo $_SESSION['usuario_total_pacientes']; ?></div>
 <div class="weight-600 font-14">Membres&iacute;as Renovaci&oacute;n</div>
 </div>
 </div>
