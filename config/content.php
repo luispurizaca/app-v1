@@ -2420,7 +2420,7 @@ if($view_controller == 13){
 </div>
 <div class="col-md-8">
 <h4 class="weight-500 mb-10 text-capitalize" style="font-size: 14px; font-weight: bolder;">
-REGISTRO DE PESO Y MEDIDOS<br><br><div style="color: #111; font-size: 23px; font-weight: normal;"><?php echo ucwords($_SESSION['usuario_nombres']).' '.ucwords($_SESSION['usuario_apellidos']); ?></div>
+REGISTRO DE PESO Y MEDIDAS<br><br><div style="color: #111; font-size: 23px; font-weight: normal;"><?php echo ucwords($_SESSION['usuario_nombres']).' '.ucwords($_SESSION['usuario_apellidos']); ?></div>
 </h4>
 <div class="row" style="padding-top: 15px;">
 <div class="col-md-12 col-sm-12">
