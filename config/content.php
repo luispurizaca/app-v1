@@ -2399,13 +2399,13 @@ Te agradecer&eacute; completar esta ficha para conocerte m&aacute;s!
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="agua_no" name="form_agua"> No tomo agua
+<input type="radio" id="agua_no" name="form_agua" value="1"> No tomo agua
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="agua_poco" name="form_agua"> Tomo poca agua
+<input type="radio" id="agua_poco" name="form_agua" value="2"> Tomo poca agua
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="agua_mucha" name="form_agua"> Tomo mucha agua
+<input type="radio" id="agua_mucha" name="form_agua" value="3"> Tomo mucha agua
 </label>
 </td>
 </tr>
@@ -2415,11 +2415,11 @@ Te agradecer&eacute; completar esta ficha para conocerte m&aacute;s!
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="alcohol_no" name="form_alcohol"> No tomo
+<input type="radio" id="alcohol_no" name="form_alcohol" value="1"> No tomo
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="alcohol_si" name="form_alcohol"> Si tomo: 
-Frecuencia: <input type="text" class="n-form-control">
+<input type="radio" id="alcohol_si" name="form_alcohol" value="2"> Si tomo: 
+Frecuencia: <input type="text" class="n-form-control" id="form_alcohol_frecuencia">
 </label>
 </td>
 </tr>
@@ -2429,13 +2429,13 @@ Frecuencia: <input type="text" class="n-form-control">
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="evacuacion_diario" name="form_evacuacion"> Diario
+<input type="radio" id="evacuacion_diario" name="form_evacuacion" value="1"> Diario
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="evacuacion_interdiario" name="form_evacuacion"> Interdiario
+<input type="radio" id="evacuacion_interdiario" name="form_evacuacion" value="2"> Interdiario
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="evacuacion_estrenimiento" name="form_evacuacion"> Estre&ntilde;imiento
+<input type="radio" id="evacuacion_estrenimiento" name="form_evacuacion" value="3"> Estre&ntilde;imiento
 </label>
 </td>
 </tr>
@@ -2445,10 +2445,10 @@ Frecuencia: <input type="text" class="n-form-control">
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="dormir_si" name="form_dormir"> M&aacute;s de 8 horas
+<input type="radio" id="dormir_si" name="form_dormir" value="1"> M&aacute;s de 8 horas
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="dormir_no" name="form_dormir"> Menos de 8 horas
+<input type="radio" id="dormir_no" name="form_dormir" value="2"> Menos de 8 horas
 </label>
 </td>
 </tr>
@@ -2458,12 +2458,12 @@ Frecuencia: <input type="text" class="n-form-control">
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="ejercicios_no" name="form_ejercicios"> No
+<input type="radio" id="ejercicios_no" name="form_ejercicios" value="1"> No
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="ejercicios_si" name="form_ejercicios"> Si<br>
-Frecuencia: <input type="text" class="n-form-control"><br>
-Horario: <input type="text" class="n-form-control">
+<input type="radio" id="ejercicios_si" name="form_ejercicios" value="2"> Si<br>
+Frecuencia: <input type="text" class="n-form-control" id="form_ejercicios_frecuencia"><br>
+Horario: <input type="text" class="n-form-control" id="form_ejercicios_horario">
 </label>
 </td>
 </tr>
@@ -2473,11 +2473,11 @@ Horario: <input type="text" class="n-form-control">
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="enfermedad_no" name="form_enfermedad"> No
+<input type="radio" id="enfermedad_no" name="form_enfermedad" value="1"> No
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="enfermedad_si" name="form_enfermedad"> Si, 
-Especificar: <input type="text" class="n-form-control">
+<input type="radio" id="enfermedad_si" name="form_enfermedad" value="2"> Si, 
+Especificar: <input type="text" class="n-form-control" id="form_enfermedad_especificar">
 </label>
 </td>
 </tr>
@@ -2487,11 +2487,11 @@ Especificar: <input type="text" class="n-form-control">
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="analisis_alterado_no" name="form_analisis_alterado"> No
+<input type="radio" id="analisis_alterado_no" name="form_analisis_alterado" value="1"> No
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="analisis_alterado_si" name="form_analisis_alterado"> Si, 
-Especificar: <input type="text" class="n-form-control">
+<input type="radio" id="analisis_alterado_si" name="form_analisis_alterado" value="2"> Si, 
+Especificar: <input type="text" class="n-form-control" id="form_analisis_alterado_especificar">
 </label>
 </td>
 </tr>
@@ -2501,11 +2501,11 @@ Especificar: <input type="text" class="n-form-control">
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="medicamentos_no" name="form_medicamentos"> No
+<input type="radio" id="medicamentos_no" name="form_medicamentos" value="1"> No
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="medicamentos_si" name="form_medicamentos"> Si, 
-Especificar: <input type="text" class="n-form-control">
+<input type="radio" id="medicamentos_si" name="form_medicamentos" value="2"> Si, 
+Especificar: <input type="text" class="n-form-control" id="form_medicamentos_especificar">
 </label>
 </td>
 </tr>
@@ -2515,13 +2515,13 @@ Especificar: <input type="text" class="n-form-control">
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="horario_comidas_desayuno" name="form_horario_comidas"> Desayuno
+<input type="radio" id="horario_comidas_desayuno" name="form_horario_comidas" value="1"> Desayuno
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="horario_comidas_almuerzo" name="form_horario_comidas"> Almuerzo 
+<input type="radio" id="horario_comidas_almuerzo" name="form_horario_comidas" value="2"> Almuerzo 
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="horario_comidas_cena" name="form_horario_comidas"> Cena 
+<input type="radio" id="horario_comidas_cena" name="form_horario_comidas" value="3"> Cena 
 </label>
 </td>
 </tr>
@@ -2531,10 +2531,10 @@ Especificar: <input type="text" class="n-form-control">
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="tiempo_no" name="form_tiempo"> Pr&aacute;ctico porque no tengo mucho tiempo para preparar las comidas.
+<input type="radio" id="tiempo_no" name="form_tiempo" value="1"> Pr&aacute;ctico porque no tengo mucho tiempo para preparar las comidas.
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="tiempo_si" name="form_tiempo"> Tengo tiempo para realizar las preparaciones con recetas.
+<input type="radio" id="tiempo_si" name="form_tiempo" value="2"> Tengo tiempo para realizar las preparaciones con recetas.
 </label>
 </td>
 </tr>
@@ -2543,7 +2543,51 @@ Especificar: <input type="text" class="n-form-control">
 <div class="col-md-12 col-sm-12 text-center" style="padding-top: 15px;">
 <button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar Datos</button>
 <script>
-
+$('#btn_guardar_datos').on('click', function(){
+var form_alimentos_gustar_no = $('#form_alimentos_gustar_no').val();
+var form_agua = $('input[name=form_agua]:checked').val();
+var form_alcohol = $('input[name=form_alcohol]:checked').val();
+var form_alcohol_frecuencia = $('#form_alcohol_frecuencia').val();
+var form_evacuacion = $('input[name=form_evacuacion]:checked').val();
+var form_dormir = $('input[name=form_dormir]:checked').val();
+var form_ejercicios = $('input[name=form_ejercicios]:checked').val();
+var form_ejercicios_frecuencia = $('#form_ejercicios_frecuencia').val();
+var form_ejercicios_horario = $('#form_ejercicios_horario').val();
+var form_enfermedad = $('input[name=form_enfermedad]:checked').val();
+var form_enfermedad_especificar = $('#form_enfermedad_especificar').val();
+var form_analisis_alterado = $('input[name=form_analisis_alterado]:checked').val();
+var form_analisis_alterado_especificar = $('#form_analisis_alterado_especificar').val();
+var form_medicamentos = $('input[name=form_medicamentos]:checked').val();
+var form_medicamentos_especificar = $('#form_medicamentos_especificar').val();
+var form_horario_comidas = $('input[name=form_horario_comidas]:checked').val();
+var form_tiempo = $('input[name=form_tiempo]:checked').val();
+$.ajax({
+type: 'POST',
+url: 'config/content.php?negocia_operacion=2',
+data: {
+form_alimentos_gustar_no : form_alimentos_gustar_no,
+form_agua : form_agua,
+form_alcohol : form_alcohol,
+form_alcohol_frecuencia : form_alcohol_frecuencia,
+form_evacuacion : form_evacuacion,
+form_dormir : form_dormir,
+form_ejercicios : form_ejercicios,
+form_ejercicios_frecuencia : form_ejercicios_frecuencia,
+form_ejercicios_horario : form_ejercicios_horario,
+form_enfermedad : form_enfermedad,
+form_enfermedad_especificar : form_enfermedad_especificar,
+form_analisis_alterado : form_analisis_alterado,
+form_analisis_alterado_especificar : form_analisis_alterado_especificar,
+form_medicamentos : form_medicamentos,
+form_medicamentos_especificar : form_medicamentos_especificar,
+form_horario_comidas : form_horario_comidas,
+form_tiempo : form_tiempo
+},
+success: function(datos){
+$('#div_guardar_paciente').html(datos).fadeIn('slow');
+}
+});
+});
 </script>
 </div>
 </div>
