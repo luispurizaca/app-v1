@@ -2375,33 +2375,176 @@ if($view_controller == 12){
 <img src="vendors/images/icono.png" alt="">
 </div>
 <div class="col-md-8">
-<h4 class="weight-500 mb-10 text-capitalize" style="font-size: 14px; font-weight: bolder;">
-HISTORIA CL&Iacute;NICA<br><br><div style="color: #111; font-size: 23px; font-weight: normal;"><?php echo ucwords($_SESSION['usuario_nombres']).' '.ucwords($_SESSION['usuario_apellidos']); ?></div>
+<h4 class="weight-500 mb-10 text-center" style="font-size: 13px; font-weight: bolder;">
+HISTORIA CL&Iacute;NICA<br><br>
+<div style="color: #111; font-size: 14px; font-weight: normal; text-align: left; color: #111; font-weight: 300;">
+Hola <b style="font-weight: 500;"><?php echo ucwords($_SESSION['usuario_nombres']); ?></b>, bienvenido al programa <b style="font-weight: 500;">ReKupera tu peso ideal</b>!
+Te agradecer&eacute; completar esta ficha para conocerte m&aacute;s!
+</div>
 </h4>
 <div class="row" style="padding-top: 15px;">
-<div class="col-md-12 col-sm-12">
-<div class="form-group">
-<div class="pull-left">
-<h4 class="weight-500">
-<div style="color: #95cf32; font-weight: bold; font-size: 18px;">Rutina Diaria de consumo de alimentos</div>
-</h4><hr>
-</div>
-</div>
-</div>
-<div class="col-md-12 col-sm-12">
-<div class="form-group">
-<label class="n-label">Alimentos que consumo diariamente</label>
-<textarea id="form_comidas_preferidas" name="form_comidas_preferidas" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute; los alimentos que consumes diariamente:"></textarea>
-</div>
-</div>
-<div class="col-md-12 col-sm-12">
-<div class="form-group">
-<label class="n-label">Comidas Preferidas</label>
-<textarea id="form_comidas_preferidas" name="form_comidas_preferidas" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute; tus comidas preferidas:"></textarea>
-</div>
-</div>
 <div class="col-md-12 col-sm-12 text-center">
-<button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Siguiente -></button>
+<table style="width: 100%;">
+<tr>
+<td style="width: 50%; text-align: left;">
+<label class="n-label" style="font-size: 12px;">1. Alimentos que no te gusten:</label>
+</td>
+<td style="width: 50%;">
+<textarea id="form_alimentos_gustar_no" name="form_alimentos_gustar_no" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important;"></textarea>
+</td>
+</tr>
+<tr>
+<td style="width: 50%; text-align: left;">
+<label class="n-label" style="font-size: 12px;">2. Consumo de agua diario:</label>
+</td>
+<td style="width: 50%; text-align: left;">
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="agua_no" name="form_agua"> No tomo agua
+</label>
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="agua_poco" name="form_agua"> Tomo poca agua
+</label>
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="agua_mucha" name="form_agua"> Tomo mucha agua
+</label>
+</td>
+</tr>
+<tr>
+<td style="width: 50%; text-align: left;">
+<label class="n-label" style="font-size: 12px;">3. &#191;Tomas alcohol?:</label>
+</td>
+<td style="width: 50%; text-align: left;">
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="alcohol_no" name="form_alcohol"> No tomo
+</label>
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="alcohol_si" name="form_alcohol"> Si tomo: 
+Frecuencia: <input type="text" class="n-form-control">
+</label>
+</td>
+</tr>
+<tr>
+<td style="width: 50%; text-align: left;">
+<label class="n-label" style="font-size: 12px;">4. Evacuaci&oacute;n:</label>
+</td>
+<td style="width: 50%; text-align: left;">
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="evacuacion_diario" name="form_evacuacion"> Diario
+</label>
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="evacuacion_interdiario" name="form_evacuacion"> Interdiario
+</label>
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="evacuacion_estrenimiento" name="form_evacuacion"> Estre&ntilde;imiento
+</label>
+</td>
+</tr>
+<tr>
+<td style="width: 50%; text-align: left;">
+<label class="n-label" style="font-size: 12px;">5. &#191;Cu&aacute;ntas horas duermes al d&iacute;a?:</label>
+</td>
+<td style="width: 50%; text-align: left;">
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="dormir_si" name="form_dormir"> M&aacute;s de 8 horas
+</label>
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="dormir_no" name="form_dormir"> Menos de 8 horas
+</label>
+</td>
+</tr>
+<tr>
+<td style="width: 50%; text-align: left;">
+<label class="n-label" style="font-size: 12px;">6. &#191;Realizas Ejercicios?:</label>
+</td>
+<td style="width: 50%; text-align: left;">
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="ejercicios_no" name="form_ejercicios"> No
+</label>
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="ejercicios_si" name="form_ejercicios"> Si<br>
+Frecuencia: <input type="text" class="n-form-control"><br>
+Horario: <input type="text" class="n-form-control">
+</label>
+</td>
+</tr>
+<tr>
+<td style="width: 50%; text-align: left;">
+<label class="n-label" style="font-size: 12px;">7. &#191;Presentas alguna enfermedad?:</label>
+</td>
+<td style="width: 50%; text-align: left;">
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="enfermedad_no" name="form_enfermedad"> No
+</label>
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="enfermedad_si" name="form_enfermedad"> Si, 
+Especificar: <input type="text" class="n-form-control">
+</label>
+</td>
+</tr>
+<tr>
+<td style="width: 50%; text-align: left;">
+<label class="n-label" style="font-size: 12px;">8. &#191;Alg&uacute;n valor alterado en tus &uacute;ltimos<br>an&aacute;lisis de sangre?:</label>
+</td>
+<td style="width: 50%; text-align: left;">
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="analisis_alterado_no" name="form_analisis_alterado"> No
+</label>
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="analisis_alterado_si" name="form_analisis_alterado"> Si, 
+Especificar: <input type="text" class="n-form-control">
+</label>
+</td>
+</tr>
+<tr>
+<td style="width: 50%; text-align: left;">
+<label class="n-label" style="font-size: 12px;">9. &#191;Tomas medicamentos / suplementos / <br>vitaminas / anticonc&eacute;pticos?:</label>
+</td>
+<td style="width: 50%; text-align: left;">
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="medicamentos_no" name="form_medicamentos"> No
+</label>
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="medicamentos_si" name="form_medicamentos"> Si, 
+Especificar: <input type="text" class="n-form-control">
+</label>
+</td>
+</tr>
+<tr>
+<td style="width: 50%; text-align: left;">
+<label class="n-label" style="font-size: 12px;">10. &#191;En qu&eacute; horarios te gustar&iacute;a<br>que programe tus comidas?:</label>
+</td>
+<td style="width: 50%; text-align: left;">
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="horario_comidas_desayuno" name="form_horario_comidas"> Desayuno
+</label>
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="horario_comidas_almuerzo" name="form_horario_comidas"> Almuerzo 
+</label>
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="horario_comidas_cena" name="form_horario_comidas"> Cena 
+</label>
+</td>
+</tr>
+<tr>
+<td style="width: 50%; text-align: left;">
+<label class="n-label" style="font-size: 12px;">11. &#191;C&oacute;mo prefieres un plan de alimentaci&oacute;n?:</label>
+</td>
+<td style="width: 50%; text-align: left;">
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="tiempo_no" name="form_tiempo"> Pr&aacute;ctico porque no tengo mucho tiempo para preparar las comidas.
+</label>
+<label style="width: 100%; font-size: 12px;">
+<input type="radio" id="tiempo_si" name="form_tiempo"> Tengo tiempo para realizar las preparaciones con recetas.
+</label>
+</td>
+</tr>
+</table>
+</div>
+<div class="col-md-12 col-sm-12 text-center" style="padding-top: 15px;">
+<button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar Datos</button>
+<script>
+
+</script>
 </div>
 </div>
 </div>
