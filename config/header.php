@@ -70,7 +70,7 @@ if($_SESSION['ID_TIPO_USUARIO'] == 2){
 </li>
 <li>
 <a href="medidas.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
-<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Registro de Peso y Medidas</span>
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Mi Espacio Personal</span>
 </a>
 </li>
 <li>

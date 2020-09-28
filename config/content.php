@@ -2409,4 +2409,62 @@ HISTORIA CL&Iacute;NICA<br><br><div style="color: #111; font-size: 23px; font-we
 </div>
 <?php
 }
+
+//MI ESPACIO PERSONAL
+if($view_controller == 13){
+?>
+<div class="card-box pd-20 height-100-p mb-30">
+<div class="row align-items-center">
+<div class="col-md-4 text-center">
+<img src="vendors/images/icono.png" alt="">
+</div>
+<div class="col-md-8">
+<h4 class="weight-500 mb-10 text-capitalize" style="font-size: 14px; font-weight: bolder;">
+MI ESPACIO PERSONAL<br><br><div style="color: #111; font-size: 23px; font-weight: normal;"><?php echo ucwords($_SESSION['usuario_nombres']).' '.ucwords($_SESSION['usuario_apellidos']); ?></div>
+</h4>
+<div class="row" style="padding-top: 15px;">
+<div class="col-md-12 col-sm-12">
+<div class="form-group">
+<div class="pull-left">
+<h4 class="weight-500">
+<div style="color: #95cf32; font-weight: bold; font-size: 18px;">Actualizando...</div>
+</h4><hr>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<?php
+}
+
+//MI EVOLUCION
+if($view_controller == 14){
+?>
+<div class="card-box pd-20 height-100-p mb-30">
+<div class="row align-items-center">
+<div class="col-md-4 text-center">
+<img src="vendors/images/icono.png" alt="">
+</div>
+<div class="col-md-8">
+<h4 class="weight-500 mb-10 text-capitalize" style="font-size: 14px; font-weight: bolder;">
+MI EVOLUCI&Oacute;N<br><br><div style="color: #111; font-size: 23px; font-weight: normal;"><?php echo ucwords($_SESSION['usuario_nombres']).' '.ucwords($_SESSION['usuario_apellidos']); ?></div>
+</h4>
+<div class="row" style="padding-top: 15px;">
+<div class="col-md-12 col-sm-12">
+<div class="form-group">
+<div class="pull-left">
+<h4 class="weight-500">
+<div style="color: #95cf32; font-weight: bold; font-size: 18px;">Actualizando...</div>
+</h4><hr>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<?php
+}
 }
