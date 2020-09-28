@@ -2581,7 +2581,7 @@ form_analisis_alterado_especificar : form_analisis_alterado_especificar,
 form_medicamentos : form_medicamentos,
 form_medicamentos_especificar : form_medicamentos_especificar,
 form_horario_comidas : form_horario_comidas,
-form_tiempo : form_tiempo
+form_tiempo : form_tiempo OKOKOK
 },
 success: function(datos){
 $('#div_guardar_paciente').html(datos).fadeIn('slow');
