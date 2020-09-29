@@ -119,7 +119,7 @@ $clave_return = '';
 <div class="login-title" style="margin-bottom: 0;">
 <h2 style="color: #95cf32; text-align: center; font-weight: 400;">MI ESPACIO PERSONAL<hr></h2>
 </div>
-<form method="POST" accept-charset="utf-8" action="login.php" name="loginform" autocomplete="off" role="form">
+<form method="POST" accept-charset="utf-8" action="Mi-Espacio-Personal.php" name="loginform" autocomplete="off" role="form">
 <div class="input-group custom">
 <input style="border-left: 0; border-right: 0; border-top: 0;" type="text" class="form-control form-control-lg" placeholder="N&#176; de Socio" name="user_name" value="<?php echo $usuario_return; ?>">
 <div class="input-group-append custom">
