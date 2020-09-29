@@ -3065,21 +3065,39 @@ if($view_controller == 13){
 ?>
 <div class="card-box pd-20 height-100-p mb-30">
 <div class="row align-items-center">
-<div class="col-md-4 text-center">
-<img src="vendors/images/icono.png" alt="">
-</div>
-<div class="col-md-8">
-<h4 class="weight-500 mb-10 text-capitalize" style="font-size: 14px; font-weight: bolder;">
-REGISTRO DE PESO Y MEDIDAS<br><br><div style="color: #111; font-size: 23px; font-weight: normal;"><?php echo ucwords($_SESSION['usuario_nombres']).' '.ucwords($_SESSION['usuario_apellidos']); ?></div>
-</h4>
+<div class="col-md-12">
+<div style="color: #111; font-size: 23px; font-weight: normal; text-align: center;">Registro de Peso y Medidas</div>
 <div class="row" style="padding-top: 15px;">
-<div class="col-md-12 col-sm-12">
-<div class="form-group">
-<div class="pull-left">
-<h4 class="weight-500">
-<div style="color: #95cf32; font-weight: bold; font-size: 18px;">Actualizando...</div>
-</h4><hr>
+<div class="col-md-12" style="padding-top: 25px;">
+<div class="table-responsive">
+<table style="width: 1000px !important; margin: 0 auto;">
+<tr>
+<td class="td-title" style="width: 50% !important;">Medidas</td>
+<td class="td-title" style="width: 50% !important; padding-right: 35px;">Valor</td>
+</tr>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important;">Talla Actual</td>
+<td class="td-content" style="width: 50% !important;">
+<div class="input-group input-group-sm" style="width: 100px; margin: 0 auto;">
+<input id="frm_talla_actual" type="text" class="form-control" style="height: 25px; text-align: center; font-size: 11px;" placeholder="0.00">
+<div class="input-group-prepend">
+<span class="input-group-text">m&nbsp;</span>
 </div>
+</div>
+</td>
+</tr>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important;">Peso Actual</td>
+<td class="td-content" style="width: 50% !important;">
+<div class="input-group input-group-sm" style="width: 100px; margin: 0 auto;">
+<input id="frm_peso_actual" type="text" class="form-control" style="height: 25px; text-align: center; font-size: 11px;" placeholder="0.00">
+<div class="input-group-prepend">
+<span class="input-group-text">Kg</span>
+</div>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
