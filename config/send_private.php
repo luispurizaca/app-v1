@@ -92,7 +92,7 @@ Te env&iacute;o el link, con tu usuario y contrase&ntilde;a para que puedas acce
 <table style="width: 100%;">
 <tr>
 <td style="width: 50%; font-weight: bold;">Link:</td>
-<td style="width: 50%; font-weight: bold;">www.nutrikatherinealfaro.com.pe</td>
+<td style="width: 50%; font-weight: bold;">www.nutrikatherinealfaro.com.pe/Mi-Espacio-Personal</td>
 </tr>
 <tr>
 <td style="width: 50%; font-weight: bold;">Usuario:</td>

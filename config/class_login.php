@@ -2,11 +2,18 @@
 //CERRAR SESION
 if(isset($_GET['logout'])){
 session_start();
+
+if($_SESSION['ID_TIPO_USUARIO'] == 2){
+$login = 'Mi-Espacio-Personal.php';
+} else {
+$login = 'login.php';
+}
+
 session_unset();
 session_destroy();
 ?>
 <script>
-location.href = '../login.php';
+location.href = '../<?php echo $login; ?>';
 </script>
 <?php
 exit();
