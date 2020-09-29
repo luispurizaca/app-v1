@@ -62,9 +62,9 @@ $senderName = 'Katherine Alfaro';
 $recipient = $email_destino;
 
 // DATOS SMTP
-$usernameSmtp = 'AKIAUKBIZMV5QZVILUPM';
-$passwordSmtp = 'BKJgC3CX8pQ9hYBh0zJhBIvFlQsGPkMS+K5LhH90Wugx';
-$host = 'email-smtp.us-east-1.amazonaws.com';
+$usernameSmtp = 'plandealimentacion@nutrikatherinealfaro.com.pe';
+$passwordSmtp = 'pieritoperu7';
+$host = 'mail.nutrikatherinealfaro.com.pe';
 $port = 587;
 
 // ASUNTO
