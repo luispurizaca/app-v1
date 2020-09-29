@@ -102,7 +102,7 @@ $mail = new PHPMailer(true);
 
 try {
 // CONFIGURACIONES SMTP
-$mail->isSMTP();
+//$mail->isSMTP();
 $mail->setFrom($sender, $senderName);
 $mail->Username   = $usernameSmtp;
 $mail->Password   = $passwordSmtp;
