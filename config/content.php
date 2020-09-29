@@ -920,15 +920,14 @@ $ret_edad_en_anos = $row[29];
 $ret_edad_en_meses = $row[30];
 $diagnostico = $row[31];
 }
-
-$location_atras = 'evolucion.php';
-$title = '('.$ret_codigo.') '.$ret_nombres.' '.$ret_apellidos;
 ?>
+<div class="row align-items-center">
+<div class="col-md-12">
+<h4 class="weight-500 mb-10 text-capitalize" style="font-size: 14px; font-weight: bolder;">
+MI EVOLUCI&Oacute;N<br><br><div style="color: #111; font-size: 23px; font-weight: normal;"><?php echo ucwords($ret_nombres).' '.ucwords($ret_apellidos); ?></div>
+</h4>
+<div class="row" style="padding-top: 15px;">
 <div class="col-md-12" style="padding-top: 25px;">
-<div style="padding-left: 15px; color: #95cf32; font-weight: bold; font-size: 20px;">
-<?php echo $title; ?>
-<br><hr>
-</div>
 <div id="div_plan_paciente">
 <?php
 if($_SESSION['ID_TIPO_USUARIO'] != 2){
@@ -1015,6 +1014,7 @@ if($_SESSION['ID_TIPO_USUARIO'] != 2){
 $query_suscripcion = mysqli_query($con, "SELECT id, id_programa, fecha_inicio, fecha_fin, estado FROM suscripcion_programa WHERE id_paciente = '$ret_id_usuario' ORDER BY id ASC");
 if(mysqli_num_rows($query_suscripcion) > 0){
 ?>
+<div class="table-responsive">
 <table style="width: 1000px !important; margin: 0 auto;">
 <tr>
 <td class="td-title" style="width: 20% !important;">Planes Rekupera</td>
@@ -1039,7 +1039,7 @@ if($estado == 1){
 $texto_condicion = 'Activo';
 $css_condicion_color = '#95cf32';
 } else {
-$texto_condicion = 'Inactivo';
+$texto_condicion = 'Culminado';
 $css_condicion_color = '#F26C3C';
 }
 ?>
@@ -1054,6 +1054,7 @@ $css_condicion_color = '#F26C3C';
 }
 ?>
 </table>
+</div>
 <div class="row">
 <div class="col-md-6 text-center" style="padding-top: 40px;">
 <div id="chart1"></div>
@@ -1161,10 +1162,16 @@ chart.render();
 <td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $diagnostico; ?></span></td>
 </tr>
 </table>
+<?php
+if($_SESSION['ID_TIPO_USUARIO'] != 2){
+?>
 <br>
 <div class="btn-group">
 <button onclick="location.href = 'controles.php?paciente=<?php echo $id_registro ?>'" class="btn buttons-pdf" tabindex="0" type="button" style="background: #95cf32; color: white; padding: 5px; font-size: 14px;"><span>Ver todos los controles</span></button>
 </div>
+<?php
+}
+?>
 </div>
 </div>
 <?php
@@ -1172,9 +1179,7 @@ chart.render();
 ?>
 </div>
 </div>
-<div class="col-md-12 text-right" style="padding-top: 40px;">
-<div class="btn-group">
-<button onclick="location.href = '<?php echo $location_atras; ?>'" class="btn buttons-pdf" tabindex="0" type="button" style="background: #95cf32; color: white; padding: 8px; font-size: 16px;"><span><- Atr&aacute;s</span></button>
+</div>
 </div>
 </div>
 <?php
@@ -3074,12 +3079,6 @@ REGISTRO DE PESO Y MEDIDAS<br><br><div style="color: #111; font-size: 23px; font
 if($view_controller == 14){
 ?>
 <div class="card-box pd-20 height-100-p mb-30">
-<div class="row align-items-center">
-<div class="col-md-12">
-<h4 class="weight-500 mb-10 text-capitalize" style="font-size: 14px; font-weight: bolder;">
-MI EVOLUCI&Oacute;N<br><br><div style="color: #111; font-size: 23px; font-weight: normal;"><?php echo ucwords($_SESSION['usuario_nombres']).' '.ucwords($_SESSION['usuario_apellidos']); ?></div>
-</h4>
-<div class="row" style="padding-top: 15px;">
 <div id="div_ajax_evolucion"></div>
 <script>
 //VISUALIZAR
@@ -3092,9 +3091,6 @@ $('#div_ajax_evolucion').html(datos).fadeIn('slow');
 }
 });
 </script>
-</div>
-</div>
-</div>
 </div>
 <?php
 }
