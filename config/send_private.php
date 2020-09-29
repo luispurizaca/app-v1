@@ -20,6 +20,9 @@ $usuario = $_GET['usuario'];
 //CLAVE
 $clave = $_GET['clave'];
 
+//GENERO
+$genero = (int)$_GET['genero'];
+
 //VALIDAR CORREO
 $mail_correcto = 0;
 if((strlen($email_destino) >= 6) && (substr_count($email_destino, "@") == 1) && (substr($email_destino, 0, 1) != "@") && (substr($email_destino, strlen($email_destino)-1, 1) != "@")){
@@ -70,16 +73,23 @@ $port = 587;
 // ASUNTO
 $subject = $asunto;
 
+//SI ES MUJER O SI ES HOMBRE
+if($genero == 2){
+$adicional = 'Bienvenida a nuestro programa "'.$nombre_programa.'".';
+} else {
+$adicional = '';
+}
+
 // HTML CONTENIDO DEL EMAIL
 $bodyHtml = '
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
 <td style="background: white; text-align: left;">
 <div style="text-align: left">
-<h3 style="color:#4f4f4f">Hola '.$nombre_paciente.',</h3>
+<h3 style="color:#4f4f4f">Hola '.$nombre_paciente.'!</h3>
 </div>
 <div style="text-align: justify ;color: #4f4f4f">
-Quiero agradecerte la confianza depositada en nuestros servicios, los cuales, est&aacute;n orientados a resolver tus metas personales de corto y mediano plazo.
+'.$adicional.' Quiero agradecerte la confianza depositada en nuestros servicios, los cuales, est&aacute;n orientados a resolver tus metas personales de corto y mediano plazo.
 <br><br>
 Recuerda que cuanto m&aacute;s alineado est&eacute;s al mismo, lograr&aacute;s estar m&aacute;s cerca de tus objetivos personales. La disciplina es vital para lograr tus objetivos.
 <br><br>

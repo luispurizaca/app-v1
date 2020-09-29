@@ -613,7 +613,15 @@ $ultimo_id = (int)$row_id[0];
 //DATOS DEL CORREO
 $query_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre_completo FROM programa WHERE id = '$form_id_programa' LIMIT 1"));
 $nombre_programa = $query_nombre_programa[0];
-$asunto = 'Bienvenido al programa "'.$nombre_programa.'"';
+
+//SI ES MUJER O SI ES HOMBRE
+if($form_genero == 2){
+$bienvenido = 'Bienvenida';
+} else {
+$bienvenido = 'Bienvenido';
+}
+
+$asunto = $bienvenido.' al programa "'.$nombre_programa.'"';
 ?>
 <script>
 $.ajax({
