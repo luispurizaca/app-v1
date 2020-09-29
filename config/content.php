@@ -394,7 +394,6 @@ $nombre_cb = $row_cb[1];
 <div class="col-md-12 col-sm-12 text-center" style="padding-top: 20px;">
 <div class="form-group">
 <button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Grabar Datos</button>
-<button id="btn_enviar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Enviar</button>
 <button onclick="window.location='index.php'" type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Cancelar</button>
 </div>
 </div>

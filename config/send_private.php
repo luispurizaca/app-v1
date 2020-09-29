@@ -74,19 +74,43 @@ $subject = $asunto;
 $bodyHtml = '<table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
 <td colspan="2" style="background: white; text-align: left;">
-<div style="text-align:center">
-<div style="text-align:center; color:#4f4f4f">
-<img src="//nutrikatherinealfaro.com.pe/app-v1/vendors/images/icono.png" width="180px">
+<div style="text-align: left">
+<h3 style="color:#4f4f4f">Hola, '.$nombre_paciente.',</h3>
 </div>
-<h3 style="color:#4f4f4f">Hola, '.$nombre_paciente.'!</h3>
-</div>
-<div style="text-align:justify;color:#4f4f4f">
-<h4>Bienvenido al '.$nombre_programa.'
+<div style="text-align:justify ;color: #4f4f4f">
+Quiero agradecerte la confianza depositada en nuestros servicios, los cuales, est&aacute;n orientados a resolver tus metas personales de corto y mediano plazo.
 <br>
-Tu usuario: '.$usuario.'
+Recuerda que cuanto m&aacute;s alineado est&eacute;s al mismo, lograr&aacute;s estar m&aacute;s cerca de tus objetivos personales. La disciplina es vital para lograr tus objetivos.
 <br>
-Tu clave: '.$clave.'
-</h4>
+Te env&iacute;o el link, con tu usuario y contrase&ntilde;a para que puedas acceder a tu cuenta y registrar los datos solicitados:
+<table style="width: 100%;">
+<tr>
+<td style="width: 25%;></td>
+<td style="width: 50%;>
+<table style="width: 100%;>
+<tr>
+<td style="width: 50%; font-weight: bold;">Link:</td>
+<td style="width: 50%; font-weight: bold;">www.nutrikatherinealfaro.com.pe</td>
+</tr>
+<tr>
+<td style="width: 50%; font-weight: bold;">Usuario:</td>
+<td style="width: 50%; font-weight: bold;">'.$usuario.'</td>
+</tr>
+<tr>
+<td style="width: 50%; font-weight: bold;">Contrase&ntilde;a:</td>
+<td style="width: 50%; font-weight: bold;">'.$clave.'</td>
+</tr>
+</table>
+</td>
+<td style="width: 25%;></td>
+</tr>
+</table>
+<br>
+Por favor, siéntete en confianza de consultar cualquier duda que tengas.
+<br>
+Saludos<br>
+Katherine Alfaro<br>
+Nutricionista y Coach<br>
 </div>
 </td>
 </tr>
