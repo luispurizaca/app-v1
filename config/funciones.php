@@ -49,9 +49,7 @@ usuario.distrito AS DISTRITO,
 usuario.provincia AS PROVINCIA,
 usuario.departamento AS DEPARTAMENTO,
 usuario.residencia AS RESIDENCIA,
-usuario.maximo_pacientes AS MAXIMO_PACIENTES,
-usuario.peso_meta AS PESO_META,
-usuario.talla AS TALLA
+usuario.maximo_pacientes AS MAXIMO_PACIENTES
 FROM usuario
 WHERE activo = 1";
 
@@ -260,8 +258,6 @@ $ret_provincia = $sql_general_row[17];
 $ret_departamento = $sql_general_row[18];
 $ret_residencia = $sql_general_row[19];
 $ret_maximo_pacientes = (int)$sql_general_row[20];
-$ret_peso_meta = (float)$sql_general_row[21];
-$ret_talla = (float)$sql_general_row[22];
 
 //GENERO
 if($ret_genero == 1){
@@ -280,8 +276,13 @@ $texto_estado = 'Inactivo';
 }
 
 //DATOS ANTROPOMETRICOS ACTUALES DEL PACIENTE
-$row_peso_actual = mysqli_fetch_array(mysqli_query($con, "SELECT peso, imc FROM control WHERE id_suscripcion IN (SELECT id FROM suscripcion_programa WHERE id_paciente = '$ret_id_usuario' ORDER BY id DESC) ORDER BY id DESC LIMIT 1"));
-$ret_peso_actual = $row_peso_actual[0];
+$row_peso_actual = mysqli_fetch_array(mysqli_query($con, "SELECT peso, talla FROM control WHERE id_suscripcion IN (SELECT id FROM suscripcion_programa WHERE id_paciente = '$ret_id_usuario' ORDER BY id DESC) ORDER BY id DESC LIMIT 1"));
+$ret_peso_actual = (float)$row_peso_actual[0];
+$ret_talla = (float)$row_peso_actual[1];
+
+//PESO META
+$row_peso_meta = mysqli_fetch_array(mysqli_query($con, "SELECT peso_meta FROM historia WHERE id_paciente = '$ret_id_usuario' ORDER BY id DESC LIMIT 1"));
+$ret_peso_meta = $row_peso_meta[0];
 
 //IMC ACTUAL
 if(empty($ret_talla)){

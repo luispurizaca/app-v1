@@ -602,9 +602,9 @@ if(empty($form_id_paciente)){
 $suscripcion_nueva = 1;
 
 mysqli_query($con, "
-INSERT INTO usuario (id_tipo_usuario, codigo, correo, clave, nombres, apellidos, fecha_nacimiento, genero, estado, activo, id_tipo_documento, numero_documento, date_added, instagram, direccion, distrito, provincia, departamento, residencia, maximo_pacientes, peso_meta, talla, telefono, id_vendedor)
+INSERT INTO usuario (id_tipo_usuario, codigo, correo, clave, nombres, apellidos, fecha_nacimiento, genero, estado, activo, id_tipo_documento, numero_documento, date_added, instagram, direccion, distrito, provincia, departamento, residencia, maximo_pacientes, telefono, id_vendedor)
 VALUES 
-('".$form_tipo_usuario."', '".$form_codigo."', '".$form_correo."', '".$form_clave."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '0', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$form_maximo_pacientes."', '".$form_peso_meta."', '".$form_talla."', '".$form_telefono."', '".$_SESSION['ID_USUARIO']."')
+('".$form_tipo_usuario."', '".$form_codigo."', '".$form_correo."', '".$form_clave."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '0', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$form_maximo_pacientes."', '".$form_telefono."', '".$_SESSION['ID_USUARIO']."')
 "
 );
 
@@ -641,7 +641,7 @@ fecha_nacimiento = '".$form_fecha_nacimiento."', genero = '".$form_genero."',
 id_tipo_documento = '".$form_tipo_documento."', numero_documento = '".$form_numero_documento."',
 instagram = '".$form_instagram."', direccion = '".$form_direccion."', distrito = '".$form_distrito."',
 provincia = '".$form_provincia."', departamento = '".$form_departamento."', residencia = '".$form_residencia."',
-maximo_pacientes = '".$form_maximo_pacientes."', peso_meta = '".$form_peso_meta."', talla = '".$form_talla."', telefono = '".$form_telefono."'
+maximo_pacientes = '".$form_maximo_pacientes."', telefono = '".$form_telefono."'
 WHERE id = '$form_id_paciente' AND id_tipo_usuario = 2");
 
 //ACTUALIZAR CLAVE
@@ -836,6 +836,7 @@ $form_medicamentos = $_POST['form_medicamentos'];
 $form_medicamentos_especificar = $_POST['form_medicamentos_especificar'];
 $form_horario_comidas = $_POST['form_horario_comidas'];
 $form_tiempo = $_POST['form_tiempo'];
+$form_peso_meta = (float)$_POST['form_peso_meta'];
 
 //VERIFICAR SI EXISTE HISTORIA CLINICA DEL PACIENTE
 $query_id_historia = mysqli_query($con, "SELECT id FROM historia WHERE id_paciente = '".$_SESSION['ID_USUARIO']."' ORDER BY id ASC LIMIT 1");
@@ -849,13 +850,13 @@ alcohol_frecuencia = '".$form_alcohol_frecuencia."', evacuacion = '".$form_evacu
 dormir = '".$form_dormir."', ejercicios = '".$form_ejercicios."',
 ejercicios_frecuencia = '".$form_ejercicios_frecuencia."', ejercicios_horario = '".$form_ejercicios_horario."', enfermedad = '".$form_enfermedad."',
 enfermedad_especificar = '".$form_enfermedad_especificar."', analisis_sangre = '".$form_analisis_alterado."', analisis_sangre_especificar = '".$form_analisis_alterado_especificar."',
-medicamentos = '".$form_medicamentos."', medicamentos_especificar = '".$form_medicamentos_especificar."', horario = '".$form_horario_comidas."', tiempo = '".$form_tiempo."'
+medicamentos = '".$form_medicamentos."', medicamentos_especificar = '".$form_medicamentos_especificar."', horario = '".$form_horario_comidas."', tiempo = '".$form_tiempo."', peso_meta = '".$form_peso_meta."'
 WHERE id = '$id_historia' AND id_paciente = '".$_SESSION['ID_USUARIO']."'");
 } else {
 mysqli_query($con, "
-INSERT INTO historia (id_paciente, alimentos_no_gustar, agua, alcohol, alcohol_frecuencia, evacuacion, dormir, ejercicios, ejercicios_frecuencia, ejercicios_horario, enfermedad, enfermedad_especificar, analisis_sangre, analisis_sangre_especificar, medicamentos, medicamentos_especificar, horario, tiempo, date_added)
+INSERT INTO historia (id_paciente, alimentos_no_gustar, agua, alcohol, alcohol_frecuencia, evacuacion, dormir, ejercicios, ejercicios_frecuencia, ejercicios_horario, enfermedad, enfermedad_especificar, analisis_sangre, analisis_sangre_especificar, medicamentos, medicamentos_especificar, horario, tiempo, date_added, peso_meta)
 VALUES 
-('".$_SESSION['ID_USUARIO']."', '".$form_alimentos_gustar_no."', '".$form_agua."', '".$form_alcohol."', '".$form_alcohol_frecuencia."', '".$form_evacuacion."', '".$form_dormir."', '".$form_ejercicios."', '".$form_ejercicios_frecuencia."', '".$form_ejercicios_horario."', '".$form_enfermedad."', '".$form_enfermedad_especificar."', '".$form_analisis_alterado."', '".$form_analisis_alterado_especificar."', '".$form_medicamentos."', '".$form_medicamentos_especificar."', '".$form_horario_comidas."', '".$form_tiempo."', '".date('Y-m-d H:i:s')."')
+('".$_SESSION['ID_USUARIO']."', '".$form_alimentos_gustar_no."', '".$form_agua."', '".$form_alcohol."', '".$form_alcohol_frecuencia."', '".$form_evacuacion."', '".$form_dormir."', '".$form_ejercicios."', '".$form_ejercicios_frecuencia."', '".$form_ejercicios_horario."', '".$form_enfermedad."', '".$form_enfermedad_especificar."', '".$form_analisis_alterado."', '".$form_analisis_alterado_especificar."', '".$form_medicamentos."', '".$form_medicamentos_especificar."', '".$form_horario_comidas."', '".$form_tiempo."', '".date('Y-m-d H:i:s')."', '".$form_peso_meta."')
 "
 );
 }
@@ -2808,8 +2809,10 @@ $form_medicamentos;
 $form_medicamentos_especificar;
 $form_horario_comidas;
 $form_tiempo;
+$form_peso_meta;
+
 //VERIFICAR SI EXISTE HISTORIA CLINICA DEL PACIENTE
-$query_id_historia = mysqli_query($con, "SELECT alimentos_no_gustar, agua, alcohol, alcohol_frecuencia, evacuacion, dormir, ejercicios, ejercicios_frecuencia, ejercicios_horario, enfermedad, enfermedad_especificar, analisis_sangre, analisis_sangre_especificar, medicamentos, medicamentos_especificar, horario, tiempo FROM historia WHERE id_paciente = '".$_SESSION['ID_USUARIO']."' ORDER BY id ASC LIMIT 1");
+$query_id_historia = mysqli_query($con, "SELECT alimentos_no_gustar, agua, alcohol, alcohol_frecuencia, evacuacion, dormir, ejercicios, ejercicios_frecuencia, ejercicios_horario, enfermedad, enfermedad_especificar, analisis_sangre, analisis_sangre_especificar, medicamentos, medicamentos_especificar, horario, tiempo, peso_meta FROM historia WHERE id_paciente = '".$_SESSION['ID_USUARIO']."' ORDER BY id ASC LIMIT 1");
 if(mysqli_num_rows($query_id_historia) > 0){
 $row_id_historia = mysqli_fetch_array($query_id_historia);
 $form_alimentos_gustar_no = $row_id_historia[0];
@@ -2829,6 +2832,7 @@ $form_medicamentos = $row_id_historia[13];
 $form_medicamentos_especificar = $row_id_historia[14];
 $form_horario_comidas = $row_id_historia[15];
 $form_tiempo = $row_id_historia[16];
+$form_peso_meta = (int)$row_id_historia[17];
 }
 ?>
 <div class="row" style="padding-top: 15px;">
@@ -2987,6 +2991,14 @@ Especificar: <input type="text" class="n-form-control" id="form_medicamentos_esp
 </label>
 </td>
 </tr>
+<tr>
+<td style="width: 50%; text-align: left;">
+<label class="n-label" style="font-size: 12px;">12. &#191;Cu&aacute;l es el <b>Peso Meta</b> que deseas alcanzar?</label>
+</td>
+<td style="width: 50%; text-align: left;">
+<input type="number" step="any" class="n-form-control" id="form_peso_meta" value="<?php echo $form_peso_meta; ?>"><br>
+</td>
+</tr>
 </table>
 </div>
 <div class="col-md-12 col-sm-12 text-center" style="padding-top: 15px;">
@@ -3010,6 +3022,7 @@ var form_medicamentos = $('input[name=form_medicamentos]:checked').val();
 var form_medicamentos_especificar = $('#form_medicamentos_especificar').val();
 var form_horario_comidas = $('input[name=form_horario_comidas]:checked').val();
 var form_tiempo = $('input[name=form_tiempo]:checked').val();
+var form_peso_meta = $('#form_peso_meta').val();
 $.ajax({
 type: 'POST',
 url: 'config/content.php?negocia_operacion=6',
@@ -3030,7 +3043,8 @@ form_analisis_alterado_especificar : form_analisis_alterado_especificar,
 form_medicamentos : form_medicamentos,
 form_medicamentos_especificar : form_medicamentos_especificar,
 form_horario_comidas : form_horario_comidas,
-form_tiempo : form_tiempo
+form_tiempo : form_tiempo,
+form_peso_meta : form_peso_meta
 },
 success: function(datos){
 $('#div_guardar_historia').html(datos).fadeIn('slow');
