@@ -109,10 +109,10 @@ Te env&iacute;o el link, con tu usuario y contrase&ntilde;a para que puedas acce
 </table>
 <br>
 Por favor, siéntete en confianza de consultar cualquier duda que tengas.
-<br>
+<br><br>
 Saludos<br>
-Katherine Alfaro<br>
-Nutricionista y Coach<br>
+<b>Katherine Alfaro</b><br>
+<b>Nutricionista y Coach</b><br>
 </div>
 </td>
 </tr>
