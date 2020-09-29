@@ -71,23 +71,25 @@ $port = 587;
 $subject = $asunto;
 
 // HTML CONTENIDO DEL EMAIL
-$bodyHtml = '<table style="width: 100%; padding: 10px; border-collapse: collapse;">
+$bodyHtml = '
+<table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
-<td colspan="2" style="background: white; text-align: left;">
+<td style="background: white; text-align: left;">
 <div style="text-align: left">
-<h3 style="color:#4f4f4f">Hola, '.$nombre_paciente.',</h3>
+<h3 style="color:#4f4f4f">Hola '.$nombre_paciente.',</h3>
 </div>
-<div style="text-align:justify ;color: #4f4f4f">
+<div style="text-align: justify ;color: #4f4f4f">
 Quiero agradecerte la confianza depositada en nuestros servicios, los cuales, est&aacute;n orientados a resolver tus metas personales de corto y mediano plazo.
-<br>
+<br><br>
 Recuerda que cuanto m&aacute;s alineado est&eacute;s al mismo, lograr&aacute;s estar m&aacute;s cerca de tus objetivos personales. La disciplina es vital para lograr tus objetivos.
-<br>
+<br><br>
 Te env&iacute;o el link, con tu usuario y contrase&ntilde;a para que puedas acceder a tu cuenta y registrar los datos solicitados:
+<br><br>
 <table style="width: 100%;">
 <tr>
-<td style="width: 25%;></td>
-<td style="width: 50%;>
-<table style="width: 100%;>
+<td style="width: 25%;"></td>
+<td style="width: 50%;">
+<table style="width: 100%;">
 <tr>
 <td style="width: 50%; font-weight: bold;">Link:</td>
 <td style="width: 50%; font-weight: bold;">www.nutrikatherinealfaro.com.pe</td>
@@ -102,7 +104,7 @@ Te env&iacute;o el link, con tu usuario y contrase&ntilde;a para que puedas acce
 </tr>
 </table>
 </td>
-<td style="width: 25%;></td>
+<td style="width: 25%;"></td>
 </tr>
 </table>
 <br>
@@ -115,12 +117,12 @@ Nutricionista y Coach<br>
 </td>
 </tr>
 <tr>
-<td colspan="2" style="background-color: white">
+<td style="background-color: white">
 <p style="color: #b3b3b3 !important; font-size: 11px; text-align: center; margin: 30px 0px 0px">Correo electr&oacute;nico enviado desde: <a href="//nutrikatherinealfaro.com.pe/" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" style="color:#95cf32; text-decoration:none">nutrikatherinealfaro.com.pe</a></p>
-</div>
 </td>
 </tr>
-</table>';
+</table>
+';
 
 $mail = new PHPMailer(true);
 
