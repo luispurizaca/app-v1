@@ -75,7 +75,7 @@ $subject = $asunto;
 
 //SI ES MUJER O SI ES HOMBRE
 if($genero == 2){
-$adicional = 'Bienvenida a nuestro programa "'.$nombre_programa.'".';
+$adicional = 'Bienvenida a nuestro programa <b>"'.$nombre_programa.'"</b>.';
 } else {
 $adicional = '';
 }
