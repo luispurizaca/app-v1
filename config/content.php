@@ -868,6 +868,320 @@ exit();
 exit();
 }
 
+//EVOLUCION DEL PACIENTE
+if($negocia_operacion == 7){
+
+//REQUIRES
+require_once(__DIR__.'/datos_bd.php');
+require_once(__DIR__.'/funciones.php');
+
+//ID CONSULTAR
+$id_registro = (int)$_POST['id'];
+
+//ARRAY FILTROS
+$array_filtros = array(2, 0, 2, 0, 1, $id_registro, '', '', '', '', '');
+
+//FUNCION
+$funcion_datos = consulta($array_filtros);
+
+//CONSULTA
+$array_funcion = $funcion_datos[1];
+foreach($array_funcion as $row){
+$ret_codigo = $row[0];
+$ret_nombres = $row[1];
+$ret_apellidos = $row[2];
+$ret_genero = $row[3];
+$ret_fecha_nacimiento = date('d/m/Y', strtotime($row[4]));
+$ret_correo = $row[5];
+$ret_telefono = $row[6];
+$ret_estado = $row[7];
+$ret_id_tipo_usuario = $row[8];
+$ret_id_usuario = $row[9];
+$ret_id_tipo_documento = $row[10];
+$ret_numero_documento = $row[11];
+$ret_texto_tipo_documento = $row[12];
+$texto_genero = $row[13];
+$css_color = $row[14];
+$texto_estado = $row[15];
+$ret_texto_edad = $row[16].' a&ntilde;os';
+$ret_date_added = date('d/m/Y', strtotime($row[17]));
+$ret_instagram = $row[18];
+$ret_direccion = $row[19];
+$ret_distrito = $row[20];
+$ret_provincia = $row[21];
+$ret_departamento = $row[22];
+$ret_residencia = $row[23];
+$ret_maximo_pacientes = $row[24];
+$ret_peso_meta = $row[25];
+$ret_peso_actual = $row[26];
+$ret_talla = $row[27];
+$ret_imc_actual = $row[28];
+$ret_edad_en_anos = $row[29];
+$ret_edad_en_meses = $row[30];
+$diagnostico = $row[31];
+}
+
+$location_atras = 'evolucion.php';
+$title = '('.$ret_codigo.') '.$ret_nombres.' '.$ret_apellidos;
+?>
+<div class="col-md-12" style="padding-top: 25px;">
+<div style="padding-left: 15px; color: #95cf32; font-weight: bold; font-size: 20px;">
+<?php echo $title; ?>
+<br><hr>
+</div>
+<div id="div_plan_paciente">
+<?php
+if($_SESSION['ID_TIPO_USUARIO'] != 2){
+?>
+<div class="row">
+<div class="col-md-4">
+<table style="width: 100%;">
+<tr>
+<td style="width: 50%; padding-left: 15px; font-weight: bold; font-size: 13px;">Tipo Documento:</td>
+<td style="width: 50%; padding-left: 15px; font-size: 13px;"><?php echo $ret_texto_tipo_documento; ?></td>
+</tr>
+<tr>
+<td style="width: 50%; padding-left: 15px; font-weight: bold; font-size: 13px;">N&#176; Documento:</td>
+<td style="width: 50%; padding-left: 15px; font-size: 13px;"><?php echo $ret_numero_documento; ?></td>
+</tr>
+<tr>
+<td style="width: 50%; padding-left: 15px; font-weight: bold; font-size: 13px;">G&eacute;nero:</td>
+<td style="width: 50%; padding-left: 15px; font-size: 13px;"><?php echo $texto_genero; ?></td>
+</tr>
+<tr>
+<td style="width: 50%; padding-left: 15px; font-weight: bold; font-size: 13px;">Edad:</td>
+<td style="width: 50%; padding-left: 15px; font-size: 13px;"><?php echo $ret_texto_edad; ?></td>
+</tr>
+<tr>
+<td style="width: 50%; padding-left: 15px; font-weight: bold; font-size: 13px;">Fecha Nac:</td>
+<td style="width: 50%; padding-left: 15px; font-size: 13px;"><?php echo $ret_fecha_nacimiento; ?></td>
+</tr>
+</table>
+</div>
+<div class="col-md-4">
+<table>
+<tr>
+<td style="width: 30%; padding-left: 15px; font-weight: bold; font-size: 13px;">N&#176; Socio:</td>
+<td style="width: 70%; padding-left: 15px; font-size: 13px;"><?php echo $ret_codigo; ?></td>
+</tr>
+<tr>
+<td style="width: 30%; padding-left: 15px; font-weight: bold; font-size: 13px;">F. Registro:</td>
+<td style="width: 70%; padding-left: 15px; font-size: 13px;"><?php echo $ret_date_added; ?></td>
+</tr>
+<tr>
+<td style="width: 30%; padding-left: 15px; font-weight: bold; font-size: 13px;">Correo:</td>
+<td style="width: 70%; padding-left: 15px; font-size: 13px;"><?php echo $ret_correo; ?></td>
+</tr>
+<tr>
+<td style="width: 30%; padding-left: 15px; font-weight: bold; font-size: 13px;">Tel&eacute;fono:</td>
+<td style="width: 70%; padding-left: 15px; font-size: 13px;"><?php echo $ret_telefono; ?></td>
+</tr>
+<tr>
+<td style="width: 30%; padding-left: 15px; font-weight: bold; font-size: 13px;">Instagram:</td>
+<td style="width: 70%; padding-left: 15px; font-size: 13px;"><?php echo $ret_instagram; ?></td>
+</tr>
+</table>
+</div>
+<div class="col-md-4">
+<table>
+<tr>
+<td style="width: 30%; padding-left: 15px; font-weight: bold; font-size: 13px;">Direcci&oacute;n:</td>
+<td style="width: 70%; padding-left: 15px; font-size: 13px;"><?php echo $ret_direccion; ?></td>
+</tr>
+<tr>
+<td style="width: 30%; padding-left: 15px; font-weight: bold; font-size: 13px;">Distrito:</td>
+<td style="width: 70%; padding-left: 15px; font-size: 13px;"><?php echo $ret_distrito; ?></td>
+</tr>
+<tr>
+<td style="width: 30%; padding-left: 15px; font-weight: bold; font-size: 13px;">Provincia:</td>
+<td style="width: 70%; padding-left: 15px; font-size: 13px;"><?php echo $ret_provincia; ?></td>
+</tr>
+<tr>
+<td style="width: 30%; padding-left: 15px; font-weight: bold; font-size: 13px;">Departamento:</td>
+<td style="width: 70%; padding-left: 15px; font-size: 13px;"><?php echo $ret_departamento; ?></td>
+</tr>
+<tr>
+<td style="width: 30%; padding-left: 15px; font-weight: bold; font-size: 13px;">Residencia:</td>
+<td style="width: 70%; padding-left: 15px; font-size: 13px;"><?php echo $ret_residencia; ?></td>
+</tr>
+</table>
+</div>
+</div>
+<br>
+<?php
+}
+?>
+<?php
+$query_suscripcion = mysqli_query($con, "SELECT id, id_programa, fecha_inicio, fecha_fin, estado FROM suscripcion_programa WHERE id_paciente = '$ret_id_usuario' ORDER BY id ASC");
+if(mysqli_num_rows($query_suscripcion) > 0){
+?>
+<table style="width: 1000px !important; margin: 0 auto;">
+<tr>
+<td class="td-title" style="width: 20% !important;">Planes Rekupera</td>
+<td class="td-title" style="width: 20% !important;">Fecha Inicio</td>
+<td class="td-title" style="width: 20% !important;">Fecha Fin</td>
+<td class="td-title" style="width: 20% !important;">Estado</td>
+<td class="td-title" style="width: 20% !important;">Acci&oacute;n</td>
+</tr>
+<?php
+while($row_suscripcion = mysqli_fetch_array($query_suscripcion)){
+$id_suscripcion = $row_suscripcion[0];
+$id_programa = $row_suscripcion[1];
+$fecha_inicio = date('d/m/Y', strtotime($row_suscripcion[2]));
+$fecha_fin = date('d/m/Y', strtotime($row_suscripcion[3]));
+$estado = $row_suscripcion[4];
+
+//NOMBRE DEL PROGRAMA
+$row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM programa WHERE id = '$id_programa' LIMIT 1"));
+$nombre_programa = $row_nombre_programa[0];
+//SUSCRIPCION ACTIVA
+if($estado == 1){
+$texto_condicion = 'Activo';
+$css_condicion_color = '#95cf32';
+} else {
+$texto_condicion = 'Inactivo';
+$css_condicion_color = '#F26C3C';
+}
+?>
+<tr class="tr-hover" style="cursor: pointer;">
+<td class="td-content" style="width: 20% !important;"><?php echo $nombre_programa; ?></td>
+<td class="td-content" style="width: 20% !important;"><?php echo $fecha_inicio; ?></td>
+<td class="td-content" style="width: 20% !important;"><?php echo $fecha_fin; ?></td>
+<td class="td-content" style="width: 20% !important; color: <?php echo $css_condicion_color; ?>; font-weight: bold;"><?php echo $texto_condicion; ?></td>
+<td class="td-content" style="width: 20% !important; font-weight: bold;"><a href="javascript:void(0)" onclick="location.href = 'controles.php?suscripcion=<?php echo $id_suscripcion ?>'" data-toggle="tooltip" data-placement="top" title="" data-original-title="Ver todos los controles"><i class="fa fa-eye" style="font-size: 13px;"></i></a></td>
+</tr>
+<?php
+}
+?>
+</table>
+<div class="row">
+<div class="col-md-6 text-center" style="padding-top: 40px;">
+<div id="chart1"></div>
+<script>
+var options = {
+
+//TITULO DEL CHART
+title: {
+text: 'Evoluci\u00F3n General',
+align: 'center',
+style: {
+fontSize: "16px",
+color: '#95cf32'
+}
+},
+
+//CONFIGURACION DEL CHART
+chart: {
+height: 350,
+type: 'line',
+toolbar: {
+show: false
+}
+},
+
+//DATOS EJE X
+xaxis: {
+categories: [['06/09/2020', 'C001', 'RPF'], ['10/09/2020', 'C002', 'RPF'], ['12/09/2020', 'C003', 'RPF'], ['15/09/2020', 'C004', 'RPF'], ['18/09/2020', 'C005', 'RPM'], ['20/09/2020', 'C006', 'RPM'], ['22/09/2020', 'C007', 'RPM'], ['23/09/2020', 'C008', 'RPM']],
+labels: {
+rotate: 0
+}
+},
+
+//CONFIGURACION EJE Y
+yaxis: {
+min: 55,
+max: 80,
+title: {
+text: 'PESO (KG)'
+}
+},
+
+//DATOS EJE Y
+series: [
+{
+name: 'Peso',
+data: [75, 72, 65, 60, 60, 62, 70, 60]
+}
+],
+
+//GRID: Fondo de Malla
+grid: {
+show: true,
+padding: {
+left: 10,
+right: 10
+}
+},
+
+//GROSOR DE LINEAS O BARRAS
+stroke: {
+width: 1,
+curve: 'straight'
+},
+
+//TIPO DE LINEAS O BARRAS
+fill: {
+type: 'solid'
+},
+
+//TAMAÑO PUNTOS DE RELACION (BOLITAS)
+markers: {
+size: 3,
+colors: ["#95cf32"],
+strokeColors: "#95cf32",
+strokeWidth: 1,
+hover: {
+size: 5
+}
+}
+};
+var chart = new ApexCharts(document.querySelector('#chart1'), options);
+chart.render();
+</script>
+</div>
+<div class="col-md-6 text-center" style="padding-top: 70px;">
+<table style="width: 250px; margin: 0 auto; border: 1px solid #95cf32;">
+<tr>
+<td style="width: 100% !important; text-align: center; background: #95cf32;" colspan="2"><span style="color: #fff; font-size: 16px;">Meta Final</span></td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Peso Meta Final</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_peso_meta; ?> KG</span></td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Peso Actual</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_peso_actual; ?> KG</span></td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Plan de acci&oacute;n</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: Perder <?php echo ($ret_peso_actual - $ret_peso_meta); ?> KG</span></td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Diagn&oacute;stico</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $diagnostico; ?></span></td>
+</tr>
+</table>
+<br>
+<div class="btn-group">
+<button onclick="location.href = 'controles.php?paciente=<?php echo $id_registro ?>'" class="btn buttons-pdf" tabindex="0" type="button" style="background: #95cf32; color: white; padding: 5px; font-size: 14px;"><span>Ver todos los controles</span></button>
+</div>
+</div>
+</div>
+<?php
+}
+?>
+</div>
+</div>
+<div class="col-md-12 text-right" style="padding-top: 40px;">
+<div class="btn-group">
+<button onclick="location.href = '<?php echo $location_atras; ?>'" class="btn buttons-pdf" tabindex="0" type="button" style="background: #95cf32; color: white; padding: 8px; font-size: 16px;"><span><- Atr&aacute;s</span></button>
+</div>
+</div>
+<?php
+exit();
+exit();
+}
+
 if(isset($con)){
 //1. inicio.php
 
@@ -2761,23 +3075,23 @@ if($view_controller == 14){
 ?>
 <div class="card-box pd-20 height-100-p mb-30">
 <div class="row align-items-center">
-<div class="col-md-4 text-center">
-<img src="vendors/images/icono.png" alt="">
-</div>
-<div class="col-md-8">
+<div class="col-md-12">
 <h4 class="weight-500 mb-10 text-capitalize" style="font-size: 14px; font-weight: bolder;">
 MI EVOLUCI&Oacute;N<br><br><div style="color: #111; font-size: 23px; font-weight: normal;"><?php echo ucwords($_SESSION['usuario_nombres']).' '.ucwords($_SESSION['usuario_apellidos']); ?></div>
 </h4>
 <div class="row" style="padding-top: 15px;">
-<div class="col-md-12 col-sm-12">
-<div class="form-group">
-<div class="pull-left">
-<h4 class="weight-500">
-<div style="color: #95cf32; font-weight: bold; font-size: 18px;">Actualizando...</div>
-</h4><hr>
-</div>
-</div>
-</div>
+<div id="div_ajax_evolucion"></div>
+<script>
+//VISUALIZAR
+$.ajax({
+type: 'POST',
+url: 'config/content.php?negocia_operacion=7',
+data: {id: <?php echo $_SESSION['ID_USUARIO']; ?>},
+success: function(datos){
+$('#div_ajax_evolucion').html(datos).fadeIn('slow');
+}
+});
+</script>
 </div>
 </div>
 </div>

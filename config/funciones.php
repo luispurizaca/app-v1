@@ -56,7 +56,19 @@ FROM usuario
 WHERE activo = 1";
 
 //FILTRO ID USUARIO
+if(!empty($id_registro)){
+$consulta_sql_general .= " AND usuario.id = '$id_registro'";
+}
+
+//FILTRO POR VENDEDOR
+if($_SESSION['ID_TIPO_USUARIO'] == 2){
+$consulta_sql_general .= " AND usuario.id_tipo_usuario = 2";
+}
+
+//FILTRO POR VENDEDOR
+if($_SESSION['ID_TIPO_USUARIO'] == 4){
 $consulta_sql_general .= " AND usuario.id_vendedor = '".$_SESSION['ID_USUARIO']."'";
+}
 
 //ORDER BY
 $consulta_sql_general .= "
