@@ -73,23 +73,16 @@ $port = 587;
 // ASUNTO
 $subject = $asunto;
 
-//SI ES MUJER O SI ES HOMBRE
-if($genero == 2){
-$adicional = 'Bienvenida a nuestro programa <b>"'.$nombre_programa.'"</b>.';
-} else {
-$adicional = '';
-}
-
 // HTML CONTENIDO DEL EMAIL
 $bodyHtml = '
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
 <td style="background: white; text-align: left;">
 <div style="text-align: left">
-<h3 style="color:#4f4f4f">Hola '.$nombre_paciente.'!</h3>
+<h3 style="color:#4f4f4f">Hola <b>'.$nombre_paciente.'</b>,</h3>
 </div>
 <div style="text-align: justify ;color: #4f4f4f">
-'.$adicional.' Quiero agradecerte la confianza depositada en nuestros servicios, los cuales, est&aacute;n orientados a resolver tus metas personales de corto y mediano plazo.
+Quiero agradecerte la confianza depositada en nuestros servicios, los cuales, est&aacute;n orientados a resolver tus metas personales de corto y mediano plazo.
 <br><br>
 Recuerda que cuanto m&aacute;s alineado est&eacute;s al mismo, lograr&aacute;s estar m&aacute;s cerca de tus objetivos personales. La disciplina es vital para lograr tus objetivos.
 <br><br>
@@ -100,6 +93,10 @@ Te env&iacute;o el link, con tu usuario y contrase&ntilde;a para que puedas acce
 <td style="width: 20%;"></td>
 <td style="width: 70%;">
 <table style="width: 100%;">
+<tr>
+<td style="width: 30%; font-weight: bold;">Plan:</td>
+<td style="width: 70%; font-weight: bold;">'.$nombre_programa.'</td>
+</tr>
 <tr>
 <td style="width: 30%; font-weight: bold;">Link:</td>
 <td style="width: 70%; font-weight: bold;">www.nutrikatherinealfaro.com.pe/Mi-Espacio-Personal</td>

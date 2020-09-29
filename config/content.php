@@ -623,7 +623,7 @@ $bienvenido = 'Bienvenida';
 $bienvenido = 'Bienvenido';
 }
 
-$asunto = $bienvenido.' al programa "'.$nombre_programa.'"';
+$asunto = $bienvenido.' al programa "ReKupera tu peso ideal" by Katherine Alfaro';
 ?>
 <script>
 $.ajax({
