@@ -610,6 +610,18 @@ VALUES
 //ULTIMO ID PACIENTE
 $row_id = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM usuario WHERE id_tipo_usuario = 2 ORDER BY id DESC LIMIT 1"));
 $ultimo_id = (int)$row_id[0];
+
+//DATOS DEL CORREO
+$query_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre_completo FROM programa WHERE id = '$form_id_programa' LIMIT 1"));
+$nombre_programa = $query_nombre_programa[0];
+$asunto = 'Bienvenido al programa "'.$nombre_programa.'"';
+?>
+<script>
+$.ajax({
+url: 'config/send_private.php?asunto=<?php echo $asunto; ?>&email_destino=<?php echo $form_correo; ?>&nombre_paciente=<?php echo $form_nombres; ?>&nombre_programa=<?php echo $nombre_programa; ?>&usuario=<?php echo $form_codigo; ?>&clave=<?php echo $form_clave; ?>&genero=<?php echo $form_genero; ?>'
+});
+</script>
+<?php
 } else {
 $suscripcion_nueva = 2;
 
