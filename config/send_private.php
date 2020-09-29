@@ -87,24 +87,24 @@ Te env&iacute;o el link, con tu usuario y contrase&ntilde;a para que puedas acce
 <br><br>
 <table style="width: 100%;">
 <tr>
-<td style="width: 25%;"></td>
-<td style="width: 50%;">
+<td style="width: 20%;"></td>
+<td style="width: 70%;">
 <table style="width: 100%;">
 <tr>
-<td style="width: 50%; font-weight: bold;">Link:</td>
-<td style="width: 50%; font-weight: bold;">www.nutrikatherinealfaro.com.pe/Mi-Espacio-Personal</td>
+<td style="width: 30%; font-weight: bold;">Link:</td>
+<td style="width: 70%; font-weight: bold;">www.nutrikatherinealfaro.com.pe/Mi-Espacio-Personal</td>
 </tr>
 <tr>
-<td style="width: 50%; font-weight: bold;">Usuario:</td>
-<td style="width: 50%; font-weight: bold;">'.$usuario.'</td>
+<td style="width: 30%; font-weight: bold;">Usuario:</td>
+<td style="width: 70%; font-weight: bold;">'.$usuario.'</td>
 </tr>
 <tr>
-<td style="width: 50%; font-weight: bold;">Contrase&ntilde;a:</td>
-<td style="width: 50%; font-weight: bold;">'.$clave.'</td>
+<td style="width: 30%; font-weight: bold;">Contrase&ntilde;a:</td>
+<td style="width: 70%; font-weight: bold;">'.$clave.'</td>
 </tr>
 </table>
 </td>
-<td style="width: 25%;"></td>
+<td style="width: 10%;"></td>
 </tr>
 </table>
 <br>
