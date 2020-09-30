@@ -164,10 +164,9 @@ Espero te encuentres muy bien! Hemos logrado perder 5 kg en este mes y estoy seg
 Recordarte que el d&iacute;a <b>13 de agosto del 2020</b> vence tu plan <b>xxxxxxx</b>. Agradecer&eacute; enviar el voucher de tu renovaci&oacute;n a este correo: pagos@nutrikatherinealfaro.com.pe.
 <br><br>
 S&oacute;lo tendr&aacute;s &eacute;xito si crees que puedes tenerlo!
-<br>
+<br><br>
 Que tengas un feliz d&iacute;a
-<br>
-<b>Jimena Vargas</b><br>
+<br><br>
 <b>&Aacute;rea de ventas</b><br>
 <b>ReKupera tu peso ideal by Katherine Alfaro</b><br>
 <b>Cel. 946437834</b><br>

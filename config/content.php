@@ -1024,7 +1024,7 @@ $fecha_fin = date('d/m/Y', strtotime($row_suscripcion[3]));
 $estado = $row_suscripcion[4];
 
 //NOMBRE DEL PROGRAMA
-$row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM programa WHERE id = '$id_programa' LIMIT 1"));
+$row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre_completo FROM programa WHERE id = '$id_programa' LIMIT 1"));
 $nombre_programa = $row_nombre_programa[0];
 //SUSCRIPCION ACTIVA
 if($estado == 1){
