@@ -3144,11 +3144,14 @@ confirmButtonText: 'OK'
 }
 ?>
 <div id="div_guardar_control"></div>
-<div style="color: #111; font-size: 23px; font-weight: normal; text-align: center;">Registro de Peso y Medidas</div>
+<div style="color: #111; font-size: 23px; font-weight: 500; text-align: center;">Registro de Peso y Medidas</div>
 <div class="row" style="padding-top: 15px;">
 <div class="col-md-12" style="padding-top: 25px;">
 <div class="table-responsive">
 <table style="width: 1000px !important; margin: 0 auto;">
+<tr>
+<td class="td-content" style="width: 100% !important; text-align: left !important; font-size: 14px; font-weight: bold;" colspan="2">Fecha: <?php echo date('d/m/Y'); ?></td>
+</tr>
 <tr>
 <td class="td-title" style="width: 50% !important;">Medidas</td>
 <td class="td-title" style="width: 50% !important; padding-right: 35px;">Valor</td>
