@@ -3,8 +3,6 @@
 require_once(__DIR__.'/class.phpmailer.php');
 require_once(__DIR__.'/class.smtp.php');
 
-$asunto = $_GET['asunto'];
-
 //CORREO DE DESTINO
 $email_destino = $_GET['email_destino'];
 
@@ -22,6 +20,23 @@ $clave = $_GET['clave'];
 
 //GENERO
 $genero = (int)$_GET['genero'];
+
+//TIPO DE EMAIL
+$tipo_email = (int)$_GET['tipo_email'];
+
+//SI ES MUJER O SI ES HOMBRE
+if($genero == 2){
+$bienvenido = 'Bienvenida';
+} else {
+$bienvenido = 'Bienvenido';
+}
+
+//ASUNTO
+if($tipo_email == 1){
+$asunto = $bienvenido.' al programa "ReKupera tu peso ideal" by Katherine Alfaro';
+} elseif($tipo_email == 2){
+$asunto = 'Programa ReKupera tu peso ideal – Recordatorio de pago';
+}
 
 //VALIDAR CORREO
 $mail_correcto = 0;
@@ -58,7 +73,11 @@ exit();
 }
 
 // EMAIL FROM
+if($tipo_email == 1){
 $sender = 'plandealimentacion@nutrikatherinealfaro.com.pe';
+} elseif($tipo_email == 2){
+$sender = 'plandealimentacion@nutrikatherinealfaro.com.pe';
+}
 $senderName = 'Katherine Alfaro';
 
 // EMAIL TO
@@ -74,6 +93,7 @@ $port = 587;
 $subject = $asunto;
 
 // HTML CONTENIDO DEL EMAIL
+if($tipo_email == 1){
 $bodyHtml = '
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
@@ -130,6 +150,38 @@ Saludos<br>
 </tr>
 </table>
 ';
+} elseif($tipo_email == 2){
+$bodyHtml = '
+<table style="width: 100%; padding: 10px; border-collapse: collapse;">
+<tr>
+<td style="background: white; text-align: left;">
+<div style="text-align: left">
+<h3 style="color:#4f4f4f">Hola <b>'.$nombre_paciente.'</b>,</h3>
+</div>
+<div style="text-align: justify ;color: #4f4f4f">
+Espero te encuentres muy bien! Hemos logrado perder 5 kg en este mes y estoy segura que vamos a seguir avanzando hasta llegar al objetivo! Muchas felicidades!
+<br><br>
+Recordarte que el d&iacute;a <b>13 de agosto del 2020</b> vence tu plan <b>xxxxxxx</b>. Agradecer&eacute; enviar el voucher de tu renovaci&oacute;n a este correo: pagos@nutrikatherinealfaro.com.pe.
+<br><br>
+S&oacute;lo tendr&aacute;s &eacute;xito si crees que puedes tenerlo!
+<br>
+Que tengas un feliz d&iacute;a
+<br>
+<b>Jimena Vargas</b><br>
+<b>&Aacute;rea de ventas</b><br>
+<b>ReKupera tu peso ideal by Katherine Alfaro</b><br>
+<b>Cel. 946437834</b><br>
+</div>
+</td>
+</tr>
+<tr>
+<td style="background-color: white">
+<p style="color: #b3b3b3 !important; font-size: 11px; text-align: center; margin: 30px 0px 0px">Correo electr&oacute;nico enviado desde: <a href="//nutrikatherinealfaro.com.pe/" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" style="color:#95cf32; text-decoration:none">nutrikatherinealfaro.com.pe</a></p>
+</td>
+</tr>
+</table>
+';
+}
 
 $mail = new PHPMailer(true);
 
