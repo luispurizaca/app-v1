@@ -3146,12 +3146,11 @@ confirmButtonText: 'OK'
 <div id="div_guardar_control"></div>
 <div style="color: #111; font-size: 23px; font-weight: 500; text-align: center;">Registro de Peso y Medidas</div>
 <div class="row" style="padding-top: 15px;">
-<div class="col-md-12" style="padding-top: 25px;">
+<div class="col-md-3" style="padding-top: 25px;"></div>
+<div class="col-md-6" style="padding-top: 25px;">
+<b style="font-size: 13.5px;">Fecha: <?php echo date('d/m/Y'); ?></b>
 <div class="table-responsive">
-<table style="width: 1000px !important; margin: 0 auto;">
-<tr>
-<td class="td-content" style="width: 100% !important; text-align: left !important; font-size: 14px; font-weight: bold;" colspan="2">Fecha: <?php echo date('d/m/Y'); ?></td>
-</tr>
+<table style="width: 100% !important; margin: 0 auto; border: 1px solid #95cf32; margin-top: 5px;">
 <tr>
 <td class="td-title" style="width: 50% !important;">Medidas</td>
 <td class="td-title" style="width: 50% !important; padding-right: 35px;">Valor</td>
@@ -3255,8 +3254,9 @@ confirmButtonText: 'OK'
 </div>
 </td>
 </tr>
-<tr class="tr-hover">
-<td class="td-content" style="width: 100% !important;" colspan="2">
+</table>
+</div>
+<div style="text-align: center; padding-top: 15px;">
 <button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 11px;">
 GUARDAR DATOS
 </button>
@@ -3293,11 +3293,9 @@ $('#div_guardar_control').html(datos).fadeIn('slow');
 });
 });
 </script>
-</td>
-</tr>
-</table>
 </div>
 </div>
+<div class="col-md-3" style="padding-top: 25px;"></div>
 </div>
 </div>
 </div>
