@@ -1188,6 +1188,34 @@ exit();
 exit();
 }
 
+//GUARDAR NUEVO REGISTRO
+if($negocia_operacion == 8){
+$frm_talla_actual = (float)$_POST['frm_talla_actual'];
+$frm_peso_actual = (float)$_POST['frm_peso_actual'];
+$frm_brazo = (float)$_POST['frm_brazo'];
+$frm_pecho = (float)$_POST['frm_pecho'];
+$frm_cintura = (float)$_POST['frm_cintura'];
+$frm_gluteo = (float)$_POST['frm_gluteo'];
+$frm_muslo = (float)$_POST['frm_muslo'];
+$frm_pantorrilla = (float)$_POST['frm_pantorrilla'];
+$id_paciente = (int)$_POST['id_paciente'];
+
+//INSERT INTO
+mysqli_query($con, "
+INSERT INTO control (codigo, id_suscripcion, id_nutricionista, id_paciente, fecha, talla, peso, brazo, pecho, cintura, gluteo, muslo, pantorrilla)
+VALUES 
+('".$_SESSION['ID_USUARIO']."', '".$form_alimentos_gustar_no."', '".$form_agua."', '".$form_alcohol."', '".$form_alcohol_frecuencia."', '".$form_evacuacion."', '".$form_dormir."', '".$form_ejercicios."', '".$form_ejercicios_frecuencia."', '".$form_ejercicios_horario."', '".$form_enfermedad."', '".$form_enfermedad_especificar."', '".$form_analisis_alterado."', '".$form_analisis_alterado_especificar."', '".$form_medicamentos."', '".$form_medicamentos_especificar."', '".$form_horario_comidas."', '".$form_tiempo."', '".date('Y-m-d H:i:s')."', '".$form_peso_meta."')
+"
+);
+?>
+<script>
+location.href = 'medidas.php?success';
+</script>
+<?php
+exit();
+exit();
+}
+
 if(isset($con)){
 //1. inicio.php
 
@@ -3066,6 +3094,24 @@ if($view_controller == 13){
 <div class="card-box pd-20 height-100-p mb-30">
 <div class="row align-items-center">
 <div class="col-md-12">
+<?php
+if(isset($_GET['success'])){
+?>
+<script>
+swal(
+{
+title: 'Datos Guardados!',
+type: 'success',
+confirmButtonClass: 'btn btn-success',
+confirmButtonColor: '#95cf32',
+confirmButtonText: 'OK'
+}
+);
+</script>
+<?php
+}
+?>
+<div id="div_guardar_control"></div>
 <div style="color: #111; font-size: 23px; font-weight: normal; text-align: center;">Registro de Peso y Medidas</div>
 <div class="row" style="padding-top: 15px;">
 <div class="col-md-12" style="padding-top: 25px;">
@@ -3095,6 +3141,110 @@ if($view_controller == 13){
 <span class="input-group-text">Kg</span>
 </div>
 </div>
+</td>
+</tr>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important;">Brazo</td>
+<td class="td-content" style="width: 50% !important;">
+<div class="input-group input-group-sm" style="width: 100px; margin: 0 auto;">
+<input id="frm_brazo" type="text" class="form-control" style="height: 25px; text-align: center; font-size: 11px;" placeholder="0.00">
+<div class="input-group-prepend">
+<span class="input-group-text">Kg</span>
+</div>
+</div>
+</td>
+</tr>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important;">Pecho</td>
+<td class="td-content" style="width: 50% !important;">
+<div class="input-group input-group-sm" style="width: 100px; margin: 0 auto;">
+<input id="frm_pecho" type="text" class="form-control" style="height: 25px; text-align: center; font-size: 11px;" placeholder="0.00">
+<div class="input-group-prepend">
+<span class="input-group-text">Kg</span>
+</div>
+</div>
+</td>
+</tr>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important;">Cintura</td>
+<td class="td-content" style="width: 50% !important;">
+<div class="input-group input-group-sm" style="width: 100px; margin: 0 auto;">
+<input id="frm_cintura" type="text" class="form-control" style="height: 25px; text-align: center; font-size: 11px;" placeholder="0.00">
+<div class="input-group-prepend">
+<span class="input-group-text">Kg</span>
+</div>
+</div>
+</td>
+</tr>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important;">Gl&uacute;teo</td>
+<td class="td-content" style="width: 50% !important;">
+<div class="input-group input-group-sm" style="width: 100px; margin: 0 auto;">
+<input id="frm_gluteo" type="text" class="form-control" style="height: 25px; text-align: center; font-size: 11px;" placeholder="0.00">
+<div class="input-group-prepend">
+<span class="input-group-text">Kg</span>
+</div>
+</div>
+</td>
+</tr>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important;">Muslo</td>
+<td class="td-content" style="width: 50% !important;">
+<div class="input-group input-group-sm" style="width: 100px; margin: 0 auto;">
+<input id="frm_muslo" type="text" class="form-control" style="height: 25px; text-align: center; font-size: 11px;" placeholder="0.00">
+<div class="input-group-prepend">
+<span class="input-group-text">Kg</span>
+</div>
+</div>
+</td>
+</tr>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important;">Pantorrilla</td>
+<td class="td-content" style="width: 50% !important;">
+<div class="input-group input-group-sm" style="width: 100px; margin: 0 auto;">
+<input id="frm_pantorrilla" type="text" class="form-control" style="height: 25px; text-align: center; font-size: 11px;" placeholder="0.00">
+<div class="input-group-prepend">
+<span class="input-group-text">Kg</span>
+</div>
+</div>
+</td>
+</tr>
+<tr class="tr-hover">
+<td class="td-content" style="width: 100% !important;" colspan="2">
+<button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 11px;">
+GUARDAR DATOS
+</button>
+<script>
+$('#btn_guardar_datos').on('click', function(){
+var frm_talla_actual = $('#frm_talla_actual').val();
+var frm_peso_actual = $('#frm_peso_actual').val();
+var frm_brazo = $('#frm_brazo').val();
+var frm_pecho = $('#frm_pecho').val();
+var frm_cintura = $('#frm_cintura').val();
+var frm_gluteo = $('#frm_gluteo').val();
+var frm_muslo = $('#frm_muslo').val();
+var frm_pantorrilla = $('#frm_pantorrilla').val();
+
+$.ajax({
+type: 'POST',
+url: 'config/content.php?negocia_operacion=8',
+data: {
+frm_talla_actual : frm_talla_actual,
+frm_peso_actual : frm_peso_actual,
+frm_brazo : frm_brazo,
+frm_pecho : frm_pecho,
+frm_cintura : frm_cintura,
+frm_gluteo : frm_gluteo,
+frm_muslo : frm_muslo,
+frm_pantorrilla : frm_pantorrilla,
+id_paciente : <?php echo $_SESSION['ID_USUARIO']; ?>
+},
+success: function(datos){
+$('#div_guardar_control').html(datos).fadeIn('slow');
+}
+});
+});
+</script>
 </td>
 </tr>
 </table>
