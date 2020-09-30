@@ -1244,6 +1244,21 @@ confirmButtonText: 'OK'
 </script>
 <?php
 }
+if(isset($_GET['mail'])){
+?>
+<script>
+swal(
+{
+title: 'Recordatorio enviado correctamente!',
+type: 'success',
+confirmButtonClass: 'btn btn-success',
+confirmButtonColor: '#95cf32',
+confirmButtonText: 'OK'
+}
+);
+</script>
+<?php
+}
 ?>
 <h4 class="font-20 weight-500 mb-10 text-capitalize" style="padding-left: 65px;">
 Hola <div class="font-30" style="color: #95cf32; font-weight: bold;"><?php echo ucwords($_SESSION['usuario_nombres']); ?>!</div>
@@ -1658,6 +1673,21 @@ $id_tipo_suscripcion = $row_por_vencer[10];
 <li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px; <?php echo $css_estado; ?>">
 <span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
 La membres&iacute;a de <?php echo $mostrar_paciente; ?> <?php echo $mostrar_verbo; ?> el <?php echo $fecha_fin; ?>.
+<?php
+if($tipo_sql == 1){
+?>
+&nbsp;&nbsp;&nbsp;<button id="btn_enviar_email_<?php echo $id; ?>" type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 11px;">Enviar recordatorio</button>
+<script>
+$('#btn_enviar_email_<?php echo $id; ?>').on('click', function(){
+$.ajax({
+url: 'config/send_private.php?tipo_email=2&email_destino=luispurizaca.1908@gmail.com&nombre_paciente=Luis&nombre_programa=<?php echo $nombre_programa; ?>&usuario=<?php echo $form_codigo; ?>&clave=<?php echo $form_clave; ?>&genero=<?php echo $form_genero; ?>'
+});
+location.href='index.php?mail';
+});
+</script>
+<?php
+}
+?>
 </li>
 <?php
 }
