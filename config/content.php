@@ -1188,7 +1188,7 @@ exit();
 exit();
 }
 
-//GUARDAR NUEVO REGISTRO
+//GUARDAR MEDIDAS
 if($negocia_operacion == 8){
 $frm_talla_actual = (float)$_POST['frm_talla_actual'];
 $frm_peso_actual = (float)$_POST['frm_peso_actual'];
@@ -1200,11 +1200,21 @@ $frm_muslo = (float)$_POST['frm_muslo'];
 $frm_pantorrilla = (float)$_POST['frm_pantorrilla'];
 $id_paciente = (int)$_POST['id_paciente'];
 
+//ULTIMA SUSCRIPCION DEL PACIENTE
+$row_id_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT id, id_nutricionista FROM suscripcion_programa WHERE id_paciente = '$id_paciente' ORDER BY id DESC LIMIT 1"));
+$id_suscripcion = (int)$row_id_suscripcion[0];
+$id_nutricionista = (int)$row_id_suscripcion[1];
+
+//CODIGO DEL CONTROL
+$letra_add = 'C-';
+$row_codigo_control = mysqli_fetch_array(mysqli_query($con, "SELECT COUNT(*) FROM control WHERE id_suscripcion = '$id_suscripcion' AND id_paciente = '$id_paciente'"));
+$codigo_control = $letra_add.(((int)$row_codigo_control[0]) + 1);
+
 //INSERT INTO
 mysqli_query($con, "
 INSERT INTO control (codigo, id_suscripcion, id_nutricionista, id_paciente, fecha, talla, peso, brazo, pecho, cintura, gluteo, muslo, pantorrilla)
 VALUES 
-('".$_SESSION['ID_USUARIO']."', '".$form_alimentos_gustar_no."', '".$form_agua."', '".$form_alcohol."', '".$form_alcohol_frecuencia."', '".$form_evacuacion."', '".$form_dormir."', '".$form_ejercicios."', '".$form_ejercicios_frecuencia."', '".$form_ejercicios_horario."', '".$form_enfermedad."', '".$form_enfermedad_especificar."', '".$form_analisis_alterado."', '".$form_analisis_alterado_especificar."', '".$form_medicamentos."', '".$form_medicamentos_especificar."', '".$form_horario_comidas."', '".$form_tiempo."', '".date('Y-m-d H:i:s')."', '".$form_peso_meta."')
+('".$codigo_control."', '".$id_suscripcion."', '".$id_nutricionista."', '".$id_paciente."', '".date('Y-m-d H:i:s')."', '".$frm_talla_actual."', '".$frm_peso_actual."', '".$frm_brazo."', '".$frm_pecho."', '".$frm_cintura."', '".$frm_gluteo."', '".$frm_muslo."', '".$frm_pantorrilla."')
 "
 );
 ?>
