@@ -827,7 +827,6 @@ $form_medicamentos = $_POST['form_medicamentos'];
 $form_medicamentos_especificar = $_POST['form_medicamentos_especificar'];
 $form_horario_comidas = $_POST['form_horario_comidas'];
 $form_tiempo = $_POST['form_tiempo'];
-$form_peso_meta = (float)$_POST['form_peso_meta'];
 
 //VERIFICAR SI EXISTE HISTORIA CLINICA DEL PACIENTE
 $query_id_historia = mysqli_query($con, "SELECT id FROM historia WHERE id_paciente = '".$_SESSION['ID_USUARIO']."' ORDER BY id ASC LIMIT 1");
@@ -841,13 +840,13 @@ alcohol_frecuencia = '".$form_alcohol_frecuencia."', evacuacion = '".$form_evacu
 dormir = '".$form_dormir."', ejercicios = '".$form_ejercicios."',
 ejercicios_frecuencia = '".$form_ejercicios_frecuencia."', ejercicios_horario = '".$form_ejercicios_horario."', enfermedad = '".$form_enfermedad."',
 enfermedad_especificar = '".$form_enfermedad_especificar."', analisis_sangre = '".$form_analisis_alterado."', analisis_sangre_especificar = '".$form_analisis_alterado_especificar."',
-medicamentos = '".$form_medicamentos."', medicamentos_especificar = '".$form_medicamentos_especificar."', horario = '".$form_horario_comidas."', tiempo = '".$form_tiempo."', peso_meta = '".$form_peso_meta."'
+medicamentos = '".$form_medicamentos."', medicamentos_especificar = '".$form_medicamentos_especificar."', horario = '".$form_horario_comidas."', tiempo = '".$form_tiempo."'
 WHERE id = '$id_historia' AND id_paciente = '".$_SESSION['ID_USUARIO']."'");
 } else {
 mysqli_query($con, "
 INSERT INTO historia (id_paciente, alimentos_no_gustar, agua, alcohol, alcohol_frecuencia, evacuacion, dormir, ejercicios, ejercicios_frecuencia, ejercicios_horario, enfermedad, enfermedad_especificar, analisis_sangre, analisis_sangre_especificar, medicamentos, medicamentos_especificar, horario, tiempo, date_added, peso_meta)
 VALUES 
-('".$_SESSION['ID_USUARIO']."', '".$form_alimentos_gustar_no."', '".$form_agua."', '".$form_alcohol."', '".$form_alcohol_frecuencia."', '".$form_evacuacion."', '".$form_dormir."', '".$form_ejercicios."', '".$form_ejercicios_frecuencia."', '".$form_ejercicios_horario."', '".$form_enfermedad."', '".$form_enfermedad_especificar."', '".$form_analisis_alterado."', '".$form_analisis_alterado_especificar."', '".$form_medicamentos."', '".$form_medicamentos_especificar."', '".$form_horario_comidas."', '".$form_tiempo."', '".date('Y-m-d H:i:s')."', '".$form_peso_meta."')
+('".$_SESSION['ID_USUARIO']."', '".$form_alimentos_gustar_no."', '".$form_agua."', '".$form_alcohol."', '".$form_alcohol_frecuencia."', '".$form_evacuacion."', '".$form_dormir."', '".$form_ejercicios."', '".$form_ejercicios_frecuencia."', '".$form_ejercicios_horario."', '".$form_enfermedad."', '".$form_enfermedad_especificar."', '".$form_analisis_alterado."', '".$form_analisis_alterado_especificar."', '".$form_medicamentos."', '".$form_medicamentos_especificar."', '".$form_horario_comidas."', '".$form_tiempo."', '".date('Y-m-d H:i:s')."', '0')
 "
 );
 }
@@ -2822,13 +2821,14 @@ if($view_controller == 12){
 ?>
 <div class="card-box pd-20 height-100-p mb-30">
 <div class="row align-items-center">
+<div class="col-md-12">
 <?php
 if(isset($_GET['success'])){
 ?>
 <script>
 swal(
 {
-title: 'Datos guardados!',
+title: 'Datos Guardados!',
 type: 'success',
 confirmButtonClass: 'btn btn-success',
 confirmButtonColor: '#95cf32',
@@ -2839,18 +2839,12 @@ confirmButtonText: 'OK'
 <?php
 }
 ?>
-<div class="col-md-4 text-center">
-<img src="vendors/images/icono.png" alt="">
-</div>
-<div class="col-md-8">
 <div id="div_guardar_historia"></div>
-<h4 class="weight-500 mb-10 text-center" style="font-size: 13px; font-weight: bolder;">
-HISTORIA CL&Iacute;NICA<br><br>
-<div style="color: #111; font-size: 14px; font-weight: normal; text-align: left; color: #111; font-weight: 300;">
+<div style="color: #111; font-size: 23px; font-weight: 500; text-align: center;">Historia Cl&iacute;nica</div><br>
+<div style="color: #111; font-size: 14px; font-weight: normal; text-align: center; color: #111; font-weight: 300;">
 Hola <b style="font-weight: 500;"><?php echo ucwords($_SESSION['usuario_nombres']); ?></b>, bienvenido al programa <b style="font-weight: 500;">ReKupera tu peso ideal</b>!
 Te agradecer&eacute; completar esta ficha para conocerte m&aacute;s!
 </div>
-</h4>
 <?php
 $form_alimentos_gustar_no;
 $form_agua;
@@ -2895,20 +2889,26 @@ $form_tiempo = $row_id_historia[16];
 $form_peso_meta = (int)$row_id_historia[17];
 }
 ?>
-<div class="row" style="padding-top: 15px;">
-<div class="col-md-12 col-sm-12 text-center">
-<table style="width: 100%;">
+<div class="row">
+<div class="col-md-2" style="padding-top: 25px;"></div>
+<div class="col-md-8" style="padding-top: 25px;">
+<div class="table-responsive">
+<table style="width: 100% !important; margin: 0 auto; border: 1px solid #95cf32; margin-top: 5px;">
 <tr>
-<td style="width: 50%; text-align: left;">
-<label class="n-label" style="font-size: 12px;">1. Alimentos que no te gusten:</label>
+<td class="td-title" style="width: 50% !important;">Preguntas</td>
+<td class="td-title" style="width: 50% !important; padding-right: 35px;">Respuestas</td>
+</tr>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important; text-align: left;">
+1. Alimentos que no te gusten:
 </td>
 <td style="width: 50%;">
-<textarea id="form_alimentos_gustar_no" name="form_alimentos_gustar_no" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important;"><?php echo $form_alimentos_gustar_no; ?></textarea>
+<textarea id="form_alimentos_gustar_no" name="form_alimentos_gustar_no" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none;"><?php echo $form_alimentos_gustar_no; ?></textarea>
 </td>
 </tr>
-<tr>
-<td style="width: 50%; text-align: left;">
-<label class="n-label" style="font-size: 12px;">2. Consumo de agua diario:</label>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important; text-align: left;">
+2. Consumo de agua diario:
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
@@ -2922,23 +2922,23 @@ $form_peso_meta = (int)$row_id_historia[17];
 </label>
 </td>
 </tr>
-<tr>
-<td style="width: 50%; text-align: left;">
-<label class="n-label" style="font-size: 12px;">3. &#191;Tomas alcohol?:</label>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important; text-align: left;">
+3. &#191;Tomas alcohol?:
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="alcohol_no" name="form_alcohol" value="1" <?php if($form_alcohol == 1){ ?> checked="checked" <?php } ?>> No tomo
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="alcohol_si" name="form_alcohol" value="2" <?php if($form_alcohol == 2){ ?> checked="checked" <?php } ?>> Si tomo: 
-Frecuencia: <input type="text" class="n-form-control" id="form_alcohol_frecuencia" value="<?php echo $form_alcohol_frecuencia; ?>">
+<input type="radio" id="alcohol_si" name="form_alcohol" value="2" <?php if($form_alcohol == 2){ ?> checked="checked" <?php } ?>> Si tomo, Frecuencia:
+<textarea id="form_alcohol_frecuencia" name="form_alcohol_frecuencia" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none;"><?php echo $form_alcohol_frecuencia; ?></textarea>
 </label>
 </td>
 </tr>
-<tr>
-<td style="width: 50%; text-align: left;">
-<label class="n-label" style="font-size: 12px;">4. Evacuaci&oacute;n:</label>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important; text-align: left;">
+4. Evacuaci&oacute;n:
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
@@ -2952,9 +2952,9 @@ Frecuencia: <input type="text" class="n-form-control" id="form_alcohol_frecuenci
 </label>
 </td>
 </tr>
-<tr>
-<td style="width: 50%; text-align: left;">
-<label class="n-label" style="font-size: 12px;">5. &#191;Cu&aacute;ntas horas duermes al d&iacute;a?:</label>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important; text-align: left;">
+5. &#191;Cu&aacute;ntas horas duermes al d&iacute;a?:
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
@@ -2965,24 +2965,25 @@ Frecuencia: <input type="text" class="n-form-control" id="form_alcohol_frecuenci
 </label>
 </td>
 </tr>
-<tr>
-<td style="width: 50%; text-align: left;">
-<label class="n-label" style="font-size: 12px;">6. &#191;Realizas Ejercicios?:</label>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important; text-align: left;">
+6. &#191;Realizas Ejercicios?:
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="ejercicios_no" name="form_ejercicios" value="1" <?php if($form_ejercicios == 1){ ?> checked="checked" <?php } ?>> No
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="ejercicios_si" name="form_ejercicios" value="2" <?php if($form_ejercicios == 2){ ?> checked="checked" <?php } ?>> Si<br>
-Frecuencia: <input type="text" class="n-form-control" id="form_ejercicios_frecuencia" value="<?php echo $form_ejercicios_frecuencia; ?>"><br>
-Horario: <input type="text" class="n-form-control" id="form_ejercicios_horario" value="<?php echo $form_ejercicios_horario; ?>">
+<input type="radio" id="ejercicios_si" name="form_ejercicios" value="2" <?php if($form_ejercicios == 2){ ?> checked="checked" <?php } ?>> Si, Frecuencia:
+<textarea id="form_ejercicios_frecuencia" name="form_ejercicios_frecuencia" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none;"><?php echo $form_ejercicios_frecuencia; ?></textarea>
+Horario:
+<textarea id="form_ejercicios_horario" name="form_ejercicios_horario" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none;"><?php echo $form_ejercicios_horario; ?></textarea>
 </label>
 </td>
 </tr>
-<tr>
-<td style="width: 50%; text-align: left;">
-<label class="n-label" style="font-size: 12px;">7. &#191;Presentas alguna enfermedad?:</label>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important; text-align: left;">
+7. &#191;Presentas alguna enfermedad?:
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
@@ -2990,13 +2991,14 @@ Horario: <input type="text" class="n-form-control" id="form_ejercicios_horario" 
 </label>
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="enfermedad_si" name="form_enfermedad" value="2" <?php if($form_enfermedad == 2){ ?> checked="checked" <?php } ?>> Si, 
-Especificar: <input type="text" class="n-form-control" id="form_enfermedad_especificar" value="<?php echo $form_enfermedad_especificar; ?>">
+Especificar:
+<textarea id="form_enfermedad_especificar" name="form_enfermedad_especificar" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none;"><?php echo $form_enfermedad_especificar; ?></textarea>
 </label>
 </td>
 </tr>
-<tr>
-<td style="width: 50%; text-align: left;">
-<label class="n-label" style="font-size: 12px;">8. &#191;Alg&uacute;n valor alterado en tus &uacute;ltimos<br>an&aacute;lisis de sangre?:</label>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important; text-align: left;">
+8. &#191;Alg&uacute;n valor alterado en tus &uacute;ltimos<br>an&aacute;lisis de sangre?:
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
@@ -3004,13 +3006,14 @@ Especificar: <input type="text" class="n-form-control" id="form_enfermedad_espec
 </label>
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="analisis_alterado_si" name="form_analisis_alterado" value="2" <?php if($form_analisis_alterado == 2){ ?> checked="checked" <?php } ?>> Si, 
-Especificar: <input type="text" class="n-form-control" id="form_analisis_alterado_especificar" value="<?php echo $form_analisis_alterado_especificar; ?>">
+Especificar:
+<textarea id="form_analisis_alterado_especificar" name="form_analisis_alterado_especificar" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none;"><?php echo $form_analisis_alterado_especificar; ?></textarea>
 </label>
 </td>
 </tr>
-<tr>
-<td style="width: 50%; text-align: left;">
-<label class="n-label" style="font-size: 12px;">9. &#191;Tomas medicamentos / suplementos / <br>vitaminas / anticonc&eacute;pticos?:</label>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important; text-align: left;">
+9. &#191;Tomas medicamentos / suplementos / <br>vitaminas / anticonc&eacute;pticos?:
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
@@ -3018,13 +3021,14 @@ Especificar: <input type="text" class="n-form-control" id="form_analisis_alterad
 </label>
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="medicamentos_si" name="form_medicamentos" value="2" <?php if($form_medicamentos == 2){ ?> checked="checked" <?php } ?>> Si, 
-Especificar: <input type="text" class="n-form-control" id="form_medicamentos_especificar" value="<?php echo $form_medicamentos_especificar; ?>">
+Especificar:
+<textarea id="form_medicamentos_especificar" name="form_medicamentos_especificar" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none;"><?php echo $form_medicamentos_especificar; ?></textarea>
 </label>
 </td>
 </tr>
-<tr>
-<td style="width: 50%; text-align: left;">
-<label class="n-label" style="font-size: 12px;">10. &#191;En qu&eacute; horarios te gustar&iacute;a<br>que programe tus comidas?:</label>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important; text-align: left;">
+10. &#191;En qu&eacute; horarios te gustar&iacute;a<br>que programe tus comidas?:
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
@@ -3038,9 +3042,9 @@ Especificar: <input type="text" class="n-form-control" id="form_medicamentos_esp
 </label>
 </td>
 </tr>
-<tr>
-<td style="width: 50%; text-align: left;">
-<label class="n-label" style="font-size: 12px;">11. &#191;C&oacute;mo prefieres un plan de alimentaci&oacute;n?:</label>
+<tr class="tr-hover">
+<td class="td-content" style="width: 50% !important; text-align: left;">
+11. &#191;C&oacute;mo prefieres un plan de alimentaci&oacute;n?:
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
@@ -3051,18 +3055,10 @@ Especificar: <input type="text" class="n-form-control" id="form_medicamentos_esp
 </label>
 </td>
 </tr>
-<tr>
-<td style="width: 50%; text-align: left;">
-<label class="n-label" style="font-size: 12px;">12. &#191;Cu&aacute;l es el <b>Peso Meta</b> que deseas alcanzar?</label>
-</td>
-<td style="width: 50%; text-align: left;">
-<input type="number" step="any" class="n-form-control" id="form_peso_meta" value="<?php echo $form_peso_meta; ?>"><br>
-</td>
-</tr>
 </table>
 </div>
-<div class="col-md-12 col-sm-12 text-center" style="padding-top: 15px;">
-<button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar Datos</button>
+<div style="text-align: center; padding-top: 15px;">
+<button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 11px;">Guardar Datos</button>
 <script>
 $('#btn_guardar_datos').on('click', function(){
 var form_alimentos_gustar_no = $('#form_alimentos_gustar_no').val();
@@ -3082,7 +3078,6 @@ var form_medicamentos = $('input[name=form_medicamentos]:checked').val();
 var form_medicamentos_especificar = $('#form_medicamentos_especificar').val();
 var form_horario_comidas = $('input[name=form_horario_comidas]:checked').val();
 var form_tiempo = $('input[name=form_tiempo]:checked').val();
-var form_peso_meta = $('#form_peso_meta').val();
 $.ajax({
 type: 'POST',
 url: 'config/content.php?negocia_operacion=6',
@@ -3103,8 +3098,7 @@ form_analisis_alterado_especificar : form_analisis_alterado_especificar,
 form_medicamentos : form_medicamentos,
 form_medicamentos_especificar : form_medicamentos_especificar,
 form_horario_comidas : form_horario_comidas,
-form_tiempo : form_tiempo,
-form_peso_meta : form_peso_meta
+form_tiempo : form_tiempo
 },
 success: function(datos){
 $('#div_guardar_historia').html(datos).fadeIn('slow');
@@ -3113,6 +3107,8 @@ $('#div_guardar_historia').html(datos).fadeIn('slow');
 });
 </script>
 </div>
+</div>
+<div class="col-md-2" style="padding-top: 25px;"></div>
 </div>
 </div>
 </div>
