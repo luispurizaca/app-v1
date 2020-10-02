@@ -1076,7 +1076,7 @@ if($array_valor[3] > $max){
 $max = $array_valor[3];
 }
 
-if($array_valor[3] <= $max){
+if($array_valor[3] < $max){
 $min = $array_valor[3];
 }
 }
