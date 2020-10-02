@@ -1046,6 +1046,44 @@ $css_condicion_color = '#F26C3C';
 ?>
 </table>
 </div>
+<?php
+//OBTENER CONTROLES
+$sql_controles = mysqli_query($con, "SELECT DATE_FORMAT(fecha, '%Y-%m-%d'), codigo, id_suscripcion, peso FROM control WHERE id_paciente = '$ret_id_usuario' ORDER BY DATE_FORMAT(fecha, '%Y-%m-%d') ASC");
+$array_controles;
+$i_controles = 0;
+while($row_controles = mysqli_fetch_array($sql_controles)){
+$control_fecha = date('d/m/y', strtotime($row_controles[0]));
+$control_codigo = $row_controles[1];
+$control_id_suscripcion = (int)$row_controles[2];
+$control_peso = (float)$row_controles[3];
+
+//OBTENER ID DEL PROGRAMA
+$query_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT id_programa FROM suscripcion_programa WHERE id = '$control_id_suscripcion' ORDER BY id ASC LIMIT 1"));
+$id_programa = (int)$query_suscripcion[0];
+
+//NOMBRE DEL PROGRAMA
+$row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM programa WHERE id = '$id_programa' LIMIT 1"));
+$nombre_programa = $row_nombre_programa[0];
+
+$array_controles[$i_controles] = array($control_fecha, $control_codigo, $nombre_programa, $control_peso);
+$i_controles++;
+}
+
+$max = 0;
+foreach($array_controles as $array_valor)
+{
+if($array_valor[3] > $max){
+$max = $array_valor[3];
+}
+
+if($array_valor[3] <= $max){
+$min = $array_valor[3];
+}
+}
+
+$max = $max + 1;
+$min = $min - 1;
+?>
 <div class="row">
 <div class="col-md-6 text-center" style="padding-top: 40px;">
 <div id="chart1"></div>
@@ -1073,7 +1111,15 @@ show: false
 
 //DATOS EJE X
 xaxis: {
-categories: [['06/09/2020', 'C001', 'RPF'], ['10/09/2020', 'C002', 'RPF'], ['12/09/2020', 'C003', 'RPF'], ['15/09/2020', 'C004', 'RPF'], ['18/09/2020', 'C005', 'RPM'], ['20/09/2020', 'C006', 'RPM'], ['22/09/2020', 'C007', 'RPM'], ['23/09/2020', 'C008', 'RPM']],
+categories: [
+<?php
+foreach($array_controles as $array_valor){
+?>
+['<?php echo $array_valor[0]; ?>', '<?php echo $array_valor[1]; ?>', '<?php echo $array_valor[2]; ?>'],
+<?php
+}
+?>
+],
 labels: {
 rotate: 0
 }
@@ -1081,8 +1127,8 @@ rotate: 0
 
 //CONFIGURACION EJE Y
 yaxis: {
-min: 55,
-max: 80,
+min: <?php echo $min; ?>,
+max: <?php echo $max; ?>,
 title: {
 text: 'PESO (KG)'
 }
@@ -1092,7 +1138,15 @@ text: 'PESO (KG)'
 series: [
 {
 name: 'Peso',
-data: [75, 72, 65, 60, 60, 62, 70, 60]
+data: [
+<?php
+foreach($array_controles as $array_valor){
+?>
+<?php echo $array_valor[3]; ?>,
+<?php
+}
+?>
+]
 }
 ],
 
