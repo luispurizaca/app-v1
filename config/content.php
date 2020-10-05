@@ -1135,10 +1135,6 @@ foreach($array_controles as $array_valor)
 if($array_valor[3] > $max){
 $max = $array_valor[3];
 }
-
-if($array_valor[3] < $max){
-$min = $array_valor[3];
-}
 }
 
 $max = $max + 1;
@@ -2716,7 +2712,7 @@ var n_fecha_hasta = '';
 }
 $.ajax({
 type: 'POST',
-url: 'config/ajax.php?view_controller=4',
+url: 'config/ajax.php?view_controller=<?php echo $view_controller; ?>',
 data: {
 action: 'ajax',
 page: page,
