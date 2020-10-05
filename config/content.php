@@ -1142,7 +1142,7 @@ $min = $array_valor[3];
 }
 
 $max = $max + 1;
-$min = $min - 1;
+$min = ((float)$ret_peso_meta) - 5;
 ?>
 <div class="row">
 <div class="col-md-6 text-center" style="padding-top: 40px;">
