@@ -58,8 +58,8 @@ if(!empty($id_registro)){
 $consulta_sql_general .= " AND usuario.id = '$id_registro'";
 }
 
-//FILTRO POR VENDEDOR
-if($_SESSION['ID_TIPO_USUARIO'] == 2){
+//FILTRO POR NUTRICIONISTA Y VENDEDOR
+if($_SESSION['ID_TIPO_USUARIO'] == 1 || $_SESSION['ID_TIPO_USUARIO'] == 2){
 $consulta_sql_general .= " AND usuario.id_tipo_usuario = 2";
 }
 
