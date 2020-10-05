@@ -2579,7 +2579,7 @@ $texto_anual = 'Ventas del a&ntilde;o';
 </div>
 <div class="pb-20" style="padding-left: 20px; padding-right: 20px; padding-top: 20px;">
 <?php
-if($view_controller == 2 || $view_controller == 4){
+if($view_controller == 4){
 ?>
 <div class="modal fade" id="modalFechas">
 <div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 0; margin-bottom: 2px;">
@@ -2716,7 +2716,7 @@ var n_fecha_hasta = '';
 }
 $.ajax({
 type: 'POST',
-url: 'config/ajax.php?view_controller=<?php echo $view_controller; ?>',
+url: 'config/ajax.php?view_controller=4',
 data: {
 action: 'ajax',
 page: page,
