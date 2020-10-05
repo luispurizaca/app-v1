@@ -109,10 +109,29 @@ elseif($_SESSION['ID_TIPO_USUARIO'] == 2){
 </li>
 <?php
 }
+elseif($_SESSION['ID_TIPO_USUARIO'] == 3){
+?>
+<li>
+<a href="registro.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Registro</span>
+</a>
+</li>
+<li>
+<a href="nutricionistas.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Lista de Nutricionistas</span>
+</a>
+</li>
+<li>
+<a href="vendedores.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Lista de Vendedores</span>
+</a>
+</li>
+<?php
+}
 elseif($_SESSION['ID_TIPO_USUARIO'] == 4){
 ?>
 <li>
-<a href="pacientes-v.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<a href="registro.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Registro</span>
 </a>
 </li>

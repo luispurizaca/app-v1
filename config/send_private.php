@@ -199,7 +199,7 @@ $mail->SMTPSecure = 'tls';
 $mail->CharSet    = 'UTF-8';
 $mail->isHTML(true);
 $mail->addAddress($recipient);
-$mail->addBCC('katherine-alfaro@outlook.com');
+//$mail->addBCC('katherine-alfaro@outlook.com');
 $mail->Subject    = $subject;
 $mail->Body       = $bodyHtml;
 

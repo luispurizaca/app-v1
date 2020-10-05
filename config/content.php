@@ -10,9 +10,21 @@ if($negocia_operacion == 1){
 
 //TIPO DE USUARIO
 $id_paciente = (int)$_GET['negocia_tipo'];
+$get_nuevo_vendedor = (int)$_GET['get_nuevo_vendedor'];
 
-//DATOS DEL PACIENTE
+//DATOS
+if($_SESSION['ID_TIPO_USUARIO'] == 3){
+if($get_nuevo_vendedor == 1){
+$tipo_usuario = 4;
+$letra_add = 'V-';
+} else {
+$tipo_usuario = 1;
+$letra_add = 'N-';
+}
+} else {
+$tipo_usuario = 2;
 $letra_add = 'P-';
+}
 $registro_nombres = '';
 $registro_apellidos = '';
 $registro_tipo_documento = '';
@@ -36,7 +48,7 @@ $registro_clave = '';
 if(empty($id_paciente)){
 
 //ULTIMO CODIGO REGISTRADO
-$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo FROM usuario WHERE id_tipo_usuario = '2' ORDER BY id DESC LIMIT 1"));
+$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo FROM usuario WHERE id_tipo_usuario = '$tipo_usuario' ORDER BY id DESC LIMIT 1"));
 $codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
 
 $registro_clave = $codigo_registro.'12345';
@@ -81,7 +93,7 @@ $registro_clave = $row_codigo_registro[18];
 <div class="row">
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label">N&#176; Socio</label>
+<label class="n-label">N&#176;:</label>
 <input id="form_codigo" name="form_codigo" class="form-control n-form-control" type="text" placeholder="C&oacute;digo" value="<?php echo $codigo_registro; ?>" readonly="readonly" style="cursor: no-drop;">
 </div>
 </div>
@@ -245,7 +257,7 @@ $('#form_direccion').val(data.domicilio_fiscal);
 </div>
 </div>
 </div>
-<div class="row" style="padding-top: 15px;">
+<div class="row" style="padding-top: 15px; <?php if($_SESSION['ID_TIPO_USUARIO'] == 3){ ?> display: none; <?php } ?>">
 <div class="col-md-12 col-sm-12">
 <div class="form-group">
 <div class="pull-left">
@@ -312,7 +324,7 @@ $nombre_cb = $row_id_n[1];
 </div>
 </div>
 </div>
-<div class="row" style="padding-top: 15px;">
+<div class="row" style="padding-top: 15px; <?php if($_SESSION['ID_TIPO_USUARIO'] == 3){ ?> display: none; <?php } ?>">
 <div class="col-md-12 col-sm-12">
 <div class="form-group">
 <div class="pull-left">
@@ -435,7 +447,7 @@ var form_fecha_suscripcion_fin = $('#form_fecha_suscripcion_fin').val();
 
 $.ajax({
 type: 'POST',
-url: 'config/content.php?negocia_operacion=2',
+url: 'config/content.php?negocia_operacion=2&get_nuevo_vendedor=<?php echo $get_nuevo_vendedor; ?>',
 data: {
 form_codigo: form_codigo,
 form_nombres: form_nombres,
@@ -481,6 +493,19 @@ exit();
 
 //GUARDAR NUEVO REGISTRO
 if($negocia_operacion == 2){
+$get_nuevo_vendedor = (int)$_GET['get_nuevo_vendedor'];
+
+//DATOS
+if($_SESSION['ID_TIPO_USUARIO'] == 3){
+if($get_nuevo_vendedor == 1){
+$tipo_usuario = 4;
+} else {
+$tipo_usuario = 1;
+}
+} else {
+$tipo_usuario = 2;
+}
+
 $form_codigo = $_POST['form_codigo'];
 $form_nombres = $_POST['form_nombres'];
 if(empty($form_nombres)){
@@ -580,6 +605,9 @@ $form_fecha_suscripcion = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion
 $form_id_nutricionista = $_POST['form_id_nutricionista'];
 $form_fecha_pago = date('Y-m-d', strtotime($_POST['form_fecha_pago']));
 $form_monto = $_POST['form_monto'];
+
+//SI ES PACIENTE
+if($tipo_usuario == 2){
 if(empty($form_monto)){
 ?>
 <script>
@@ -589,6 +617,7 @@ $('#form_monto').focus();
 <?php
 exit();
 exit();
+}
 }
 $form_id_medio_pago = $_POST['form_id_medio_pago'];
 $form_id_banco = $_POST['form_id_banco'];
@@ -604,7 +633,7 @@ $suscripcion_nueva = 1;
 mysqli_query($con, "
 INSERT INTO usuario (id_tipo_usuario, codigo, correo, clave, nombres, apellidos, fecha_nacimiento, genero, estado, activo, id_tipo_documento, numero_documento, date_added, instagram, direccion, distrito, provincia, departamento, residencia, maximo_pacientes, telefono, id_vendedor)
 VALUES 
-('".$form_tipo_usuario."', '".$form_codigo."', '".$form_correo."', '".$form_clave."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '0', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$form_maximo_pacientes."', '".$form_telefono."', '".$_SESSION['ID_USUARIO']."')
+('".$tipo_usuario."', '".$form_codigo."', '".$form_correo."', '".$form_clave."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '0', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$form_maximo_pacientes."', '".$form_telefono."', '".$_SESSION['ID_USUARIO']."')
 "
 );
 
@@ -643,8 +672,8 @@ WHERE id = '$form_id_paciente' AND id_tipo_usuario = 2");
 }
 }
 
-
-
+//SOLO SI ES PACIENTE
+if($tipo_usuario == 2){
 
 //AGREGAR A LA BD SUSCRIPCION
 mysqli_query($con, "
@@ -665,6 +694,8 @@ VALUES
 ('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$_SESSION['ID_USUARIO']."')
 "
 );
+
+}
 ?>
 <script>
 location.href = 'index.php?success';
@@ -677,6 +708,17 @@ exit();
 //BUSQUEDA AUTOCOMPLETE
 if($negocia_operacion == 3){
 
+$get_nuevo_vendedor = (int)$_GET['get_nuevo_vendedor'];
+if($_SESSION['ID_TIPO_USUARIO'] == 3){
+if($get_nuevo_vendedor == 1){
+$txt = 4;
+} else {
+$txt = 1;
+}
+
+} else {
+$txt = 2;
+}
 
 $search = $_POST['search'];
 
@@ -691,7 +733,7 @@ $valor_texto_busqueda = $id_valor;
 if($i != 1){
 $and = ' AND ';
 }
-$filtro_texto_busqueda .= $and." (CODIGO LIKE '%$valor_texto_busqueda%' OR NOMBRES LIKE '%$valor_texto_busqueda%' OR APELLIDOS LIKE '%$valor_texto_busqueda%')";
+$filtro_texto_busqueda .= $and." (id_tipo_usuario = $txt AND (CODIGO LIKE '%$valor_texto_busqueda%' OR NOMBRES LIKE '%$valor_texto_busqueda%' OR APELLIDOS LIKE '%$valor_texto_busqueda%'))";
 $i++;
 }
 }
@@ -769,6 +811,18 @@ exit();
 //BUSQUEDA PACIENTE
 if($negocia_operacion == 5){
 
+$get_nuevo_vendedor = (int)$_GET['get_nuevo_vendedor'];
+if($_SESSION['ID_TIPO_USUARIO'] == 3){
+if($get_nuevo_vendedor == 1){
+$txt = 4;
+} else {
+$txt = 1;
+}
+
+} else {
+$txt = 2;
+}
+
 $search = $_GET['value'];
 
 //FILTRO DE BUSQUEDA AVANZADO
@@ -782,7 +836,7 @@ $valor_texto_busqueda = $id_valor;
 if($i != 1){
 $and = ' AND ';
 }
-$filtro_texto_busqueda .= $and." (CODIGO LIKE '%$valor_texto_busqueda%' OR NOMBRES LIKE '%$valor_texto_busqueda%' OR APELLIDOS LIKE '%$valor_texto_busqueda%')";
+$filtro_texto_busqueda .= $and." (id_tipo_usuario = $txt AND (CODIGO LIKE '%$valor_texto_busqueda%' OR NOMBRES LIKE '%$valor_texto_busqueda%' OR APELLIDOS LIKE '%$valor_texto_busqueda%'))";
 $i++;
 }
 }
@@ -802,7 +856,13 @@ $result = mysqli_query($con, $sql);
 //NUUM ROWS
 $num_rows = mysqli_num_rows($result);
 if(empty($num_rows)){
+if($txt == 1){
+echo '<b>El nutricionista no se encuentra registrado.</b>';
+} elseif($txt == 2){
 echo '<b>El paciente no se encuentra registrado.</b>';
+} elseif($txt == 4){
+echo '<b>El vendedor no se encuentra registrado.</b>';
+}
 }
 exit();
 exit();
@@ -1285,7 +1345,7 @@ if($view_controller == 1){
 <div class="col-md-4 text-center">
 <img src="vendors/images/icono.png" alt="">
 </div>
-<div id="div_ajax" class="col-md-8">
+<div class="col-md-8">
 <?php
 if(isset($_GET['success'])){
 ?>
@@ -1321,52 +1381,788 @@ confirmButtonText: 'OK'
 <h4 class="font-20 weight-500 mb-10 text-capitalize" style="padding-left: 65px;">
 Hola <div class="font-30" style="color: #95cf32; font-weight: bold;"><?php echo ucwords($_SESSION['usuario_nombres']); ?>!</div>
 </h4>
-<?php
-if($_SESSION['ID_TIPO_USUARIO'] == 3){
-?>
-<div style="margin-top: 30px; margin-bottom: 20px;">
-<table style="width: 250px; border: 1px solid #95cf32; margin-left: 25px;">
-<tr>
-<td style="width: 100% !important; text-align: center; background: #95cf32;" colspan="2"><span style="color: #fff; font-size: 16px;">Datos Generales</span></td>
-</tr>
-<tr onclick="location.href='nutricionistas.php?all'" style="cursor: pointer;">
-<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">N&#176; Nutricionistas</span></td>
-<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['admin_total_nutricionistas']; ?></span></td>
-</tr>
-<tr onclick="location.href='pacientes.php?all'" style="cursor: pointer;">
-<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">N&#176; Pacientes</span></td>
-<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['admin_total_pacientes']; ?></span></td>
-</tr>
-</table>
-<br>
-<button onclick="nuevo_registro()" class="btn buttons-csv" tabindex="0" type="button" style="background: #95cf32; color: white; font-size: 12px; padding: 8px; margin-right: 20px;">
-<i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
-<span style="font-size: 15px;">(+) NUTRICIONISTA</span>
-</button>
-<button onclick="nuevo_registro(0)" class="btn buttons-pdf" tabindex="0" type="button" style="background: #F26C3C; color: white; font-size: 12px; padding: 8px;">
-<i class="icon-copy dw dw-user1" style="font-size: 20px;"></i><br>
-<span style="font-size: 15px;">(+) PACIENTE</span>
-</button>
+</div>
+</div>
 </div>
 <?php
+
+//VISTA NUTRICIONISTA
+if($_SESSION['ID_TIPO_USUARIO'] == 1){
+?>
+<div class="row">
+<div class="col-xl-4 mb-30" onclick="location.href='pacientes.php'" style="cursor: pointer;">
+<div class="card-box height-100-p widget-style1">
+<div class="d-flex flex-wrap align-items-center">
+<div class="progress-data">
+<div id="chart"></div>
+</div>
+<?php
+//VALIDACIONES
+if(empty($_SESSION['usuario_total_pacientes'])){
+
+//PORCENTAJE PACIENTES
+$porcentaje_uno = 0;
+
+//PORCENTAJE PACIENTES ACTIVOS
+$porcentaje_dos = 0;
+
+//PORCENTAJE PACIENTES INACTIVOS
+$porcentaje_tres = 0;
+} else {
+
+//PORCENTAJE PACIENTES
+$porcentaje_uno = round(($_SESSION['usuario_total_pacientes'] / $_SESSION['usuario_maximo_pacientes']), 2) * 100;
+
+//PORCENTAJE PACIENTES ACTIVOS
+$porcentaje_dos = round(($_SESSION['usuario_total_pacientes_activos'] / $_SESSION['usuario_total_pacientes']), 2) * 100;
+
+//PORCENTAJE PACIENTES INACTIVOS
+$porcentaje_tres = round(($_SESSION['usuario_total_pacientes_inactivos'] / $_SESSION['usuario_total_pacientes']), 2) * 100;
+}
+
+//PORCENTAJE CONTROLES REALIZADOS
+if(empty($_SESSION['total_controles'])){
+$porcentaje_cuatro = 0;
+} else {
+$porcentaje_cuatro = round(($_SESSION['usuario_controles_realizados'] / $_SESSION['total_controles']), 2) * 100;
 }
 ?>
+<div class="widget-data">
+<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes']; ?>/<?php echo $_SESSION['usuario_maximo_pacientes']; ?></div>
+<div class="weight-600 font-14">Pacientes</div>
+</div>
+</div>
 </div>
 <script>
-//NUEVO REGISTRO
-function nuevo_registro(id){
-$.ajax({
-type: 'POST',
-url: 'config/content.php?negocia_operacion=1&negocia_tipo='+id,
-success: function(datos){
-$('#div_ajax').html(datos).fadeIn('slow');
+var options = {
+series: [<?php echo $porcentaje_uno; ?>],
+grid: {
+padding: {
+top: 0,
+right: 0,
+bottom: 0,
+left: 0
+},
+},
+chart: {
+height: 100,
+width: 70,
+type: 'radialBar',
+},	
+plotOptions: {
+radialBar: {
+hollow: {
+size: '50%',
+},
+dataLabels: {
+name: {
+show: false,
+color: '#fff'
+},
+value: {
+show: true,
+color: '#333',
+offsetY: 5,
+fontSize: '15px'
 }
-});
 }
+}
+},
+colors: ['#818181'],
+fill: {
+type: 'gradient',
+gradient: {
+shade: 'dark',
+type: 'diagonal1',
+shadeIntensity: 0.8,
+gradientToColors: ['#95cf32'],
+inverseColors: false,
+opacityFrom: [1, 0.2],
+opacityTo: 1,
+stops: [0, 100],
+}
+},
+states: {
+normal: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+hover: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+active: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+}
+};
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+chart.render();
+</script>
+</div>
+<div class="col-xl-3 mb-30" onclick="location.href='pacientes.php?activos=1'" style="cursor: pointer;">
+<div class="card-box height-100-p widget-style1">
+<div class="d-flex flex-wrap align-items-center">
+<div class="progress-data">
+<div id="chart2"></div>
+</div>
+<div class="widget-data">
+<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes_activos']; ?>/<?php echo $_SESSION['usuario_total_pacientes']; ?></div>
+<div class="weight-600 font-14">Pacientes Activos</div>
+</div>
+</div>
+</div>
+<script>
+var options = {
+series: [<?php echo $porcentaje_dos; ?>],
+grid: {
+padding: {
+top: 0,
+right: 0,
+bottom: 0,
+left: 0
+},
+},
+chart: {
+height: 100,
+width: 70,
+type: 'radialBar',
+},	
+plotOptions: {
+radialBar: {
+hollow: {
+size: '50%',
+},
+dataLabels: {
+name: {
+show: false,
+color: '#fff'
+},
+value: {
+show: true,
+color: '#333',
+offsetY: 5,
+fontSize: '15px'
+}
+}
+}
+},
+colors: ['#818181'],
+fill: {
+type: 'gradient',
+gradient: {
+shade: 'dark',
+type: 'diagonal1',
+shadeIntensity: 0.8,
+gradientToColors: ['#95cf32'],
+inverseColors: false,
+opacityFrom: [1, 0.2],
+opacityTo: 1,
+stops: [0, 100],
+}
+},
+states: {
+normal: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+hover: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+active: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+}
+};
+
+var chart = new ApexCharts(document.querySelector("#chart2"), options);
+chart.render();
+</script>
+</div>
+<div class="col-xl-3 mb-30" onclick="location.href='pacientes.php?activos=2'" style="cursor: pointer;">
+<div class="card-box height-100-p widget-style1">
+<div class="d-flex flex-wrap align-items-center">
+<div class="progress-data">
+<div id="chart3"></div>
+</div>
+<div class="widget-data">
+<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes_inactivos']; ?>/<?php echo $_SESSION['usuario_total_pacientes']; ?></div>
+<div class="weight-600 font-14">Pacientes Inactivos</div>
+</div>
+</div>
+</div>
+<script>
+var options = {
+series: [<?php echo $porcentaje_tres; ?>],
+grid: {
+padding: {
+top: 0,
+right: 0,
+bottom: 0,
+left: 0
+},
+},
+chart: {
+height: 100,
+width: 70,
+type: 'radialBar',
+},	
+plotOptions: {
+radialBar: {
+hollow: {
+size: '50%',
+},
+dataLabels: {
+name: {
+show: false,
+color: '#fff'
+},
+value: {
+show: true,
+color: '#333',
+offsetY: 5,
+fontSize: '15px'
+}
+}
+}
+},
+colors: ['#818181'],
+fill: {
+type: 'gradient',
+gradient: {
+shade: 'dark',
+type: 'diagonal1',
+shadeIntensity: 0.8,
+gradientToColors: ['#95cf32'],
+inverseColors: false,
+opacityFrom: [1, 0.2],
+opacityTo: 1,
+stops: [0, 100],
+}
+},
+states: {
+normal: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+hover: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+active: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+}
+};
+
+var chart = new ApexCharts(document.querySelector("#chart3"), options);
+chart.render();
+</script>
+</div>
+<div class="col-xl-3 mb-30" onclick="location.href='controles.php'" style="cursor: pointer;">
+<div class="card-box height-100-p widget-style1">
+<div class="d-flex flex-wrap align-items-center">
+<div class="progress-data">
+<div id="chart4"></div>
+</div>
+<div class="widget-data">
+<div class="h4 mb-0"><?php echo $_SESSION['usuario_controles_realizados']; ?>/<?php echo $_SESSION['total_controles']; ?></div>
+<div class="weight-600 font-14">Controles Realizados</div>
+</div>
+</div>
+</div>
+<script>
+var options = {
+series: [<?php echo $porcentaje_cuatro; ?>],
+grid: {
+padding: {
+top: 0,
+right: 0,
+bottom: 0,
+left: 0
+},
+},
+chart: {
+height: 100,
+width: 70,
+type: 'radialBar',
+},	
+plotOptions: {
+radialBar: {
+hollow: {
+size: '50%',
+},
+dataLabels: {
+name: {
+show: false,
+color: '#fff'
+},
+value: {
+show: true,
+color: '#333',
+offsetY: 5,
+fontSize: '15px'
+}
+}
+}
+},
+colors: ['#818181'],
+fill: {
+type: 'gradient',
+gradient: {
+shade: 'dark',
+type: 'diagonal1',
+shadeIntensity: 0.8,
+gradientToColors: ['#95cf32'],
+inverseColors: false,
+opacityFrom: [1, 0.2],
+opacityTo: 1,
+stops: [0, 100],
+}
+},
+states: {
+normal: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+hover: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+active: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+}
+};
+
+var chart = new ApexCharts(document.querySelector("#chart4"), options);
+chart.render();
 </script>
 </div>
 </div>
 <?php
+}
+
+//VISTA ADMINISTRADOR
+if($_SESSION['ID_TIPO_USUARIO'] == 3){
+?>
+<div class="row">
+<div class="col-xl-3 mb-30" onclick="location.href='pacientes.php'" style="cursor: pointer;">
+<div class="card-box height-100-p widget-style1">
+<div class="d-flex flex-wrap align-items-center">
+<div class="progress-data">
+<div id="chart"></div>
+</div>
+<?php
+//VALIDACIONES
+if(empty($_SESSION['usuario_total_pacientes'])){
+
+//PORCENTAJE PACIENTES
+$porcentaje_uno = 0;
+
+//PORCENTAJE PACIENTES ACTIVOS
+$porcentaje_dos = 0;
+
+//PORCENTAJE PACIENTES INACTIVOS
+$porcentaje_tres = 0;
+} else {
+
+//PORCENTAJE PACIENTES
+$porcentaje_uno = round(($_SESSION['usuario_total_pacientes'] / $_SESSION['usuario_maximo_pacientes']), 2) * 100;
+
+//PORCENTAJE PACIENTES ACTIVOS
+$porcentaje_dos = round(($_SESSION['usuario_total_pacientes_activos'] / $_SESSION['usuario_total_pacientes']), 2) * 100;
+
+//PORCENTAJE PACIENTES INACTIVOS
+$porcentaje_tres = round(($_SESSION['usuario_total_pacientes_inactivos'] / $_SESSION['usuario_total_pacientes']), 2) * 100;
+}
+
+//PORCENTAJE DE NUTRICIONISTAS
+$num_rows_nutricionistas_activos = mysqli_num_rows(mysqli_query($con, "SELECT id FROM usuario WHERE activo = 1 AND id_tipo_usuario = 1 AND estado = 1"));
+
+if(empty($num_rows_nutricionistas_activos)){
+$porcentaje_cuatro = 0;
+} else {
+$porcentaje_cuatro = round(($num_rows_nutricionistas_activos / 500), 2) * 100;
+}
+?>
+<div class="widget-data">
+<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes']; ?>/<?php echo $_SESSION['usuario_maximo_pacientes']; ?></div>
+<div class="weight-600 font-14">Pacientes</div>
+</div>
+</div>
+</div>
+<script>
+var options = {
+series: [<?php echo $porcentaje_uno; ?>],
+grid: {
+padding: {
+top: 0,
+right: 0,
+bottom: 0,
+left: 0
+},
+},
+chart: {
+height: 100,
+width: 70,
+type: 'radialBar',
+},	
+plotOptions: {
+radialBar: {
+hollow: {
+size: '50%',
+},
+dataLabels: {
+name: {
+show: false,
+color: '#fff'
+},
+value: {
+show: true,
+color: '#333',
+offsetY: 5,
+fontSize: '15px'
+}
+}
+}
+},
+colors: ['#818181'],
+fill: {
+type: 'gradient',
+gradient: {
+shade: 'dark',
+type: 'diagonal1',
+shadeIntensity: 0.8,
+gradientToColors: ['#95cf32'],
+inverseColors: false,
+opacityFrom: [1, 0.2],
+opacityTo: 1,
+stops: [0, 100],
+}
+},
+states: {
+normal: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+hover: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+active: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+}
+};
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+chart.render();
+</script>
+</div>
+<div class="col-xl-3 mb-30" onclick="location.href='pacientes.php?activos=1'" style="cursor: pointer;">
+<div class="card-box height-100-p widget-style1">
+<div class="d-flex flex-wrap align-items-center">
+<div class="progress-data">
+<div id="chart2"></div>
+</div>
+<div class="widget-data">
+<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes_activos']; ?>/<?php echo $_SESSION['usuario_total_pacientes']; ?></div>
+<div class="weight-600 font-14">Pac. Activos</div>
+</div>
+</div>
+</div>
+<script>
+var options = {
+series: [<?php echo $porcentaje_dos; ?>],
+grid: {
+padding: {
+top: 0,
+right: 0,
+bottom: 0,
+left: 0
+},
+},
+chart: {
+height: 100,
+width: 70,
+type: 'radialBar',
+},	
+plotOptions: {
+radialBar: {
+hollow: {
+size: '50%',
+},
+dataLabels: {
+name: {
+show: false,
+color: '#fff'
+},
+value: {
+show: true,
+color: '#333',
+offsetY: 5,
+fontSize: '15px'
+}
+}
+}
+},
+colors: ['#818181'],
+fill: {
+type: 'gradient',
+gradient: {
+shade: 'dark',
+type: 'diagonal1',
+shadeIntensity: 0.8,
+gradientToColors: ['#95cf32'],
+inverseColors: false,
+opacityFrom: [1, 0.2],
+opacityTo: 1,
+stops: [0, 100],
+}
+},
+states: {
+normal: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+hover: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+active: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+}
+};
+
+var chart = new ApexCharts(document.querySelector("#chart2"), options);
+chart.render();
+</script>
+</div>
+<div class="col-xl-3 mb-30" onclick="location.href='pacientes.php?activos=2'" style="cursor: pointer;">
+<div class="card-box height-100-p widget-style1">
+<div class="d-flex flex-wrap align-items-center">
+<div class="progress-data">
+<div id="chart3"></div>
+</div>
+<div class="widget-data">
+<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes_inactivos']; ?>/<?php echo $_SESSION['usuario_total_pacientes']; ?></div>
+<div class="weight-600 font-14">Pac. Inactivos</div>
+</div>
+</div>
+</div>
+<script>
+var options = {
+series: [<?php echo $porcentaje_tres; ?>],
+grid: {
+padding: {
+top: 0,
+right: 0,
+bottom: 0,
+left: 0
+},
+},
+chart: {
+height: 100,
+width: 70,
+type: 'radialBar',
+},	
+plotOptions: {
+radialBar: {
+hollow: {
+size: '50%',
+},
+dataLabels: {
+name: {
+show: false,
+color: '#fff'
+},
+value: {
+show: true,
+color: '#333',
+offsetY: 5,
+fontSize: '15px'
+}
+}
+}
+},
+colors: ['#818181'],
+fill: {
+type: 'gradient',
+gradient: {
+shade: 'dark',
+type: 'diagonal1',
+shadeIntensity: 0.8,
+gradientToColors: ['#95cf32'],
+inverseColors: false,
+opacityFrom: [1, 0.2],
+opacityTo: 1,
+stops: [0, 100],
+}
+},
+states: {
+normal: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+hover: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+active: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+}
+};
+
+var chart = new ApexCharts(document.querySelector("#chart3"), options);
+chart.render();
+</script>
+</div>
+<div class="col-xl-3 mb-30" onclick="location.href='controles.php'" style="cursor: pointer;">
+<div class="card-box height-100-p widget-style1">
+<div class="d-flex flex-wrap align-items-center">
+<div class="progress-data">
+<div id="chart4"></div>
+</div>
+<div class="widget-data">
+<div class="h4 mb-0"><?php echo $num_rows_nutricionistas_activos; ?>/500</div>
+<div class="weight-600 font-14">Nutricionistas</div>
+</div>
+</div>
+</div>
+<script>
+var options = {
+series: [<?php echo $porcentaje_cuatro; ?>],
+grid: {
+padding: {
+top: 0,
+right: 0,
+bottom: 0,
+left: 0
+},
+},
+chart: {
+height: 100,
+width: 70,
+type: 'radialBar',
+},	
+plotOptions: {
+radialBar: {
+hollow: {
+size: '50%',
+},
+dataLabels: {
+name: {
+show: false,
+color: '#fff'
+},
+value: {
+show: true,
+color: '#333',
+offsetY: 5,
+fontSize: '15px'
+}
+}
+}
+},
+colors: ['#818181'],
+fill: {
+type: 'gradient',
+gradient: {
+shade: 'dark',
+type: 'diagonal1',
+shadeIntensity: 0.8,
+gradientToColors: ['#95cf32'],
+inverseColors: false,
+opacityFrom: [1, 0.2],
+opacityTo: 1,
+stops: [0, 100],
+}
+},
+states: {
+normal: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+hover: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+active: {
+filter: {
+type: 'none',
+value: 0,
+}
+},
+}
+};
+
+var chart = new ApexCharts(document.querySelector("#chart4"), options);
+chart.render();
+</script>
+</div>
+</div>
+<?php
+}
+
+//VISTA VENDEDOR
 if($_SESSION['ID_TIPO_USUARIO'] == 4){
 ?>
 <div class="row">
@@ -1757,391 +2553,6 @@ location.href='index.php?mail';
 <?php
 }
 ?>
-</div>
-<?php
-}
-if($_SESSION['ID_TIPO_USUARIO'] == 1 || $_SESSION['ID_TIPO_USUARIO'] == 3){
-?>
-<div class="row">
-<div class="col-xl-3 mb-30" onclick="location.href='pacientes.php'" style="cursor: pointer;">
-<div class="card-box height-100-p widget-style1">
-<div class="d-flex flex-wrap align-items-center">
-<div class="progress-data">
-<div id="chart"></div>
-</div>
-<?php
-//VALIDACIONES
-if(empty($_SESSION['usuario_total_pacientes'])){
-
-//PORCENTAJE PACIENTES
-$porcentaje_uno = 0;
-
-//PORCENTAJE PACIENTES ACTIVOS
-$porcentaje_dos = 0;
-
-//PORCENTAJE PACIENTES INACTIVOS
-$porcentaje_tres = 0;
-} else {
-
-//PORCENTAJE PACIENTES
-$porcentaje_uno = round(($_SESSION['usuario_total_pacientes'] / $_SESSION['usuario_maximo_pacientes']), 2) * 100;
-
-//PORCENTAJE PACIENTES ACTIVOS
-$porcentaje_dos = round(($_SESSION['usuario_total_pacientes_activos'] / $_SESSION['usuario_total_pacientes']), 2) * 100;
-
-//PORCENTAJE PACIENTES INACTIVOS
-$porcentaje_tres = round(($_SESSION['usuario_total_pacientes_inactivos'] / $_SESSION['usuario_total_pacientes']), 2) * 100;
-}
-
-//PORCENTAJE CONTROLES REALIZADOS
-if(empty($_SESSION['total_controles'])){
-$porcentaje_cuatro = 0;
-} else {
-$porcentaje_cuatro = round(($_SESSION['usuario_controles_realizados'] / $_SESSION['total_controles']), 2) * 100;
-}
-?>
-<div class="widget-data">
-<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes']; ?>/<?php echo $_SESSION['usuario_maximo_pacientes']; ?></div>
-<div class="weight-600 font-14">Pacientes</div>
-</div>
-</div>
-</div>
-<script>
-var options = {
-series: [<?php echo $porcentaje_uno; ?>],
-grid: {
-padding: {
-top: 0,
-right: 0,
-bottom: 0,
-left: 0
-},
-},
-chart: {
-height: 100,
-width: 70,
-type: 'radialBar',
-},	
-plotOptions: {
-radialBar: {
-hollow: {
-size: '50%',
-},
-dataLabels: {
-name: {
-show: false,
-color: '#fff'
-},
-value: {
-show: true,
-color: '#333',
-offsetY: 5,
-fontSize: '15px'
-}
-}
-}
-},
-colors: ['#818181'],
-fill: {
-type: 'gradient',
-gradient: {
-shade: 'dark',
-type: 'diagonal1',
-shadeIntensity: 0.8,
-gradientToColors: ['#95cf32'],
-inverseColors: false,
-opacityFrom: [1, 0.2],
-opacityTo: 1,
-stops: [0, 100],
-}
-},
-states: {
-normal: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-hover: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-active: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-}
-};
-
-var chart = new ApexCharts(document.querySelector("#chart"), options);
-chart.render();
-</script>
-</div>
-<div class="col-xl-3 mb-30" onclick="location.href='pacientes.php?activos=1'" style="cursor: pointer;">
-<div class="card-box height-100-p widget-style1">
-<div class="d-flex flex-wrap align-items-center">
-<div class="progress-data">
-<div id="chart2"></div>
-</div>
-<div class="widget-data">
-<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes_activos']; ?>/<?php echo $_SESSION['usuario_total_pacientes']; ?></div>
-<div class="weight-600 font-14">Pacientes Activos</div>
-</div>
-</div>
-</div>
-<script>
-var options = {
-series: [<?php echo $porcentaje_dos; ?>],
-grid: {
-padding: {
-top: 0,
-right: 0,
-bottom: 0,
-left: 0
-},
-},
-chart: {
-height: 100,
-width: 70,
-type: 'radialBar',
-},	
-plotOptions: {
-radialBar: {
-hollow: {
-size: '50%',
-},
-dataLabels: {
-name: {
-show: false,
-color: '#fff'
-},
-value: {
-show: true,
-color: '#333',
-offsetY: 5,
-fontSize: '15px'
-}
-}
-}
-},
-colors: ['#818181'],
-fill: {
-type: 'gradient',
-gradient: {
-shade: 'dark',
-type: 'diagonal1',
-shadeIntensity: 0.8,
-gradientToColors: ['#95cf32'],
-inverseColors: false,
-opacityFrom: [1, 0.2],
-opacityTo: 1,
-stops: [0, 100],
-}
-},
-states: {
-normal: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-hover: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-active: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-}
-};
-
-var chart = new ApexCharts(document.querySelector("#chart2"), options);
-chart.render();
-</script>
-</div>
-<div class="col-xl-3 mb-30" onclick="location.href='pacientes.php?activos=2'" style="cursor: pointer;">
-<div class="card-box height-100-p widget-style1">
-<div class="d-flex flex-wrap align-items-center">
-<div class="progress-data">
-<div id="chart3"></div>
-</div>
-<div class="widget-data">
-<div class="h4 mb-0"><?php echo $_SESSION['usuario_total_pacientes_inactivos']; ?>/<?php echo $_SESSION['usuario_total_pacientes']; ?></div>
-<div class="weight-600 font-14">Pacientes Inactivos</div>
-</div>
-</div>
-</div>
-<script>
-var options = {
-series: [<?php echo $porcentaje_tres; ?>],
-grid: {
-padding: {
-top: 0,
-right: 0,
-bottom: 0,
-left: 0
-},
-},
-chart: {
-height: 100,
-width: 70,
-type: 'radialBar',
-},	
-plotOptions: {
-radialBar: {
-hollow: {
-size: '50%',
-},
-dataLabels: {
-name: {
-show: false,
-color: '#fff'
-},
-value: {
-show: true,
-color: '#333',
-offsetY: 5,
-fontSize: '15px'
-}
-}
-}
-},
-colors: ['#818181'],
-fill: {
-type: 'gradient',
-gradient: {
-shade: 'dark',
-type: 'diagonal1',
-shadeIntensity: 0.8,
-gradientToColors: ['#95cf32'],
-inverseColors: false,
-opacityFrom: [1, 0.2],
-opacityTo: 1,
-stops: [0, 100],
-}
-},
-states: {
-normal: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-hover: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-active: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-}
-};
-
-var chart = new ApexCharts(document.querySelector("#chart3"), options);
-chart.render();
-</script>
-</div>
-<div class="col-xl-3 mb-30" onclick="location.href='controles.php'" style="cursor: pointer;">
-<div class="card-box height-100-p widget-style1">
-<div class="d-flex flex-wrap align-items-center">
-<div class="progress-data">
-<div id="chart4"></div>
-</div>
-<div class="widget-data">
-<div class="h4 mb-0"><?php echo $_SESSION['usuario_controles_realizados']; ?>/<?php echo $_SESSION['total_controles']; ?></div>
-<div class="weight-600 font-14">Controles Realizados</div>
-</div>
-</div>
-</div>
-<script>
-var options = {
-series: [<?php echo $porcentaje_cuatro; ?>],
-grid: {
-padding: {
-top: 0,
-right: 0,
-bottom: 0,
-left: 0
-},
-},
-chart: {
-height: 100,
-width: 70,
-type: 'radialBar',
-},	
-plotOptions: {
-radialBar: {
-hollow: {
-size: '50%',
-},
-dataLabels: {
-name: {
-show: false,
-color: '#fff'
-},
-value: {
-show: true,
-color: '#333',
-offsetY: 5,
-fontSize: '15px'
-}
-}
-}
-},
-colors: ['#818181'],
-fill: {
-type: 'gradient',
-gradient: {
-shade: 'dark',
-type: 'diagonal1',
-shadeIntensity: 0.8,
-gradientToColors: ['#95cf32'],
-inverseColors: false,
-opacityFrom: [1, 0.2],
-opacityTo: 1,
-stops: [0, 100],
-}
-},
-states: {
-normal: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-hover: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-active: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-}
-};
-
-var chart = new ApexCharts(document.querySelector("#chart4"), options);
-chart.render();
-</script>
-</div>
 </div>
 <?php
 }
@@ -2710,7 +3121,7 @@ San Diego, CA 92115
 <?php
 }
 
-//PACIENTES - VENDEDOR
+//REGISTROS
 if($view_controller == 11){
 ?>
 <div class="card-box mb-30" id="displaynone_1">
@@ -2721,10 +3132,31 @@ if($view_controller == 11){
 <table style="width: 400px; margin-left: 25px; margin-top: 40px;">
 <tr>
 <td style="width: 50% !important; text-align: left; padding-left: 10px;">
+<?php
+//VISTA DEL ADMINISTRADOR
+if($_SESSION['ID_TIPO_USUARIO'] == 3){
+if($get_nuevo_vendedor == 1){
+?>
+<span style="color: #111; font-weight: bold; font-size: 13px;">C&oacute;digo del Vendedor:</span>
+<?php
+} else {
+?>
+<span style="color: #111; font-weight: bold; font-size: 13px;">C&oacute;digo del Nutricionista:</span>
+<?php
+}
+
+}
+
+//VISTA DEL VENDEDOR
+if($_SESSION['ID_TIPO_USUARIO'] == 4){
+?>
 <span style="color: #111; font-weight: bold; font-size: 13px;">N&#176; de Socio:</span>
+<?php
+}
+?>
 </td>
 <td style="width: 50% !important; text-align: left; padding-left: 5px; padding-bottom: 10px;">
-<input id="form_busqueda_paciente_1" name="form_busqueda_paciente_1" class="form-control n-form-control" type="text" placeholder="N&#176; de Socio:" onkeyup="mensaje_404(this.value)">
+<input id="form_busqueda_paciente_1" name="form_busqueda_paciente_1" class="form-control n-form-control" type="text" placeholder="N&#176;:" onkeyup="mensaje_404(this.value)">
 <div id="resultado_busqueda_1"></div>
 <script>
 //AUTOCOMPLETE
@@ -2732,7 +3164,7 @@ $(function(){
 $('#form_busqueda_paciente_1').autocomplete({
 source: function(request, response){
 $.ajax({
-url: 'config/content.php?negocia_operacion=3',
+url: 'config/content.php?negocia_operacion=3&get_nuevo_vendedor=<?php echo $get_nuevo_vendedor; ?>',
 type: 'POST',
 dataType: 'JSON',
 data: {
@@ -2771,7 +3203,7 @@ $(function(){
 $('#form_busqueda_paciente_2').autocomplete({
 source: function(request, response){
 $.ajax({
-url: 'config/content.php?negocia_operacion=3',
+url: 'config/content.php?negocia_operacion=3&get_nuevo_vendedor=<?php echo $get_nuevo_vendedor; ?>',
 type: 'POST',
 dataType: 'JSON',
 data: {
@@ -2810,7 +3242,7 @@ $(function(){
 $('#form_busqueda_paciente_3').autocomplete({
 source: function(request, response){
 $.ajax({
-url: 'config/content.php?negocia_operacion=3',
+url: 'config/content.php?negocia_operacion=3&get_nuevo_vendedor=<?php echo $get_nuevo_vendedor; ?>',
 type: 'POST',
 dataType: 'JSON',
 data: {
@@ -2841,7 +3273,26 @@ return false;
 </div>
 <div class="col-md-6" style="text-align: left; padding-top: 70px !important;">
 <p id="mensaje_404"></p>
-<button onclick="nuevo_registro(0)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">(+) Registrar Nuevo Paciente </button>
+<button onclick="nuevo_registro(0)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">
+<?php
+if($_SESSION['ID_TIPO_USUARIO'] == 3){
+if($get_nuevo_vendedor == 1){
+?>
+(+) Registrar Nuevo Vendedor
+<?php
+} else {
+?>
+(+) Registrar Nuevo Nutricionista
+<?php
+}
+
+} else {
+?>
+(+) Registrar Nuevo Paciente
+<?php
+}
+?>
+</button>
 </div>
 </div>
 </div>
@@ -2853,7 +3304,7 @@ return false;
 function nuevo_registro(id){
 $.ajax({
 type: 'POST',
-url: 'config/content.php?negocia_operacion=1&negocia_tipo='+id,
+url: 'config/content.php?negocia_operacion=1&negocia_tipo='+id+'&get_nuevo_vendedor=<?php echo $get_nuevo_vendedor; ?>',
 success: function(datos){
 $('#div_ajax').html(datos).fadeIn('slow');
 $('#displaynone_1').css('display', 'none');
@@ -2864,7 +3315,7 @@ $('#displaynone_1').css('display', 'none');
 function mensaje_404(value){
 $.ajax({
 type: 'POST',
-url: 'config/content.php?negocia_operacion=5&value='+value,
+url: 'config/content.php?negocia_operacion=5&value='+value+'&get_nuevo_vendedor=<?php echo $get_nuevo_vendedor; ?>',
 success: function(datos){
 $('#mensaje_404').html(datos).fadeIn('slow');
 }

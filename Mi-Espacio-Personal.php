@@ -14,7 +14,7 @@ header('location: index.php');
 <head>
 <!-- Basic Page Info -->
 <meta charset="utf-8">
-<title>Katherine</title>
+<title>Katherine Alfaro - Nutricionista y Coach</title>
 
 <!-- Site favicon -->
 <link rel="apple-touch-icon" sizes="57x57" href="vendors/icon/apple-icon-57x57.png">

@@ -5,6 +5,9 @@ error_reporting(E_ALL ^ E_NOTICE);
 //VIEW CONTROLLER
 $view_controller = 11;
 
+//GET VENDEDOR
+$get_nuevo_vendedor = (int)$_GET['nuevo_vendedor'];
+
 //REQUIRES
 require_once(__DIR__.'/config/is_logged.php');
 require_once(__DIR__.'/config/conexion_bd.php');
