@@ -22,7 +22,7 @@ if($negocia_operacion == 1){
 $id_registro = (int)$_POST['id'];
 
 //ARRAY FILTROS
-$array_filtros = array($view_controller, 0, 2, 0, 1, $id_registro);
+$array_filtros = array($view_controller, 0, 2, 0, 1, $id_registro, '', '', '', '', 1, '', '');
 
 //FUNCION
 $funcion_datos = consulta($array_filtros);
@@ -60,7 +60,7 @@ $ret_residencia = $row[23];
 $ret_maximo_pacientes = $row[24];
 $ret_peso_meta = $row[25];
 $ret_peso_actual = $row[26];
-$ret_talla = $row[27];
+$ret_talla_actual = $row[27];
 $ret_imc_actual = $row[28];
 $ret_edad_en_anos = $row[29];
 $ret_edad_en_meses = $row[30];
@@ -203,6 +203,7 @@ $title = '('.$ret_codigo.') '.$ret_nombres.' '.$ret_apellidos;
 $query_suscripcion = mysqli_query($con, "SELECT id, id_programa, fecha_inicio, fecha_fin, estado FROM suscripcion_programa WHERE id_paciente = '$ret_id_usuario' ORDER BY id ASC");
 if(mysqli_num_rows($query_suscripcion) > 0){
 ?>
+<div class="table-responsive">
 <table style="width: 1000px !important; margin: 0 auto;">
 <tr>
 <td class="td-title" style="width: 20% !important;">Planes Rekupera</td>
@@ -220,14 +221,14 @@ $fecha_fin = date('d/m/Y', strtotime($row_suscripcion[3]));
 $estado = $row_suscripcion[4];
 
 //NOMBRE DEL PROGRAMA
-$row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM programa WHERE id = '$id_programa' LIMIT 1"));
+$row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre_completo FROM programa WHERE id = '$id_programa' LIMIT 1"));
 $nombre_programa = $row_nombre_programa[0];
 //SUSCRIPCION ACTIVA
 if($estado == 1){
 $texto_condicion = 'Activo';
 $css_condicion_color = '#95cf32';
 } else {
-$texto_condicion = 'Inactivo';
+$texto_condicion = 'Culminado';
 $css_condicion_color = '#F26C3C';
 }
 ?>
@@ -242,6 +243,41 @@ $css_condicion_color = '#F26C3C';
 }
 ?>
 </table>
+</div>
+<?php
+//OBTENER CONTROLES
+$sql_controles = mysqli_query($con, "SELECT DATE_FORMAT(fecha, '%Y-%m-%d'), codigo, id_suscripcion, peso FROM control WHERE id_paciente = '$ret_id_usuario' ORDER BY DATE_FORMAT(fecha, '%Y-%m-%d') ASC");
+$array_controles;
+$i_controles = 0;
+while($row_controles = mysqli_fetch_array($sql_controles)){
+$control_fecha = date('d/m/y', strtotime($row_controles[0]));
+$control_codigo = $row_controles[1];
+$control_id_suscripcion = (int)$row_controles[2];
+$control_peso = (float)$row_controles[3];
+
+//OBTENER ID DEL PROGRAMA
+$query_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT id_programa FROM suscripcion_programa WHERE id = '$control_id_suscripcion' ORDER BY id ASC LIMIT 1"));
+$id_programa = (int)$query_suscripcion[0];
+
+//NOMBRE DEL PROGRAMA
+$row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM programa WHERE id = '$id_programa' LIMIT 1"));
+$nombre_programa = $row_nombre_programa[0];
+
+$array_controles[$i_controles] = array($control_fecha, $control_codigo, $nombre_programa, $control_peso);
+$i_controles++;
+}
+
+$max = 0;
+foreach($array_controles as $array_valor)
+{
+if($array_valor[3] > $max){
+$max = $array_valor[3];
+}
+}
+
+$max = $max + 1;
+$min = ((float)$ret_peso_meta) - 5;
+?>
 <div class="row">
 <div class="col-md-6 text-center" style="padding-top: 40px;">
 <div id="chart1"></div>
@@ -269,7 +305,15 @@ show: false
 
 //DATOS EJE X
 xaxis: {
-categories: [['06/09/2020', 'C001', 'RPF'], ['10/09/2020', 'C002', 'RPF'], ['12/09/2020', 'C003', 'RPF'], ['15/09/2020', 'C004', 'RPF'], ['18/09/2020', 'C005', 'RPM'], ['20/09/2020', 'C006', 'RPM'], ['22/09/2020', 'C007', 'RPM'], ['23/09/2020', 'C008', 'RPM']],
+categories: [
+<?php
+foreach($array_controles as $array_valor){
+?>
+['<?php echo $array_valor[0]; ?>', '<?php echo $array_valor[1]; ?>', '<?php echo $array_valor[2]; ?>'],
+<?php
+}
+?>
+],
 labels: {
 rotate: 0
 }
@@ -277,8 +321,8 @@ rotate: 0
 
 //CONFIGURACION EJE Y
 yaxis: {
-min: 55,
-max: 80,
+min: <?php echo $min; ?>,
+max: <?php echo $max; ?>,
 title: {
 text: 'PESO (KG)'
 }
@@ -288,7 +332,15 @@ text: 'PESO (KG)'
 series: [
 {
 name: 'Peso',
-data: [75, 72, 65, 60, 60, 62, 70, 60]
+data: [
+<?php
+foreach($array_controles as $array_valor){
+?>
+<?php echo $array_valor[3]; ?>,
+<?php
+}
+?>
+]
 }
 ],
 
@@ -333,12 +385,16 @@ chart.render();
 <td style="width: 100% !important; text-align: center; background: #95cf32;" colspan="2"><span style="color: #fff; font-size: 16px;">Meta Final</span></td>
 </tr>
 <tr>
-<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Peso Meta Final</span></td>
-<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_peso_meta; ?> KG</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Talla Actual</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_talla_actual; ?> m</span></td>
 </tr>
 <tr>
 <td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Peso Actual</span></td>
 <td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_peso_actual; ?> KG</span></td>
+</tr>
+<tr>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Peso Meta Final</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_peso_meta; ?> KG</span></td>
 </tr>
 <tr>
 <td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Plan de acci&oacute;n</span></td>
@@ -349,10 +405,6 @@ chart.render();
 <td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $diagnostico; ?></span></td>
 </tr>
 </table>
-<br>
-<div class="btn-group">
-<button onclick="location.href = 'controles.php?paciente=<?php echo $id_registro ?>'" class="btn buttons-pdf" tabindex="0" type="button" style="background: #95cf32; color: white; padding: 5px; font-size: 14px;"><span>Ver todos los controles</span></button>
-</div>
 </div>
 </div>
 <?php
@@ -889,10 +941,13 @@ $id_tipo_usuario = 2;
 $id_registro = 0;
 $n_fecha_desde = $_POST['n_fecha_desde'];
 $n_fecha_hasta = $_POST['n_fecha_hasta'];
+
 $ver_pacientes = (int)$_POST['ver_pacientes'];
+$ver_nutricionistas = (int)$_POST['ver_nutricionistas'];
+$ver_vendedores = (int)$_POST['ver_vendedores'];
 
 //ARRAY FILTROS
-$array_filtros = array($view_controller, $activos, $id_tipo_usuario, $offset, $per_page, $id_registro, $fn_id_paciente, $fn_id_suscripcion, $n_fecha_desde, $n_fecha_hasta, $ver_pacientes);
+$array_filtros = array($view_controller, $activos, $id_tipo_usuario, $offset, $per_page, $id_registro, $fn_id_paciente, $fn_id_suscripcion, $n_fecha_desde, $n_fecha_hasta, $ver_pacientes, $ver_nutricionistas, $ver_vendedores);
 
 //FUNCION
 $funcion_datos = consulta($array_filtros);
@@ -906,7 +961,7 @@ $total_pages = ceil($numrows/$per_page);
 if($numrows > 0){
 
 //PACIENTES Y NUTRICIONISTAS
-if($view_controller == 2 || $view_controller == 10){
+if($view_controller == 2 || $view_controller == 10 || $view_controller == 15){
 ?>
 <table style="width: 1000px !important; margin: 0 auto;">
 <tr>
@@ -988,6 +1043,7 @@ if($ver_pacientes == 1){
 <td class="td-title" style="width: 11.11% !important;">Plan</td>
 <td class="td-title" style="width: 11.11% !important;">Fecha Cuota</td>
 <td class="td-title" style="width: 11.11% !important;">D&iacute;as Vencimiento</td>
+<td class="td-title" style="width: 11.11% !important;">Estado</td>
 <td class="td-title" style="width: 11.11% !important;">Acci&oacute;n</td>
 </tr>
 <?php
@@ -1058,6 +1114,7 @@ $ret_dias_vencimiento = $diff->days . ' d&iacute;as';
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_programa; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_fin; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_dias_vencimiento; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_texto_estado; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
 <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="eliminar(<?php echo $ret_id_suscripcion; ?>)"><i class="fa fa-trash-o" style="font-size: 13px;"></i></a>
 </td>

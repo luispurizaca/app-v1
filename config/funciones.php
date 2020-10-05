@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 //1. PACIENTES
 
@@ -21,10 +22,20 @@ $fn_id_suscripcion = (int)$array_filtros[7];
 $n_fecha_desde = $array_filtros[8];
 $n_fecha_hasta = $array_filtros[9];
 $ver_pacientes = (int)$array_filtros[10];
+$ver_nutricionistas = (int)$array_filtros[11];
+$ver_vendedores = (int)$array_filtros[12];
+if($ver_pacientes == 1){
+$new_tipo_usuario = 2;
+}
+if($ver_nutricionistas == 1){
+$new_tipo_usuario = 1;
+}
+if($ver_vendedores == 1){
+$new_tipo_usuario = 4;
+}
 
-
-//CONSULTA PACIENTES
-if($view_controler == 2 || $view_controler == 10){
+//CONSULTA PACIENTES, NUTRICIONISTAS Y VENDEDORES
+if($view_controler == 2 || $view_controler == 10 || $view_controler == 15){
 
 //CONSULTA PRINCIPAL
 $consulta_sql_general = "
@@ -58,9 +69,13 @@ if(!empty($id_registro)){
 $consulta_sql_general .= " AND usuario.id = '$id_registro'";
 }
 
-//FILTRO POR VENDEDOR
-if($_SESSION['ID_TIPO_USUARIO'] == 2){
-$consulta_sql_general .= " AND usuario.id_tipo_usuario = 2";
+//FILTRO ID TIPO DE USUARIO
+$consulta_sql_general .= " AND usuario.id_tipo_usuario = '$new_tipo_usuario'";
+
+
+//FILTRO POR NUTRICIONISTA
+if($_SESSION['ID_TIPO_USUARIO'] == 1){
+$consulta_sql_general .= " AND usuario.id IN (SELECT id_paciente FROM nutricionista_paciente WHERE id_nutricionista = '".$_SESSION['ID_USUARIO']."' AND id_paciente IN (SELECT id FROM usuario WHERE activo = 1 AND id_tipo_usuario = 2))";
 }
 
 //FILTRO POR VENDEDOR
@@ -120,21 +135,18 @@ $consulta_sql_general = "
 SELECT
 control.id AS ID_CONTROL,
 control.codigo AS CODIGO,
-suscripcion_programa.id AS ID_SUSCRIPCION,
+control.id_suscripcion AS ID_SUSCRIPCION,
 suscripcion_programa.id_programa AS ID_PROGRAMA,
-suscripcion_programa.id_nutricionista AS ID_NUTRICIONISTA,
-suscripcion_programa.id_paciente AS ID_PACIENTE,
+control.id_nutricionista AS ID_NUTRICIONISTA,
+control.id_paciente AS ID_PACIENTE,
 control.fecha AS FECHA,
 control.peso AS PESO,
-control.imc AS IMC,
 control.brazo AS BRAZO,
 control.pecho AS PECHO,
 control.cintura AS CINTURA,
-control.cadera AS CADERA,
 control.gluteo AS GLUTEO,
 control.muslo AS MUSLO,
 control.pantorrilla AS PANTORRILLA,
-control.diagnostico AS DIAGNOSTICO,
 suscripcion_programa.fecha_inicio AS SUSCRIPCION_FECHA_INICIO,
 suscripcion_programa.fecha_fin AS SUSCRIPCION_FECHA_FIN,
 suscripcion_programa.estado AS SUSCRIPCION_ESTADO
@@ -236,7 +248,7 @@ $query_sql_general = mysqli_query($con, $consulta_sql_general.$consulta_sql_gene
 while($sql_general_row = mysqli_fetch_array($query_sql_general)){
 
 //DATOS - PACIENTES
-if($view_controler == 2 || $view_controler == 10){
+if($view_controler == 2 || $view_controler == 10 || $view_controler == 15){
 $ret_codigo = $sql_general_row[0];
 $ret_nombres = $sql_general_row[1];
 $ret_apellidos = $sql_general_row[2];
@@ -275,6 +287,7 @@ $css_color = '#F26C3C';
 $texto_estado = 'Inactivo';
 }
 
+if($view_controler == 2){
 //DATOS ANTROPOMETRICOS ACTUALES DEL PACIENTE
 $row_peso_actual = mysqli_fetch_array(mysqli_query($con, "SELECT peso, talla FROM control WHERE id_suscripcion IN (SELECT id FROM suscripcion_programa WHERE id_paciente = '$ret_id_usuario' ORDER BY id DESC) ORDER BY id DESC LIMIT 1"));
 $ret_peso_actual = (float)$row_peso_actual[0];
@@ -290,6 +303,12 @@ $ret_imc_actual = 0;
 } else {
 $ret_imc_actual = $ret_peso_actual / ($ret_talla * $ret_talla);
 }
+} else {
+$ret_talla = 0;
+$ret_peso_meta = 0;
+$ret_imc_actual = 0;
+}
+
 
 //EDAD EN MESES
 $fecha_nac = new DateTime(date('Y/m/d', strtotime($ret_fecha_nacimiento)));
@@ -299,9 +318,9 @@ $ret_edad_en_anos = $edad->format('%Y');
 $ret_edad_en_meses = $edad->format('%m');
 $ret_edad_total_anos = $ret_edad_en_anos + ($ret_edad_en_meses / 12);
 
+if($view_controler == 2){
 //VALIDAD PUNTOS DE CORTE CARTILLA AZUL
 $ret_edad_total_anos_primera_cartilla = 59 + (9 / 12);
-
 if($ret_edad_total_anos <= $ret_edad_total_anos_primera_cartilla){
 
 if($ret_imc_actual >= 40){
@@ -341,6 +360,10 @@ $diagnostico = 'Delgadez';
 }
 } else {
 $diagnostico = 'Sin Diagn&oacute;stico';
+}
+} else {
+$ret_edad_total_anos_primera_cartilla = 0;
+$diagnostico = '';
 }
 
 //EDAD

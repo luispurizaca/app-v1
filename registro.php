@@ -5,7 +5,8 @@ error_reporting(E_ALL ^ E_NOTICE);
 //VIEW CONTROLLER
 $view_controller = 11;
 
-//GET VENDEDOR
+//GET NUTRICIONISTA - VENDEDOR
+$get_nuevo_nutricionista = (int)$_GET['nuevo_nutricionista'];
 $get_nuevo_vendedor = (int)$_GET['nuevo_vendedor'];
 
 //REQUIRES

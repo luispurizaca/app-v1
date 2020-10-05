@@ -4,7 +4,10 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 //VIEW CONTROLLER
 $view_controller = 10;
+
+//GETS
 $activos = (int)$_GET['activos'];
+$ver_nutricionistas = 1;
 
 //REQUIRES
 require_once(__DIR__.'/config/is_logged.php');

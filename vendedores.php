@@ -3,11 +3,11 @@
 error_reporting(E_ALL ^ E_NOTICE);
 
 //VIEW CONTROLLER
-$view_controller = 2;
+$view_controller = 15;
 
 //GETS
 $activos = (int)$_GET['activos'];
-$ver_pacientes = 1;
+$ver_vendedores = 1;
 
 //REQUIRES
 require_once(__DIR__.'/config/is_logged.php');

@@ -113,7 +113,12 @@ elseif($_SESSION['ID_TIPO_USUARIO'] == 3){
 ?>
 <li>
 <a href="registro.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
-<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Registro</span>
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Registros</span>
+</a>
+</li>
+<li>
+<a href="pacientes.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Lista de Pacientes</span>
 </a>
 </li>
 <li>
