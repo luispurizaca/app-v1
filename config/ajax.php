@@ -394,7 +394,29 @@ chart.render();
 </tr>
 <tr>
 <td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Peso Meta Final</span></td>
-<td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_peso_meta; ?> KG</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 5px;">
+<?php
+if($_SESSION['ID_TIPO_USUARIO'] == 1){
+?>
+<span style="color: #111; font-weight: bold; font-size: 13px;">: <input type="text" style="font-size: 13px; font-weight: bold; width: 40px; text-align: center;" id="input_peso_meta_general" value="<?php echo $ret_peso_meta; ?>" onblur="save_peso_meta_general()"> KG</span>
+<script>
+function save_peso_meta_general(){
+if(confirm('Desea actualizar el Peso Meta General del Socio?')){
+var peso_meta_general = $('#input_peso_meta_general').val();
+$.ajax({
+url: 'config/ajax.php?negocia_operacion=4&id_paciente=<?php echo $ret_id_usuario; ?>&peso_meta_general='+peso_meta_general
+});
+}
+}
+</script>
+<?php
+} else {
+?>
+<span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $ret_peso_meta; ?> KG</span>
+<?php
+}
+?>
+</td>
 </tr>
 <tr>
 <td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Plan de acci&oacute;n</span></td>
@@ -403,6 +425,12 @@ chart.render();
 <tr>
 <td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Diagn&oacute;stico</span></td>
 <td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $diagnostico; ?></span></td>
+</tr>
+<tr>
+<td style="width: 100% !important; text-align: center;" colspan="2">
+<button type="button" onclick="location.href = 'historia.php?id_paciente=<?php echo $id_registro; ?>'" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Registrar Historia</button>
+<button type="button" onclick="location.href = 'medidas.php?id_paciente=<?php echo $id_registro; ?>'" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Registrar Control</button>
+</td>
 </tr>
 </table>
 </div>
@@ -885,6 +913,32 @@ exit();
 exit();
 }
 
+//4. ACTUALIZAR PESO META GENERAL
+if($negocia_operacion == 4){
+
+//DATOS GET
+$id_paciente = (int)$_GET['id_paciente'];
+$peso_meta_general = (float)$_GET['peso_meta_general'];
+mysqli_query($con, "UPDATE historia SET peso_meta = '$peso_meta_general' WHERE id_paciente = '$id_paciente'");
+}
+
+//5. TERMINAR SUSCRIPCION
+if($negocia_operacion == 5){
+
+//DATOS GET
+$id_suscripcion = (int)$_GET['id_suscripcion'];
+mysqli_query($con, "UPDATE suscripcion_programa SET estado = '2' WHERE id = '$id_suscripcion'");
+}
+
+//6. ACTUALIZAR PESO META DE LA SUSCRIPCION
+if($negocia_operacion == 6){
+
+//DATOS GET
+$id_suscripcion = (int)$_GET['id_suscripcion'];
+$peso_meta_general = (float)$_GET['peso_meta_general'];
+mysqli_query($con, "UPDATE suscripcion_programa SET peso_meta = '$peso_meta_general' WHERE id = '$id_suscripcion'");
+}
+
 //ELIMINAR
 if(isset($_GET['id'])){
 
@@ -1149,26 +1203,116 @@ $ret_dias_vencimiento = $diff->days . ' d&iacute;as';
 
 //CONTROLES
 if($view_controller == 5){
+    
+$fn_id_suscripcion = (int)$_POST['fn_id_suscripcion'];
+
+//OBTENER DATOS DE LA SUSCRIPCION
+$datos_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM suscripcion_programa WHERE id = '$fn_id_suscripcion' LIMIT 1"));
+
+//ID CONSULTAR
+$id_registro = (int)$datos_suscripcion['id_paciente'];
+$peso_meta_suscripcion = (float)$datos_suscripcion['peso_meta'];
+
+//ARRAY FILTROS
+$array_filtros = array(2, 0, 2, 0, 1, $id_registro, '', '', '', '', 1, '', '');
+
+//FUNCION
+$funcion_datos = consulta($array_filtros);
+
+//CONSULTA
+$array_funcion = $funcion_datos[1];
+foreach($array_funcion as $row){
+$ret_codigo = $row[0];
+$ret_nombres = $row[1];
+$ret_apellidos = $row[2];
+$ret_genero = $row[3];
+$ret_fecha_nacimiento = date('d/m/Y', strtotime($row[4]));
+$ret_correo = $row[5];
+$ret_telefono = $row[6];
+$ret_estado = $row[7];
+$ret_id_tipo_usuario = $row[8];
+$ret_id_usuario = $row[9];
+$ret_id_tipo_documento = $row[10];
+$ret_numero_documento = $row[11];
+$ret_texto_tipo_documento = $row[12];
+$texto_genero = $row[13];
+$css_color = $row[14];
+$texto_estado = $row[15];
+$ret_texto_edad = $row[16].' a&ntilde;os';
+$ret_date_added = date('d/m/Y', strtotime($row[17]));
+$ret_instagram = $row[18];
+$ret_direccion = $row[19];
+$ret_distrito = $row[20];
+$ret_provincia = $row[21];
+$ret_departamento = $row[22];
+$ret_residencia = $row[23];
+$ret_maximo_pacientes = $row[24];
+$ret_peso_meta = $row[25];
+$ret_peso_actual = $row[26];
+$ret_talla_actual = $row[27];
+$ret_imc_actual = $row[28];
+$ret_edad_en_anos = $row[29];
+$ret_edad_en_meses = $row[30];
+$diagnostico = $row[31];
+}
+
+$title = '('.$ret_codigo.') '.$ret_nombres.' '.$ret_apellidos;
+
+//PESO PRIMER CONTROL DE LA SUSCRIPCION
+$query_primero_peso = mysqli_fetch_array(mysqli_query($con, "SELECT peso FROM control WHERE id_suscripcion = '$fn_id_suscripcion' ORDER BY id ASC LIMIT 1"));
+$ret_peso_primer_control = (float)$query_primero_peso[0];
+
+//PERDISTE
+$perdiste = $ret_peso_primer_control - $ret_peso_actual;
+
+//TOTAL KILOS A BAJAR
+$total_kg_bajar = $ret_peso_primer_control - $peso_meta_suscripcion;
+
+//PORCENTAJE
+$porcentaje_logo = ROUND((($perdiste * 100) / $total_kg_bajar), 2);
 ?>
-<div style="padding-left: 15px;">
-<span style="color: #95cf32; font-weight: bold; font-size: 20px;">Luis Mario Purizaca Mart&iacute;nez</span>
+<div style="padding-left: 15px; color: #95cf32; font-weight: bold; font-size: 20px;">
+<?php echo $title; ?><br>
+<span style="color: #111; font-weight: bold; font-size: 13px;">Peso Meta General: <?php echo $ret_peso_meta; ?> KG</span>
+<br><hr>
 </div>
-<hr>
 <h4 class="font-20 weight-500 mb-10 text-capitalize">
 <div style="text-align: center;">
-<span style="color: #333; font-weight: bold; font-size: 13px;">Peso Actual:&nbsp;&nbsp;</span><span style="color: #95cf32; font-weight: bold; font-size: 13px;">60 KG</span>
+<span style="color: #333; font-weight: bold; font-size: 13px;">Peso Actual:&nbsp;&nbsp;</span><span style="color: #95cf32; font-weight: bold; font-size: 13px;"><?php echo $ret_peso_actual; ?> KG</span>
 </div>
 <div style="text-align: center;">
-<span style="color: #333; font-weight: bold; font-size: 13px;">Perdiste:&nbsp;&nbsp;</span><span style="color: #333; font-weight: bold; font-size: 13px;">15 KG</span>
+<span style="color: #333; font-weight: bold; font-size: 13px;">Perdiste:&nbsp;&nbsp;</span><span style="color: #333; font-weight: bold; font-size: 13px;"><?php echo $perdiste; ?> KG</span>
 </div>
 <div style="text-align: center; width: 200px; margin: 0 auto; margin-top: 10px;">
 <div class="progress">
-<div class="progress-bar progress-bar-animated" role="progressbar" style="width: 90%; background: #95cf32;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">90%</div>
+<div class="progress-bar progress-bar-animated" role="progressbar" style="width: <?php echo $porcentaje_logo; ?>%; background: #95cf32;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><?php echo $porcentaje_logo; ?>%</div>
 </div>
-<span style="float: left; font-size: 10px; font-weight: bold;">75KG</span>
-<span style="float: right; font-size: 10px; font-weight: bold;">Meta: 60KG</span>
+<span style="float: left; font-size: 10px; font-weight: bold;"><?php echo $ret_peso_primer_control; ?>KG</span>
+<span style="float: right; font-size: 10px; font-weight: bold;">
+<?php
+if($_SESSION['ID_TIPO_USUARIO'] == 1){
+?>
+Meta: <input type="text" style="font-size: 10px; font-weight: bold; width: 40px; text-align: center; height: 20px;" id="input_peso_meta_general" value="<?php echo $peso_meta_suscripcion; ?>" onblur="save_peso_meta_general()"> KG
+<script>
+function save_peso_meta_general(){
+if(confirm('Desea actualizar el Peso Meta de la suscripci\u00F3n?')){
+var peso_meta_general = $('#input_peso_meta_general').val();
+$.ajax({
+url: 'config/ajax.php?negocia_operacion=6&id_suscripcion=<?php echo $fn_id_suscripcion; ?>&peso_meta_general='+peso_meta_general
+});
+}
+}
+</script>
+<?php
+} else {
+?>
+Meta: <?php echo $peso_meta_suscripcion; ?>KG
+<?php
+}
+?>
+</span>
 </div>
-</h4>
+</h4><br><br>
 <table style="width: 1000px !important; margin: 0 auto;">
 <tr>
 <td class="td-title" style="width: 5.55% !important;">Foto</td>
@@ -1179,6 +1323,7 @@ if($view_controller == 5){
 <td class="td-title" style="width: 5.55% !important;">Grasa</td>
 <td class="td-title" style="width: 5.55% !important;">MM</td>
 <td class="td-title" style="width: 5.55% !important;">Diagn&oacute;stico</td>
+<td class="td-title" style="width: 5.55% !important;">Cuello</td>
 <td class="td-title" style="width: 5.55% !important;">Brazo</td>
 <td class="td-title" style="width: 5.55% !important;">Pecho</td>
 <td class="td-title" style="width: 5.55% !important;">Cintura</td>
@@ -1188,68 +1333,130 @@ if($view_controller == 5){
 <td class="td-title" style="width: 5.55% !important;">P.D.</td>
 <td class="td-title" style="width: 5.55% !important;">P.A.</td>
 <td class="td-title" style="width: 5.55% !important;">Monitoreo</td>
-<td class="td-title" style="width: 5.55% !important;">Acci&oacute;n</td>
 </tr>
 <?php
-$array_funcion = $funcion_datos[1];
-foreach($array_funcion as $row){
+//OBTENER CONTROLES DE LA SUSCRIPCION
+$sql_controles = mysqli_query($con, "SELECT DATE_FORMAT(fecha, '%Y-%m-%d'), codigo, id_suscripcion, peso, talla, cuello, brazo, pecho, cintura, gluteo, muslo, pantorrilla FROM control WHERE id_suscripcion = '$fn_id_suscripcion' ORDER BY DATE_FORMAT(fecha, '%Y-%m-%d') ASC");
+$array_controles;
+$i_controles = 0;
+while($row_controles = mysqli_fetch_array($sql_controles)){
+$control_fecha = date('d/m/y', strtotime($row_controles[0]));
+$control_codigo = $row_controles[1];
+$control_id_suscripcion = (int)$row_controles[2];
+$control_peso = (float)$row_controles[3];
+$control_talla = (float)$row_controles[4];
+$control_cuello = (float)$row_controles[5];
+$control_brazo = (float)$row_controles[6];
+$control_pecho = (float)$row_controles[7];
+$control_cintura = (float)$row_controles[8];
+$control_gluteo = (float)$row_controles[9];
+$control_muslo = (float)$row_controles[10];
+$control_pantorrilla = (float)$row_controles[11];
 
-//DATOS DE LA CONSULTA
-$ret_id_control = $row[0];
-$ret_codigo_control = $row[1];
-$ret_fecha = date('d/m/Y', strtotime($row[2]));
-$ret_id_suscripcion = $row[3];
-$ret_id_programa = $row[4];
-$ret_id_nutricionista = $row[5];
-$ret_id_paciente = $row[6];
-$ret_nombre_programa = $row[7];
-$ret_nombre_paciente = $row[8];
-$ret_peso = $row[9];
-$ret_imc = $row[10];
-$ret_brazo = $row[11];
-$ret_pecho = $row[12];
-$ret_cintura = $row[13];
-$ret_cadera = $row[14];
-$ret_gluteo = $row[15];
-$ret_muslo = $row[16];
-$ret_pantorrilla = $row[17];
+if(empty($control_talla)){
+$ret_imc = 0;
+} else {
+$ret_imc = $control_peso / ($control_talla * $control_talla);
+}
+
+//VALIDAD PUNTOS DE CORTE CARTILLA AZUL
+$ret_edad_total_anos = $ret_edad_en_anos + ($ret_edad_en_meses / 12);
+$ret_edad_total_anos_primera_cartilla = 59 + (9 / 12);
+if($ret_edad_total_anos <= $ret_edad_total_anos_primera_cartilla){
+
+if($ret_imc >= 40){
+$diagnostico = 'Obesidad III';
+} elseif($ret_imc >= 35){
+$diagnostico = 'Obesidad II';
+} elseif($ret_imc >= 30){
+$diagnostico = 'Obesidad I';
+} elseif($ret_imc >= 25){
+$diagnostico = 'Sobrepeso';
+} elseif($ret_imc >= 18.5){
+$diagnostico = 'Normal';
+} elseif($ret_imc >= 17){
+$diagnostico = 'Delgadez I';
+} elseif($ret_imc >= 16){
+$diagnostico = 'Delgadez II';
+} elseif($ret_imc < 16){
+$diagnostico = 'Delgadez III';
+}
+}
+
+//VALIDAD PUNTOS DE CORTE CARTILLA AMARILLA
+elseif($ret_edad_en_anos >= 60){
+
+if($ret_imc >= 32){
+$diagnostico = 'Obesidad';
+} elseif($ret_imc >= 28 && $ret_imc <= 32){
+$diagnostico = 'Sobrepeso';
+} elseif($ret_imc >= 23 && $ret_imc <= 28){
+$diagnostico = 'Normal';
+} elseif($ret_imc >= 21 && $ret_imc <= 23){
+$diagnostico = 'Delgadez';
+} elseif($ret_imc >= 19 && $ret_imc <= 21){
+$diagnostico = 'Delgadez';
+} elseif($ret_imc < 9){
+$diagnostico = 'Delgadez';
+}
+} else {
+$diagnostico = 'Sin Diagn&oacute;stico';
+}
+
+//OBTENER ID DEL PROGRAMA
+$query_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT id_programa FROM suscripcion_programa WHERE id = '$control_id_suscripcion' ORDER BY id ASC LIMIT 1"));
+$id_programa = (int)$query_suscripcion[0];
+
+//NOMBRE DEL PROGRAMA
+$row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM programa WHERE id = '$id_programa' LIMIT 1"));
+$nombre_programa = $row_nombre_programa[0];
+
+$array_controles[$i_controles] = array($control_fecha, $control_codigo, $nombre_programa, $control_peso);
+$i_controles++;
 ?>
 <tr class="tr-hover" style="cursor: pointer;">
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_codigo_control; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_fecha; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_peso; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_imc; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_grasa; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_mm; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_diagnostico; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_brazo; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_pecho; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_cintura; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_gluteo; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_muslo; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_pantorrilla; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_pd; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_pa; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $ret_monitoreo; ?></td>
-<td class="td-content" style="width: 5.55% !important; cursor: default;">
-<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit" style="font-size: 13px; margin-right: 5px;"></i></a>
-<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="eliminar(<?php echo $ret_id_control; ?>)"><i class="fa fa-trash-o" style="font-size: 13px;"></i></a>
-</td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_codigo; ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_fecha; ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_peso; ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo round($ret_imc, 2); ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $diagnostico; ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_cuello; ?>cm</td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_brazo; ?>cm</td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_pecho; ?>cm</td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_cintura; ?>cm</td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_gluteo; ?>cm</td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_muslo; ?>cm</td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_pantorrilla; ?>cm</td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
 </tr>
 <?php
 }
 ?>
-<tr>
-<td class="reportes_th_tabla_principal" style="text-align: right !important;" colspan="14"><?php echo paginate($page, $total_pages, $adjacents, 'load'); ?></td>
-</tr>
 </table>
+<?php
+$max = 0;
+foreach($array_controles as $array_valor){
+if($array_valor[3] > $max){
+$max = $array_valor[3];
+}
+}
+$max = $max + 1;
+$min = ((float)$ret_peso_meta) - 5;
+?>
+<div class="row">
+<div class="col-md-6 text-center" style="padding-top: 40px;">
+<div id="chart1"></div>
 <script>
 var options = {
 
 //TITULO DEL CHART
 title: {
-text: 'Evoluci\u00F3n <?php if(!empty($_GET['suscripcion'])){ ?> del Paquete <?php } ?>',
+text: 'Evoluci\u00F3n',
 align: 'center',
 style: {
 fontSize: "16px",
@@ -1268,7 +1475,15 @@ show: false
 
 //DATOS EJE X
 xaxis: {
-categories: [['06/09/20', 'C001', 'RPF'], ['10/09/20', 'C002', 'RPF'], ['12/09/20', 'C003', 'RPF'], ['15/09/20', 'C004', 'RPF']],
+categories: [
+<?php
+foreach($array_controles as $array_valor){
+?>
+['<?php echo $array_valor[0]; ?>', '<?php echo $array_valor[1]; ?>', '<?php echo $array_valor[2]; ?>'],
+<?php
+}
+?>
+],
 labels: {
 rotate: 0
 }
@@ -1276,8 +1491,8 @@ rotate: 0
 
 //CONFIGURACION EJE Y
 yaxis: {
-min: 55,
-max: 80,
+min: <?php echo $min; ?>,
+max: <?php echo $max; ?>,
 title: {
 text: 'PESO (KG)'
 }
@@ -1287,161 +1502,15 @@ text: 'PESO (KG)'
 series: [
 {
 name: 'Peso',
-data: [75, 72, 65, 60]
+data: [
+<?php
+foreach($array_controles as $array_valor){
+?>
+<?php echo $array_valor[3]; ?>,
+<?php
 }
-],
-
-//GRID: Fondo de Malla
-grid: {
-show: true,
-padding: {
-left: 10,
-right: 10
-}
-},
-
-//GROSOR DE LINEAS O BARRAS
-stroke: {
-width: 1,
-curve: 'straight'
-},
-
-//TIPO DE LINEAS O BARRAS
-fill: {
-type: 'solid'
-},
-
-//TAMAÑO PUNTOS DE RELACION (BOLITAS)
-markers: {
-size: 3,
-colors: ["#95cf32"],
-strokeColors: "#95cf32",
-strokeWidth: 1,
-hover: {
-size: 5
-}
-}
-};
-var options_2 = {
-
-//TITULO DEL CHART
-title: {
-text: '(%) Grasa Corporal',
-align: 'center',
-style: {
-fontSize: "16px",
-color: '#95cf32'
-}
-},
-
-//CONFIGURACION DEL CHART
-chart: {
-height: 350,
-type: 'line',
-toolbar: {
-show: false
-}
-},
-
-//DATOS EJE X
-xaxis: {
-categories: [['06/09/20', 'C001', 'RPF'], ['10/09/20', 'C002', 'RPF'], ['12/09/20', 'C003', 'RPF'], ['15/09/20', 'C004', 'RPF']],
-labels: {
-rotate: 0
-}
-},
-
-//CONFIGURACION EJE Y
-yaxis: {
-min: 55,
-max: 80,
-title: {
-text: '(%) GRASA CORPORAL'
-}
-},
-
-//DATOS EJE Y
-series: [
-{
-name: '(%) Grasa Corporal',
-data: [75, 72, 65, 60]
-}
-],
-
-//GRID: Fondo de Malla
-grid: {
-show: true,
-padding: {
-left: 10,
-right: 10
-}
-},
-
-//GROSOR DE LINEAS O BARRAS
-stroke: {
-width: 1,
-curve: 'straight'
-},
-
-//TIPO DE LINEAS O BARRAS
-fill: {
-type: 'solid'
-},
-
-//TAMAÑO PUNTOS DE RELACION (BOLITAS)
-markers: {
-size: 3,
-colors: ["#95cf32"],
-strokeColors: "#95cf32",
-strokeWidth: 1,
-hover: {
-size: 5
-}
-}
-};
-var options_3 = {
-
-//TITULO DEL CHART
-title: {
-text: 'MM',
-align: 'center',
-style: {
-fontSize: "16px",
-color: '#95cf32'
-}
-},
-
-//CONFIGURACION DEL CHART
-chart: {
-height: 350,
-type: 'line',
-toolbar: {
-show: false
-}
-},
-
-//DATOS EJE X
-xaxis: {
-categories: [['06/09/20', 'C001', 'RPF'], ['10/09/20', 'C002', 'RPF'], ['12/09/20', 'C003', 'RPF'], ['15/09/20', 'C004', 'RPF']],
-labels: {
-rotate: 0
-}
-},
-
-//CONFIGURACION EJE Y
-yaxis: {
-min: 55,
-max: 80,
-title: {
-text: 'MM'
-}
-},
-
-//DATOS EJE Y
-series: [
-{
-name: 'MM',
-data: [75, 72, 65, 60]
+?>
+]
 }
 ],
 
@@ -1478,11 +1547,9 @@ size: 5
 };
 var chart = new ApexCharts(document.querySelector('#chart1'), options);
 chart.render();
-var chart_2 = new ApexCharts(document.querySelector('#chart2'), options_2);
-chart_2.render();
-var chart_3 = new ApexCharts(document.querySelector('#chart3'), options_3);
-chart_3.render();
 </script>
+</div>
+</div>
 <?php
 }
 

@@ -647,6 +647,11 @@ $ultimo_id = (int)$row_id[0];
 //DATOS DEL CORREO
 $query_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre_completo FROM programa WHERE id = '$form_id_programa' LIMIT 1"));
 $nombre_programa = $query_nombre_programa[0];
+
+//SI ES PACIENTE CREAR HISTORIA
+if($tipo_usuario == 2){
+mysqli_query($con, "INSERT INTO historia (id_paciente, alimentos_no_gustar, agua, alcohol, alcohol_frecuencia, evacuacion, dormir, ejercicios, ejercicios_frecuencia, ejercicios_horario, enfermedad, enfermedad_especificar, analisis_sangre, analisis_sangre_especificar, medicamentos, medicamentos_especificar, horario, tiempo, date_added, peso_meta) VALUES ('$ultimo_id', '', '0', '0', '', '0', '0', '0', '', '', '0', '', '0', '', '0', '', '0', '0', '', '')");
+}
 ?>
 <script>
 $.ajax({
@@ -689,9 +694,9 @@ mysqli_query($con, "INSERT INTO nutricionista_paciente (id_nutricionista, id_pac
 
 //AGREGAR A LA BD SUSCRIPCION
 mysqli_query($con, "
-INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete, id_tipo_suscripcion)
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete, id_tipo_suscripcion, peso_meta)
 VALUES 
-('".$form_id_programa."', '".$form_id_nutricionista."', '".$ultimo_id."', '".$form_fecha_suscripcion."', '".$form_fecha_suscripcion_fin."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete', '$suscripcion_nueva')
+('".$form_id_programa."', '".$form_id_nutricionista."', '".$ultimo_id."', '".$form_fecha_suscripcion."', '".$form_fecha_suscripcion_fin."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete', '$suscripcion_nueva', '0')
 "
 );
 
@@ -2917,6 +2922,7 @@ $('#modalFechas').modal('hide');
 <div class="table-responsive">
 <div id="reporte_tabla"></div>
 </div>
+<!--
 <div class="row">
 <div class="col-md-1 hidden-xs"></div>
 <div class="col-md-10 col-xs-12">
@@ -2934,6 +2940,7 @@ $('#modalFechas').modal('hide');
 </div>
 <div class="col-md-1 hidden-xs"></div>
 </div>
+-->
 <script>
 //LOAD
 function load(page){
@@ -2957,7 +2964,8 @@ n_fecha_desde : n_fecha_desde,
 n_fecha_hasta : n_fecha_hasta,
 ver_pacientes : <?php echo (int)$ver_pacientes; ?>,
 ver_nutricionistas: <?php echo (int)$ver_nutricionistas; ?>,
-ver_vendedores : <?php echo (int)$ver_vendedores; ?>
+ver_vendedores : <?php echo (int)$ver_vendedores; ?>,
+fn_id_suscripcion : <?php echo (int)$fn_id_suscripcion; ?>
 },
 success: function(datos){
 $('#reporte_tabla').html(datos).fadeIn('slow');
@@ -3914,6 +3922,20 @@ confirmButtonText: 'OK'
 <div class="col-md-6" style="padding-top: 25px;">
 <b style="font-size: 13.5px;">Fecha: <?php echo date('d/m/Y'); ?></b>
 <div class="table-responsive">
+<table style="width: 100% !important; margin: 0 auto; margin-top: 5px;">
+<tr>
+<td class="td-content" style="width: 50% !important; font-weight: bold;">Foto Frontal</td>
+<td class="td-content" style="width: 50% !important;">
+<input id="frm_foto_frontal" type="file" style="height: 25px; text-align: center; font-size: 11px;">
+</td>
+</tr>
+<tr>
+<td class="td-content" style="width: 50% !important; font-weight: bold;">Foto Perfil</td>
+<td class="td-content" style="width: 50% !important;">
+<input id="frm_foto_perfil" type="file" style="height: 25px; text-align: center; font-size: 11px;">
+</td>
+</tr>
+</table>
 <table style="width: 100% !important; margin: 0 auto; border: 1px solid #95cf32; margin-top: 5px;">
 <tr>
 <td class="td-title" style="width: 50% !important;">Medidas</td>
@@ -4085,5 +4107,101 @@ $('#div_ajax_evolucion').html(datos).fadeIn('slow');
 </script>
 </div>
 <?php
+}
+
+//REPORTES
+if($view_controller == 16){
+
+if($_SESSION['ID_TIPO_USUARIO'] == 3){
+?>
+<div class="card-box pd-20 height-100-p mb-30 text-center">
+<h4>Reportes:</h4><br>
+<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-8 text-left">
+<button onclick="window.location='pacientes.php'" type="button" style="font-size: 14px; background: #95cf32; color: white; padding: 5px; border: none; margin-bottom: 15px;">
+1. Lista de Socios
+</button><br>
+<button onclick="window.location='nutricionistas.php'" type="button" style="font-size: 14px; background: #95cf32; color: white; padding: 5px; border: none; margin-bottom: 15px;">
+2. Lista de Nutricionistas
+</button><br>
+<button onclick="window.location='vendedores.php'" type="button" style="font-size: 14px; background: #95cf32; color: white; padding: 5px; border: none;">
+3. Lista de Vendedores
+</button>
+</div>
+<div class="col-md-2"></div>
+</div>
+</div>
+<?php
+} else {
+?>
+<div class="card-box pd-20 height-100-p mb-30 text-center">
+<div id="ajax_reportes">
+<h4>Indicadores:</h4><br>
+<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-8 text-left">
+<button id="indicador_1" type="button" style="font-size: 14px; background: #95cf32; color: white; padding: 5px; border: none; margin-bottom: 15px;">
+1. Socios que bajaron m&iacute;nimo 1KG
+</button><br>
+<button id="indicador_2" type="button" style="font-size: 14px; background: #95cf32; color: white; padding: 5px; border: none;">
+2. Socios que no renovaron
+</button>
+</div>
+<div class="col-md-2"></div>
+</div>
+</div>
+<div id="div_indicador_1" style="display: none;">
+<h4>Socios que bajaron m&iacute;nimo 1KG:</h4><br>
+<div class="table-responsive">
+<table style="width: 1000px !important; margin: 0 auto;">
+<tr>
+<td class="td-title" style="width: 11.11% !important;">N&#176; Socio</td>
+<td class="td-title" style="width: 11.11% !important;">Nombres</td>
+<td class="td-title" style="width: 11.11% !important;">Apellidos</td>
+<td class="td-title" style="width: 11.11% !important;">G&eacute;nero</td>
+<td class="td-title" style="width: 11.11% !important;">Edad</td>
+<td class="td-title" style="width: 11.11% !important;">Correo</td>
+<td class="td-title" style="width: 11.11% !important;">Tel&eacute;fono</td>
+<td class="td-title" style="width: 11.11% !important;">Estado</td>
+<td class="td-title" style="width: 11.11% !important;">Acci&oacute;n</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="div_indicador_2" style="display: none;">
+<h4>Socios que no renovaron:</h4><br>
+<div class="table-responsive">
+<table style="width: 1000px !important; margin: 0 auto;">
+<tr>
+<td class="td-title" style="width: 11.11% !important;">N&#176; Socio</td>
+<td class="td-title" style="width: 11.11% !important;">Nombres</td>
+<td class="td-title" style="width: 11.11% !important;">Apellidos</td>
+<td class="td-title" style="width: 11.11% !important;">G&eacute;nero</td>
+<td class="td-title" style="width: 11.11% !important;">Edad</td>
+<td class="td-title" style="width: 11.11% !important;">Correo</td>
+<td class="td-title" style="width: 11.11% !important;">Tel&eacute;fono</td>
+<td class="td-title" style="width: 11.11% !important;">Estado</td>
+<td class="td-title" style="width: 11.11% !important;">Acci&oacute;n</td>
+</tr>
+</table>
+</div>
+</div>
+<script>
+$('#indicador_1').on('click', function(){
+$('#ajax_reportes').css('display', 'none');
+$('#div_indicador_1').css('display', 'block');
+$('#div_indicador_2').css('display', 'none');
+});
+
+$('#indicador_2').on('click', function(){
+$('#ajax_reportes').css('display', 'none');
+$('#div_indicador_1').css('display', 'none');
+$('#div_indicador_2').css('display', 'block');
+});
+</script>
+</div>
+<?php
+}
 }
 }

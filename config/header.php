@@ -65,7 +65,7 @@ if($_SESSION['ID_TIPO_USUARIO'] == 1){
 ?>
 <li>
 <a href="pacientes.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
-<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Mis Pacientes</span>
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Lista de Socios</span>
 </a>
 </li>
 <li>
@@ -81,6 +81,11 @@ if($_SESSION['ID_TIPO_USUARIO'] == 1){
 <li>
 <a href="agenda.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Mi Agenda</span>
+</a>
+</li>
+<li>
+<a href="reportes.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Reportes</span>
 </a>
 </li>
 <li>
@@ -117,18 +122,8 @@ elseif($_SESSION['ID_TIPO_USUARIO'] == 3){
 </a>
 </li>
 <li>
-<a href="pacientes.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
-<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Lista de Pacientes</span>
-</a>
-</li>
-<li>
-<a href="nutricionistas.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
-<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Lista de Nutricionistas</span>
-</a>
-</li>
-<li>
-<a href="vendedores.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
-<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Lista de Vendedores</span>
+<a href="reportes.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Reportes</span>
 </a>
 </li>
 <?php
