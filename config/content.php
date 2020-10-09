@@ -1299,7 +1299,7 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 <?php
 $query_planes_da = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE id_paciente = '$id_paciente' ORDER BY id ASC");
 while($row_pa = mysqli_fetch_array($query_planes_da)){
-$codigo_plan_da = $row_pa[0];
+$codigo_plan_da = $row_pa['codigo'];
 ?>
 <tr class="tr-hover" style="cursor: pointer;">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_da; ?></td>
