@@ -954,7 +954,7 @@ fp_uno_opcion_2_cena : fp_uno_opcion_2_cena,
 id_paciente : id_paciente
 },
 success: function(datos){
-$('#div_guardar_historia').html(datos).fadeIn('slow');
+complete_datos(id_paciente);
 }
 });
 });
