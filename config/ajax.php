@@ -751,7 +751,7 @@ if($negocia_operacion == 3){
 //DATOS A CONSULTAR
 $id_paciente = (int)$_GET['id_paciente'];
 $query_datos_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT nombres, apellidos FROM usuario WHERE id_tipo_usuario = 2 AND id = '$id_paciente' LIMIT 1"));
-$nombre_paciente = $query_datos_paciente[0].' '.query_datos_paciente[1];
+$nombre_paciente = $query_datos_paciente[0].' '.$query_datos_paciente[1];
 $id_plan = (int)$_GET['id_plan'];
 
 //DATOS DEL PLAN DE ALIMENTACION
