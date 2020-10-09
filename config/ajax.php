@@ -750,6 +750,8 @@ if($negocia_operacion == 3){
 
 //DATOS A CONSULTAR
 $id_paciente = (int)$_GET['id_paciente'];
+$query_datos_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT nombres, apellidos FROM usuario WHERE id_tipo_usuario = 2 AND id = '$id_paciente' LIMIT 1"));
+$nombre_paciente = $query_datos_paciente[0].' '.query_datos_paciente[1];
 $id_plan = (int)$_GET['id_plan'];
 
 //DATOS DEL PLAN DE ALIMENTACION
@@ -786,16 +788,19 @@ $dos_opcion_2_media_tarde = $row_plan_alimentacion['2_opcion_2_media_tarde'];
 $dos_opcion_1_cena = $row_plan_alimentacion['2_opcion_1_cena'];
 $dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
 ?>
-<h4 class="font-20 weight-500 mb-10 text-capitalize">
+<h4 class="font-20 weight-500 mb-10 text-capitalize" style="margin-top: 30px;">
 <div style="padding-left: 15px; color: #111; font-weight: bold; font-size: 20px;">Plan DETOX</div>
 </h4>
 <table style="width: 70%; margin: 0 auto;">
 <tr>
-<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px;" colspan="2"><b>Fecha: 22/09/2020</b></td>
+<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left;" colspan="2"><b><?php echo $nombre_paciente; ?></b></td>
 </tr>
 <tr>
-<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;"><b>HORARIOS</b></td>
-<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;"><b>COMIDAS</b></td>
+<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left;" colspan="2"><b>Fecha: <input type="date" style="font-size: 13px; font-weight: bold; width: 40px; text-align: center;" id="id_fecha_pa" value="<?php echo date('Y-m-d'); ?>"></b></td>
+</tr>
+<tr>
+<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;"></td>
+<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;"><b>PLAN DETOX</b></td>
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
