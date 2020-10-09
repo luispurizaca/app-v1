@@ -1269,6 +1269,31 @@ exit();
 exit();
 }
 
+//HISTORIAL DE PLANES POR PACIENTE
+if($negocia_operacion == 9){
+?>
+<h4>Historial de Planes DETOX</h4>
+<div class="table-responsive">
+<table style="width: 100% !important; margin: 0 auto;">
+<tr>
+<td class="td-title" style="width: 33.11% !important;">N&#176;</td>
+<td class="td-title" style="width: 33.11% !important;">Descripci&oacute;n</td>
+<td class="td-title" style="width: 33.11% !important;">Acciones</td>
+</tr>
+<tr class="tr-hover" style="cursor: pointer;">
+<td class="td-content" style="width: 11.11% !important;">PD-1</td>
+<td class="td-content" style="width: 11.11% !important;">Paciente</td>
+<td class="td-content" style="width: 11.11% !important;">
+<button type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Cargar</button>
+<button type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Eliminar</button>
+<button type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Enviar</button>
+</td>
+</tr>
+</table>
+</div>
+<?php
+}
+
 if(isset($con)){
 //1. inicio.php
 
@@ -3013,9 +3038,7 @@ if($view_controller == 3){
 <div class="card-box mb-30">
 <div class="card-box pd-20 height-100-p mb-30">
 <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
-<button type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Planes DETOX</button>
-<button type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Planes de Alimentaci&oacute;n</button>
-<table style="width: 400px; margin-left: 25px; margin-top: 40px;">
+<table style="width: 400px; margin: 0 auto; margin-top: 40px;">
 <tr>
 <td style="width: 50% !important; text-align: left; padding-left: 10px;">
 <span style="color: #111; font-weight: bold; font-size: 13px;">Nombres o N&#176; de Socio:</span>
@@ -3052,9 +3075,9 @@ return false;
 function complete_datos(id_paciente){
 $.ajax({
 type: 'POST',
-url: 'config/content.php?negocia_operacion=4&id_paciente='+id_paciente,
+url: 'config/content.php?negocia_operacion=9&id_paciente='+id_paciente,
 success: function(datos){
-$('#resultado_busqueda').html(datos).fadeIn('slow');
+$('#div_plan_paciente').html(datos).fadeIn('slow');
 }
 });
 }
@@ -3062,6 +3085,9 @@ $('#resultado_busqueda').html(datos).fadeIn('slow');
 </td>
 </tr>
 </table>
+<br>
+<button type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Planes DETOX</button>
+<button type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Planes de Alimentaci&oacute;n</button>
 <div id="div_plan_paciente"></div>
 </div>
 </div>
