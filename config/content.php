@@ -1308,6 +1308,42 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 </table>
 </div>
 <?php
+exit();
+exit();
+}
+
+//GUARDAR PLAN DE ALIMENTACION
+if($negocia_operacion == 10){
+$id_fecha_pa = $_POST['id_fecha_pa'];
+$fp_hora_desayuno = $_POST['fp_hora_desayuno'];
+$fp_uno_opcion_1_desayuno = $_POST['fp_uno_opcion_1_desayuno'];
+$fp_uno_opcion_2_desayuno = $_POST['fp_uno_opcion_2_desayuno'];
+$fp_hora_media_manana = $_POST['fp_hora_media_manana'];
+$fp_uno_opcion_1_media_manana = $_POST['fp_uno_opcion_1_media_manana'];
+$fp_hora_almuerzo = $_POST['fp_hora_almuerzo'];
+$fp_uno_opcion_1_almuerzo = $_POST['fp_uno_opcion_1_almuerzo'];
+$fp_uno_opcion_2_almuerzo = $_POST['fp_uno_opcion_2_almuerzo'];
+$fp_hora_media_tarde = $_POST['fp_hora_media_tarde'];
+$fp_uno_opcion_1_media_tarde = $_POST['fp_uno_opcion_1_media_tarde'];
+$fp_hora_cena = $_POST['fp_hora_cena'];
+$fp_uno_opcion_1_cena = $_POST['fp_uno_opcion_1_cena'];
+$fp_uno_opcion_2_cena = $_POST['fp_uno_opcion_2_cena'];
+$id_paciente = (int)$_POST['id_paciente'];
+
+//INSERT INTO
+mysqli_query($con, "
+INSERT INTO plan_alimentacion (tipo_plan, codigo, id_suscripcion, id_control, id_paciente, fecha_envio, date_added, hora_desayuno, hora_media_manana, hora_almuerzo, hora_media_tarde, hora_cena, horario_1, horario_2, 1_opcion_1_desayuno, 1_opcion_2_desayuno, 1_opcion_1_media_manana, 1_opcion_2_media_manana, 1_opcion_1_almuerzo, 1_opcion_2_almuerzo, 1_opcion_1_media_tarde, 1_opcion_2_media_tarde, 1_opcion_1_cena, 1_opcion_2_cena, 2_opcion_1_desayuno, 2_opcion_2_desayuno, 2_opcion_1_media_manana, 2_opcion_2_media_manana, 2_opcion_1_almuerzo, 2_opcion_2_almuerzo, 2_opcion_1_media_tarde, 2_opcion_2_media_tarde, 2_opcion_1_cena, 2_opcion_2_cena)
+VALUES 
+('1', '', '', '', '".$id_paciente."', '".$id_fecha_pa."', '".date('Y-m-d')."', '".$fp_hora_desayuno."', '".$fp_hora_media_manana."', '".$fp_hora_almuerzo."', '".$fp_hora_media_tarde."', '".$fp_hora_cena."', '', 'PLAN DETOX', '".$fp_uno_opcion_1_desayuno."', '".$fp_uno_opcion_2_desayuno."', '".$fp_uno_opcion_1_media_manana."', '".$fp_uno_opcion_2_media_manana."', '".$fp_uno_opcion_1_almuerzo."', '".$fp_uno_opcion_2_almuerzo."', '".$fp_uno_opcion_1_media_tarde."', '".$fp_uno_opcion_2_media_tarde."', '".$fp_uno_opcion_1_cena."', '".$fp_uno_opcion_2_cena."', '".$fp_dos_opcion_1_desayuno."', '".$fp_dos_opcion_2_desayuno."', '".$fp_dos_opcion_1_media_manana."', '".$fp_dos_opcion_2_media_manana."', '".$fp_dos_opcion_1_almuerzo."', '".$fp_dos_opcion_2_almuerzo."', '".$fp_dos_opcion_1_media_tarde."', '".$fp_dos_opcion_2_media_tarde."', '".$fp_dos_opcion_1_cena."', '".$fp_dos_opcion_2_cena."')
+"
+);
+?>
+<script>
+location.href = 'planes.php?success';
+</script>
+<?php
+exit();
+exit();
 }
 
 if(isset($con)){

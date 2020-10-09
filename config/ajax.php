@@ -869,7 +869,7 @@ $dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
 <b style="font-size: 12px;">MEDIA TARDE<br><input id="fp_hora_media_tarde" class="n-form-control n-input-plan-alimentacion" type="text" value="<?php echo $hora_media_tarde; ?>"></b>
 </td>
 <td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
-<?php echo $uno_opcion_1_media_tarde; ?>
+<textarea id="fp_uno_opcion_1_media_tarde" class="n-form-control-text-area-plan-2"><?php echo $uno_opcion_1_media_tarde; ?></textarea>
 </td>
 </tr>
 <tr>
@@ -912,9 +912,53 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 </script>
 <br><br>
 <div style="text-align: center;">
-<button type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar</button>
+<button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar</button>
 <button type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Cancelar</button>
 </div>
+<script>
+$('#btn_guardar_datos').on('click', function(){
+var id_fecha_pa = $('#id_fecha_pa').val();
+var fp_hora_desayuno = $('#fp_hora_desayuno').val();
+var fp_uno_opcion_1_desayuno = $('#fp_uno_opcion_1_desayuno').val();
+var fp_uno_opcion_2_desayuno = $('#fp_uno_opcion_2_desayuno').val();
+var fp_hora_media_manana = $('#fp_hora_media_manana').val();
+var fp_uno_opcion_1_media_manana = $('#fp_uno_opcion_1_media_manana').val();
+var fp_hora_almuerzo = $('#fp_hora_almuerzo').val();
+var fp_uno_opcion_1_almuerzo = $('#fp_uno_opcion_1_almuerzo').val();
+var fp_uno_opcion_2_almuerzo = $('#fp_uno_opcion_2_almuerzo').val();
+var fp_hora_media_tarde = $('#fp_hora_media_tarde').val();
+var fp_uno_opcion_1_media_tarde = $('#fp_uno_opcion_1_media_tarde').val();
+var fp_hora_cena = $('#fp_hora_cena').val();
+var fp_uno_opcion_1_cena = $('#fp_uno_opcion_1_cena').val();
+var fp_uno_opcion_2_cena = $('#fp_uno_opcion_2_cena').val();
+var id_paciente = <?php echo $id_paciente; ?>;
+
+$.ajax({
+type: 'POST',
+url: 'config/content.php?negocia_operacion=10',
+data: {
+id_fecha_pa : id_fecha_pa,
+fp_hora_desayuno : fp_hora_desayuno,
+fp_uno_opcion_1_desayuno : fp_uno_opcion_1_desayuno,
+fp_uno_opcion_2_desayuno : fp_uno_opcion_2_desayuno,
+fp_hora_media_manana : fp_hora_media_manana,
+fp_uno_opcion_1_media_manana : fp_uno_opcion_1_media_manana,
+fp_hora_almuerzo : fp_hora_almuerzo,
+fp_uno_opcion_1_almuerzo : fp_uno_opcion_1_almuerzo,
+fp_uno_opcion_2_almuerzo : fp_uno_opcion_2_almuerzo,
+fp_hora_media_tarde : fp_hora_media_tarde,
+fp_uno_opcion_1_media_tarde : fp_uno_opcion_1_media_tarde,
+fp_hora_cena : fp_hora_cena,
+fp_uno_opcion_1_cena : fp_uno_opcion_1_cena,
+fp_uno_opcion_2_cena : fp_uno_opcion_2_cena,
+id_paciente = id_paciente
+},
+success: function(datos){
+$('#div_guardar_historia').html(datos).fadeIn('slow');
+}
+});
+});
+</script>
 <?php
 exit();
 exit();
