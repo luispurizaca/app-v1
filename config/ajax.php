@@ -910,6 +910,11 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 });
 }
 </script>
+<br><br>
+<div style="text-align: center;">
+<button type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar</button>
+<button type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Cancelar</button>
+</div>
 <?php
 exit();
 exit();
