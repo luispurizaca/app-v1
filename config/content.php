@@ -1271,10 +1271,23 @@ exit();
 
 //HISTORIAL DE PLANES POR PACIENTE
 if($negocia_operacion == 9){
+$id_paciente = (int)$_GET['id_paciente'];
 ?>
-<h4 style="margin-top: 15px;">Historial de Planes DETOX</h4>
+<h4 style="margin-top: 30px;">Historial de Planes DETOX</h4>
 <div style="text-align: left; margin-bottom: 15px;">
-<button type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
+<button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
+<script>
+//PLANES DETOX / ALIMENTACION
+function agregar_plan_paciente(id_paciente, id_plan){
+$.ajax({
+type: 'POST',
+url: 'config/ajax.php?negocia_operacion=3&id_paciente='+id_paciente+'&id_plan='+id_plan,
+success: function(datos){
+$('#div_plan_paciente').html(datos).fadeIn('slow');
+}
+});
+}
+</script>
 </div>
 <div class="table-responsive">
 <table style="width: 100% !important; margin: 0 auto;">
