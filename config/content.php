@@ -1337,11 +1337,6 @@ VALUES
 ('1', '', '', '', '".$id_paciente."', '".$id_fecha_pa."', '".date('Y-m-d')."', '".$fp_hora_desayuno."', '".$fp_hora_media_manana."', '".$fp_hora_almuerzo."', '".$fp_hora_media_tarde."', '".$fp_hora_cena."', '', 'PLAN DETOX', '".$fp_uno_opcion_1_desayuno."', '".$fp_uno_opcion_2_desayuno."', '".$fp_uno_opcion_1_media_manana."', '".$fp_uno_opcion_2_media_manana."', '".$fp_uno_opcion_1_almuerzo."', '".$fp_uno_opcion_2_almuerzo."', '".$fp_uno_opcion_1_media_tarde."', '".$fp_uno_opcion_2_media_tarde."', '".$fp_uno_opcion_1_cena."', '".$fp_uno_opcion_2_cena."', '".$fp_dos_opcion_1_desayuno."', '".$fp_dos_opcion_2_desayuno."', '".$fp_dos_opcion_1_media_manana."', '".$fp_dos_opcion_2_media_manana."', '".$fp_dos_opcion_1_almuerzo."', '".$fp_dos_opcion_2_almuerzo."', '".$fp_dos_opcion_1_media_tarde."', '".$fp_dos_opcion_2_media_tarde."', '".$fp_dos_opcion_1_cena."', '".$fp_dos_opcion_2_cena."')
 "
 );
-?>
-<script>
-location.href = 'planes.php?success';
-</script>
-<?php
 exit();
 exit();
 }
