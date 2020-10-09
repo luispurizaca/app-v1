@@ -951,7 +951,7 @@ fp_uno_opcion_1_media_tarde : fp_uno_opcion_1_media_tarde,
 fp_hora_cena : fp_hora_cena,
 fp_uno_opcion_1_cena : fp_uno_opcion_1_cena,
 fp_uno_opcion_2_cena : fp_uno_opcion_2_cena,
-id_paciente = id_paciente
+id_paciente : id_paciente
 },
 success: function(datos){
 $('#div_guardar_historia').html(datos).fadeIn('slow');
