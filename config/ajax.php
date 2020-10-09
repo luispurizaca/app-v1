@@ -788,15 +788,12 @@ $dos_opcion_2_media_tarde = $row_plan_alimentacion['2_opcion_2_media_tarde'];
 $dos_opcion_1_cena = $row_plan_alimentacion['2_opcion_1_cena'];
 $dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
 ?>
-<h4 class="font-20 weight-500 mb-10 text-capitalize" style="margin-top: 30px;">
-<div style="padding-left: 15px; color: #111; font-weight: bold; font-size: 20px;">Plan DETOX</div>
-</h4>
 <table style="width: 70%; margin: 0 auto;">
 <tr>
-<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left;" colspan="2"><b><?php echo $nombre_paciente; ?></b></td>
+<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-bottom: 0px;" colspan="2"><b><?php echo $nombre_paciente; ?></b></td>
 </tr>
 <tr>
-<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left;" colspan="2"><b>Fecha: <input type="date" style="font-size: 13px; font-weight: bold; width: 40px; text-align: center;" id="id_fecha_pa" value="<?php echo date('Y-m-d'); ?>"></b></td>
+<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-top: 15px;" colspan="2"><b>Fecha: <input type="date" style="font-size: 13px; font-weight: bold; width: 150px; text-align: center;" id="id_fecha_pa" value="<?php echo date('Y-m-d'); ?>"></b></td>
 </tr>
 <tr>
 <td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;"></td>
