@@ -3018,10 +3018,10 @@ if($view_controller == 3){
 <table style="width: 400px; margin-left: 25px; margin-top: 40px;">
 <tr>
 <td style="width: 50% !important; text-align: left; padding-left: 10px;">
-<span style="color: #111; font-weight: bold; font-size: 13px;">N&#176; de Socio:</span>
+<span style="color: #111; font-weight: bold; font-size: 13px;">Nombres o N&#176; de Socio:</span>
 </td>
 <td style="width: 50% !important; text-align: left; padding-left: 5px;">
-<input id="form_busqueda_paciente" name="form_busqueda_paciente" class="form-control n-form-control" type="text" placeholder="ejm: P-1">
+<input id="form_busqueda_paciente" name="form_busqueda_paciente" class="form-control n-form-control" type="text" placeholder="Buscar:">
 <div id="resultado_busqueda"></div>
 <script>
 //AUTOCOMPLETE
@@ -3059,14 +3059,6 @@ $('#resultado_busqueda').html(datos).fadeIn('slow');
 });
 }
 </script>
-</td>
-</tr>
-<tr>
-<td style="width: 50% !important; text-align: left; padding-left: 10px;">
-<span style="color: #111; font-weight: bold; font-size: 13px;">Nombres y Apellidos:</span>
-</td>
-<td style="width: 50% !important; text-align: left; padding-left: 5px;">
-<span id="result_nombres_paciente" style="color: #111; font-weight: bold; font-size: 13px;"></span>
 </td>
 </tr>
 </table>
