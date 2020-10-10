@@ -1277,7 +1277,7 @@ $id_paciente = (int)$_GET['id_paciente'];
 <div class="col-md-6">
 <h4 style="margin-top: 30px;">Planes DETOX</h4>
 <div style="text-align: left; margin-bottom: 15px;">
-<button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
+<button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1, 0)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
 </div>
 <div class="table-responsive">
 <table style="width: 100% !important; margin: 0 auto;">
@@ -1295,7 +1295,7 @@ $codigo_plan_de = $row_pa['codigo'];
 <td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
 <td class="td-content" style="width: 11.11% !important;"></td>
 <td class="td-content" style="width: 11.11% !important;">
-<button type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Cargar</button>
+<button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1, <?php echo $codigo_id_tabla; ?>)" type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Cargar</button>
 <button type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Eliminar</button>
 <button type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Enviar</button>
 </td>
@@ -1309,7 +1309,7 @@ $codigo_plan_de = $row_pa['codigo'];
 <div class="col-md-6">
 <h4 style="margin-top: 30px;">Planes de Alimentaci&oacute;n</h4>
 <div style="text-align: left; margin-bottom: 15px;">
-<button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 2)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
+<button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 2, 0)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
 </div>
 <div class="table-responsive">
 <table style="width: 100% !important; margin: 0 auto;">
@@ -1322,12 +1322,13 @@ $codigo_plan_de = $row_pa['codigo'];
 $query_planes_da = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 2 AND id_paciente = '$id_paciente' ORDER BY id ASC");
 while($row_pa = mysqli_fetch_array($query_planes_da)){
 $codigo_plan_da = $row_pa['codigo'];
+$codigo_id_tabla = (int)$row_pa['id'];
 ?>
 <tr class="tr-hover" style="cursor: pointer;">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_da; ?></td>
 <td class="td-content" style="width: 11.11% !important;"></td>
 <td class="td-content" style="width: 11.11% !important;">
-<button type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Cargar</button>
+<button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 2, <?php echo $codigo_id_tabla; ?>)" type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Cargar</button>
 <button type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Eliminar</button>
 <button type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Enviar</button>
 </td>
@@ -1340,10 +1341,10 @@ $codigo_plan_da = $row_pa['codigo'];
 </div>
 <script>
 //PLANES DETOX / ALIMENTACION
-function agregar_plan_paciente(id_paciente, id_plan){
+function agregar_plan_paciente(id_paciente, id_plan, id_tabla){
 $.ajax({
 type: 'POST',
-url: 'config/ajax.php?negocia_operacion=3&id_paciente='+id_paciente+'&id_plan='+id_plan,
+url: 'config/ajax.php?negocia_operacion=3&id_paciente='+id_paciente+'&id_plan='+id_plan+'&id_tabla='+id_tabla,
 success: function(datos){
 $('#div_plan_paciente').html(datos).fadeIn('slow');
 }
@@ -1359,11 +1360,29 @@ exit();
 //GUARDAR PLAN DE ALIMENTACION
 if($negocia_operacion == 10){
 
-//CODIGO DEL PA
+//DATOS GET
 $id_paciente = (int)$_POST['id_paciente'];
+$id_plan = (int)$_POST['id_plan'];
+$id_tabla = (int)$_POST['id_tabla'];
+
+if($id_plan == 1){
 $letra_add = 'PD-';
-$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo FROM plan_alimentacion WHERE id_paciente = '$id_paciente' ORDER BY id DESC LIMIT 1"));
+} else {
+$letra_add = 'PA-';
+}
+
+//SI ES NUEVO O SI ESTÁ EDITANDO
+if(empty($id_tabla)){
+
+//CODIGO DEL PA
+$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo FROM plan_alimentacion WHERE tipo_plan = '$id_plan' AND id_paciente = '$id_paciente' ORDER BY id DESC LIMIT 1"));
 $codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
+} else {
+
+//CODIGO DEL PA
+$row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo FROM plan_alimentacion WHERE id = '$id_tabla' ORDER BY id DESC LIMIT 1"));
+$codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
+}
 
 $id_fecha_pa = $_POST['id_fecha_pa'];
 $fp_hora_desayuno = $_POST['fp_hora_desayuno'];
@@ -1380,13 +1399,29 @@ $fp_hora_cena = $_POST['fp_hora_cena'];
 $fp_uno_opcion_1_cena = $_POST['fp_uno_opcion_1_cena'];
 $fp_uno_opcion_2_cena = $_POST['fp_uno_opcion_2_cena'];
 
-//INSERT INTO
+//INSERT INTO - UPDATE
+if(empty($id_tabla)){
 mysqli_query($con, "
 INSERT INTO plan_alimentacion (tipo_plan, codigo, id_suscripcion, id_control, id_paciente, fecha_envio, date_added, hora_desayuno, hora_media_manana, hora_almuerzo, hora_media_tarde, hora_cena, horario_1, horario_2, 1_opcion_1_desayuno, 1_opcion_2_desayuno, 1_opcion_1_media_manana, 1_opcion_2_media_manana, 1_opcion_1_almuerzo, 1_opcion_2_almuerzo, 1_opcion_1_media_tarde, 1_opcion_2_media_tarde, 1_opcion_1_cena, 1_opcion_2_cena, 2_opcion_1_desayuno, 2_opcion_2_desayuno, 2_opcion_1_media_manana, 2_opcion_2_media_manana, 2_opcion_1_almuerzo, 2_opcion_2_almuerzo, 2_opcion_1_media_tarde, 2_opcion_2_media_tarde, 2_opcion_1_cena, 2_opcion_2_cena)
 VALUES 
 ('1', '".$codigo_registro."', '', '', '".$id_paciente."', '".$id_fecha_pa."', '".date('Y-m-d')."', '".$fp_hora_desayuno."', '".$fp_hora_media_manana."', '".$fp_hora_almuerzo."', '".$fp_hora_media_tarde."', '".$fp_hora_cena."', '', 'PLAN DETOX', '".$fp_uno_opcion_1_desayuno."', '".$fp_uno_opcion_2_desayuno."', '".$fp_uno_opcion_1_media_manana."', '".$fp_uno_opcion_2_media_manana."', '".$fp_uno_opcion_1_almuerzo."', '".$fp_uno_opcion_2_almuerzo."', '".$fp_uno_opcion_1_media_tarde."', '".$fp_uno_opcion_2_media_tarde."', '".$fp_uno_opcion_1_cena."', '".$fp_uno_opcion_2_cena."', '".$fp_dos_opcion_1_desayuno."', '".$fp_dos_opcion_2_desayuno."', '".$fp_dos_opcion_1_media_manana."', '".$fp_dos_opcion_2_media_manana."', '".$fp_dos_opcion_1_almuerzo."', '".$fp_dos_opcion_2_almuerzo."', '".$fp_dos_opcion_1_media_tarde."', '".$fp_dos_opcion_2_media_tarde."', '".$fp_dos_opcion_1_cena."', '".$fp_dos_opcion_2_cena."')
 "
 );
+} else {
+mysqli_query($con, "
+UPDATE plan_alimentacion SET fecha_envio = '".$id_fecha_pa."', hora_desayuno = '".$fp_hora_desayuno."', 
+hora_media_manana = '".$fp_hora_media_manana."', hora_almuerzo = '".$fp_hora_almuerzo."', hora_media_tarde = '".$fp_hora_media_tarde."',
+hora_cena = '".$fp_hora_cena."', 1_opcion_1_desayuno = '".$fp_uno_opcion_1_desayuno."', 1_opcion_2_desayuno = '".$fp_uno_opcion_2_desayuno."',
+1_opcion_1_media_manana = '".$fp_uno_opcion_1_media_manana."', 1_opcion_2_media_manana = '".$fp_uno_opcion_2_media_manana."', 1_opcion_1_almuerzo = '".$fp_uno_opcion_1_almuerzo."',
+1_opcion_2_almuerzo = '".$fp_uno_opcion_2_almuerzo."', 1_opcion_1_media_tarde = '".$fp_uno_opcion_1_media_tarde."', 1_opcion_2_media_tarde = '".$fp_uno_opcion_2_media_tarde."',
+1_opcion_1_cena = '".$fp_uno_opcion_1_cena."', 1_opcion_2_cena = '".$fp_uno_opcion_2_cena."', 2_opcion_1_desayuno = '".$fp_dos_opcion_1_desayuno."',
+2_opcion_2_desayuno = '".$fp_dos_opcion_2_desayuno."', 2_opcion_1_media_manana = '".$fp_dos_opcion_1_media_manana."', 2_opcion_2_media_manana = '".$fp_dos_opcion_2_media_manana."',
+2_opcion_1_almuerzo = '".$fp_dos_opcion_1_almuerzo."', 2_opcion_2_almuerzo = '".$fp_dos_opcion_2_almuerzo."', 2_opcion_1_media_tarde = '".$fp_dos_opcion_1_media_tarde."',
+2_opcion_2_media_tarde = '".$fp_dos_opcion_2_media_tarde."', 2_opcion_1_cena = '".$fp_dos_opcion_1_cena."', 2_opcion_2_cena = '".$fp_dos_opcion_2_cena."'
+WHERE id = '$id_tabla' AND id_paciente = '$id_paciente'
+"
+);
+}
 exit();
 exit();
 }

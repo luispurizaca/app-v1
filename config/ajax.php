@@ -754,8 +754,10 @@ $query_datos_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT nombres, a
 $nombre_paciente = $query_datos_paciente[0].' '.$query_datos_paciente[1];
 $id_plan = (int)$_GET['id_plan'];
 
+$id_tabla = (int)$_GET['id_tabla'];
+
 //DATOS DEL PLAN DE ALIMENTACION
-$row_plan_alimentacion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = '$id_plan' AND id_paciente = '$id_paciente' ORDER BY id DESC LIMIT 1"));
+$row_plan_alimentacion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE id = '$id_tabla' AND id_paciente = '$id_paciente' ORDER BY id DESC LIMIT 1"));
 
 
 $horario_1 = $row_plan_alimentacion['horario_1'];
@@ -898,6 +900,7 @@ $dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
 </td>
 </tr>
 </table>
+<!--
 <script>
 //PLANES DETOX / ALIMENTACION
 function agregar_plan_paciente(id_paciente, id_plan){
@@ -910,6 +913,7 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 });
 }
 </script>
+-->
 <br><br>
 <div style="text-align: center;">
 <button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar</button>
@@ -932,6 +936,8 @@ var fp_hora_cena = $('#fp_hora_cena').val();
 var fp_uno_opcion_1_cena = $('#fp_uno_opcion_1_cena').val();
 var fp_uno_opcion_2_cena = $('#fp_uno_opcion_2_cena').val();
 var id_paciente = <?php echo $id_paciente; ?>;
+var id_plan = <?php echo $id_plan; ?>;
+var id_tabla = <?php echo $id_tabla; ?>;
 
 $.ajax({
 type: 'POST',
@@ -951,7 +957,8 @@ fp_uno_opcion_1_media_tarde : fp_uno_opcion_1_media_tarde,
 fp_hora_cena : fp_hora_cena,
 fp_uno_opcion_1_cena : fp_uno_opcion_1_cena,
 fp_uno_opcion_2_cena : fp_uno_opcion_2_cena,
-id_paciente : id_paciente
+id_paciente : id_paciente,
+id_tabla : id_tabla
 },
 success: function(datos){
 complete_datos(id_paciente);
