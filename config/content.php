@@ -1273,21 +1273,11 @@ exit();
 if($negocia_operacion == 9){
 $id_paciente = (int)$_GET['id_paciente'];
 ?>
-<h4 style="margin-top: 30px;">Historial de Planes DETOX</h4>
+<div class="row">
+<div class="col-md-6">
+<h4 style="margin-top: 30px;">Planes DETOX</h4>
 <div style="text-align: left; margin-bottom: 15px;">
 <button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
-<script>
-//PLANES DETOX / ALIMENTACION
-function agregar_plan_paciente(id_paciente, id_plan){
-$.ajax({
-type: 'POST',
-url: 'config/ajax.php?negocia_operacion=3&id_paciente='+id_paciente+'&id_plan='+id_plan,
-success: function(datos){
-$('#div_plan_paciente').html(datos).fadeIn('slow');
-}
-});
-}
-</script>
 </div>
 <div class="table-responsive">
 <table style="width: 100% !important; margin: 0 auto;">
@@ -1297,7 +1287,39 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 <td class="td-title" style="width: 33.11% !important;">Acciones</td>
 </tr>
 <?php
-$query_planes_da = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE id_paciente = '$id_paciente' ORDER BY id ASC");
+$query_planes_de = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 1 AND id_paciente = '$id_paciente' ORDER BY id ASC");
+while($row_pa = mysqli_fetch_array($query_planes_de)){
+$codigo_plan_de = $row_pa['codigo'];
+?>
+<tr class="tr-hover" style="cursor: pointer;">
+<td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
+<td class="td-content" style="width: 11.11% !important;"></td>
+<td class="td-content" style="width: 11.11% !important;">
+<button type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Cargar</button>
+<button type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Eliminar</button>
+<button type="button" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Enviar</button>
+</td>
+</tr>
+<?php
+}
+?>
+</table>
+</div>
+</div>
+<div class="col-md-6">
+<h4 style="margin-top: 30px;">Planes de Alimentaci&oacute;n</h4>
+<div style="text-align: left; margin-bottom: 15px;">
+<button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 2)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
+</div>
+<div class="table-responsive">
+<table style="width: 100% !important; margin: 0 auto;">
+<tr>
+<td class="td-title" style="width: 33.11% !important;">N&#176;</td>
+<td class="td-title" style="width: 33.11% !important;">Descripci&oacute;n</td>
+<td class="td-title" style="width: 33.11% !important;">Acciones</td>
+</tr>
+<?php
+$query_planes_da = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 2 AND id_paciente = '$id_paciente' ORDER BY id ASC");
 while($row_pa = mysqli_fetch_array($query_planes_da)){
 $codigo_plan_da = $row_pa['codigo'];
 ?>
@@ -1314,6 +1336,20 @@ $codigo_plan_da = $row_pa['codigo'];
 }
 ?>
 </table>
+</div>
+</div>
+<script>
+//PLANES DETOX / ALIMENTACION
+function agregar_plan_paciente(id_paciente, id_plan){
+$.ajax({
+type: 'POST',
+url: 'config/ajax.php?negocia_operacion=3&id_paciente='+id_paciente+'&id_plan='+id_plan,
+success: function(datos){
+$('#div_plan_paciente').html(datos).fadeIn('slow');
+}
+});
+}
+</script>
 </div>
 <?php
 exit();
@@ -3147,8 +3183,6 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 </tr>
 </table>
 <br>
-<button type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Planes DETOX</button>
-<button type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Planes de Alimentaci&oacute;n</button>
 <div id="div_plan_paciente"></div>
 </div>
 </div>
