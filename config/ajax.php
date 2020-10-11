@@ -794,7 +794,7 @@ $dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
 if(empty($id_tabla)){
 $fecha_plan = date('Y-m-d');
 } else {
-$fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envío']));
+$fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
 }
 ?>
 <table style="width: 70%; margin: 0 auto;">
@@ -924,7 +924,7 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 <br><br>
 <div style="text-align: center;">
 <button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar</button>
-<button type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Cancelar</button>
+<button onclick="complete_datos(<?php echo $id_paciente; ?>)" type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Cancelar</button>
 </div>
 <script>
 $('#btn_guardar_datos').on('click', function(){
