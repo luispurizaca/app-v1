@@ -907,20 +907,6 @@ $fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
 </td>
 </tr>
 </table>
-<!--
-<script>
-//PLANES DETOX / ALIMENTACION
-function agregar_plan_paciente(id_paciente, id_plan){
-$.ajax({
-type: 'POST',
-url: 'config/ajax.php?negocia_operacion=3&id_paciente='+id_paciente+'&id_plan='+id_plan,
-success: function(datos){
-$('#div_plan_paciente').html(datos).fadeIn('slow');
-}
-});
-}
-</script>
--->
 <br><br>
 <div style="text-align: center;">
 <button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar</button>
