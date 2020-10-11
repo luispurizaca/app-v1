@@ -808,6 +808,8 @@ if(empty($id_tabla)){
 $fecha_plan = date('Y-m-d');
 } else {
 $fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
+$title_2 = $horario_1;
+$title_3 = $horario_2;
 }
 ?>
 <table style="width: 70%; margin: 0 auto;">
