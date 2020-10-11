@@ -1290,6 +1290,7 @@ $id_paciente = (int)$_GET['id_paciente'];
 $query_planes_de = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 1 AND id_paciente = '$id_paciente' ORDER BY id ASC");
 while($row_pa = mysqli_fetch_array($query_planes_de)){
 $codigo_plan_de = $row_pa['codigo'];
+$codigo_id_tabla = $row_pa['id'];
 ?>
 <tr class="tr-hover" style="cursor: pointer;">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
