@@ -754,6 +754,19 @@ $query_datos_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT nombres, a
 $nombre_paciente = $query_datos_paciente[0].' '.$query_datos_paciente[1];
 $id_plan = (int)$_GET['id_plan'];
 
+//DEPENDIENTES DEL TIPO DE PLAN DA
+if($id_plan == 1){
+$title_1 = '';
+$title_2 = 'PLAN DETOX';
+$title_3 = '';
+$style_pa = 'display: none;';
+} else {
+$title_1 = 'HORARIO';
+$title_2 = '';
+$title_3 = '';
+$style_pa = '';
+}
+
 $id_tabla = (int)$_GET['id_tabla'];
 
 //DATOS DEL PLAN DE ALIMENTACION
@@ -805,8 +818,21 @@ $fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
 <td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-top: 15px;" colspan="2"><b>Fecha: <input type="date" style="font-size: 13px; font-weight: bold; width: 150px; text-align: center;" id="id_fecha_pa" value="<?php echo $fecha_plan; ?>"></b></td>
 </tr>
 <tr>
-<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;"></td>
-<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;"><b>PLAN DETOX</b></td>
+<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;">
+<textarea id="fp_title_1" class="n-form-control-text-area-plan" style="border: none; width: 100%; text-align:center; background: none; font-size: 16px !important; height: 50px !important;">
+<?php echo $title_1; ?>
+</textarea>
+</td>
+<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;">
+<textarea id="fp_title_2" class="n-form-control-text-area-plan" style="border: none; width: 100%; text-align:center; background: none; font-size: 16px !important; height: 50px !important;">
+<?php echo $title_2; ?>
+</textarea>
+</td>
+<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
+<textarea id="fp_title_3" class="n-form-control-text-area-plan" style="border: none; width: 100%; text-align:center; background: none; font-size: 16px !important; height: 50px !important;">
+<?php echo $title_3; ?>
+</textarea>
+</td>
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
@@ -832,6 +858,26 @@ $fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
 </tr>
 </table>
 </td>
+<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
+<table style="width: 100%; margin: 0 auto;">
+<tr>
+<td style="width: 20%; text-align: center;">
+<b>Opci&oacute;n 1:</b>
+</td>
+<td style="width: 80%;">
+<textarea id="fp_dos_opcion_1_desayuno" class="n-form-control-text-area-plan"><?php echo $dos_opcion_1_desayuno; ?></textarea>
+</td>
+</tr>
+<tr>
+<td style="width: 20%; text-align: center;">
+<b>Opci&oacute;n 2:</b>
+</td>
+<td style="width: 80%;">
+<textarea id="fp_dos_opcion_2_desayuno" class="n-form-control-text-area-plan"><?php echo $dos_opcion_2_desayuno; ?></textarea>
+</td>
+</tr>
+</table>
+</td>
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
@@ -843,6 +889,16 @@ $fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
 <td style="width: 20%; text-align: center;"></td>
 <td style="width: 80%;">
 <textarea id="fp_uno_opcion_1_media_manana" class="n-form-control-text-area-plan-2"><?php echo $uno_opcion_1_media_manana; ?></textarea>
+</td>
+</tr>
+</table>
+</td>
+<td style="vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
+<table style="width: 100%; margin: 0 auto;">
+<tr>
+<td style="width: 20%; text-align: center;"></td>
+<td style="width: 80%;">
+<textarea id="fp_dos_opcion_1_media_manana" class="n-form-control-text-area-plan-2"><?php echo $dos_opcion_1_media_manana; ?></textarea>
 </td>
 </tr>
 </table>
@@ -872,6 +928,26 @@ $fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
 </tr>
 </table>
 </td>
+<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
+<table style="width: 100%; margin: 0 auto;">
+<tr>
+<td style="width: 20%; text-align: center;">
+<b>Opci&oacute;n 1:</b>
+</td>
+<td style="width: 80%;">
+<textarea id="fp_dos_opcion_1_almuerzo" class="n-form-control-text-area-plan"><?php echo $dos_opcion_1_almuerzo; ?></textarea>
+</td>
+</tr>
+<tr>
+<td style="width: 20%; text-align: center;">
+<b>Opci&oacute;n 2:</b>
+</td>
+<td style="width: 80%;">
+<textarea id="fp_dos_opcion_2_almuerzo" class="n-form-control-text-area-plan"><?php echo $dos_opcion_2_almuerzo; ?></textarea>
+</td>
+</tr>
+</table>
+</td>
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
@@ -879,6 +955,9 @@ $fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
 </td>
 <td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
 <textarea id="fp_uno_opcion_1_media_tarde" class="n-form-control-text-area-plan-2"><?php echo $uno_opcion_1_media_tarde; ?></textarea>
+</td>
+<td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
+<textarea id="fp_dos_opcion_1_media_tarde" class="n-form-control-text-area-plan-2"><?php echo $dos_opcion_1_media_tarde; ?></textarea>
 </td>
 </tr>
 <tr>
@@ -905,6 +984,26 @@ $fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
 </tr>
 </table>
 </td>
+<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
+<table style="width: 100%; margin: 0 auto;">
+<tr>
+<td style="width: 20%; text-align: center;">
+<b>Opci&oacute;n 1:</b>
+</td>
+<td style="width: 80%;">
+<textarea id="fp_dos_opcion_1_cena" class="n-form-control-text-area-plan"><?php echo $dos_opcion_1_cena; ?></textarea>
+</td>
+</tr>
+<tr>
+<td style="width: 20%; text-align: center;">
+<b>Opci&oacute;n 2:</b>
+</td>
+<td style="width: 80%;">
+<textarea id="fp_dos_opcion_2_cena" class="n-form-control-text-area-plan"><?php echo $dos_opcion_2_cena; ?></textarea>
+</td>
+</tr>
+</table>
+</td>
 </tr>
 </table>
 <br><br>
@@ -914,20 +1013,31 @@ $fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
 </div>
 <script>
 $('#btn_guardar_datos').on('click', function(){
+var fp_title_1 = $('#fp_title_1').val();
+var fp_title_2 = $('#fp_title_2').val();
+var fp_title_3 = $('#fp_title_3').val();
 var id_fecha_pa = $('#id_fecha_pa').val();
 var fp_hora_desayuno = $('#fp_hora_desayuno').val();
 var fp_uno_opcion_1_desayuno = $('#fp_uno_opcion_1_desayuno').val();
 var fp_uno_opcion_2_desayuno = $('#fp_uno_opcion_2_desayuno').val();
+var fp_dos_opcion_1_desayuno = $('#fp_dos_opcion_1_desayuno').val();
+var fp_dos_opcion_2_desayuno = $('#fp_dos_opcion_2_desayuno').val();
 var fp_hora_media_manana = $('#fp_hora_media_manana').val();
 var fp_uno_opcion_1_media_manana = $('#fp_uno_opcion_1_media_manana').val();
+var fp_dos_opcion_1_media_manana = $('#fp_dos_opcion_1_media_manana').val();
 var fp_hora_almuerzo = $('#fp_hora_almuerzo').val();
 var fp_uno_opcion_1_almuerzo = $('#fp_uno_opcion_1_almuerzo').val();
 var fp_uno_opcion_2_almuerzo = $('#fp_uno_opcion_2_almuerzo').val();
+var fp_dos_opcion_1_almuerzo = $('#fp_dos_opcion_1_almuerzo').val();
+var fp_dos_opcion_2_almuerzo = $('#fp_dos_opcion_2_almuerzo').val();
 var fp_hora_media_tarde = $('#fp_hora_media_tarde').val();
 var fp_uno_opcion_1_media_tarde = $('#fp_uno_opcion_1_media_tarde').val();
+var fp_dos_opcion_1_media_tarde = $('#fp_dos_opcion_1_media_tarde').val();
 var fp_hora_cena = $('#fp_hora_cena').val();
 var fp_uno_opcion_1_cena = $('#fp_uno_opcion_1_cena').val();
 var fp_uno_opcion_2_cena = $('#fp_uno_opcion_2_cena').val();
+var fp_dos_opcion_1_cena = $('#fp_dos_opcion_1_cena').val();
+var fp_dos_opcion_2_cena = $('#fp_dos_opcion_2_cena').val();
 var id_paciente = <?php echo $id_paciente; ?>;
 var id_plan = <?php echo $id_plan; ?>;
 var id_tabla = <?php echo $id_tabla; ?>;
@@ -936,20 +1046,31 @@ $.ajax({
 type: 'POST',
 url: 'config/content.php?negocia_operacion=10',
 data: {
+fp_title_1 : fp_title_1,
+fp_title_2 : fp_title_2,
+fp_title_3 : fp_title_3,
 id_fecha_pa : id_fecha_pa,
 fp_hora_desayuno : fp_hora_desayuno,
 fp_uno_opcion_1_desayuno : fp_uno_opcion_1_desayuno,
 fp_uno_opcion_2_desayuno : fp_uno_opcion_2_desayuno,
+fp_dos_opcion_1_desayuno : fp_dos_opcion_1_desayuno,
+fp_dos_opcion_2_desayuno : fp_dos_opcion_2_desayuno,
 fp_hora_media_manana : fp_hora_media_manana,
 fp_uno_opcion_1_media_manana : fp_uno_opcion_1_media_manana,
+fp_dos_opcion_1_media_manana : fp_dos_opcion_1_media_manana,
 fp_hora_almuerzo : fp_hora_almuerzo,
 fp_uno_opcion_1_almuerzo : fp_uno_opcion_1_almuerzo,
 fp_uno_opcion_2_almuerzo : fp_uno_opcion_2_almuerzo,
+fp_dos_opcion_1_almuerzo : fp_dos_opcion_1_almuerzo,
+fp_dos_opcion_2_almuerzo : fp_dos_opcion_2_almuerzo,
 fp_hora_media_tarde : fp_hora_media_tarde,
 fp_uno_opcion_1_media_tarde : fp_uno_opcion_1_media_tarde,
+fp_dos_opcion_1_media_tarde : fp_dos_opcion_1_media_tarde,
 fp_hora_cena : fp_hora_cena,
 fp_uno_opcion_1_cena : fp_uno_opcion_1_cena,
 fp_uno_opcion_2_cena : fp_uno_opcion_2_cena,
+fp_dos_opcion_1_cena : fp_dos_opcion_1_cena,
+fp_dos_opcion_2_cena : fp_dos_opcion_2_cena,
 id_paciente : id_paciente,
 id_tabla : id_tabla
 },
