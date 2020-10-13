@@ -1275,10 +1275,10 @@ $id_paciente = (int)$_GET['id_paciente'];
 ?>
 <div class="row">
 <div class="col-md-12 text-center">
-<button id="btn_pd" onclick="mostrar_pa(1)" type="button" style="border: 1.5px solid #95cf32; color: #95cf32; background: white; font-size: 13px; padding: 4px; font-weight: bold; margin-right: 10px;">
+<button id="btn_pd" onclick="mostrar_pa(1)" type="button" style="border: 1.5px solid #95cf32; color: #95cf32; background: white; font-size: 13px; padding: 4px; font-weight: bold; margin-right: 5px;">
 Planes DETOX
 </button>
-<button id="btn_pa" onclick="mostrar_pa(2)" type="button" style="border: 1.5px solid #95cf32; color: #95cf32; background: white; font-size: 13px; padding: 4px; font-weight: bold; margin-left: 10px;">
+<button id="btn_pa" onclick="mostrar_pa(2)" type="button" style="border: 1.5px solid #95cf32; color: #95cf32; background: white; font-size: 13px; padding: 4px; font-weight: bold; margin-left: 5px;">
 Planes de ALIMENTACI&Oacute;N
 </button>
 </div>
@@ -1308,7 +1308,7 @@ $texto_envio = '<span style="color: darkgreen;">Enviado</span>';
 $texto_envio = '<span style="color: red;">Pendiente</span>';
 }
 ?>
-<tr class="tr-hover" style="cursor: pointer;">
+<tr class="tr-hover">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_envio_pd; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $texto_envio; ?></td>
@@ -1325,7 +1325,7 @@ $texto_envio = '<span style="color: red;">Pendiente</span>';
 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
 </svg>
 </button>
-<button type="button" style="font-size: 15px; background: none; color: darkblue; padding: 0px; border: none;">
+<button type="button" style="font-size: 15px; background: none; color: darkblue; padding: 0px; border: none;" onclick="enviar_pa(<?php echo $codigo_id_tabla; ?>)">
 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cursor-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"/>
 </svg>
@@ -1363,7 +1363,7 @@ $texto_envio = '<span style="color: darkgreen;">Enviado</span>';
 $texto_envio = '<span style="color: red;">Pendiente</span>';
 }
 ?>
-<tr class="tr-hover" style="cursor: pointer;">
+<tr class="tr-hover">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_envio_pd; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $texto_envio; ?></td>
@@ -1380,7 +1380,7 @@ $texto_envio = '<span style="color: red;">Pendiente</span>';
 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
 </svg>
 </button>
-<button type="button" style="font-size: 15px; background: none; color: darkblue; padding: 0px; border: none;">
+<button type="button" style="font-size: 15px; background: none; color: darkblue; padding: 0px; border: none;" onclick="enviar_pa(<?php echo $codigo_id_tabla; ?>)">
 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cursor-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"/>
 </svg>
@@ -1426,6 +1426,13 @@ url: 'config/ajax.php?negocia_operacion=3&id_paciente='+id_paciente+'&id_plan='+
 success: function(datos){
 $('#div_plan_paciente').html(datos).fadeIn('slow');
 }
+});
+}
+
+//ENVIAR PLAN DA CORREO
+function enviar_pa(id){
+$.ajax({
+url: 'config/send_pa.php?id='+id
 });
 }
 </script>
