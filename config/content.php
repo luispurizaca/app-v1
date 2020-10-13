@@ -1301,7 +1301,7 @@ while($row_pa = mysqli_fetch_array($query_planes_de)){
 $codigo_plan_de = $row_pa['codigo'];
 $codigo_id_tabla = $row_pa['id'];
 $fecha_envio_pd = date('d/m/Y', strtotime($row_pa['fecha_envio']));
-$estado_envio = (int)$row_pa['estado'];
+$estado_envio = (int)$row_pa['estado_envio'];
 if($estado_envio == 1){
 $texto_envio = '<span style="color: darkgreen;">Enviado</span>';
 } else {
