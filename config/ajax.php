@@ -1074,6 +1074,7 @@ fp_uno_opcion_2_cena : fp_uno_opcion_2_cena,
 fp_dos_opcion_1_cena : fp_dos_opcion_1_cena,
 fp_dos_opcion_2_cena : fp_dos_opcion_2_cena,
 id_paciente : id_paciente,
+id_plan : id_plan,
 id_tabla : id_tabla
 },
 success: function(datos){
