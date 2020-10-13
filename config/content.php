@@ -1473,12 +1473,12 @@ if(empty($id_tabla)){
 
 //CODIGO DEL PA
 $row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo FROM plan_alimentacion WHERE tipo_plan = '$id_plan' AND id_paciente = '$id_paciente' ORDER BY id DESC LIMIT 1"));
-$codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
+$codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 3, 100)) + 1);
 } else {
 
 //CODIGO DEL PA
 $row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo FROM plan_alimentacion WHERE id = '$id_tabla' ORDER BY id DESC LIMIT 1"));
-$codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
+$codigo_registro = $row_codigo_registro[0];
 }
 
 $fp_title_1 = $_POST['fp_title_1'];
