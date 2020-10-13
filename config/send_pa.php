@@ -283,7 +283,7 @@ $nombre_programa = $_GET['nombre_programa'];
 if($tipo_plan == 1){
 $asunto = 'Programa ReKupera tu peso ideal – Plan Detox';
 } else {
-$asunto = 'Programa ReKupera tu peso ideal – Plan de Alimentaci&oacute;n';
+$asunto = 'Programa ReKupera tu peso ideal – Plan de Alimentación';
 }
 
 //VALIDAR CORREO
@@ -365,6 +365,7 @@ $mail->Send();
 //ELIMINAR ARCHIVO ADJUNTO
 //unlink($archivo_file);
 echo "Email enviado.";
+mysqli_query($con, "UPDATE plan_alimentacion SET estado_envio = 1 WHERE id = '$id_plan' LIMIT 1");
 } catch (phpmailerException $e) {
 echo "Ocurri&oacute; un problema. {$e->errorMessage()}", PHP_EOL; //Catch errors from PHPMailer.
 } catch (Exception $e) {
