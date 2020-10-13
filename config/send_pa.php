@@ -9,6 +9,11 @@ $id_plan = (int)$_GET['id'];
 $row_plan_alimentacion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE id = '$id_plan' LIMIT 1"));
 
 $tipo_plan = (int)$row_plan_alimentacion['tipo_plan'];
+if($tipo_plan == 1){
+$style_pa = 'display: none;';
+} else {
+$style_pa = '';
+}
 $codigo_registro = $letra_add.(((int)substr($row_plan_alimentacion['codigo'], 2, 100)) + 1);
 
 $horario_1 = $row_plan_alimentacion['horario_1'];
@@ -60,31 +65,44 @@ ob_start();
 ?>
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
-<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-bottom: 0px;" colspan="2"><b><?php echo $nombre_paciente; ?></b></td>
+<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-bottom: 0px;" colspan="2">
+Hola <b><?php echo $nombre_paciente; ?>,</b><br><br>
+Recuerda que un cuerpo sano posee una mente.<br><br>
+
+<?php
+if($tipo_plan == 1){
+?>
+Te env&iacute;o tu plan detox que debes realizarlo el d&iacute;a <?php echo $fecha_plan; ?>.<br><br>
+<?php
+} else {
+?>
+Te env&iacute;o tu plan de alimentación de la semana. Para obtener mejores resultados realizarlo en un 100%..<br><br>
+<?php
+}
+?>
+Cualquier consulta, no dudes en escribirme<br><br>
+Saludos<br>
+Equipo ReKupera tu peso ideal by<br>
+Katherine Alfaro – Nutricionista y Coach<br>
+</td>
 </tr>
 <tr>
-<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-top: 15px;" colspan="2"><b>Fecha: <input type="date" style="font-size: 13px; font-weight: bold; width: 150px; text-align: center;" id="id_fecha_pa" value="<?php echo $fecha_plan; ?>"></b></td>
+<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-top: 15px;" colspan="2"><b>Fecha: <?php echo $fecha_plan; ?></b></td>
 </tr>
 <tr>
 <td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;">
-<textarea id="fp_title_1" class="n-form-control-text-area-plan" style="border: none; width: 100%; text-align:center; background: none; font-size: 16px !important; height: 50px !important;">
 <?php echo $title_1; ?>
-</textarea>
 </td>
 <td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;">
-<textarea id="fp_title_2" class="n-form-control-text-area-plan" style="border: none; width: 100%; text-align:center; background: none; font-size: 16px !important; height: 50px !important;">
 <?php echo $title_2; ?>
-</textarea>
 </td>
 <td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
-<textarea id="fp_title_3" class="n-form-control-text-area-plan" style="border: none; width: 100%; text-align:center; background: none; font-size: 16px !important; height: 50px !important;">
 <?php echo $title_3; ?>
-</textarea>
 </td>
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
-<b style="font-size: 17px;">DESAYUNO<br><input id="fp_hora_desayuno" class="n-form-control n-input-plan-alimentacion" type="text" value="<?php echo $hora_desayuno; ?>"></b>
+<b style="font-size: 17px;">DESAYUNO<br><?php echo $hora_desayuno; ?></b>
 </td>
 <td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <table style="width: 100%; margin: 0 auto;">
@@ -93,7 +111,7 @@ ob_start();
 <b>Opci&oacute;n 1:</b>
 </td>
 <td style="width: 80%;">
-<textarea id="fp_uno_opcion_1_desayuno" class="n-form-control-text-area-plan"><?php echo $uno_opcion_1_desayuno; ?></textarea>
+<?php echo $uno_opcion_1_desayuno; ?>
 </td>
 </tr>
 <tr>
@@ -101,7 +119,7 @@ ob_start();
 <b>Opci&oacute;n 2:</b>
 </td>
 <td style="width: 80%;">
-<textarea id="fp_uno_opcion_2_desayuno" class="n-form-control-text-area-plan"><?php echo $uno_opcion_2_desayuno; ?></textarea>
+<?php echo $uno_opcion_2_desayuno; ?>
 </td>
 </tr>
 </table>
@@ -113,7 +131,7 @@ ob_start();
 <b>Opci&oacute;n 1:</b>
 </td>
 <td style="width: 80%;">
-<textarea id="fp_dos_opcion_1_desayuno" class="n-form-control-text-area-plan"><?php echo $dos_opcion_1_desayuno; ?></textarea>
+<?php echo $dos_opcion_1_desayuno; ?>
 </td>
 </tr>
 <tr>
@@ -121,7 +139,7 @@ ob_start();
 <b>Opci&oacute;n 2:</b>
 </td>
 <td style="width: 80%;">
-<textarea id="fp_dos_opcion_2_desayuno" class="n-form-control-text-area-plan"><?php echo $dos_opcion_2_desayuno; ?></textarea>
+<?php echo $dos_opcion_2_desayuno; ?>
 </td>
 </tr>
 </table>
@@ -129,14 +147,14 @@ ob_start();
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
-<b style="font-size: 12px;">MEDIA MA&Ntilde;ANA<br><input id="fp_hora_media_manana" class="n-form-control n-input-plan-alimentacion" type="text" value="<?php echo $hora_media_manana; ?>"></b>
+<b style="font-size: 12px;">MEDIA MA&Ntilde;ANA<br><?php echo $hora_media_manana; ?></b>
 </td>
 <td style="vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
 <table style="width: 100%; margin: 0 auto;">
 <tr>
 <td style="width: 20%; text-align: center;"></td>
 <td style="width: 80%;">
-<textarea id="fp_uno_opcion_1_media_manana" class="n-form-control-text-area-plan-2"><?php echo $uno_opcion_1_media_manana; ?></textarea>
+<?php echo $uno_opcion_1_media_manana; ?>
 </td>
 </tr>
 </table>
@@ -146,7 +164,7 @@ ob_start();
 <tr>
 <td style="width: 20%; text-align: center;"></td>
 <td style="width: 80%;">
-<textarea id="fp_dos_opcion_1_media_manana" class="n-form-control-text-area-plan-2"><?php echo $dos_opcion_1_media_manana; ?></textarea>
+<?php echo $dos_opcion_1_media_manana; ?>
 </td>
 </tr>
 </table>
@@ -154,7 +172,7 @@ ob_start();
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
-<b style="font-size: 17px;">ALMUERZO<br><input id="fp_hora_almuerzo" class="n-form-control n-input-plan-alimentacion" type="text" value="<?php echo $hora_almuerzo; ?>"></b>
+<b style="font-size: 17px;">ALMUERZO<br><?php echo $hora_almuerzo; ?></b>
 </td>
 <td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <table style="width: 100%; margin: 0 auto;">
@@ -163,7 +181,7 @@ ob_start();
 <b>Opci&oacute;n 1:</b>
 </td>
 <td style="width: 80%;">
-<textarea id="fp_uno_opcion_1_almuerzo" class="n-form-control-text-area-plan"><?php echo $uno_opcion_1_almuerzo; ?></textarea>
+<?php echo $uno_opcion_1_almuerzo; ?>
 </td>
 </tr>
 <tr>
@@ -171,7 +189,7 @@ ob_start();
 <b>Opci&oacute;n 2:</b>
 </td>
 <td style="width: 80%;">
-<textarea id="fp_uno_opcion_2_almuerzo" class="n-form-control-text-area-plan"><?php echo $uno_opcion_2_almuerzo; ?></textarea>
+<?php echo $uno_opcion_2_almuerzo; ?>
 </td>
 </tr>
 </table>
@@ -183,7 +201,7 @@ ob_start();
 <b>Opci&oacute;n 1:</b>
 </td>
 <td style="width: 80%;">
-<textarea id="fp_dos_opcion_1_almuerzo" class="n-form-control-text-area-plan"><?php echo $dos_opcion_1_almuerzo; ?></textarea>
+<?php echo $dos_opcion_1_almuerzo; ?>
 </td>
 </tr>
 <tr>
@@ -191,7 +209,7 @@ ob_start();
 <b>Opci&oacute;n 2:</b>
 </td>
 <td style="width: 80%;">
-<textarea id="fp_dos_opcion_2_almuerzo" class="n-form-control-text-area-plan"><?php echo $dos_opcion_2_almuerzo; ?></textarea>
+<?php echo $dos_opcion_2_almuerzo; ?>
 </td>
 </tr>
 </table>
@@ -199,18 +217,18 @@ ob_start();
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
-<b style="font-size: 12px;">MEDIA TARDE<br><input id="fp_hora_media_tarde" class="n-form-control n-input-plan-alimentacion" type="text" value="<?php echo $hora_media_tarde; ?>"></b>
+<b style="font-size: 12px;">MEDIA TARDE<br><?php echo $hora_media_tarde; ?></b>
 </td>
 <td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
-<textarea id="fp_uno_opcion_1_media_tarde" class="n-form-control-text-area-plan-2"><?php echo $uno_opcion_1_media_tarde; ?></textarea>
+<?php echo $uno_opcion_1_media_tarde; ?>
 </td>
 <td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
-<textarea id="fp_dos_opcion_1_media_tarde" class="n-form-control-text-area-plan-2"><?php echo $dos_opcion_1_media_tarde; ?></textarea>
+<?php echo $dos_opcion_1_media_tarde; ?>
 </td>
 </tr>
 <tr>
 <td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
-<b style="font-size: 17px;">CENA<br><input id="fp_hora_cena" class="n-form-control n-input-plan-alimentacion" type="text" value="<?php echo $hora_cena; ?>"></b>
+<b style="font-size: 17px;">CENA<br><?php echo $hora_cena; ?></b>
 </td>
 <td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <table style="width: 100%; margin: 0 auto;">
@@ -219,7 +237,7 @@ ob_start();
 <b>Opci&oacute;n 1:</b>
 </td>
 <td style="width: 80%;">
-<textarea id="fp_uno_opcion_1_cena" class="n-form-control-text-area-plan"><?php echo $uno_opcion_1_cena; ?></textarea>
+<?php echo $uno_opcion_1_cena; ?>
 </td>
 </tr>
 <tr>
@@ -227,7 +245,7 @@ ob_start();
 <b>Opci&oacute;n 2:</b>
 </td>
 <td style="width: 80%;">
-<textarea id="fp_uno_opcion_2_cena" class="n-form-control-text-area-plan"><?php echo $uno_opcion_2_cena; ?></textarea>
+<?php echo $uno_opcion_2_cena; ?>
 </td>
 </tr>
 </table>
@@ -239,7 +257,7 @@ ob_start();
 <b>Opci&oacute;n 1:</b>
 </td>
 <td style="width: 80%;">
-<textarea id="fp_dos_opcion_1_cena" class="n-form-control-text-area-plan"><?php echo $dos_opcion_1_cena; ?></textarea>
+<?php echo $dos_opcion_1_cena; ?>
 </td>
 </tr>
 <tr>
@@ -247,7 +265,7 @@ ob_start();
 <b>Opci&oacute;n 2:</b>
 </td>
 <td style="width: 80%;">
-<textarea id="fp_dos_opcion_2_cena" class="n-form-control-text-area-plan"><?php echo $dos_opcion_2_cena; ?></textarea>
+<?php echo $dos_opcion_2_cena; ?>
 </td>
 </tr>
 </table>

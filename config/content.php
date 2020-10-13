@@ -1432,7 +1432,19 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 //ENVIAR PLAN DA CORREO
 function enviar_pa(id){
 $.ajax({
-url: 'config/send_pa.php?id='+id
+url: 'config/send_pa.php?id='+id,
+success: function(datos){
+swal(
+{
+title: 'Env\u00EDo Exitoso!',
+type: 'success',
+confirmButtonClass: 'btn btn-success',
+confirmButtonColor: '#95cf32',
+confirmButtonText: 'OK'
+}
+);
+complete_datos(<?php echo $id_paciente; ?>);
+}
 });
 }
 </script>
