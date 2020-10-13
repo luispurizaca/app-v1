@@ -1275,15 +1275,15 @@ $id_paciente = (int)$_GET['id_paciente'];
 ?>
 <div class="row">
 <div class="col-md-12 text-center">
-<button type="button">
+<button id="btn_pd" onclick="mostrar_pa(1)" type="button" style="border: 2px solid green; color: green; background: white; font-size: 15px; padding: 5px; font-weight: bold; margin-right: 10px;">
 Planes DETOX
 </button>
-<button type="button">
+<button id="btn_pa" onclick="mostrar_pa(2)" type="button" style="border: 2px solid green; color: green; background: white; font-size: 15px; padding: 5px; font-weight: bold; margin-left: 10px;">
 Planes de ALIMENTACI&Oacute;N
 </button>
 </div>
-<div class="col-md-6">
-<h4 style="margin-top: 30px;">Planes DETOX</h4>
+<div class="col-md-12">
+<div id="div_pd" style="display: none;">
 <div style="text-align: left; margin-bottom: 15px;">
 <button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1, 0)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
 </div>
@@ -1315,8 +1315,7 @@ $codigo_id_tabla = $row_pa['id'];
 </table>
 </div>
 </div>
-<div class="col-md-6">
-<h4 style="margin-top: 30px;">Planes de Alimentaci&oacute;n</h4>
+<div id="div_pa" style="display: none;">
 <div style="text-align: left; margin-bottom: 15px;">
 <button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 2, 0)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
 </div>
@@ -1348,7 +1347,31 @@ $codigo_id_tabla = (int)$row_pa['id'];
 </table>
 </div>
 </div>
+</div>
 <script>
+//MOSTRAR PLAN DE ALIMENTACION
+function mostrar_pa(id){
+if(id == 1){
+$('#div_pd').css('display', 'block');
+$('#div_pa').css('display', 'none');
+
+$('#btn_pd').css('background', 'green');
+$('#btn_pd').css('color', 'white');
+
+$('#btn_pa').css('background', 'white');
+$('#btn_pa').css('color', 'green');
+} else {
+$('#div_pd').css('display', 'none');
+$('#div_pa').css('display', 'block');
+
+$('#btn_pd').css('background', 'white');
+$('#btn_pd').css('color', 'green');
+
+$('#btn_pa').css('background', 'green');
+$('#btn_pa').css('color', 'white');
+}
+}
+
 //PLANES DETOX / ALIMENTACION
 function agregar_plan_paciente(id_paciente, id_plan, id_tabla){
 $.ajax({
