@@ -1296,7 +1296,7 @@ Planes de ALIMENTACI&Oacute;N
 <td class="td-title" style="width: 11.11% !important;">Acciones</td>
 </tr>
 <?php
-$query_planes_de = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 1 AND id_paciente = '$id_paciente' ORDER BY id ASC");
+$query_planes_de = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 1 AND id_paciente = '$id_paciente' ORDER BY id DESC");
 while($row_pa = mysqli_fetch_array($query_planes_de)){
 $codigo_plan_de = $row_pa['codigo'];
 $codigo_id_tabla = $row_pa['id'];
@@ -1351,7 +1351,7 @@ $texto_envio = '<span style="color: red;">Pendiente</span>';
 <td class="td-title" style="width: 11.11% !important;">Acciones</td>
 </tr>
 <?php
-$query_planes_da = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 2 AND id_paciente = '$id_paciente' ORDER BY id ASC");
+$query_planes_da = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 2 AND id_paciente = '$id_paciente' ORDER BY id DESC");
 while($row_pa = mysqli_fetch_array($query_planes_da)){
 $codigo_plan_de = $row_pa['codigo'];
 $codigo_id_tabla = $row_pa['id'];
