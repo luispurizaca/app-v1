@@ -1274,6 +1274,14 @@ if($negocia_operacion == 9){
 $id_paciente = (int)$_GET['id_paciente'];
 ?>
 <div class="row">
+<div class="col-md-12 text-center">
+<button type="button">
+Planes DETOX
+</button>
+<button type="button">
+Planes de ALIMENTACI&Oacute;N
+</button>
+</div>
 <div class="col-md-6">
 <h4 style="margin-top: 30px;">Planes DETOX</h4>
 <div style="text-align: left; margin-bottom: 15px;">
@@ -3177,6 +3185,8 @@ load(1);
 </div>
 <?php
 }
+
+//PLANES DETOX / PLANES DE ALIMENTACION
 if($view_controller == 3){
 ?>
 <div class="card-box mb-30">
@@ -3236,6 +3246,7 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 </div>
 <?php
 }
+
 if($view_controller == 8){
 ?>
 <div class="calendar-wrap">
