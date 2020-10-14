@@ -1614,7 +1614,7 @@ echo '<br><br>495 / (1.0324 - 0.19077 * (log('.$control_cintura.' - '.$control_c
 $porcentaje_grasa = 495 / (1.29579 - 0.35004 * (log($control_cintura + $control_gluteo - $control_cuello)) + 0.22100 * (log($talla_en_cm))) - 450;
 echo '<br><br>495 / (1.29579 - 0.35004 * (log('.$control_cintura.' + '.$control_gluteo.' - '.$control_cuello.')) + 0.22100 * (log('.$talla_en_cm.'))) - 450';
 }
-echo '<br><br>Genero:'.$genero_paciente;
+echo '<br><br>Genero:'.$genero_paciente.'Log:'.log($control_cintura - $control_cuello);
 //OBTENER ID DEL PROGRAMA
 $query_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT id_programa FROM suscripcion_programa WHERE id = '$control_id_suscripcion' ORDER BY id ASC LIMIT 1"));
 $id_programa = (int)$query_suscripcion[0];
