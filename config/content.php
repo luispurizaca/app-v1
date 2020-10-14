@@ -4194,7 +4194,7 @@ $('#div_guardar_historia').html(datos).fadeIn('slow');
 1. Alimentos que no te gusten:
 </td>
 <td style="width: 50%;">
-<textarea id="form_alimentos_gustar_no" name="form_alimentos_gustar_no" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none;"><?php echo $form_alimentos_gustar_no; ?></textarea>
+<textarea id="form_alimentos_gustar_no" name="form_alimentos_gustar_no" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" disabled="disabled"><?php echo $form_alimentos_gustar_no; ?></textarea>
 </td>
 </tr>
 <tr class="tr-hover">
@@ -4266,9 +4266,9 @@ $('#div_guardar_historia').html(datos).fadeIn('slow');
 </label>
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="ejercicios_si" name="form_ejercicios" value="2" <?php if($form_ejercicios == 2){ ?> checked="checked" <?php } ?>> Si, Frecuencia:
-<textarea id="form_ejercicios_frecuencia" name="form_ejercicios_frecuencia" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none;"><?php echo $form_ejercicios_frecuencia; ?></textarea>
+<textarea id="form_ejercicios_frecuencia" name="form_ejercicios_frecuencia" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" disabled="disabled"><?php echo $form_ejercicios_frecuencia; ?></textarea>
 Horario:
-<textarea id="form_ejercicios_horario" name="form_ejercicios_horario" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none;"><?php echo $form_ejercicios_horario; ?></textarea>
+<textarea id="form_ejercicios_horario" name="form_ejercicios_horario" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" disabled="disabled"><?php echo $form_ejercicios_horario; ?></textarea>
 </label>
 </td>
 </tr>
@@ -4283,7 +4283,7 @@ Horario:
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="enfermedad_si" name="form_enfermedad" value="2" <?php if($form_enfermedad == 2){ ?> checked="checked" <?php } ?>> Si, 
 Especificar:
-<textarea id="form_enfermedad_especificar" name="form_enfermedad_especificar" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none;"><?php echo $form_enfermedad_especificar; ?></textarea>
+<textarea id="form_enfermedad_especificar" name="form_enfermedad_especificar" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" disabled="disabled"><?php echo $form_enfermedad_especificar; ?></textarea>
 </label>
 </td>
 </tr>
@@ -4298,7 +4298,7 @@ Especificar:
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="analisis_alterado_si" name="form_analisis_alterado" value="2" <?php if($form_analisis_alterado == 2){ ?> checked="checked" <?php } ?>> Si, 
 Especificar:
-<textarea id="form_analisis_alterado_especificar" name="form_analisis_alterado_especificar" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none;"><?php echo $form_analisis_alterado_especificar; ?></textarea>
+<textarea id="form_analisis_alterado_especificar" name="form_analisis_alterado_especificar" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" disabled="disabled"><?php echo $form_analisis_alterado_especificar; ?></textarea>
 </label>
 </td>
 </tr>
@@ -4313,7 +4313,7 @@ Especificar:
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="medicamentos_si" name="form_medicamentos" value="2" <?php if($form_medicamentos == 2){ ?> checked="checked" <?php } ?>> Si, 
 Especificar:
-<textarea id="form_medicamentos_especificar" name="form_medicamentos_especificar" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none;"><?php echo $form_medicamentos_especificar; ?></textarea>
+<textarea id="form_medicamentos_especificar" name="form_medicamentos_especificar" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" disabled="disabled"><?php echo $form_medicamentos_especificar; ?></textarea>
 </label>
 </td>
 </tr>
