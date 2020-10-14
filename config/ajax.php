@@ -526,7 +526,7 @@ $title = $ret_codigo_control.' - '.$ret_nombre_paciente;
 <td style="width: 50%; padding-left: 15px; background: rgba(149, 207, 50, 0.5); border: 1px solid white;"><?php echo $ret_p_mm; ?></td>
 </tr>
 <tr>
-<td style="width: 50%; padding-left: 15px; font-weight: bold; background: rgba(149, 207, 50, 0.5); border: 1px solid white;">Diagn&oacute;stico:</td>
+<td style="width: 50%; padding-left: 15px; font-weight: bold; background: rgba(149, 207, 50, 0.5); border: 1px solid white;">Diagn&oacute;stico IMC:</td>
 <td style="width: 50%; padding-left: 15px; background: rgba(149, 207, 50, 0.5); border: 1px solid white;">
 <?php echo $ret_diagnostico; ?>
 </td>
