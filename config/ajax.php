@@ -1017,6 +1017,8 @@ $title_3 = $horario_2;
 <td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
 <b style="font-size: 13px;">Alimentos que no le gustan</b>
 </td>
+</tr>
+<tr>
 <td style="font-size: 12px; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <?php
 $al = mysqli_fetch_array(mysqli_query($con, "SELECT alimentos_no_gustar FROM historia WHERE id_paciente = '$id_paciente' LIMIT 1"));
