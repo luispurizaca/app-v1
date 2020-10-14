@@ -429,7 +429,6 @@ url: 'config/ajax.php?negocia_operacion=4&id_paciente=<?php echo $ret_id_usuario
 <tr>
 <td style="width: 100% !important; text-align: center;" colspan="2">
 <button type="button" onclick="location.href = 'historia.php?id_paciente=<?php echo $id_registro; ?>'" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Registrar Historia</button>
-<button type="button" onclick="location.href = 'medidas.php?id_paciente=<?php echo $id_registro; ?>'" style="font-size: 10px; background: #95cf32; color: white; padding: 2px;">Registrar Control</button>
 </td>
 </tr>
 </table>
