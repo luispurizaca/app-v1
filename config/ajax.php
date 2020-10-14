@@ -1532,7 +1532,7 @@ Meta Plan: <?php echo $peso_meta_suscripcion; ?>KG
 </tr>
 <?php
 //OBTENER CONTROLES DE LA SUSCRIPCION
-$sql_controles = mysqli_query($con, "SELECT DATE_FORMAT(fecha, '%Y-%m-%d'), codigo, id_suscripcion, peso, talla, cuello, brazo, pecho, cintura, gluteo, muslo, pantorrilla FROM control WHERE id_suscripcion = '$fn_id_suscripcion' ORDER BY DATE_FORMAT(fecha, '%Y-%m-%d') ASC");
+$sql_controles = mysqli_query($con, "SELECT DATE_FORMAT(fecha, '%Y-%m-%d'), codigo, id_suscripcion, peso, talla, cuello, brazo, pecho, cintura, gluteo, muslo, pantorrilla, id_paciente FROM control WHERE id_suscripcion = '$fn_id_suscripcion' ORDER BY DATE_FORMAT(fecha, '%Y-%m-%d') ASC");
 $array_controles;
 $i_controles = 0;
 while($row_controles = mysqli_fetch_array($sql_controles)){
@@ -1548,6 +1548,7 @@ $control_cintura = (float)$row_controles[8];
 $control_gluteo = (float)$row_controles[9];
 $control_muslo = (float)$row_controles[10];
 $control_pantorrilla = (float)$row_controles[11];
+$control_id_paciente = (float)$row_controles[12];
 
 if(empty($control_talla)){
 $ret_imc = 0;
@@ -1599,6 +1600,22 @@ $diagnostico = 'Delgadez';
 $diagnostico = 'Sin Diagn&oacute;stico';
 }
 
+$talla_en_cm = $control_talla * 100;
+
+$row_genero = mysqli_fetch_array(mysqli_query($con, "SELECT genero FROM usuario WHERE id_tipo_usuario = 2 AND id = '$control_id_paciente' LIMIT 1"));
+$genero_paciente = (int)$row_genero[0];
+
+
+//% GRASA HOMBRES
+if($genero_paciente == 1){
+$porcentaje_grasa = 495/(1.0324 - 0.19077 * (log($control_cintura - $control_cuello)) + 0.15456*(log($talla_en_cm)))-450;
+}
+
+//% GRASA MUJERES
+else {
+$porcentaje_grasa = 495 / (1.29579 - 0.35004 * (log($control_cintura + $control_gluteo - $control_cuello)) + 0.22100 * (log($talla_en_cm))) - 450;
+}
+
 //OBTENER ID DEL PROGRAMA
 $query_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT id_programa FROM suscripcion_programa WHERE id = '$control_id_suscripcion' ORDER BY id ASC LIMIT 1"));
 $id_programa = (int)$query_suscripcion[0];
@@ -1615,8 +1632,8 @@ $i_controles++;
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_codigo; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_fecha; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_peso; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo round($ret_imc, 2); ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo round($ret_imc, 1); ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $porcentaje_grasa; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $diagnostico; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_cuello; ?></td>
