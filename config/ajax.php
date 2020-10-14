@@ -1489,7 +1489,7 @@ $porcentaje_logo = ROUND((($perdiste * 100) / $total_kg_bajar), 2);
 <?php
 if($_SESSION['ID_TIPO_USUARIO'] == 1){
 ?>
-Meta: <input type="text" style="font-size: 10px; font-weight: bold; width: 40px; text-align: center; height: 20px;" id="input_peso_meta_general" value="<?php echo $peso_meta_suscripcion; ?>" onblur="save_peso_meta_general()"> KG
+Meta Plan: <input type="text" style="font-size: 10px; font-weight: bold; width: 35px; text-align: center; height: 15px;" id="input_peso_meta_general" value="<?php echo $peso_meta_suscripcion; ?>" onblur="save_peso_meta_general()"> KG
 <script>
 function save_peso_meta_general(){
 if(confirm('Desea actualizar el Peso Meta de la suscripci\u00F3n?')){
@@ -1503,7 +1503,7 @@ url: 'config/ajax.php?negocia_operacion=6&id_suscripcion=<?php echo $fn_id_suscr
 <?php
 } else {
 ?>
-Meta: <?php echo $peso_meta_suscripcion; ?>KG
+Meta Plan: <?php echo $peso_meta_suscripcion; ?>KG
 <?php
 }
 ?>
