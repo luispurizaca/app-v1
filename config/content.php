@@ -4634,6 +4634,31 @@ if($_SESSION['ID_TIPO_USUARIO'] == 3){
 <td class="td-title" style="width: 11.11% !important;">Estado</td>
 <td class="td-title" style="width: 11.11% !important;">Acci&oacute;n</td>
 </tr>
+<?php
+$query_pacientes_b = mysqli_query($con, "SELECT * FROM usuario WHERE id_tipo_usuario = 2 ORDER BY id DESC");
+while($row_pb = mysqli_fetch_array($query_pacientes_b)){
+$codigo = $row_pb['codigo'];
+$nombres = $row_pb['nombres'];
+$apellidos = $row_pb['apellidos'];
+$genero = $row_pb['genero'];
+$edad = $row_pb['edad'];
+$correo = $row_pb['correo'];
+$telefono = $row_pb['telefono'];
+?>
+<tr>
+<td class="td-title" style="width: 11.11% !important;"><?php echo $codigo; ?></td>
+<td class="td-title" style="width: 11.11% !important;"><?php echo $nombres; ?></td>
+<td class="td-title" style="width: 11.11% !important;"><?php echo $apellidos; ?></td>
+<td class="td-title" style="width: 11.11% !important;"><?php echo $genero; ?></td>
+<td class="td-title" style="width: 11.11% !important;"><?php echo $edad; ?></td>
+<td class="td-title" style="width: 11.11% !important;"><?php echo $correo; ?></td>
+<td class="td-title" style="width: 11.11% !important;"><?php echo $telefono; ?></td>
+<td class="td-title" style="width: 11.11% !important;">Activo</td>
+<td class="td-title" style="width: 11.11% !important;"></td>
+</tr>
+<?php
+}
+?>
 </table>
 </div>
 </div>
