@@ -8,6 +8,8 @@ $view_controller = 2;
 //GETS
 $activos = (int)$_GET['activos'];
 $ver_pacientes = 1;
+$c_hoy = (int)$_GET['hoy'];
+
 
 //REQUIRES
 require_once(__DIR__.'/config/is_logged.php');
