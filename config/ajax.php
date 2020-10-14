@@ -1532,7 +1532,7 @@ Meta Plan: <?php echo $peso_meta_suscripcion; ?>KG
 </tr>
 <?php
 //GENERO DEL PACIENTE
-$row_genero = mysqli_fetch_array(mysqli_query($con, "SELECT genero FROM usuario WHERE id_tipo_usuario = 2 AND id = '$control_id_paciente' LIMIT 1"));
+$row_genero = mysqli_fetch_array(mysqli_query($con, "SELECT genero FROM usuario WHERE id_tipo_usuario = 2 AND id = '$id_registro' LIMIT 1"));
 $genero_paciente = (int)$row_genero[0];
 
 //OBTENER CONTROLES DE LA SUSCRIPCION
@@ -1609,10 +1609,10 @@ $talla_en_cm = $control_talla * 100;
 //% GRASA HOMBRES
 if($genero_paciente == 1){
 $porcentaje_grasa = 495 / (1.0324 - 0.19077 * (log($control_cintura - $control_cuello)) + 0.15456*(log($talla_en_cm)))-450;
-echo '495 / (1.0324 - 0.19077 * (log('.$control_cintura.' - '.$control_cuello.')) + 0.15456*(log('.$talla_en_cm.')))-450';
+echo '<br><br>495 / (1.0324 - 0.19077 * (log('.$control_cintura.' - '.$control_cuello.')) + 0.15456*(log('.$talla_en_cm.')))-450';
 } else {
 $porcentaje_grasa = 495 / (1.29579 - 0.35004 * (log($control_cintura + $control_gluteo - $control_cuello)) + 0.22100 * (log($talla_en_cm))) - 450;
-echo '495 / (1.29579 - 0.35004 * (log('.$control_cintura.' + '.$control_gluteo.' - '.$control_cuello.')) + 0.22100 * (log('.$talla_en_cm.'))) - 450';
+echo '<br><br>495 / (1.29579 - 0.35004 * (log('.$control_cintura.' + '.$control_gluteo.' - '.$control_cuello.')) + 0.22100 * (log('.$talla_en_cm.'))) - 450';
 }
 echo '<br><br>Genero:'.$genero_paciente;
 //OBTENER ID DEL PROGRAMA
