@@ -812,7 +812,9 @@ $title_2 = $horario_1;
 $title_3 = $horario_2;
 }
 ?>
-<table style="width: 70%; margin: 0 auto;">
+<div class="row">
+<div class="col-md-6">
+<table style="width: 100%; margin: 0 auto;">
 <tr>
 <td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-bottom: 0px;" colspan="2"><b><?php echo $nombre_paciente; ?></b></td>
 </tr>
@@ -1008,6 +1010,24 @@ $title_3 = $horario_2;
 </td>
 </tr>
 </table>
+</div>
+<div class="col-md-6">
+<table style="width: 60%; margin: 0 auto;">
+<tr>
+<td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<b style="font-size: 17px;">Alimentos que no le gustan</b>
+</td>
+<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<?php
+$al = mysqli_fetch_array(mysqli_query($con, "SELECT alimentos_no_gustar FROM historia WHERE id_paciente = '$id_paciente' LIMIT 1"));
+$alimentos_no_gustar = $al[0];
+echo $alimentos_no_gustar;
+?>
+</td>
+</tr>
+</table>
+</div>
+</div>
 <br><br>
 <div style="text-align: center;">
 <button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar</button>
