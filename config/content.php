@@ -1578,7 +1578,29 @@ confirmButtonText: 'OK'
 }
 ?>
 <h4 class="font-20 weight-500 mb-10 text-capitalize" style="padding-left: 65px;">
+<?php
+
+//Paciente
+if($_SESSION['ID_TIPO_USUARIO'] == 2){
+?>
+Hola <?php echo ucwords($_SESSION['usuario_nombres']); ?>!<br><br>
+Bienvenido (a) al programa ReKupera tu peso ideal. Este es tu espacio personal donde podrás
+ver el éxito de tu evolución desde el inicio hasta el final!
+Agradeceré completar los pasos para activar tu plan y comenzar con este increíble reto!<br><br>
+Paso 1: Completar mi historia ? Click aquí
+Paso 2: Registrar mi peso y medidas ? Click aquí<br><br>
+Muchas gracias por sumarte a esta increíble experiencia que te ayudará a mejorar tu estilo de
+vida hacia un mundo mas saludable<br><br>
+Saludos
+Equipo ReKupera tu peso ideal by
+Katherine Alfaro – Nutricionista y Coach
+<?php
+} else {
+?>
 Hola <div class="font-30" style="color: #95cf32; font-weight: bold;"><?php echo ucwords($_SESSION['usuario_nombres']); ?>!</div>
+<?php
+}
+?>
 </h4>
 </div>
 </div>
