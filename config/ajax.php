@@ -1531,6 +1531,10 @@ Meta Plan: <?php echo $peso_meta_suscripcion; ?>KG
 <td class="td-title" style="width: 5.55% !important;">Monitoreo</td>
 </tr>
 <?php
+//GENERO DEL PACIENTE
+$row_genero = mysqli_fetch_array(mysqli_query($con, "SELECT genero FROM usuario WHERE id_tipo_usuario = 2 AND id = '$control_id_paciente' LIMIT 1"));
+$genero_paciente = (int)$row_genero[0];
+
 //OBTENER CONTROLES DE LA SUSCRIPCION
 $sql_controles = mysqli_query($con, "SELECT DATE_FORMAT(fecha, '%Y-%m-%d'), codigo, id_suscripcion, peso, talla, cuello, brazo, pecho, cintura, gluteo, muslo, pantorrilla, id_paciente FROM control WHERE id_suscripcion = '$fn_id_suscripcion' ORDER BY DATE_FORMAT(fecha, '%Y-%m-%d') ASC");
 $array_controles;
@@ -1601,10 +1605,6 @@ $diagnostico = 'Sin Diagn&oacute;stico';
 }
 
 $talla_en_cm = $control_talla * 100;
-
-$row_genero = mysqli_fetch_array(mysqli_query($con, "SELECT genero FROM usuario WHERE id_tipo_usuario = 2 AND id = '$control_id_paciente' LIMIT 1"));
-$genero_paciente = (int)$row_genero[0];
-
 
 //% GRASA HOMBRES
 if($genero_paciente == 1){
