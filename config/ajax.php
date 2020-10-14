@@ -423,7 +423,7 @@ url: 'config/ajax.php?negocia_operacion=4&id_paciente=<?php echo $ret_id_usuario
 <td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: Perder <?php echo ($ret_peso_actual - $ret_peso_meta); ?> KG</span></td>
 </tr>
 <tr>
-<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Diagn&oacute;stico</span></td>
+<td style="width: 50% !important; text-align: left; padding-left: 10px;"><span style="color: #111; font-weight: bold; font-size: 13px;">Diagn&oacute;stico IMC</span></td>
 <td style="width: 50% !important; text-align: left; padding-left: 5px;"><span style="color: #111; font-weight: bold; font-size: 13px;">: <?php echo $diagnostico; ?></span></td>
 </tr>
 <tr>
@@ -1518,7 +1518,7 @@ Meta Plan: <?php echo $peso_meta_suscripcion; ?>KG
 <td class="td-title" style="width: 5.55% !important;">IMC</td>
 <td class="td-title" style="width: 5.55% !important;">Grasa</td>
 <td class="td-title" style="width: 5.55% !important;">MM</td>
-<td class="td-title" style="width: 5.55% !important;">Diagn&oacute;stico</td>
+<td class="td-title" style="width: 5.55% !important;">Diagn&oacute;stico IMC</td>
 <td class="td-title" style="width: 5.55% !important;">Cuello</td>
 <td class="td-title" style="width: 5.55% !important;">Brazo</td>
 <td class="td-title" style="width: 5.55% !important;">Pecho</td>
