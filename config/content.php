@@ -4194,7 +4194,7 @@ $('#div_guardar_historia').html(datos).fadeIn('slow');
 1. Alimentos que no te gusten:
 </td>
 <td style="width: 50%;">
-<textarea id="form_alimentos_gustar_no" name="form_alimentos_gustar_no" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none; border: none;" readonly="readonly"><?php echo $form_alimentos_gustar_no; ?></textarea>
+<textarea id="form_alimentos_gustar_no" name="form_alimentos_gustar_no" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" disabled="disabled"><?php echo $form_alimentos_gustar_no; ?></textarea>
 </td>
 </tr>
 <tr class="tr-hover">
@@ -4223,7 +4223,7 @@ $('#div_guardar_historia').html(datos).fadeIn('slow');
 </label>
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="alcohol_si" name="form_alcohol" value="2" <?php if($form_alcohol == 2){ ?> checked="checked" <?php } ?>> Si tomo, Frecuencia:
-<textarea id="form_alcohol_frecuencia" name="form_alcohol_frecuencia" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none; border: none;" readonly="readonly"><?php echo $form_alcohol_frecuencia; ?></textarea>
+<textarea id="form_alcohol_frecuencia" name="form_alcohol_frecuencia" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none;"><?php echo $form_alcohol_frecuencia; ?></textarea>
 </label>
 </td>
 </tr>
@@ -4266,11 +4266,11 @@ $('#div_guardar_historia').html(datos).fadeIn('slow');
 </label>
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="ejercicios_si" name="form_ejercicios" value="2" <?php if($form_ejercicios == 2){ ?> checked="checked" <?php } ?>> Si, Frecuencia:
-<textarea id="form_ejercicios_frecuencia" name="form_ejercicios_frecuencia" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none; border: none;" readonly="readonly"><?php echo $form_ejercicios_frecuencia; ?></textarea>
+<textarea id="form_ejercicios_frecuencia" name="form_ejercicios_frecuencia" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" disabled="disabled"><?php echo $form_ejercicios_frecuencia; ?></textarea>
 Horario:
-<textarea id="form_ejercicios_horario" name="form_ejercicios_horario" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none; border: none;" readonly="readonly"><?php echo $form_ejercicios_horario; ?></textarea>
+<textarea id="form_ejercicios_horario" name="form_ejercicios_horario" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" disabled="disabled"><?php echo $form_ejercicios_horario; ?></textarea>
 </label>
-</td> border: none;
+</td>
 </tr>
 <tr class="tr-hover">
 <td class="td-content" style="width: 50% !important; text-align: left;">
@@ -4283,7 +4283,7 @@ Horario:
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="enfermedad_si" name="form_enfermedad" value="2" <?php if($form_enfermedad == 2){ ?> checked="checked" <?php } ?>> Si, 
 Especificar:
-<textarea id="form_enfermedad_especificar" name="form_enfermedad_especificar" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none; border: none;" readonly="readonly"><?php echo $form_enfermedad_especificar; ?></textarea>
+<textarea id="form_enfermedad_especificar" name="form_enfermedad_especificar" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" disabled="disabled"><?php echo $form_enfermedad_especificar; ?></textarea>
 </label>
 </td>
 </tr>
@@ -4298,7 +4298,7 @@ Especificar:
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="analisis_alterado_si" name="form_analisis_alterado" value="2" <?php if($form_analisis_alterado == 2){ ?> checked="checked" <?php } ?>> Si, 
 Especificar:
-<textarea id="form_analisis_alterado_especificar" name="form_analisis_alterado_especificar" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none; border: none;" readonly="readonly"><?php echo $form_analisis_alterado_especificar; ?></textarea>
+<textarea id="form_analisis_alterado_especificar" name="form_analisis_alterado_especificar" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" disabled="disabled"><?php echo $form_analisis_alterado_especificar; ?></textarea>
 </label>
 </td>
 </tr>
@@ -4313,7 +4313,7 @@ Especificar:
 <label style="width: 100%; font-size: 12px;">
 <input type="radio" id="medicamentos_si" name="form_medicamentos" value="2" <?php if($form_medicamentos == 2){ ?> checked="checked" <?php } ?>> Si, 
 Especificar:
-<textarea id="form_medicamentos_especificar" name="form_medicamentos_especificar" class="form-control n-form-control-text-area-plan" placeholder="Escribe aqu&iacute;:" style="height: 50px !important; background: none; border: none;" readonly="readonly"><?php echo $form_medicamentos_especificar; ?></textarea>
+<textarea id="form_medicamentos_especificar" name="form_medicamentos_especificar" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" disabled="disabled"><?php echo $form_medicamentos_especificar; ?></textarea>
 </label>
 </td>
 </tr>
@@ -4347,6 +4347,56 @@ Especificar:
 </td>
 </tr>
 </table>
+</div>
+<div style="text-align: center; padding-top: 15px;">
+<button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 11px;">Guardar Datos</button>
+<script>
+$('#btn_guardar_datos').on('click', function(){
+var form_alimentos_gustar_no = $('#form_alimentos_gustar_no').val();
+var form_agua = $('input[name=form_agua]:checked').val();
+var form_alcohol = $('input[name=form_alcohol]:checked').val();
+var form_alcohol_frecuencia = $('#form_alcohol_frecuencia').val();
+var form_evacuacion = $('input[name=form_evacuacion]:checked').val();
+var form_dormir = $('input[name=form_dormir]:checked').val();
+var form_ejercicios = $('input[name=form_ejercicios]:checked').val();
+var form_ejercicios_frecuencia = $('#form_ejercicios_frecuencia').val();
+var form_ejercicios_horario = $('#form_ejercicios_horario').val();
+var form_enfermedad = $('input[name=form_enfermedad]:checked').val();
+var form_enfermedad_especificar = $('#form_enfermedad_especificar').val();
+var form_analisis_alterado = $('input[name=form_analisis_alterado]:checked').val();
+var form_analisis_alterado_especificar = $('#form_analisis_alterado_especificar').val();
+var form_medicamentos = $('input[name=form_medicamentos]:checked').val();
+var form_medicamentos_especificar = $('#form_medicamentos_especificar').val();
+var form_horario_comidas = $('input[name=form_horario_comidas]:checked').val();
+var form_tiempo = $('input[name=form_tiempo]:checked').val();
+$.ajax({
+type: 'POST',
+url: 'config/content.php?negocia_operacion=6&id_paciente=<?php echo $id_paciente; ?>',
+data: {
+form_alimentos_gustar_no : form_alimentos_gustar_no,
+form_agua : form_agua,
+form_alcohol : form_alcohol,
+form_alcohol_frecuencia : form_alcohol_frecuencia,
+form_evacuacion : form_evacuacion,
+form_dormir : form_dormir,
+form_ejercicios : form_ejercicios,
+form_ejercicios_frecuencia : form_ejercicios_frecuencia,
+form_ejercicios_horario : form_ejercicios_horario,
+form_enfermedad : form_enfermedad,
+form_enfermedad_especificar : form_enfermedad_especificar,
+form_analisis_alterado : form_analisis_alterado,
+form_analisis_alterado_especificar : form_analisis_alterado_especificar,
+form_medicamentos : form_medicamentos,
+form_medicamentos_especificar : form_medicamentos_especificar,
+form_horario_comidas : form_horario_comidas,
+form_tiempo : form_tiempo
+},
+success: function(datos){
+$('#div_guardar_historia').html(datos).fadeIn('slow');
+}
+});
+});
+</script>
 </div>
 </div>
 <div class="col-md-2" style="padding-top: 25px;"></div>
