@@ -1583,15 +1583,14 @@ confirmButtonText: 'OK'
 if($_SESSION['ID_TIPO_USUARIO'] == 2){
 ?>
 <p style="font-size: 13px;">
-Hola <?php echo ucwords($_SESSION['usuario_nombres']); ?>!<br><br>
-Bienvenido (a) al programa ReKupera tu peso ideal. Este es tu espacio personal donde podrás
-ver el éxito de tu evolución desde el inicio hasta el final!
-Agradeceré completar los pasos para activar tu plan y comenzar con este increíble reto!<br><br>
-Paso 1: Completar mi historia ? Click aquí
-Paso 2: Registrar mi peso y medidas ? Click aquí<br><br>
-Muchas gracias por sumarte a esta increíble experiencia que te ayudará a mejorar tu estilo de
+<b style="font-size: 15px;">Hola <?php echo ucwords($_SESSION['usuario_nombres']); ?>,</b><br><br>
+Bienvenido (a) al programa <b>ReKupera tu peso ideal</b>. Este es tu espacio personal donde podr&aacute;s
+ver el &eacute;xito de tu evoluci&oacute;n desde el inicio hasta el final!
+Agradecer&eacute; completar los pasos para activar tu plan y comenzar con este incre&iacute;ble reto!<br><br>
+Paso 1: Completar mi historia -> Click aqu&iacute;
+Paso 2: Registrar mi peso y medidas -> Click aqu&iacute;<br><br>
+Muchas gracias por sumarte a esta incre&iacute;ble experiencia que te ayudar&aacute; a mejorar tu estilo de
 vida hacia un mundo mas saludable<br><br>
-Saludos
 Equipo ReKupera tu peso ideal by
 Katherine Alfaro – Nutricionista y Coach
 </p>
