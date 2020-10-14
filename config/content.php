@@ -4646,15 +4646,15 @@ $correo = $row_pb['correo'];
 $telefono = $row_pb['telefono'];
 ?>
 <tr>
-<td class="td-title" style="width: 11.11% !important;"><?php echo $codigo; ?></td>
-<td class="td-title" style="width: 11.11% !important;"><?php echo $nombres; ?></td>
-<td class="td-title" style="width: 11.11% !important;"><?php echo $apellidos; ?></td>
-<td class="td-title" style="width: 11.11% !important;"><?php echo $genero; ?></td>
-<td class="td-title" style="width: 11.11% !important;"><?php echo $edad; ?></td>
-<td class="td-title" style="width: 11.11% !important;"><?php echo $correo; ?></td>
-<td class="td-title" style="width: 11.11% !important;"><?php echo $telefono; ?></td>
-<td class="td-title" style="width: 11.11% !important;">Activo</td>
-<td class="td-title" style="width: 11.11% !important;"></td>
+<td style="width: 11.11% !important;"><?php echo $codigo; ?></td>
+<td style="width: 11.11% !important;"><?php echo $nombres; ?></td>
+<td style="width: 11.11% !important;"><?php echo $apellidos; ?></td>
+<td style="width: 11.11% !important;"><?php echo $genero; ?></td>
+<td style="width: 11.11% !important;"><?php echo $edad; ?></td>
+<td style="width: 11.11% !important;"><?php echo $correo; ?></td>
+<td style="width: 11.11% !important;"><?php echo $telefono; ?></td>
+<td style="width: 11.11% !important;">Activo</td>
+<td style="width: 11.11% !important;"></td>
 </tr>
 <?php
 }
