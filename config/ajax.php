@@ -1608,12 +1608,12 @@ $genero_paciente = (int)$row_genero[0];
 
 //% GRASA HOMBRES
 if($genero_paciente == 1){
-$porcentaje_grasa = 495/(1.0324 - 0.19077 * (log($control_cintura - $control_cuello)) + 0.15456*(log($talla_en_cm)))-450;
+echo $porcentaje_grasa = 495 / (1.0324 - 0.19077 * (log($control_cintura - $control_cuello)) + 0.15456*(log($talla_en_cm)))-450;
 }
 
 //% GRASA MUJERES
 else {
-$porcentaje_grasa = 495 / (1.29579 - 0.35004 * (log($control_cintura + $control_gluteo - $control_cuello)) + 0.22100 * (log($talla_en_cm))) - 450;
+echo $porcentaje_grasa = 495 / (1.29579 - 0.35004 * (log($control_cintura + $control_gluteo - $control_cuello)) + 0.22100 * (log($talla_en_cm))) - 450;
 }
 
 //OBTENER ID DEL PROGRAMA
