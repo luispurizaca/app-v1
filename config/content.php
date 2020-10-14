@@ -1579,7 +1579,7 @@ confirmButtonText: 'OK'
 ?>
 <?php
 
-//Paciente
+//PACIENTE
 if($_SESSION['ID_TIPO_USUARIO'] == 2){
 ?>
 <p style="font-size: 13px; text-align: justify; padding-right: 20px;">
