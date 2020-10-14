@@ -4595,22 +4595,22 @@ if($_SESSION['ID_TIPO_USUARIO'] == 3){
 </button><br>
 <button onclick="window.location='vendedores.php'" type="button" style="font-size: 14px; background: #95cf32; color: white; padding: 5px; border: none; margin-bottom: 15px;">
 3. Lista de Vendedores
-</button>
+</button><br>
 <button onclick="window.location='suscripciones.php'" type="button" style="font-size: 14px; background: #95cf32; color: white; padding: 5px; border: none; margin-bottom: 15px;">
 4. Lista de Ventas
-</button>
+</button><br>
 <button type="button" style="font-size: 14px; background: #95cf32; color: white; padding: 5px; border: none; margin-bottom: 15px;">
 5. Socios (Caso Leve)
-</button>
+</button><br>
 <button type="button" style="font-size: 14px; background: #95cf32; color: white; padding: 5px; border: none; margin-bottom: 15px;">
 6. Socios (Caso Promedio)
-</button>
+</button><br>
 <button type="button" style="font-size: 14px; background: #95cf32; color: white; padding: 5px; border: none; margin-bottom: 15px;">
 7. Socios (Caso Grave)
-</button>
+</button><br>
 <button onclick="window.location='pacientes.php?hoy=1'" type="button" style="font-size: 14px; background: #95cf32; color: white; padding: 5px; border: none; margin-bottom: 15px;">
 8. Cumplea&ntilde;os de Hoy
-</button>
+</button><br>
 </div>
 <div class="col-md-2"></div>
 </div>
