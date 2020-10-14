@@ -1514,18 +1514,18 @@ Meta Plan: <?php echo $peso_meta_suscripcion; ?>KG
 <td class="td-title" style="width: 5.55% !important;">Foto</td>
 <td class="td-title" style="width: 5.55% !important;">Control</td>
 <td class="td-title" style="width: 5.55% !important;">Fecha</td>
-<td class="td-title" style="width: 5.55% !important;">Peso</td>
+<td class="td-title" style="width: 5.55% !important;">Peso(Kg)</td>
 <td class="td-title" style="width: 5.55% !important;">IMC</td>
-<td class="td-title" style="width: 5.55% !important;">Grasa</td>
-<td class="td-title" style="width: 5.55% !important;">MM</td>
+<td class="td-title" style="width: 5.55% !important;">Grasa(%)</td>
+<td class="td-title" style="width: 5.55% !important;">MM(Kg)</td>
 <td class="td-title" style="width: 5.55% !important;">Diagn&oacute;stico IMC</td>
-<td class="td-title" style="width: 5.55% !important;">Cuello</td>
-<td class="td-title" style="width: 5.55% !important;">Brazo</td>
-<td class="td-title" style="width: 5.55% !important;">Pecho</td>
-<td class="td-title" style="width: 5.55% !important;">Cintura</td>
-<td class="td-title" style="width: 5.55% !important;">Gl&uacute;teo</td>
-<td class="td-title" style="width: 5.55% !important;">Muslo</td>
-<td class="td-title" style="width: 5.55% !important;">Pantorrilla</td>
+<td class="td-title" style="width: 5.55% !important;">Cuello(cm)</td>
+<td class="td-title" style="width: 5.55% !important;">Brazo(cm)</td>
+<td class="td-title" style="width: 5.55% !important;">Pecho(cm)</td>
+<td class="td-title" style="width: 5.55% !important;">Cintura(cm)</td>
+<td class="td-title" style="width: 5.55% !important;">Gl&uacute;teo(cm)</td>
+<td class="td-title" style="width: 5.55% !important;">Muslo(cm)</td>
+<td class="td-title" style="width: 5.55% !important;">Pantorrilla(cm)</td>
 <td class="td-title" style="width: 5.55% !important;">P.D.</td>
 <td class="td-title" style="width: 5.55% !important;">P.A.</td>
 <td class="td-title" style="width: 5.55% !important;">Monitoreo</td>
@@ -1619,13 +1619,13 @@ $i_controles++;
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $diagnostico; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_cuello; ?>cm</td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_brazo; ?>cm</td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_pecho; ?>cm</td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_cintura; ?>cm</td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_gluteo; ?>cm</td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_muslo; ?>cm</td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_pantorrilla; ?>cm</td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_cuello; ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_brazo; ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_pecho; ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_cintura; ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_gluteo; ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_muslo; ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_pantorrilla; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
