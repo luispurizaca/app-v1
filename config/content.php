@@ -3087,6 +3087,8 @@ location.href='index.php?mail';
 <?php
 }
 }
+
+//CONTROLES
 if($view_controller == 2 || $view_controller == 4 || $view_controller == 5 || $view_controller == 6 || $view_controller == 7 || $view_controller == 10 || $view_controller == 15){
 ?>
 <div class="card-box mb-30">
