@@ -1821,10 +1821,10 @@ if($_SESSION['ID_TIPO_USUARIO'] == 1){
 <td class="td-title" style="width: 5.55% !important;">Fecha</td>
 <td class="td-title" style="width: 5.55% !important;">Peso(Kg)</td>
 <td class="td-title" style="width: 5.55% !important;">IMC</td>
-<td class="td-title" style="width: 5.55% !important;">Grasa(%)</td>
-<td class="td-title" style="width: 5.55% !important;">Diagn&oacute;stico (% Grasa)</td>
-<td class="td-title" style="width: 5.55% !important;">MM(Kg)</td>
 <td class="td-title" style="width: 5.55% !important;">Diagn&oacute;stico (IMC)</td>
+<td class="td-title" style="width: 5.55% !important;">MM(Kg)</td>
+<td class="td-title" style="width: 5.55% !important;">(%)Grasa</td>
+<td class="td-title" style="width: 5.55% !important;">Diagn&oacute;stico (% Grasa)</td>
 <td class="td-title" style="width: 5.55% !important;">Cuello(cm)</td>
 <td class="td-title" style="width: 5.55% !important;">Brazo(cm)</td>
 <td class="td-title" style="width: 5.55% !important;">Pecho(cm)</td>
@@ -1951,7 +1951,7 @@ $diagnostico_grasa = '';
 }
 
 //MASA CORPORAL MAGRA
-$masa_corporal_magra = $control_peso * (100 - round($porcentaje_grasa, 1));
+$masa_corporal_magra = ($control_peso * (100 - round($porcentaje_grasa, 1))) / 100;
 
 //OBTENER ID DEL PROGRAMA
 $query_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT id_programa FROM suscripcion_programa WHERE id = '$control_id_suscripcion' ORDER BY id ASC LIMIT 1"));
@@ -1970,10 +1970,10 @@ $i_controles++;
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_fecha; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_peso; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo round($ret_imc, 1); ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $diagnostico; ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $masa_corporal_magra; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo round($porcentaje_grasa, 1); ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $diagnostico_grasa; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $masa_corporal_magra; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $diagnostico; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_cuello; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_brazo; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_pecho; ?></td>
