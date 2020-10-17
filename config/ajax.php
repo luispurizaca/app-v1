@@ -1980,7 +1980,7 @@ yaxis: {
 min: <?php echo $min_mm; ?>,
 max: <?php echo $max_mm; ?>,
 title: {
-text: '(%) GRASA'
+text: '(KG) MM'
 }
 },
 
