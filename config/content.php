@@ -5059,7 +5059,7 @@ Planes de ALIMENTACI&Oacute;N
 <div class="col-md-12">
 <div id="div_pd" style="display: none;">
 <div style="text-align: left; margin-bottom: 15px;">
-<button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1, 0)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
+<button onclick="agregar_plan_paciente(0, 1, 0)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
 </div>
 <div class="table-responsive">
 <table style="width: 100% !important; margin: 0 auto;">
@@ -5099,7 +5099,7 @@ $nombre_categoria = $row_nombre_categoria[0];
 </div>
 <div id="div_pa" style="display: none;">
 <div style="text-align: left; margin-bottom: 15px;">
-<button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 2, 0)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
+<button onclick="agregar_plan_paciente(0, 2, 0)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
 </div>
 <div class="table-responsive">
 <table style="width: 100% !important; margin: 0 auto;">
@@ -5166,7 +5166,7 @@ $('#btn_pa').css('color', 'white');
 function agregar_plan_paciente(id_paciente, id_plan, id_tabla){
 $.ajax({
 type: 'POST',
-url: 'config/ajax.php?negocia_operacion=3&id_paciente='+id_paciente+'&id_plan='+id_plan+'&id_tabla='+id_tabla,
+url: 'config/ajax.php?negocia_operacion=3&id_plan='+id_plan+'&id_tabla='+id_tabla,
 success: function(datos){
 $('#div_plan_paciente').html(datos).fadeIn('slow');
 }

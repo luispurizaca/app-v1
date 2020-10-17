@@ -1046,8 +1046,11 @@ if($negocia_operacion == 3){
 
 //DATOS A CONSULTAR
 $id_paciente = (int)$_GET['id_paciente'];
+if(!empty($id_paciente)){
 $query_datos_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT nombres, apellidos FROM usuario WHERE id_tipo_usuario = 2 AND id = '$id_paciente' LIMIT 1"));
 $nombre_paciente = $query_datos_paciente[0].' '.$query_datos_paciente[1];
+}
+
 $id_plan = (int)$_GET['id_plan'];
 
 //DEPENDIENTES DEL TIPO DE PLAN DA
@@ -1066,8 +1069,7 @@ $style_pa = '';
 $id_tabla = (int)$_GET['id_tabla'];
 
 //DATOS DEL PLAN DE ALIMENTACION
-$row_plan_alimentacion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE id = '$id_tabla' AND id_paciente = '$id_paciente' ORDER BY id DESC LIMIT 1"));
-
+$row_plan_alimentacion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE id = '$id_tabla' ORDER BY id DESC LIMIT 1"));
 
 $horario_1 = $row_plan_alimentacion['horario_1'];
 $horario_2 = $row_plan_alimentacion['horario_2'];
@@ -1101,7 +1103,7 @@ $dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
 
 //FECHA DE PLAN
 if(empty($id_tabla)){
-$fecha_plan = date('Y-m-d', strtotime(date('Y-m-d')."+ 1 days"));
+$fecha_plan = date('Y-m-d', strtotime(date('Y-m-d').'+ 1 days'));
 } else {
 $fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
 $title_2 = $horario_1;
