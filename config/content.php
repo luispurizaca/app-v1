@@ -4390,20 +4390,6 @@ confirmButtonText: 'OK'
 <div class="col-md-6" style="padding-top: 25px;">
 <b style="font-size: 13.5px;">Fecha: <?php echo date('d/m/Y'); ?></b>
 <div class="table-responsive">
-<table style="width: 100% !important; margin: 0 auto; margin-top: 5px;">
-<tr>
-<td class="td-content" style="width: 50% !important; font-weight: bold;">Foto Frontal</td>
-<td class="td-content" style="width: 50% !important;">
-<input id="frm_foto_frontal" type="file" style="height: 25px; text-align: center; font-size: 11px;">
-</td>
-</tr>
-<tr>
-<td class="td-content" style="width: 50% !important; font-weight: bold;">Foto Perfil</td>
-<td class="td-content" style="width: 50% !important;">
-<input id="frm_foto_perfil" type="file" style="height: 25px; text-align: center; font-size: 11px;">
-</td>
-</tr>
-</table>
 <table style="width: 100% !important; margin: 0 auto; border: 1px solid #95cf32; margin-top: 5px;">
 <tr>
 <td class="td-title" style="width: 50% !important;">Medidas</td>
@@ -4506,6 +4492,20 @@ confirmButtonText: 'OK'
 <span class="input-group-text">cm</span>
 </div>
 </div>
+</td>
+</tr>
+</table>
+<table style="width: 100% !important; margin: 0 auto; margin-top: 5px;">
+<tr>
+<td class="td-content" style="width: 50% !important; font-weight: bold;">Foto Frontal</td>
+<td class="td-content" style="width: 50% !important;">
+<input id="frm_foto_frontal" type="file" style="height: 25px; text-align: center; font-size: 11px;">
+</td>
+</tr>
+<tr>
+<td class="td-content" style="width: 50% !important; font-weight: bold;">Foto Perfil</td>
+<td class="td-content" style="width: 50% !important;">
+<input id="frm_foto_perfil" type="file" style="height: 25px; text-align: center; font-size: 11px;">
 </td>
 </tr>
 </table>
