@@ -1599,7 +1599,7 @@ $query_planes_de = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tip
 while($row_pa = mysqli_fetch_array($query_planes_de)){
 $codigo_plan_de = $row_pa['codigo'];
 $codigo_id_tabla = $row_pa['id'];
-$fecha_envio_pd = date('d/m/Y', strtotime($row_pa['fecha_envio']));
+$fecha_envio_pd = date('Y-m-d', strtotime($row_pa['fecha_envio']));
 $estado_envio = (int)$row_pa['estado_envio'];
 if($estado_envio == 1){
 $texto_envio = '<span style="color: darkgreen;">Enviado</span>';
@@ -1609,7 +1609,9 @@ $texto_envio = '<span style="color: red;">Pendiente</span>';
 ?>
 <tr class="tr-hover">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_envio_pd; ?></td>
+<td class="td-content" style="width: 11.11% !important;">
+<input type="date" style="font-size: 13px; font-weight: bold; width: 150px; text-align: center;" id="id_fecha_pa" value="<?php echo $fecha_envio_pd; ?>">
+</td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $texto_envio; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
 <button type="button" style="font-size: 15px; background: none; color: orange; padding: 0px; border: none;" onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1, <?php echo $codigo_id_tabla; ?>)">
@@ -1654,7 +1656,7 @@ $query_planes_da = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tip
 while($row_pa = mysqli_fetch_array($query_planes_da)){
 $codigo_plan_de = $row_pa['codigo'];
 $codigo_id_tabla = $row_pa['id'];
-$fecha_envio_pd = date('d/m/Y', strtotime($row_pa['fecha_envio']));
+$fecha_envio_pd = date('Y-m-d', strtotime($row_pa['fecha_envio']));
 $estado_envio = (int)$row_pa['estado_envio'];
 if($estado_envio == 1){
 $texto_envio = '<span style="color: darkgreen;">Enviado</span>';
@@ -1664,7 +1666,9 @@ $texto_envio = '<span style="color: red;">Pendiente</span>';
 ?>
 <tr class="tr-hover">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_envio_pd; ?></td>
+<td class="td-content" style="width: 11.11% !important;">
+<input type="date" style="font-size: 13px; font-weight: bold; width: 150px; text-align: center;" id="id_fecha_pa" value="<?php echo $fecha_envio_pd; ?>">
+</td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $texto_envio; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
 <button type="button" style="font-size: 15px; background: none; color: orange; padding: 0px; border: none;" onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 2, <?php echo $codigo_id_tabla; ?>)">

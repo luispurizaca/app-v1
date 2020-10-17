@@ -1809,7 +1809,7 @@ Meta Plan: <?php echo $peso_meta_suscripcion; ?>KG
 <?php
 if($_SESSION['ID_TIPO_USUARIO'] == 1){
 ?>
-<button onclick="location.href='medidas.php?id_paciente=<?php echo $id_registro; ?>'" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Agregar Control</button>
+<button onclick="location.href='medidas.php?id_paciente=<?php echo $id_registro; ?>'" type="button" class="btn" style="background: #95cf32; color: white; padding: 3px; font-size: 12px; margin-bottom: 20px;">Agregar Control</button>
 <?php
 }
 ?>
@@ -1981,8 +1981,8 @@ $i_controles++;
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_gluteo; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_muslo; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_pantorrilla; ?></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
-<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><span style="color: green;">Enviado</span></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><span style="color: green;">Enviado</span></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
 </tr>
 <?php
