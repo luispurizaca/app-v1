@@ -5070,6 +5070,7 @@ Planes de ALIMENTACI&Oacute;N
 <?php
 $query_planes_de = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 1 AND id_categoria != 0 ORDER BY id DESC");
 while($row_pa = mysqli_fetch_array($query_planes_de)){
+$codigo_id_tabla = (int)$row_pa['id'];
 $id_categoria = (int)$row_pa['id_categoria'];
 $row_nombre_categoria = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM categoria_plan WHERE id = '$id_categoria' ORDER BY id DESC LIMIT 1"));
 $nombre_categoria = $row_nombre_categoria[0];
@@ -5077,7 +5078,7 @@ $nombre_categoria = $row_nombre_categoria[0];
 <tr class="tr-hover">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $nombre_categoria; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
-<button type="button" style="font-size: 15px; background: none; color: orange; padding: 0px; border: none;" onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1, <?php echo $codigo_id_tabla; ?>)">
+<button type="button" style="font-size: 15px; background: none; color: orange; padding: 0px; border: none;" onclick="agregar_plan_paciente(0, 1, <?php echo $codigo_id_tabla; ?>)">
 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-down-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" d="M7.364 12.5a.5.5 0 0 0 .5.5H14.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 14.5 0h-10A1.5 1.5 0 0 0 3 1.5v6.636a.5.5 0 1 0 1 0V1.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H7.864a.5.5 0 0 0-.5.5z"/>
 <path fill-rule="evenodd" d="M0 15.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H1.707l8.147-8.146a.5.5 0 0 0-.708-.708L1 14.293V10.5a.5.5 0 0 0-1 0v5z"/>
@@ -5110,6 +5111,7 @@ $nombre_categoria = $row_nombre_categoria[0];
 <?php
 $query_planes_da = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 2 AND id_categoria != 0 ORDER BY id DESC");
 while($row_pa = mysqli_fetch_array($query_planes_da)){
+$codigo_id_tabla = (int)$row_pa['id'];
 $id_categoria = (int)$row_pa['id_categoria'];
 $row_nombre_categoria = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM categoria_plan WHERE id = '$id_categoria' ORDER BY id DESC LIMIT 1"));
 $nombre_categoria = $row_nombre_categoria[0];
@@ -5117,7 +5119,7 @@ $nombre_categoria = $row_nombre_categoria[0];
 <tr class="tr-hover">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $nombre_categoria; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
-<button type="button" style="font-size: 15px; background: none; color: orange; padding: 0px; border: none;" onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 2, <?php echo $codigo_id_tabla; ?>)">
+<button type="button" style="font-size: 15px; background: none; color: orange; padding: 0px; border: none;" onclick="agregar_plan_paciente(0, 2, <?php echo $codigo_id_tabla; ?>)">
 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-down-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" d="M7.364 12.5a.5.5 0 0 0 .5.5H14.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 14.5 0h-10A1.5 1.5 0 0 0 3 1.5v6.636a.5.5 0 1 0 1 0V1.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H7.864a.5.5 0 0 0-.5.5z"/>
 <path fill-rule="evenodd" d="M0 15.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H1.707l8.147-8.146a.5.5 0 0 0-.708-.708L1 14.293V10.5a.5.5 0 0 0-1 0v5z"/>
