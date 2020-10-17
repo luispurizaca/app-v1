@@ -320,7 +320,7 @@ $diagnostico_grasa = '';
 }
 
 //MASA CORPORAL MAGRA
-$masa_corporal_magra = ($control_peso * (100 - round($porcentaje_grasa, 1))) / 100;
+$masa_corporal_magra = ROUND((($control_peso * (100 - round($porcentaje_grasa, 1))) / 100), 1);
 
 
 
@@ -1951,7 +1951,7 @@ $diagnostico_grasa = '';
 }
 
 //MASA CORPORAL MAGRA
-$masa_corporal_magra = ($control_peso * (100 - round($porcentaje_grasa, 1))) / 100;
+$masa_corporal_magra = ROUND((($control_peso * (100 - round($porcentaje_grasa, 1))) / 100), 1);
 
 //OBTENER ID DEL PROGRAMA
 $query_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT id_programa FROM suscripcion_programa WHERE id = '$control_id_suscripcion' ORDER BY id ASC LIMIT 1"));
