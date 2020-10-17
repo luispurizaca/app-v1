@@ -804,7 +804,7 @@ $dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
 
 //FECHA DE PLAN
 if(empty($id_tabla)){
-$fecha_plan = date('Y-m-d');
+$fecha_plan = date('Y-m-d', strtotime(date('Y-m-d')."+ 1 days"));
 } else {
 $fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
 $title_2 = $horario_1;
