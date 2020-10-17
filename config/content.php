@@ -1912,7 +1912,7 @@ $bienv = 'Bienvenida';
 ?>
 <p style="font-size: 13px; text-align: justify; padding-right: 20px;">
 <b style="font-size: 17px;"><span style="color: #95cf32;">Hola</span> <?php echo ucwords($_SESSION['usuario_nombres']); ?>,</b><br><br>
-<?php echo $bienv; ?> (a) al programa <b>ReKupera tu peso ideal</b>. Este es tu espacio personal donde podr&aacute;s
+<?php echo $bienv; ?> al programa <b>ReKupera tu peso ideal</b>. Este es tu espacio personal donde podr&aacute;s
 ver el &eacute;xito de tu evoluci&oacute;n desde el inicio hasta el final!
 Agradecer&eacute; completar los pasos para activar tu plan y comenzar con este incre&iacute;ble reto!<br><br>
 Paso 1: Completar mi historia -> <a href="historia.php" style="color: #95cf32; font-weight: bold;">Click aqu&iacute;</a><br>
