@@ -1887,7 +1887,7 @@ text: '(%) GRASA'
 //DATOS EJE Y
 series: [
 {
-name: 'Peso',
+name: '(%) Grasa',
 data: [
 <?php
 foreach($array_controles as $array_valor){
@@ -1987,7 +1987,7 @@ text: '(%) GRASA'
 //DATOS EJE Y
 series: [
 {
-name: 'Peso',
+name: '(KG) MM',
 data: [
 <?php
 foreach($array_controles as $array_valor){
