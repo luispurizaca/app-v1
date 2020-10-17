@@ -320,7 +320,7 @@ $diagnostico_grasa = '';
 }
 
 //MASA CORPORAL MAGRA
-$masa_corporal_magra = $control_peso * (100 - round($porcentaje_grasa, 1));
+$masa_corporal_magra = ($control_peso * (100 - round($porcentaje_grasa, 1))) / 100;
 
 
 
