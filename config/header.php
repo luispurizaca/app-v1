@@ -74,7 +74,7 @@ if($_SESSION['ID_TIPO_USUARIO'] == 1){
 </a>
 </li>
 <li>
-<a href="planes.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<a href="planes-modelos.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Modelos de P.A.</span>
 </a>
 </li>

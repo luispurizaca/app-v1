@@ -5039,4 +5039,157 @@ $('#div_indicador_2').css('display', 'block');
 <?php
 }
 }
+
+//PLANES MODELOS
+if($view_controller == 17){
+?>
+<div class="card-box mb-30">
+<div class="card-box pd-20 height-100-p mb-30">
+<div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+<div id="div_plan_paciente">
+<div class="row">
+<div class="col-md-12 text-center">
+<button id="btn_pd" onclick="mostrar_pa(1)" type="button" style="border: 1.5px solid #95cf32; color: #95cf32; background: white; font-size: 13px; padding: 4px; font-weight: bold; margin-right: 5px;">
+Planes DETOX
+</button>
+<button id="btn_pa" onclick="mostrar_pa(2)" type="button" style="border: 1.5px solid #95cf32; color: #95cf32; background: white; font-size: 13px; padding: 4px; font-weight: bold; margin-left: 5px;">
+Planes de ALIMENTACI&Oacute;N
+</button>
+</div>
+<div class="col-md-12">
+<div id="div_pd" style="display: none;">
+<div style="text-align: left; margin-bottom: 15px;">
+<button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1, 0)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
+</div>
+<div class="table-responsive">
+<table style="width: 100% !important; margin: 0 auto;">
+<tr>
+<td class="td-title" style="width: 11.11% !important;">Categor&iacute;a</td>
+<td class="td-title" style="width: 11.11% !important;">Acciones</td>
+</tr>
+<?php
+$query_planes_de = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 1 AND id_categoria != 0 ORDER BY id DESC");
+while($row_pa = mysqli_fetch_array($query_planes_de)){
+$codigo_plan_de = $row_pa['codigo'];
+$codigo_id_tabla = $row_pa['id'];
+$fecha_envio_pd = date('Y-m-d', strtotime($row_pa['fecha_envio']));
+$estado_envio = (int)$row_pa['estado_envio'];
+if($estado_envio == 1){
+$texto_envio = '<span style="color: darkgreen;">Enviado</span>';
+} else {
+$texto_envio = '<span style="color: red;">Pendiente</span>';
+}
+?>
+<tr class="tr-hover">
+<td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
+<td class="td-content" style="width: 11.11% !important;">
+<button type="button" style="font-size: 15px; background: none; color: orange; padding: 0px; border: none;" onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1, <?php echo $codigo_id_tabla; ?>)">
+<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-down-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" d="M7.364 12.5a.5.5 0 0 0 .5.5H14.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 14.5 0h-10A1.5 1.5 0 0 0 3 1.5v6.636a.5.5 0 1 0 1 0V1.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H7.864a.5.5 0 0 0-.5.5z"/>
+<path fill-rule="evenodd" d="M0 15.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H1.707l8.147-8.146a.5.5 0 0 0-.708-.708L1 14.293V10.5a.5.5 0 0 0-1 0v5z"/>
+</svg>
+</button>
+<button type="button" style="font-size: 15px; background: none; color: red; padding: 0px; border: none;">
+<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+</svg>
+</button>
+</td>
+</tr>
+<?php
+}
+?>
+</table>
+</div>
+</div>
+<div id="div_pa" style="display: none;">
+<div style="text-align: left; margin-bottom: 15px;">
+<button onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 2, 0)" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Crear Nuevo</button>
+</div>
+<div class="table-responsive">
+<table style="width: 100% !important; margin: 0 auto;">
+<tr>
+<td class="td-title" style="width: 11.11% !important;">Categor&iacute;a</td>
+<td class="td-title" style="width: 11.11% !important;">Acciones</td>
+</tr>
+<?php
+$query_planes_da = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 2 AND id_categoria != 0 ORDER BY id DESC");
+while($row_pa = mysqli_fetch_array($query_planes_da)){
+$codigo_plan_de = $row_pa['codigo'];
+$codigo_id_tabla = $row_pa['id'];
+$fecha_envio_pd = date('Y-m-d', strtotime($row_pa['fecha_envio']));
+$estado_envio = (int)$row_pa['estado_envio'];
+if($estado_envio == 1){
+$texto_envio = '<span style="color: darkgreen;">Enviado</span>';
+} else {
+$texto_envio = '<span style="color: red;">Pendiente</span>';
+}
+?>
+<tr class="tr-hover">
+<td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
+<td class="td-content" style="width: 11.11% !important;">
+<button type="button" style="font-size: 15px; background: none; color: orange; padding: 0px; border: none;" onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 2, <?php echo $codigo_id_tabla; ?>)">
+<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-down-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" d="M7.364 12.5a.5.5 0 0 0 .5.5H14.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 14.5 0h-10A1.5 1.5 0 0 0 3 1.5v6.636a.5.5 0 1 0 1 0V1.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H7.864a.5.5 0 0 0-.5.5z"/>
+<path fill-rule="evenodd" d="M0 15.5a.5.5 0 0 0 .5.5h5a.5.5 0 0 0 0-1H1.707l8.147-8.146a.5.5 0 0 0-.708-.708L1 14.293V10.5a.5.5 0 0 0-1 0v5z"/>
+</svg>
+</button>
+<button type="button" style="font-size: 15px; background: none; color: red; padding: 0px; border: none;">
+<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+</svg>
+</button>
+</td>
+</tr>
+<?php
+}
+?>
+</table>
+</div>
+</div>
+</div>
+<script>
+//MOSTRAR PLAN DE ALIMENTACION
+function mostrar_pa(id){
+if(id == 1){
+$('#div_pd').css('display', 'block');
+$('#div_pa').css('display', 'none');
+
+$('#btn_pd').css('background', '#95cf32');
+$('#btn_pd').css('color', 'white');
+
+$('#btn_pa').css('background', 'white');
+$('#btn_pa').css('color', '#95cf32');
+} else {
+$('#div_pd').css('display', 'none');
+$('#div_pa').css('display', 'block');
+
+$('#btn_pd').css('background', 'white');
+$('#btn_pd').css('color', '#95cf32');
+
+$('#btn_pa').css('background', '#95cf32');
+$('#btn_pa').css('color', 'white');
+}
+}
+
+//PLANES DETOX / ALIMENTACION
+function agregar_plan_paciente(id_paciente, id_plan, id_tabla){
+$.ajax({
+type: 'POST',
+url: 'config/ajax.php?negocia_operacion=3&id_paciente='+id_paciente+'&id_plan='+id_plan+'&id_tabla='+id_tabla,
+success: function(datos){
+$('#div_plan_paciente').html(datos).fadeIn('slow');
+}
+});
+}
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+<?php
+}
 }
