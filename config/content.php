@@ -1833,9 +1833,9 @@ $fp_dos_opcion_2_cena = $_POST['fp_dos_opcion_2_cena'];
 //INSERT INTO - UPDATE
 if(empty($id_tabla)){
 mysqli_query($con, "
-INSERT INTO plan_alimentacion (tipo_plan, codigo, id_suscripcion, id_control, id_paciente, fecha_envio, estado_envio, date_added, hora_desayuno, hora_media_manana, hora_almuerzo, hora_media_tarde, hora_cena, horario_1, horario_2, 1_opcion_1_desayuno, 1_opcion_2_desayuno, 1_opcion_1_media_manana, 1_opcion_2_media_manana, 1_opcion_1_almuerzo, 1_opcion_2_almuerzo, 1_opcion_1_media_tarde, 1_opcion_2_media_tarde, 1_opcion_1_cena, 1_opcion_2_cena, 2_opcion_1_desayuno, 2_opcion_2_desayuno, 2_opcion_1_media_manana, 2_opcion_2_media_manana, 2_opcion_1_almuerzo, 2_opcion_2_almuerzo, 2_opcion_1_media_tarde, 2_opcion_2_media_tarde, 2_opcion_1_cena, 2_opcion_2_cena)
+INSERT INTO plan_alimentacion (tipo_plan, id_categoria, codigo, id_suscripcion, id_control, id_paciente, fecha_envio, estado_envio, date_added, hora_desayuno, hora_media_manana, hora_almuerzo, hora_media_tarde, hora_cena, horario_1, horario_2, 1_opcion_1_desayuno, 1_opcion_2_desayuno, 1_opcion_1_media_manana, 1_opcion_2_media_manana, 1_opcion_1_almuerzo, 1_opcion_2_almuerzo, 1_opcion_1_media_tarde, 1_opcion_2_media_tarde, 1_opcion_1_cena, 1_opcion_2_cena, 2_opcion_1_desayuno, 2_opcion_2_desayuno, 2_opcion_1_media_manana, 2_opcion_2_media_manana, 2_opcion_1_almuerzo, 2_opcion_2_almuerzo, 2_opcion_1_media_tarde, 2_opcion_2_media_tarde, 2_opcion_1_cena, 2_opcion_2_cena)
 VALUES 
-('".$id_plan."', '".$codigo_registro."', '', '', '".$id_paciente."', '".$id_fecha_pa."', '0', '".date('Y-m-d')."', '".$fp_hora_desayuno."', '".$fp_hora_media_manana."', '".$fp_hora_almuerzo."', '".$fp_hora_media_tarde."', '".$fp_hora_cena."', '".$fp_title_2."', '".$fp_title_3."', '".$fp_uno_opcion_1_desayuno."', '".$fp_uno_opcion_2_desayuno."', '".$fp_uno_opcion_1_media_manana."', '".$fp_uno_opcion_2_media_manana."', '".$fp_uno_opcion_1_almuerzo."', '".$fp_uno_opcion_2_almuerzo."', '".$fp_uno_opcion_1_media_tarde."', '".$fp_uno_opcion_2_media_tarde."', '".$fp_uno_opcion_1_cena."', '".$fp_uno_opcion_2_cena."', '".$fp_dos_opcion_1_desayuno."', '".$fp_dos_opcion_2_desayuno."', '".$fp_dos_opcion_1_media_manana."', '".$fp_dos_opcion_2_media_manana."', '".$fp_dos_opcion_1_almuerzo."', '".$fp_dos_opcion_2_almuerzo."', '".$fp_dos_opcion_1_media_tarde."', '".$fp_dos_opcion_2_media_tarde."', '".$fp_dos_opcion_1_cena."', '".$fp_dos_opcion_2_cena."')
+('".$id_plan."', '0', '".$codigo_registro."', '', '', '".$id_paciente."', '".$id_fecha_pa."', '0', '".date('Y-m-d')."', '".$fp_hora_desayuno."', '".$fp_hora_media_manana."', '".$fp_hora_almuerzo."', '".$fp_hora_media_tarde."', '".$fp_hora_cena."', '".$fp_title_2."', '".$fp_title_3."', '".$fp_uno_opcion_1_desayuno."', '".$fp_uno_opcion_2_desayuno."', '".$fp_uno_opcion_1_media_manana."', '".$fp_uno_opcion_2_media_manana."', '".$fp_uno_opcion_1_almuerzo."', '".$fp_uno_opcion_2_almuerzo."', '".$fp_uno_opcion_1_media_tarde."', '".$fp_uno_opcion_2_media_tarde."', '".$fp_uno_opcion_1_cena."', '".$fp_uno_opcion_2_cena."', '".$fp_dos_opcion_1_desayuno."', '".$fp_dos_opcion_2_desayuno."', '".$fp_dos_opcion_1_media_manana."', '".$fp_dos_opcion_2_media_manana."', '".$fp_dos_opcion_1_almuerzo."', '".$fp_dos_opcion_2_almuerzo."', '".$fp_dos_opcion_1_media_tarde."', '".$fp_dos_opcion_2_media_tarde."', '".$fp_dos_opcion_1_cena."', '".$fp_dos_opcion_2_cena."')
 "
 );
 } else {
@@ -5070,18 +5070,12 @@ Planes de ALIMENTACI&Oacute;N
 <?php
 $query_planes_de = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 1 AND id_categoria != 0 ORDER BY id DESC");
 while($row_pa = mysqli_fetch_array($query_planes_de)){
-$codigo_plan_de = $row_pa['codigo'];
-$codigo_id_tabla = $row_pa['id'];
-$fecha_envio_pd = date('Y-m-d', strtotime($row_pa['fecha_envio']));
-$estado_envio = (int)$row_pa['estado_envio'];
-if($estado_envio == 1){
-$texto_envio = '<span style="color: darkgreen;">Enviado</span>';
-} else {
-$texto_envio = '<span style="color: red;">Pendiente</span>';
-}
+$id_categoria = (int)$row_pa['id_categoria'];
+$row_nombre_categoria = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM categoria_plan WHERE id = '$id_categoria' ORDER BY id DESC LIMIT 1"));
+$nombre_categoria = $row_nombre_categoria[0];
 ?>
 <tr class="tr-hover">
-<td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $nombre_categoria; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
 <button type="button" style="font-size: 15px; background: none; color: orange; padding: 0px; border: none;" onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1, <?php echo $codigo_id_tabla; ?>)">
 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-down-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -5116,18 +5110,12 @@ $texto_envio = '<span style="color: red;">Pendiente</span>';
 <?php
 $query_planes_da = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 2 AND id_categoria != 0 ORDER BY id DESC");
 while($row_pa = mysqli_fetch_array($query_planes_da)){
-$codigo_plan_de = $row_pa['codigo'];
-$codigo_id_tabla = $row_pa['id'];
-$fecha_envio_pd = date('Y-m-d', strtotime($row_pa['fecha_envio']));
-$estado_envio = (int)$row_pa['estado_envio'];
-if($estado_envio == 1){
-$texto_envio = '<span style="color: darkgreen;">Enviado</span>';
-} else {
-$texto_envio = '<span style="color: red;">Pendiente</span>';
-}
+$id_categoria = (int)$row_pa['id_categoria'];
+$row_nombre_categoria = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM categoria_plan WHERE id = '$id_categoria' ORDER BY id DESC LIMIT 1"));
+$nombre_categoria = $row_nombre_categoria[0];
 ?>
 <tr class="tr-hover">
-<td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $nombre_categoria; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
 <button type="button" style="font-size: 15px; background: none; color: orange; padding: 0px; border: none;" onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 2, <?php echo $codigo_id_tabla; ?>)">
 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-down-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
