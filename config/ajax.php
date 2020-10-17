@@ -1646,6 +1646,9 @@ $diagnostico_grasa = '';
 }
 }
 
+//MASA CORPORAL MAGRA
+$masa_corporal_magra = $control_peso * (100 - round($porcentaje_grasa, 1));
+
 //OBTENER ID DEL PROGRAMA
 $query_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT id_programa FROM suscripcion_programa WHERE id = '$control_id_suscripcion' ORDER BY id ASC LIMIT 1"));
 $id_programa = (int)$query_suscripcion[0];
@@ -1654,7 +1657,7 @@ $id_programa = (int)$query_suscripcion[0];
 $row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM programa WHERE id = '$id_programa' LIMIT 1"));
 $nombre_programa = $row_nombre_programa[0];
 
-$array_controles[$i_controles] = array($control_fecha, $control_codigo, $nombre_programa, $control_peso, round($porcentaje_grasa, 1));
+$array_controles[$i_controles] = array($control_fecha, $control_codigo, $nombre_programa, $control_peso, round($porcentaje_grasa, 1), $masa_corporal_magra);
 $i_controles++;
 ?>
 <tr class="tr-hover" style="cursor: pointer;">
@@ -1712,6 +1715,24 @@ $min_grasa = $array_valor[4];
 }
 $max_grasa = $max_grasa + 1;
 $min_grasa = $min_grasa - 1;
+
+//MM
+$max_mm = 0;
+$min_mm = $array_controles[0][5];
+foreach($array_controles as $array_valor){
+
+//MAXIMO
+if($array_valor[5] > $max_mm){
+$max_mm = $array_valor[5];
+}
+
+//MIIMO
+if($array_valor[5] < $min_mm){
+$min_mm = $array_valor[5];
+}
+}
+$max_mm = $max_mm + 1;
+$min_mm = $min_mm - 1;
 ?>
 <div class="row">
 <div class="col-md-6 text-center" style="padding-top: 40px;">
@@ -1911,6 +1932,106 @@ size: 5
 }
 };
 var chart = new ApexCharts(document.querySelector('#chart2'), options);
+chart.render();
+</script>
+</div>
+<div class="col-md-6 text-center" style="padding-top: 40px;">
+<div id="chart3"></div>
+<script>
+var options = {
+
+//TITULO DEL CHART
+title: {
+text: '(KG) MM',
+align: 'center',
+style: {
+fontSize: '16px',
+color: '#95cf32'
+}
+},
+
+//CONFIGURACION DEL CHART
+chart: {
+height: 350,
+type: 'line',
+toolbar: {
+show: false
+}
+},
+
+//DATOS EJE X
+xaxis: {
+categories: [
+<?php
+foreach($array_controles as $array_valor){
+?>
+['<?php echo $array_valor[0]; ?>', '<?php echo $array_valor[1]; ?>', '<?php echo $array_valor[2]; ?>'],
+<?php
+}
+?>
+],
+labels: {
+rotate: 0
+}
+},
+
+//CONFIGURACION EJE Y
+yaxis: {
+min: <?php echo $min_mm; ?>,
+max: <?php echo $max_mm; ?>,
+title: {
+text: '(%) GRASA'
+}
+},
+
+//DATOS EJE Y
+series: [
+{
+name: 'Peso',
+data: [
+<?php
+foreach($array_controles as $array_valor){
+?>
+<?php echo $array_valor[5]; ?>,
+<?php
+}
+?>
+]
+}
+],
+
+//GRID: Fondo de Malla
+grid: {
+show: true,
+padding: {
+left: 10,
+right: 10
+}
+},
+
+//GROSOR DE LINEAS O BARRAS
+stroke: {
+width: 1,
+curve: 'straight'
+},
+
+//TIPO DE LINEAS O BARRAS
+fill: {
+type: 'solid'
+},
+
+//TAMAÑO PUNTOS DE RELACION (BOLITAS)
+markers: {
+size: 3,
+colors: ["#95cf32"],
+strokeColors: "#95cf32",
+strokeWidth: 1,
+hover: {
+size: 5
+}
+}
+};
+var chart = new ApexCharts(document.querySelector('#chart3'), options);
 chart.render();
 </script>
 </div>
