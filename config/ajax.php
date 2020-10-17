@@ -1787,7 +1787,7 @@ text: '(KG) PESO'
 //DATOS EJE Y
 series: [
 {
-name: 'Peso',
+name: '(KG) Peso',
 data: [
 <?php
 foreach($array_controles as $array_valor){
