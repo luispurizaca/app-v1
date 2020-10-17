@@ -3210,9 +3210,7 @@ $('#modalFechas').modal('hide');
 }
 ?>
 <div style="margin-top: 20px;">
-<div class="table-responsive">
 <div id="reporte_tabla"></div>
-</div>
 <!--
 <div class="row">
 <div class="col-md-1 hidden-xs"></div>

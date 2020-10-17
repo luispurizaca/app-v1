@@ -1509,6 +1509,7 @@ Meta Plan: <?php echo $peso_meta_suscripcion; ?>KG
 </span>
 </div>
 </h4><br><br>
+<div class="table-responsive">
 <table style="width: 1000px !important; margin: 0 auto;">
 <tr>
 <td class="td-title" style="width: 5.55% !important;">Foto</td>
@@ -1648,6 +1649,7 @@ $i_controles++;
 }
 ?>
 </table>
+</div>
 <?php
 
 //PESO
@@ -1686,7 +1688,7 @@ var options = {
 
 //TITULO DEL CHART
 title: {
-text: 'Evoluci\u00F3n',
+text: 'Peso',
 align: 'center',
 style: {
 fontSize: "16px",
