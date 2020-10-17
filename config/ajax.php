@@ -1806,6 +1806,13 @@ Meta Plan: <?php echo $peso_meta_suscripcion; ?>KG
 </span>
 </div>
 </h4><br><br>
+<?php
+if($_SESSION['ID_TIPO_USUARIO'] == 1){
+?>
+<button onclick="location.href='medidas.php?id_paciente=<?php echo $id_registro; ?>'" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Agregar Control</button>
+<?php
+}
+?>
 <div class="table-responsive">
 <table style="width: 1000px !important; margin: 0 auto;">
 <tr>
