@@ -1046,8 +1046,12 @@ $css_condicion_color = '#F26C3C';
 </table>
 </div>
 <?php
+//GENERO DEL PACIENTE
+$row_genero = mysqli_fetch_array(mysqli_query($con, "SELECT genero FROM usuario WHERE id_tipo_usuario = 2 AND id = '$ret_id_usuario' LIMIT 1"));
+$genero_paciente = (int)$row_genero[0];
+
 //OBTENER CONTROLES
-$sql_controles = mysqli_query($con, "SELECT DATE_FORMAT(fecha, '%Y-%m-%d'), codigo, id_suscripcion, peso FROM control WHERE id_paciente = '$ret_id_usuario' ORDER BY DATE_FORMAT(fecha, '%Y-%m-%d') ASC");
+$sql_controles = mysqli_query($con, "SELECT DATE_FORMAT(fecha, '%Y-%m-%d'), codigo, id_suscripcion, peso, talla, cuello, brazo, pecho, cintura, gluteo, muslo, pantorrilla, id_paciente FROM control WHERE id_paciente = '$ret_id_usuario' ORDER BY DATE_FORMAT(fecha, '%Y-%m-%d') ASC");
 $array_controles;
 $i_controles = 0;
 while($row_controles = mysqli_fetch_array($sql_controles)){
@@ -1055,6 +1059,15 @@ $control_fecha = date('d/m/y', strtotime($row_controles[0]));
 $control_codigo = $row_controles[1];
 $control_id_suscripcion = (int)$row_controles[2];
 $control_peso = (float)$row_controles[3];
+$control_talla = (float)$row_controles[4];
+$control_cuello = (float)$row_controles[5];
+$control_brazo = (float)$row_controles[6];
+$control_pecho = (float)$row_controles[7];
+$control_cintura = (float)$row_controles[8];
+$control_gluteo = (float)$row_controles[9];
+$control_muslo = (float)$row_controles[10];
+$control_pantorrilla = (float)$row_controles[11];
+$control_id_paciente = (float)$row_controles[12];
 
 //OBTENER ID DEL PROGRAMA
 $query_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT id_programa FROM suscripcion_programa WHERE id = '$control_id_suscripcion' ORDER BY id ASC LIMIT 1"));
@@ -1064,20 +1077,105 @@ $id_programa = (int)$query_suscripcion[0];
 $row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM programa WHERE id = '$id_programa' LIMIT 1"));
 $nombre_programa = $row_nombre_programa[0];
 
-$array_controles[$i_controles] = array($control_fecha, $control_codigo, $nombre_programa, $control_peso);
+
+
+
+
+$talla_en_cm = $control_talla * 100;
+
+//% GRASA HOMBRES
+if($genero_paciente == 1){
+$porcentaje_grasa = 495 / (1.0324 - 0.19077 * (log10($control_cintura - $control_cuello)) + 0.15456*(log10($talla_en_cm)))-450;
+
+//DIAGNOSTICO
+if($porcentaje_grasa >= 26){
+$diagnostico_grasa = 'Obesidad';
+} elseif($porcentaje_grasa >= 18 && $porcentaje_grasa <= 25){
+$diagnostico_grasa = 'Aceptable';
+} elseif($porcentaje_grasa >= 14 && $porcentaje_grasa <= 17){
+$diagnostico_grasa = 'Fitness';
+} elseif($porcentaje_grasa >= 6 && $porcentaje_grasa <= 13){
+$diagnostico_grasa = 'Atleta';
+} elseif($porcentaje_grasa >= 2 && $porcentaje_grasa <= 4){
+$diagnostico_grasa = 'Grasa Esencial';
+} else {
+$diagnostico_grasa = '';
+}
+
+} else {
+$porcentaje_grasa = 495 / (1.29579 - 0.35004 * (log10($control_cintura + $control_gluteo - $control_cuello)) + 0.22100 * (log10($talla_en_cm))) - 450;
+
+//DIAGNOSTICO
+if($porcentaje_grasa >= 32){
+$diagnostico_grasa = 'Obesidad';
+} elseif($porcentaje_grasa >= 25 && $porcentaje_grasa <= 31){
+$diagnostico_grasa = 'Aceptable';
+} elseif($porcentaje_grasa >= 21 && $porcentaje_grasa <= 24){
+$diagnostico_grasa = 'Fitness';
+} elseif($porcentaje_grasa >= 14 && $porcentaje_grasa <= 20){
+$diagnostico_grasa = 'Atleta';
+} elseif($porcentaje_grasa >= 10 && $porcentaje_grasa <= 12){
+$diagnostico_grasa = 'Grasa Esencial';
+} else {
+$diagnostico_grasa = '';
+}
+}
+
+//MASA CORPORAL MAGRA
+$masa_corporal_magra = $control_peso * (100 - round($porcentaje_grasa, 1));
+
+
+
+
+$array_controles[$i_controles] = array($control_fecha, $control_codigo, $nombre_programa, $control_peso, round($porcentaje_grasa, 1), $masa_corporal_magra);
 $i_controles++;
 }
 
+//PESO
 $max = 0;
-foreach($array_controles as $array_valor)
-{
+foreach($array_controles as $array_valor){
 if($array_valor[3] > $max){
 $max = $array_valor[3];
 }
 }
-
 $max = $max + 1;
 $min = ((float)$ret_peso_meta) - 5;
+
+//% DE GRASA
+$max_grasa = 0;
+$min_grasa = $array_controles[0][4];
+foreach($array_controles as $array_valor){
+
+//MAXIMO
+if($array_valor[4] > $max_grasa){
+$max_grasa = $array_valor[4];
+}
+
+//MIIMO
+if($array_valor[4] < $min_grasa){
+$min_grasa = $array_valor[4];
+}
+}
+$max_grasa = $max_grasa + 1;
+$min_grasa = $min_grasa - 1;
+
+//MM
+$max_mm = 0;
+$min_mm = $array_controles[0][5];
+foreach($array_controles as $array_valor){
+
+//MAXIMO
+if($array_valor[5] > $max_mm){
+$max_mm = $array_valor[5];
+}
+
+//MIIMO
+if($array_valor[5] < $min_mm){
+$min_mm = $array_valor[5];
+}
+}
+$max_mm = $max_mm + 1;
+$min_mm = $min_mm - 1;
 ?>
 <div class="row">
 <div class="col-md-6 text-center" style="padding-top: 40px;">
@@ -1087,7 +1185,7 @@ var options = {
 
 //TITULO DEL CHART
 title: {
-text: 'Evoluci\u00F3n General',
+text: '(KG) Peso',
 align: 'center',
 style: {
 fontSize: "16px",
@@ -1125,14 +1223,14 @@ yaxis: {
 min: <?php echo $min; ?>,
 max: <?php echo $max; ?>,
 title: {
-text: 'PESO (KG)'
+text: '(KG) PESO'
 }
 },
 
 //DATOS EJE Y
 series: [
 {
-name: 'Peso',
+name: '(KG) Peso',
 data: [
 <?php
 foreach($array_controles as $array_valor){
@@ -1216,6 +1314,206 @@ if($_SESSION['ID_TIPO_USUARIO'] != 2){
 <?php
 }
 ?>
+</div>
+<div class="col-md-6 text-center" style="padding-top: 40px;">
+<div id="chart2"></div>
+<script>
+var options = {
+
+//TITULO DEL CHART
+title: {
+text: '(%) Grasa',
+align: 'center',
+style: {
+fontSize: "16px",
+color: '#95cf32'
+}
+},
+
+//CONFIGURACION DEL CHART
+chart: {
+height: 350,
+type: 'line',
+toolbar: {
+show: false
+}
+},
+
+//DATOS EJE X
+xaxis: {
+categories: [
+<?php
+foreach($array_controles as $array_valor){
+?>
+['<?php echo $array_valor[0]; ?>', '<?php echo $array_valor[1]; ?>', '<?php echo $array_valor[2]; ?>'],
+<?php
+}
+?>
+],
+labels: {
+rotate: 0
+}
+},
+
+//CONFIGURACION EJE Y
+yaxis: {
+min: <?php echo $min_grasa; ?>,
+max: <?php echo $max_grasa; ?>,
+title: {
+text: '(%) GRASA'
+}
+},
+
+//DATOS EJE Y
+series: [
+{
+name: '(%) Grasa',
+data: [
+<?php
+foreach($array_controles as $array_valor){
+?>
+<?php echo $array_valor[4]; ?>,
+<?php
+}
+?>
+]
+}
+],
+
+//GRID: Fondo de Malla
+grid: {
+show: true,
+padding: {
+left: 10,
+right: 10
+}
+},
+
+//GROSOR DE LINEAS O BARRAS
+stroke: {
+width: 1,
+curve: 'straight'
+},
+
+//TIPO DE LINEAS O BARRAS
+fill: {
+type: 'solid'
+},
+
+//TAMAÑO PUNTOS DE RELACION (BOLITAS)
+markers: {
+size: 3,
+colors: ["#95cf32"],
+strokeColors: "#95cf32",
+strokeWidth: 1,
+hover: {
+size: 5
+}
+}
+};
+var chart = new ApexCharts(document.querySelector('#chart2'), options);
+chart.render();
+</script>
+</div>
+<div class="col-md-6 text-center" style="padding-top: 40px;">
+<div id="chart3"></div>
+<script>
+var options = {
+
+//TITULO DEL CHART
+title: {
+text: '(KG) MM',
+align: 'center',
+style: {
+fontSize: '16px',
+color: '#95cf32'
+}
+},
+
+//CONFIGURACION DEL CHART
+chart: {
+height: 350,
+type: 'line',
+toolbar: {
+show: false
+}
+},
+
+//DATOS EJE X
+xaxis: {
+categories: [
+<?php
+foreach($array_controles as $array_valor){
+?>
+['<?php echo $array_valor[0]; ?>', '<?php echo $array_valor[1]; ?>', '<?php echo $array_valor[2]; ?>'],
+<?php
+}
+?>
+],
+labels: {
+rotate: 0
+}
+},
+
+//CONFIGURACION EJE Y
+yaxis: {
+min: <?php echo $min_mm; ?>,
+max: <?php echo $max_mm; ?>,
+title: {
+text: '(KG) MM'
+}
+},
+
+//DATOS EJE Y
+series: [
+{
+name: '(KG) MM',
+data: [
+<?php
+foreach($array_controles as $array_valor){
+?>
+<?php echo $array_valor[5]; ?>,
+<?php
+}
+?>
+]
+}
+],
+
+//GRID: Fondo de Malla
+grid: {
+show: true,
+padding: {
+left: 10,
+right: 10
+}
+},
+
+//GROSOR DE LINEAS O BARRAS
+stroke: {
+width: 1,
+curve: 'straight'
+},
+
+//TIPO DE LINEAS O BARRAS
+fill: {
+type: 'solid'
+},
+
+//TAMAÑO PUNTOS DE RELACION (BOLITAS)
+markers: {
+size: 3,
+colors: ["#95cf32"],
+strokeColors: "#95cf32",
+strokeWidth: 1,
+hover: {
+size: 5
+}
+}
+};
+var chart = new ApexCharts(document.querySelector('#chart3'), options);
+chart.render();
+</script>
 </div>
 </div>
 <?php
