@@ -1518,8 +1518,9 @@ Meta Plan: <?php echo $peso_meta_suscripcion; ?>KG
 <td class="td-title" style="width: 5.55% !important;">Peso(Kg)</td>
 <td class="td-title" style="width: 5.55% !important;">IMC</td>
 <td class="td-title" style="width: 5.55% !important;">Grasa(%)</td>
+<td class="td-title" style="width: 5.55% !important;">Diagn&oacute;stico (% Grasa)</td>
 <td class="td-title" style="width: 5.55% !important;">MM(Kg)</td>
-<td class="td-title" style="width: 5.55% !important;">Diagn&oacute;stico IMC</td>
+<td class="td-title" style="width: 5.55% !important;">Diagn&oacute;stico (IMC)</td>
 <td class="td-title" style="width: 5.55% !important;">Cuello(cm)</td>
 <td class="td-title" style="width: 5.55% !important;">Brazo(cm)</td>
 <td class="td-title" style="width: 5.55% !important;">Pecho(cm)</td>
@@ -1610,8 +1611,39 @@ $talla_en_cm = $control_talla * 100;
 //% GRASA HOMBRES
 if($genero_paciente == 1){
 $porcentaje_grasa = 495 / (1.0324 - 0.19077 * (log10($control_cintura - $control_cuello)) + 0.15456*(log10($talla_en_cm)))-450;
+
+//DIAGNOSTICO
+if($porcentaje_grasa >= 26){
+$diagnostico_grasa = 'Obesidad';
+} elseif($porcentaje_grasa >= 18 && $porcentaje_grasa <= 25){
+$diagnostico_grasa = 'Aceptable';
+} elseif($porcentaje_grasa >= 14 && $porcentaje_grasa <= 17){
+$diagnostico_grasa = 'Fitness';
+} elseif($porcentaje_grasa >= 6 && $porcentaje_grasa <= 13){
+$diagnostico_grasa = 'Atleta';
+} elseif($porcentaje_grasa >= 2 && $porcentaje_grasa <= 4){
+$diagnostico_grasa = 'Grasa Esencial';
+} else {
+$diagnostico_grasa = '';
+}
+
 } else {
 $porcentaje_grasa = 495 / (1.29579 - 0.35004 * (log10($control_cintura + $control_gluteo - $control_cuello)) + 0.22100 * (log10($talla_en_cm))) - 450;
+
+//DIAGNOSTICO
+if($porcentaje_grasa >= 32){
+$diagnostico_grasa = 'Obesidad';
+} elseif($porcentaje_grasa >= 25 && $porcentaje_grasa <= 31){
+$diagnostico_grasa = 'Aceptable';
+} elseif($porcentaje_grasa >= 21 && $porcentaje_grasa <= 24){
+$diagnostico_grasa = 'Fitness';
+} elseif($porcentaje_grasa >= 14 && $porcentaje_grasa <= 20){
+$diagnostico_grasa = 'Atleta';
+} elseif($porcentaje_grasa >= 10 && $porcentaje_grasa <= 12){
+$diagnostico_grasa = 'Grasa Esencial';
+} else {
+$diagnostico_grasa = '';
+}
 }
 
 //OBTENER ID DEL PROGRAMA
@@ -1632,6 +1664,7 @@ $i_controles++;
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_peso; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo round($ret_imc, 1); ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo round($porcentaje_grasa, 1); ?></td>
+<td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $diagnostico_grasa; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $diagnostico; ?></td>
 <td class="td-content" onclick="visualizar(<?php echo $ret_id_control; ?>)" style="width: 5.55% !important;"><?php echo $control_cuello; ?></td>
@@ -1688,7 +1721,7 @@ var options = {
 
 //TITULO DEL CHART
 title: {
-text: 'Peso',
+text: '(KG) Peso',
 align: 'center',
 style: {
 fontSize: "16px",
@@ -1726,7 +1759,7 @@ yaxis: {
 min: <?php echo $min; ?>,
 max: <?php echo $max; ?>,
 title: {
-text: 'PESO (KG)'
+text: '(KG) PESO'
 }
 },
 
