@@ -1610,7 +1610,17 @@ $texto_envio = '<span style="color: red;">Pendiente</span>';
 <tr class="tr-hover">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
-<input type="date" style="font-size: 13px; font-weight: bold; width: 150px; text-align: center;" id="id_fecha_pa" value="<?php echo $fecha_envio_pd; ?>">
+<?php
+if($estado_envio == 1){
+?>
+<?php echo $fecha_envio_pd; ?>
+<?php
+} else {
+?>
+<input type="date" style="font-size: 11px; font-weight: bold; width: 120px; text-align: center;" id="id_fecha_pa" value="<?php echo $fecha_envio_pd; ?>">
+<?php
+}
+?>
 </td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $texto_envio; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
@@ -1667,7 +1677,17 @@ $texto_envio = '<span style="color: red;">Pendiente</span>';
 <tr class="tr-hover">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
-<input type="date" style="font-size: 13px; font-weight: bold; width: 150px; text-align: center;" id="id_fecha_pa" value="<?php echo $fecha_envio_pd; ?>">
+<?php
+if($estado_envio == 1){
+?>
+<?php echo $fecha_envio_pd; ?>
+<?php
+} else {
+?>
+<input type="date" style="font-size: 11px; font-weight: bold; width: 120px; text-align: center;" id="id_fecha_pa" value="<?php echo $fecha_envio_pd; ?>">
+<?php
+}
+?>
 </td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $texto_envio; ?></td>
 <td class="td-content" style="width: 11.11% !important;">

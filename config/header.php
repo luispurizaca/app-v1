@@ -73,13 +73,16 @@ if($_SESSION['ID_TIPO_USUARIO'] == 1){
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Planes de Alimentaci&oacute;n</span>
 </a>
 </li>
-<!--
+<li>
+<a href="planes.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Modelos de P.A.</span>
+</a>
+</li>
 <li>
 <a href="recetas.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Recetas</span>
 </a>
 </li>
--->
 <li>
 <a href="agenda.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Mi Agenda</span>
