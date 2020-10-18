@@ -66,6 +66,7 @@ $nombre_paciente = $query_datos_paciente[0].' '.$query_datos_paciente[1];
 ob_start();
 ?>
 <page backtop="5mm" backbottom="5mm" backleft="5mm" backright="5mm">
+<!-- PRIMERA PAGINA -->
 <div id="headerContent" style="padding-left: 30px;">
 <img src="../../../vendors/images/logo-completo.png" style="width: 150px; height: auto;">
 </div>
@@ -196,12 +197,17 @@ Horario
 <div id="footerContent">
 <img src="../../../vendors/images/pdf-footer.png" style="width: 100%; height: auto;">
 </div>
+
+<!-- PRIMERA PAGINA -->
 <div id="headerContent" style="padding-left: 30px;">
 <img src="../../../vendors/images/logo-completo.png" style="width: 150px; height: auto;">
 </div>
 <table style="width: 100%; padding: 10px; border-collapse: collapse; background-image: url(../../../vendors/images/marca-agua.png); background-size: contain; background-position: right; background-repeat: no-repeat;">
 <tr>
-<td style="vertical-align: top; width: 100%; height: 850px; color: #111; text-align: left; padding: 10px; font-size: 12px;">
+<td style="vertical-align: top; width: 100%; height: 850px;">
+<table style="width: 100%; padding: 10px; border-collapse: collapse;">
+<tr>
+<td style="width: 100%; color: #111; font-weight: bold; text-align: left; padding: 10px; font-size: 12px; margin-top: 0; padding-top: 0;">
 <b>Indicaciones:</b><br><br>
 1.-01 comida especial en la semana.<br>
 2.- Diariamente, consumir 10 vasos con agua (250ml) (incluyen las bebidas de entre comidas).<br>
@@ -210,6 +216,9 @@ Horario
 4.- Dormir entre 6 a 8 horas diarias.<br>
 5.- Consumir diariamente al levantarse 01 vaso de agua caliente con zumo de 2 limones.<br>
 c/ 1 crdta de salvado de trigo.
+</td>
+</tr>
+</table>
 </td>
 </tr>
 </table>
