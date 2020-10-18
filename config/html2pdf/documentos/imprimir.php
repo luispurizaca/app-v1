@@ -76,13 +76,13 @@ if($tipo_plan == 1){
 ?>
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
-<td style="width: 33.3%; color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 15px; border: 1px solid #95cf32;">
+<td style="width: 33.3%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 13px; border: 1px solid #95cf32;">
 <?php echo $title_1; ?>
 </td>
-<td style="width: 33.3%; color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 15px; border: 1px solid #95cf32;">
+<td style="width: 33.3%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 13px; border: 1px solid #95cf32;">
 <?php echo $title_2; ?>
 </td>
-<td style="width: 33.3%; color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 15px; border: 1px solid #95cf32;">
+<td style="width: 33.3%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 13px; border: 1px solid #95cf32;">
 <?php echo $title_3; ?>
 </td>
 </tr>
