@@ -93,8 +93,8 @@ height: 1cm;
 }
 </style>
 <page backtop="5mm" backbottom="5mm" backleft="5mm" backright="5mm">
-<div id="headerContent">
-<img src="../../../vendors/images/logo-completo.png" style="width: 160px; height: auto;">
+<div id="headerContent" style="padding-left: 45px;">
+<img src="../../../vendors/images/logo-completo.png" style="width: 170px; height: auto;">
 </div>
 <?php
 if($tipo_plan == 1){
@@ -103,6 +103,223 @@ if($tipo_plan == 1){
 <?php
 } else {
 ?>
+<table style="width: 100%; padding: 10px; border-collapse: collapse;">
+<tr>
+<td style="width: 33.3%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
+Inicio: <?php echo $fecha_plan; ?>
+</td>
+<td style="width: 33.3%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
+Nombre: <?php echo $nombre_paciente; ?>
+</td>
+<td style="width: 33.3%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
+Prox. Cita: <?php echo $fecha_plan; ?>
+</td>
+</tr>
+<tr>
+<td style="width: 33.3%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
+Horario
+</td>
+<td style="width: 33.3%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
+<?php echo $title_2; ?>
+</td>
+<td style="width: 33.3%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
+<?php echo $title_3; ?>
+</td>
+</tr>
+<tr>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<b style="font-size: 14px;">DESAYUNO</b><br>
+<span style="font-size: 14px;"><?php echo $hora_desayuno; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_desayuno; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_2_desayuno; ?></span><br><br>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_1_desayuno; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_2_desayuno; ?></span><br><br>
+</td>
+</tr>
+<tr>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<b style="font-size: 12px;">MEDIA MA&Ntilde;ANA</b><br>
+<span style="font-size: 12px;"><?php echo $hora_media_manana; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_media_manana; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<span style="font-size: 13px;"><?php echo $dos_opcion_1_media_manana; ?></span>
+</td>
+</tr>
+<tr>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<b style="font-size: 14px;">ALMUERZO</b><br>
+<span style="font-size: 14px;"><?php echo $hora_almuerzo; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_almuerzo; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_2_almuerzo; ?></span><br><br>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_1_almuerzo; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_2_almuerzo; ?></span><br><br>
+</td>
+</tr>
+<tr>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<b style="font-size: 12px;">MEDIA TARDE</b><br>
+<span style="font-size: 12px;"><?php echo $hora_media_tarde; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_media_tarde; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<span style="font-size: 13px;"><?php echo $dos_opcion_1_media_tarde; ?></span>
+</td>
+</tr>
+<tr>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<b style="font-size: 14px;">CENA</b><br>
+<span style="font-size: 14px;"><?php echo $hora_cena; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_cena; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_2_cena; ?></span><br><br>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_1_cena; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_2_cena; ?></span><br><br>
+</td>
+</tr>
+</table>
+
+<table style="width: 100%; padding: 10px; border-collapse: collapse;">
+<tr>
+<td style="width: 33.3%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
+Inicio: <?php echo $fecha_plan; ?>
+</td>
+<td style="width: 33.3%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
+Nombre: <?php echo $nombre_paciente; ?>
+</td>
+<td style="width: 33.3%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
+Prox. Cita: <?php echo $fecha_plan; ?>
+</td>
+</tr>
+<tr>
+<td style="width: 33.3%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
+Horario
+</td>
+<td style="width: 33.3%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
+<?php echo $title_2; ?>
+</td>
+<td style="width: 33.3%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
+<?php echo $title_3; ?>
+</td>
+</tr>
+<tr>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<b style="font-size: 14px;">DESAYUNO</b><br>
+<span style="font-size: 14px;"><?php echo $hora_desayuno; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_desayuno; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_2_desayuno; ?></span><br><br>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_1_desayuno; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_2_desayuno; ?></span><br><br>
+</td>
+</tr>
+<tr>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<b style="font-size: 12px;">MEDIA MA&Ntilde;ANA</b><br>
+<span style="font-size: 12px;"><?php echo $hora_media_manana; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_media_manana; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<span style="font-size: 13px;"><?php echo $dos_opcion_1_media_manana; ?></span>
+</td>
+</tr>
+<tr>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<b style="font-size: 14px;">ALMUERZO</b><br>
+<span style="font-size: 14px;"><?php echo $hora_almuerzo; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_almuerzo; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_2_almuerzo; ?></span><br><br>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_1_almuerzo; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_2_almuerzo; ?></span><br><br>
+</td>
+</tr>
+<tr>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<b style="font-size: 12px;">MEDIA TARDE</b><br>
+<span style="font-size: 12px;"><?php echo $hora_media_tarde; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_media_tarde; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<span style="font-size: 13px;"><?php echo $dos_opcion_1_media_tarde; ?></span>
+</td>
+</tr>
+<tr>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<b style="font-size: 14px;">CENA</b><br>
+<span style="font-size: 14px;"><?php echo $hora_cena; ?></span>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_cena; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_2_cena; ?></span><br><br>
+</td>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_1_cena; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_2_cena; ?></span><br><br>
+</td>
+</tr>
+</table>
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
 <td style="width: 33.3%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
