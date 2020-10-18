@@ -68,7 +68,7 @@ ob_start();
 ?>
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
-<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-bottom: 0px;" colspan="2">
+<td style="color: #111; padding: 20px; padding-left: 0; font-size: 13px; text-align: left; padding-bottom: 0px;" colspan="2">
 Hola <b><?php echo $nombre_paciente; ?>,</b><br><br>
 Recuerda que un cuerpo sano posee una mente.<br><br>
 
