@@ -76,8 +76,8 @@ if($tipo_plan == 1){
 ?>
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
-<td style="width: 100%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;" colspan="3">
-<img src="../../../vendors/images/icono.png" style="width: 200px; height: auto;">
+<td style="width: 100%; text-align: left; padding: 10px;" colspan="3">
+<img src="../../../vendors/images/icono.png" style="width: 100px; height: auto;">
 </td>
 </tr>
 <tr>
