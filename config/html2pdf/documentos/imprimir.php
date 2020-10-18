@@ -123,14 +123,14 @@ Horario
 </td>
 </tr>
 <tr>
-<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
-<b style="font-size: 14px;">MEDIA MA&Ntilde;ANA</b><br>
-<span style="font-size: 14px;"><?php echo $hora_media_manana; ?></span>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<b style="font-size: 12px;">MEDIA MA&Ntilde;ANA</b><br>
+<span style="font-size: 12px;"><?php echo $hora_media_manana; ?></span>
 </td>
-<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_media_manana; ?></span>
 </td>
-<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <span style="font-size: 13px;"><?php echo $dos_opcion_1_media_manana; ?></span>
 </td>
 </tr>
@@ -155,14 +155,14 @@ Horario
 </td>
 </tr>
 <tr>
-<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
-<b style="font-size: 14px;">MEDIA TARDE</b><br>
-<span style="font-size: 14px;"><?php echo $hora_media_tarde; ?></span>
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<b style="font-size: 12px;">MEDIA TARDE</b><br>
+<span style="font-size: 12px;"><?php echo $hora_media_tarde; ?></span>
 </td>
-<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_media_tarde; ?></span>
 </td>
-<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <span style="font-size: 13px;"><?php echo $dos_opcion_1_media_tarde; ?></span>
 </td>
 </tr>
