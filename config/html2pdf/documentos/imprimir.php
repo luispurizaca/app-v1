@@ -202,7 +202,7 @@ Horario
 <br>
 <table style="width: 100%; padding: 10px; border-collapse: collapse; background-image: url(../../../vendors/images/marca-agua.png); background-size: contain; background-position: right; background-repeat: no-repeat;">
 <tr>
-<td style="vertical-align: top; width: 100%; height: 850px; color: #111; text-align: left; padding: 10px; font-size: 12px; height: 600px;">
+<td style="vertical-align: top; width: 100%; height: 850px; color: #111; text-align: left; padding: 10px; font-size: 12px;">
 <b>Indicaciones:</b><br><br>
 1.-01 comida especial en la semana.<br>
 2.- Diariamente, consumir 10 vasos con agua (250ml) (incluyen las bebidas de entre comidas).<br>
@@ -215,7 +215,7 @@ c/ 1 crdta de salvado de trigo.
 </tr>
 </table>
 <br>
-<div id="footerContent" style="float: bottom;">
+<div id="footerContent">
 <img src="../../../vendors/images/pdf-footer.png" style="width: 100%; height: auto;">
 </div>
 </page>
