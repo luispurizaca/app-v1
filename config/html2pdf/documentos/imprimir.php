@@ -76,8 +76,8 @@ if($tipo_plan == 1){
 ?>
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
-<td style="width: 100%; text-align: left; padding: 10px;" colspan="3">
-<img src="../../../vendors/images/icono.png" style="width: 100px; height: auto;">
+<td style="width: 100%; text-align: left; padding: 10px; padding-left: 50px;" colspan="3">
+<img src="../../../vendors/images/icono.png" style="width: 120px; height: auto;">
 </td>
 </tr>
 <tr>
@@ -123,7 +123,7 @@ Horario
 </td>
 </tr>
 <tr>
-<td style="width: 33.3%; vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
 <b style="font-size: 14px;">MEDIA MA&Ntilde;ANA</b><br>
 <span style="font-size: 14px;"><?php echo $hora_media_manana; ?></span>
 </td>
@@ -155,7 +155,7 @@ Horario
 </td>
 </tr>
 <tr>
-<td style="width: 33.3%; vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
 <b style="font-size: 14px;">MEDIA TARDE</b><br>
 <span style="font-size: 14px;"><?php echo $hora_media_tarde; ?></span>
 </td>
