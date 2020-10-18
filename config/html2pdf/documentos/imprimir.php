@@ -77,7 +77,7 @@ if($tipo_plan == 1){
 <?php
 } else {
 ?>
-<table style="width: 100%; padding: 10px; border-collapse: collapse; background: url(../../../vendors/images/marca-agua.png); background-size: 80% auto; background-position: top; background-repeat: no-repeat;">
+<table style="width: 100%; padding: 10px; border-collapse: collapse; background: url(../../../vendors/images/marca-agua.png); background-size: 50% 50%; background-position: top; background-repeat: no-repeat;">
 <tr>
 <td style="width: 33.3%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
 Inicio: <?php echo $fecha_plan; ?>
