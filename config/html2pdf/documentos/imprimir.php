@@ -69,31 +69,6 @@ ob_start();
 <page backtop="5mm" backbottom="5mm" backleft="5mm" backright="5mm">
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
-<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-bottom: 0px;" colspan="2">
-Hola <b><?php echo $nombre_paciente; ?>,</b><br><br>
-Recuerda que un cuerpo sano posee una mente.<br><br>
-
-<?php
-if($tipo_plan == 1){
-?>
-Te env&iacute;o tu plan detox que debes realizarlo el d&iacute;a <?php echo $fecha_plan; ?>.<br><br>
-<?php
-} else {
-?>
-Te env&iacute;o tu plan de alimentación de la semana. Para obtener mejores resultados realizarlo en un 100%..<br><br>
-<?php
-}
-?>
-Cualquier consulta, no dudes en escribirme<br><br>
-Saludos<br>
-Equipo ReKupera tu peso ideal by<br>
-Katherine Alfaro – Nutricionista y Coach<br>
-</td>
-</tr>
-<tr>
-<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-top: 15px;" colspan="2"><b>Fecha: <?php echo $fecha_plan; ?></b></td>
-</tr>
-<tr>
 <td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;">
 <?php echo $title_1; ?>
 </td>
