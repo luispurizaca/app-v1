@@ -53,7 +53,7 @@ ob_start();
 ?>
 <!-- PRIMERA PAGINA -->
 <div id="headerContent" style="padding-left: 30px;">
-<img src="../../../vendors/images/logo-completo.png" style="width: 150px; height: auto;">
+<img src="http://www.nutrikatherinealfaro.com.pe/app-v1/vendors/images/logo-completo.png" style="width: 150px; height: auto;">
 </div>
 <table style="width: 100%; padding: 10px; border-collapse: collapse; background-image: url(../../../vendors/images/marca-agua.png); background-size: contain; background-position: right; background-repeat: no-repeat;">
 <tr>
@@ -187,7 +187,7 @@ Horario
 
 <!-- PRIMERA PAGINA -->
 <div id="headerContent" style="padding-left: 30px;">
-<img src="../../../vendors/images/logo-completo.png" style="width: 150px; height: auto;">
+<img src="http://www.nutrikatherinealfaro.com.pe/app-v1/vendors/images/logo-completo.png" style="width: 150px; height: auto;">
 </div>
 <table style="width: 100%; padding: 10px; border-collapse: collapse; background-image: url(../../../vendors/images/marca-agua.png); background-size: contain; background-position: right; background-repeat: no-repeat;">
 <tr>
