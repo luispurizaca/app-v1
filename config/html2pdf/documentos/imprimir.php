@@ -67,23 +67,30 @@ $nombre_paciente = $query_datos_paciente[0].' '.$query_datos_paciente[1];
 ob_start();
 ?>
 <page backtop="5mm" backbottom="5mm" backleft="5mm" backright="5mm">
+<?php
+if($tipo_plan == 1){
+?>
+
+<?php
+} else {
+?>
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
-<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;">
+<td style="width: 33.3%; color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 15px; border: 1px solid #95cf32;">
 <?php echo $title_1; ?>
 </td>
-<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;">
+<td style="width: 33.3%; color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 15px; border: 1px solid #95cf32;">
 <?php echo $title_2; ?>
 </td>
-<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
+<td style="width: 33.3%; color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 15px; border: 1px solid #95cf32;">
 <?php echo $title_3; ?>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
 <b style="font-size: 17px;">DESAYUNO<br><?php echo $hora_desayuno; ?></b>
 </td>
-<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <table style="width: 100%; margin: 0 auto;">
 <tr>
 <td style="width: 20%; text-align: center;">
@@ -103,7 +110,7 @@ ob_start();
 </tr>
 </table>
 </td>
-<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <table style="width: 100%; margin: 0 auto;">
 <tr>
 <td style="width: 20%; text-align: center;">
@@ -125,10 +132,10 @@ ob_start();
 </td>
 </tr>
 <tr>
-<td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
 <b style="font-size: 12px;">MEDIA MA&Ntilde;ANA<br><?php echo $hora_media_manana; ?></b>
 </td>
-<td style="vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
 <table style="width: 100%; margin: 0 auto;">
 <tr>
 <td style="width: 20%; text-align: center;"></td>
@@ -138,7 +145,7 @@ ob_start();
 </tr>
 </table>
 </td>
-<td style="vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
 <table style="width: 100%; margin: 0 auto;">
 <tr>
 <td style="width: 20%; text-align: center;"></td>
@@ -150,10 +157,10 @@ ob_start();
 </td>
 </tr>
 <tr>
-<td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
 <b style="font-size: 17px;">ALMUERZO<br><?php echo $hora_almuerzo; ?></b>
 </td>
-<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <table style="width: 100%; margin: 0 auto;">
 <tr>
 <td style="width: 20%; text-align: center;">
@@ -173,7 +180,7 @@ ob_start();
 </tr>
 </table>
 </td>
-<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
 <table style="width: 100%; margin: 0 auto;">
 <tr>
 <td style="width: 20%; text-align: center;">
@@ -195,21 +202,21 @@ ob_start();
 </td>
 </tr>
 <tr>
-<td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
 <b style="font-size: 12px;">MEDIA TARDE<br><?php echo $hora_media_tarde; ?></b>
 </td>
-<td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
 <?php echo $uno_opcion_1_media_tarde; ?>
 </td>
-<td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
+<td style="width: 33.3%; vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
 <?php echo $dos_opcion_1_media_tarde; ?>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
 <b style="font-size: 17px;">CENA<br><?php echo $hora_cena; ?></b>
 </td>
-<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <table style="width: 100%; margin: 0 auto;">
 <tr>
 <td style="width: 20%; text-align: center;">
@@ -229,7 +236,7 @@ ob_start();
 </tr>
 </table>
 </td>
-<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
+<td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
 <table style="width: 100%; margin: 0 auto;">
 <tr>
 <td style="width: 20%; text-align: center;">
@@ -251,6 +258,9 @@ ob_start();
 </td>
 </tr>
 </table>
+<?php
+}
+?>
 </page>
 <?php
 $content = ob_get_clean();
