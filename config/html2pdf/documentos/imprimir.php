@@ -199,7 +199,6 @@ Horario
 <div id="headerContent" style="padding-left: 30px;">
 <img src="../../../vendors/images/logo-completo.png" style="width: 150px; height: auto;">
 </div>
-<br>
 <table style="width: 100%; padding: 10px; border-collapse: collapse; background-image: url(../../../vendors/images/marca-agua.png); background-size: contain; background-position: right; background-repeat: no-repeat;">
 <tr>
 <td style="vertical-align: top; width: 100%; height: 850px; color: #111; text-align: left; padding: 10px; font-size: 12px;">
