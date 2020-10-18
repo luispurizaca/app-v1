@@ -66,12 +66,12 @@ $nombre_paciente = $query_datos_paciente[0].' '.$query_datos_paciente[1];
 ob_start();
 ?>
 <page backtop="5mm" backbottom="5mm" backleft="5mm" backright="5mm">
-<div id="headerContent" style="padding-left: 45px;">
-<img src="../../../vendors/images/logo-completo.png" style="width: 170px; height: auto;">
+<div id="headerContent" style="padding-left: 30px;">
+<img src="../../../vendors/images/logo-completo.png" style="width: 150px; height: auto;">
 </div>
 <table style="width: 100%; padding: 10px; border-collapse: collapse; background-image: url(../../../vendors/images/marca-agua.png); background-size: contain; background-position: right; background-repeat: no-repeat;">
 <tr>
-<td style="vertical-align: top; width: 100%; height: 800px;">
+<td style="vertical-align: top; width: 100%; height: 900px;">
 <?php
 if($tipo_plan == 1){
 ?>
