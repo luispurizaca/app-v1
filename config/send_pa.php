@@ -175,6 +175,9 @@ $mail->addAddress($recipient);
 $mail->Subject    = $subject;
 $mail->Body       = $bodyHtml;
 
+//LIBRERIA HTML2PDF
+require_once(__DIR__.'/html2pdf/html2pdf.class.php');
+
 //CONTENIDO DEL PDF
 ob_start();
 ?>
@@ -194,7 +197,8 @@ $html2pdf->pdf->SetDisplayMode('fullpage');
 $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
 $html2pdf->Output('Plan.pdf', 'F');
 
-//ADJUNTAR PDF$mail->AddAttachment('Plan.pdf', 'Plan.pdf');
+//ADJUNTAR PDF
+$mail->AddAttachment('Plan.pdf', 'Plan.pdf');
 
 } catch(HTML2PDF_exception $e){
 echo $e;
