@@ -222,7 +222,7 @@ try{
 $html2pdf = new HTML2PDF('P', 'A4', 'es', true, 'UTF-8', array(0, 0, 0, 0));
 $html2pdf->pdf->SetDisplayMode('fullpage');
 $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
-$html2pdf->Output('Plan_detox.pdf');
+$html2pdf->Output('Plan.pdf');
 } catch(HTML2PDF_exception $e){
 echo $e;
 exit();
