@@ -88,47 +88,19 @@ if($tipo_plan == 1){
 </tr>
 <tr>
 <td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
-<b style="font-size: 17px;">DESAYUNO<br><?php echo $hora_desayuno; ?></b>
+<b style="font-size: 15px;">DESAYUNO<br><br><?php echo $hora_desayuno; ?></b>
 </td>
 <td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
-<table style="width: 100%; margin: 0 auto;">
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 1:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $uno_opcion_1_desayuno; ?>
-</td>
-</tr>
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 2:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $uno_opcion_2_desayuno; ?>
-</td>
-</tr>
-</table>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_desayuno; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_2_desayuno; ?></span><br><br>
 </td>
 <td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
-<table style="width: 100%; margin: 0 auto;">
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 1:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $dos_opcion_1_desayuno; ?>
-</td>
-</tr>
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 2:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $dos_opcion_2_desayuno; ?>
-</td>
-</tr>
-</table>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_1_desayuno; ?></span><br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $dos_opcion_2_desayuno; ?></span><br><br>
 </td>
 </tr>
 <tr>
@@ -268,7 +240,6 @@ $content = ob_get_clean();
 //CONFIGURACION DEL PDF
 try{
 $html2pdf = new HTML2PDF('P', 'A4', 'es', true, 'UTF-8', array(0, 0, 0, 0));
-$html2pdf->setDefaultFont('lucida-console');
 $html2pdf->pdf->SetDisplayMode('fullpage');
 $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
 $html2pdf->Output('Plan_detox.pdf');
