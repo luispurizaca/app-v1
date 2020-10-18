@@ -73,6 +73,7 @@ ob_start();
 <table style="width: 100%; padding: 10px; border-collapse: collapse; background-image: url(../../../vendors/images/marca-agua.png); background-size: contain; background-position: right; background-repeat: no-repeat;">
 <tr>
 <td style="vertical-align: top; width: 100%; height: 850px;">
+<!-- CONTENIDO -->
 <?php
 if($tipo_plan == 1){
 ?>
@@ -191,6 +192,7 @@ Horario
 <?php
 }
 ?>
+<!-- FIN -->
 </td>
 </tr>
 </table>
@@ -204,7 +206,8 @@ Horario
 </div>
 <table style="width: 100%; padding: 10px; border-collapse: collapse; background-image: url(../../../vendors/images/marca-agua.png); background-size: contain; background-position: right; background-repeat: no-repeat;">
 <tr>
-<td style="vertical-align: top; width: 100%; height: 850px;">
+<td style="vertical-align: middle; width: 100%; height: 850px;">
+<!-- CONTENIDO -->
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
 <td style="width: 100%; color: #111; font-weight: bold; text-align: left; padding: 10px; font-size: 12px; margin-top: 0; padding-top: 0;">
@@ -219,6 +222,7 @@ c/ 1 crdta de salvado de trigo.
 </td>
 </tr>
 </table>
+<!-- FIN -->
 </td>
 </tr>
 </table>
