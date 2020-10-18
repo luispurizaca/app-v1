@@ -214,7 +214,6 @@ c/ 1 crdta de salvado de trigo.
 </td>
 </tr>
 </table>
-<br>
 <div id="footerContent">
 <img src="../../../vendors/images/pdf-footer.png" style="width: 100%; height: auto;">
 </div>
