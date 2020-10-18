@@ -182,7 +182,7 @@ Horario
 </tr>
 </table>
 <div id="footerContent">
-<img src="../../../vendors/images/pdf-footer.png" style="width: 100%; height: auto;">
+<img src="http://www.nutrikatherinealfaro.com.pe/app-v1/vendors/images/pdf-footer.png" style="width: 100%; height: auto;">
 </div>
 
 <!-- PRIMERA PAGINA -->
@@ -212,7 +212,7 @@ c/ 1 crdta de salvado de trigo.
 </tr>
 </table>
 <div id="footerContent">
-<img src="../../../vendors/images/pdf-footer.png" style="width: 100%; height: auto;">
+<img src="http://www.nutrikatherinealfaro.com.pe/app-v1/vendors/images/pdf-footer.png" style="width: 100%; height: auto;">
 </div>
 <?php
 $content = ob_get_clean();
