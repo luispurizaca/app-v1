@@ -52,7 +52,7 @@ $dos_opcion_2_media_tarde = $row_plan_alimentacion['2_opcion_2_media_tarde'];
 $dos_opcion_1_cena = $row_plan_alimentacion['2_opcion_1_cena'];
 $dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
 
-$fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
+$fecha_plan = date('d/m/Y', strtotime($row_plan_alimentacion['fecha_envio']));
 $title_2 = $horario_1;
 $title_3 = $horario_2;
 
@@ -76,8 +76,24 @@ if($tipo_plan == 1){
 ?>
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
+<td style="width: 100%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;" colspan="3">
+<img src="vendors/images/icono.png" style="width: 200px; height: auto;">
+</td>
+</tr>
+<tr>
+<td style="width: 33.3%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
+Inicio: <?php echo $fecha_plan; ?>
+</td>
+<td style="width: 33.3%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
+Nombre: <?php echo $nombre_paciente; ?>
+</td>
+<td style="width: 33.3%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
+Prox. Cita: <?php echo $fecha_plan; ?>
+</td>
+</tr>
+<tr>
 <td style="width: 33.3%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
-<?php echo $title_1; ?>
+Horario
 </td>
 <td style="width: 33.3%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
 <?php echo $title_2; ?>
@@ -92,12 +108,14 @@ if($tipo_plan == 1){
 <span style="font-size: 14px;"><?php echo $hora_desayuno; ?></span>
 </td>
 <td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_desayuno; ?></span><br><br>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
 <span style="font-size: 13px;"><?php echo $uno_opcion_2_desayuno; ?></span><br><br>
 </td>
 <td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
 <span style="font-size: 13px;"><?php echo $dos_opcion_1_desayuno; ?></span><br><br>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
@@ -122,12 +140,14 @@ if($tipo_plan == 1){
 <span style="font-size: 14px;"><?php echo $hora_almuerzo; ?></span>
 </td>
 <td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_almuerzo; ?></span><br><br>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
 <span style="font-size: 13px;"><?php echo $uno_opcion_2_almuerzo; ?></span><br><br>
 </td>
 <td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
 <span style="font-size: 13px;"><?php echo $dos_opcion_1_almuerzo; ?></span><br><br>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
@@ -152,12 +172,14 @@ if($tipo_plan == 1){
 <span style="font-size: 14px;"><?php echo $hora_cena; ?></span>
 </td>
 <td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_cena; ?></span><br><br>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
 <span style="font-size: 13px;"><?php echo $uno_opcion_2_cena; ?></span><br><br>
 </td>
 <td style="width: 33.3%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
 <span style="font-size: 13px;"><?php echo $dos_opcion_1_cena; ?></span><br><br>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
