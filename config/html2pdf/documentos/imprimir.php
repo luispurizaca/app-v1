@@ -66,7 +66,36 @@ $nombre_paciente = $query_datos_paciente[0].' '.$query_datos_paciente[1];
 //CONTENIDO DEL PDF
 ob_start();
 ?>
+<style>
+/* Page margins are defined using CSS */
+@page {
+margin: 1cm;
+margin-top:2.5cm;
+margin-bottom: 2.5cm;
+
+/* Header frame starts within margin-top of @page */
+@frame header {
+-pdf-frame-content: headerContent; /* headerContent is the #id of the element */
+top: 1cm;
+margin-left: 1cm;
+margin-right:1cm;
+height:1cm;
+}
+
+/* Footer frame starts outside margin-bottom of @page */
+@frame footer {
+-pdf-frame-content: footerContent;
+bottom: 2cm;
+margin-left: 1cm;
+margin-right: 1cm;
+height: 1cm;
+}
+}
+</style>
 <page backtop="5mm" backbottom="5mm" backleft="5mm" backright="5mm">
+<div id="headerContent">
+<img src="../../../vendors/images/logo-completo.png" style="width: 160px; height: auto;">
+</div>
 <?php
 if($tipo_plan == 1){
 ?>
@@ -75,11 +104,6 @@ if($tipo_plan == 1){
 } else {
 ?>
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
-<tr>
-<td style="width: 100%; text-align: left; padding: 10px; padding-left: 45px;" colspan="3">
-<img src="../../../vendors/images/logo-completo.png" style="width: 160px; height: auto;">
-</td>
-</tr>
 <tr>
 <td style="width: 33.3%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
 Inicio: <?php echo $fecha_plan; ?>
@@ -190,6 +214,9 @@ Horario
 <?php
 }
 ?>
+<div id="footerContent">
+<img src="../../../vendors/images/pdf-footer.png" style="width: 100%; height: auto;">
+</div>
 </page>
 <?php
 $content = ob_get_clean();
