@@ -71,7 +71,7 @@ ob_start();
 </div>
 <table style="width: 100%; padding: 10px; border-collapse: collapse; background-image: url(../../../vendors/images/marca-agua.png); background-size: contain; background-position: right; background-repeat: no-repeat;">
 <tr>
-<td style="vertical-align: top; width: 100%; height: 900px;">
+<td style="vertical-align: top; width: 100%; height: 850px;">
 <?php
 if($tipo_plan == 1){
 ?>
@@ -81,13 +81,13 @@ if($tipo_plan == 1){
 ?>
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
-<td style="width: 20%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
+<td style="width: 20%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px; margin-top: 0; padding-top: 0;">
 Inicio: <?php echo $fecha_plan; ?>
 </td>
-<td style="width: 40%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
+<td style="width: 40%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px; margin-top: 0; padding-top: 0;">
 Nombre: <?php echo $nombre_paciente; ?>
 </td>
-<td style="width: 40%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
+<td style="width: 40%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px; margin-top: 0; padding-top: 0;">
 Prox. Cita: <?php echo $fecha_plan; ?>
 </td>
 </tr>
