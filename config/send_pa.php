@@ -4,6 +4,9 @@ require_once(__DIR__.'/class.phpmailer.php');
 require_once(__DIR__.'/class.smtp.php');
 require_once(__DIR__.'/conexion_bd.php');
 
+//FUNCION HTML PLANES
+require_once(__DIR__.'/fn_planes.php');
+
 //ID PLAN
 $id_plan = (int)$_GET['id'];
 $row_plan_alimentacion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE id = '$id_plan' LIMIT 1"));
@@ -84,191 +87,6 @@ Cualquier consulta, no dudes en escribirme<br><br>
 Saludos<br>
 Equipo ReKupera tu peso ideal by<br>
 Katherine Alfaro – Nutricionista y Coach<br>
-</td>
-</tr>
-<tr>
-<td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-top: 15px;" colspan="2"><b>Fecha: <?php echo $fecha_plan; ?></b></td>
-</tr>
-<tr>
-<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;">
-<?php echo $title_1; ?>
-</td>
-<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32;">
-<?php echo $title_2; ?>
-</td>
-<td style="color: #111; background: #95cf32; text-align: center; padding: 20px; font-size: 17px; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
-<?php echo $title_3; ?>
-</td>
-</tr>
-<tr>
-<td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
-<b style="font-size: 17px;">DESAYUNO<br><?php echo $hora_desayuno; ?></b>
-</td>
-<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
-<table style="width: 100%; margin: 0 auto;">
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 1:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $uno_opcion_1_desayuno; ?>
-</td>
-</tr>
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 2:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $uno_opcion_2_desayuno; ?>
-</td>
-</tr>
-</table>
-</td>
-<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
-<table style="width: 100%; margin: 0 auto;">
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 1:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $dos_opcion_1_desayuno; ?>
-</td>
-</tr>
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 2:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $dos_opcion_2_desayuno; ?>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
-<b style="font-size: 12px;">MEDIA MA&Ntilde;ANA<br><?php echo $hora_media_manana; ?></b>
-</td>
-<td style="vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
-<table style="width: 100%; margin: 0 auto;">
-<tr>
-<td style="width: 20%; text-align: center;"></td>
-<td style="width: 80%;">
-<?php echo $uno_opcion_1_media_manana; ?>
-</td>
-</tr>
-</table>
-</td>
-<td style="vertical-align: middle; padding: 20px; text-align: center; background: #E9E555; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
-<table style="width: 100%; margin: 0 auto;">
-<tr>
-<td style="width: 20%; text-align: center;"></td>
-<td style="width: 80%;">
-<?php echo $dos_opcion_1_media_manana; ?>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
-<b style="font-size: 17px;">ALMUERZO<br><?php echo $hora_almuerzo; ?></b>
-</td>
-<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
-<table style="width: 100%; margin: 0 auto;">
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 1:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $uno_opcion_1_almuerzo; ?>
-</td>
-</tr>
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 2:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $uno_opcion_2_almuerzo; ?>
-</td>
-</tr>
-</table>
-</td>
-<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
-<table style="width: 100%; margin: 0 auto;">
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 1:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $dos_opcion_1_almuerzo; ?>
-</td>
-</tr>
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 2:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $dos_opcion_2_almuerzo; ?>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
-<b style="font-size: 12px;">MEDIA TARDE<br><?php echo $hora_media_tarde; ?></b>
-</td>
-<td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32;">
-<?php echo $uno_opcion_1_media_tarde; ?>
-</td>
-<td style="vertical-align: middle; padding: 10px; text-align: center; background: #E9E555; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
-<?php echo $dos_opcion_1_media_tarde; ?>
-</td>
-</tr>
-<tr>
-<td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
-<b style="font-size: 17px;">CENA<br><?php echo $hora_cena; ?></b>
-</td>
-<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
-<table style="width: 100%; margin: 0 auto;">
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 1:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $uno_opcion_1_cena; ?>
-</td>
-</tr>
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 2:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $uno_opcion_2_cena; ?>
-</td>
-</tr>
-</table>
-</td>
-<td style="vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32; <?php echo $style_pa; ?>">
-<table style="width: 100%; margin: 0 auto;">
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 1:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $dos_opcion_1_cena; ?>
-</td>
-</tr>
-<tr>
-<td style="width: 20%; text-align: center;">
-<b>Opci&oacute;n 2:</b>
-</td>
-<td style="width: 80%;">
-<?php echo $dos_opcion_2_cena; ?>
-</td>
-</tr>
-</table>
 </td>
 </tr>
 </table>
@@ -357,13 +175,39 @@ $mail->addAddress($recipient);
 $mail->Subject    = $subject;
 $mail->Body       = $bodyHtml;
 
-//ADJUNTAR ARCHIVO ADJUNTO
-//$mail->AddAttachment($archivo_file, $archivo_file);
+//CONTENIDO DEL PDF
+ob_start();
+?>
+<page backtop="5mm" backbottom="5mm" backleft="5mm" backright="5mm">
+<?php
+$fn_html = html_plan($id_plan);
+echo $fn_html;
+?>
+</page>
+<?php
+$content = ob_get_clean();
+
+//CONFIGURACION DEL PDF
+try{
+$html2pdf = new HTML2PDF('P', 'A4', 'es', true, 'UTF-8', array(0, 0, 0, 0));
+$html2pdf->pdf->SetDisplayMode('fullpage');
+$html2pdf->writeHTML($content, isset($_GET['vuehtml']));
+$html2pdf->Output('Plan.pdf', 'F');
+
+//ADJUNTAR PDF
+$mail->AddAttachment('Plan.pdf', 'Plan.pdf');
+
+} catch(HTML2PDF_exception $e){
+echo $e;
+exit();
+exit();
+}
 
 $mail->Send();
 
 //ELIMINAR ARCHIVO ADJUNTO
-//unlink($archivo_file);
+unlink('Plan.pdf');
+
 echo "Email enviado.";
 mysqli_query($con, "UPDATE plan_alimentacion SET estado_envio = 1 WHERE id = '$id_plan' LIMIT 1");
 } catch (phpmailerException $e) {
