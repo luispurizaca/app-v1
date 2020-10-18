@@ -194,8 +194,7 @@ $html2pdf->pdf->SetDisplayMode('fullpage');
 $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
 $html2pdf->Output('Plan.pdf', 'F');
 
-//ADJUNTAR PDF
-$mail->AddAttachment('Plan.pdf', 'Plan.pdf');
+//ADJUNTAR PDF$mail->AddAttachment('Plan.pdf', 'Plan.pdf');
 
 } catch(HTML2PDF_exception $e){
 echo $e;
