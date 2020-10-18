@@ -197,7 +197,7 @@ Horario
 <br><br><br><br><br><br><br><br><br><br><br><br>
 <table style="width: 100%; padding: 10px; border-collapse: collapse; background-image: url(../../../vendors/images/marca-agua.png); background-size: contain; background-position: right; background-repeat: no-repeat;">
 <tr>
-<td style="width: 100%; color: #111; text-align: left; padding: 10px; font-size: 12px;">
+<td style="vertical-align: middle; width: 100%; color: #111; text-align: left; padding: 10px; font-size: 12px; height: 600px;">
 <b>Indicaciones:</b><br><br>
 1.-01 comida especial en la semana.<br>
 2.- Diariamente, consumir 10 vasos con agua (250ml) (incluyen las bebidas de entre comidas).<br>
