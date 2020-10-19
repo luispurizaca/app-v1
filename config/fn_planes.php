@@ -242,10 +242,9 @@ if(!empty($uno_opcion_2_desayuno)){
 } else {
 ?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
-<textarea id="fp_uno_opcion_1_desayuno" class="form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 100%; margin: auto;" rows="2"></textarea>
-<br>
+<textarea id="fp_uno_opcion_1_desayuno" class="form-control" type="text" style="font-size: 15px; text-align: left; font-weight: bold; width: 100%; margin: auto; height: 90px;"></textarea>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
-<textarea id="fp_uno_opcion_2_desayuno" class="form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 100%; margin: auto;" rows="2"></textarea>
+<textarea id="fp_uno_opcion_2_desayuno" class="form-control" type="text" style="font-size: 15px; text-align: left; font-weight: bold; width: 100%; margin: auto; height: 90px;"></textarea>
 <?php
 }
 ?>
