@@ -1139,8 +1139,10 @@ echo $alimentos_no_gustar;
 }
 ?>
 <div class="col-md-12">
+<div class="row">
+<div class="col-md-2">
 <b style="font-size: 13px;">Controles Disponibles:</b><br>
-<select style="font-size: 12px;">
+<select class="form-control" style="font-size: 12px;">
 <option value="0" selected="selected" hidden="hidden">Seleccione:</option>
 <?php
 $query_control_disponible = mysqli_query($con, "SELECT id, codigo FROM control WHERE id_paciente = '$id_paciente' AND id NOT IN (SELECT id_control FROM plan_alimentacion WHERE id_paciente = '$id_paciente') ORDER BY id DESC");
@@ -1153,6 +1155,16 @@ $cd_codigo = $row_cd[1];
 }
 ?>
 </select>
+</div>
+<div class="col-md-2">
+<b style="font-size: 13px;">Fecha de Env&iacute;o:</b><br>
+<input type="date" class="form-control" style="font-size: 12px;">
+</div>
+<div class="col-md-2">
+<b style="font-size: 13px;">Realizar el d&iacute;a:</b><br>
+<input type="date" class="form-control" style="font-size: 12px;">
+</div>
+</div>
 </div>
 <div class="col-md-12">
 <?php

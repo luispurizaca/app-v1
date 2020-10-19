@@ -304,13 +304,13 @@ if(!empty($uno_opcion_2_cena)){
 <table style="width: 100%; padding: 10px; border-collapse: collapse;">
 <tr>
 <td style="width: 20%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
-Inicio: <?php echo $fecha_plan; ?>
+Realizar el d&iacute;a: <?php echo $fecha_plan; ?>
 </td>
 <td style="width: 40%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
 Nombres: <?php echo $nombre_paciente; ?>
 </td>
 <td style="width: 40%; color: #111; font-weight: bold; text-align: center; padding: 10px; font-size: 12px;">
-Prox. Cita: <?php echo $fecha_plan; ?>
+
 </td>
 </tr>
 <tr>
