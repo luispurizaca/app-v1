@@ -1059,8 +1059,8 @@ $row_plan_alimentacion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM pl
 if(empty($id_tabla)){
 $nuevo_plan = 1;
 $editar = 0;
-$fecha_plan = date('Y-m-d');
-$fecha_envio = date('Y-m-d', strtotime(date('Y-m-d').'+ 1 days'));
+$fecha_plan = date('Y-m-d', strtotime(date('Y-m-d').'+ 1 days'));
+$fecha_envio = date('Y-m-d');
 $pa_id_control = 0;
 } else {
 $nuevo_plan = 0;
