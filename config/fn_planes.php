@@ -62,7 +62,103 @@ ob_start();
 <?php
 if($tipo_plan == 1){
 ?>
-
+<table style="width: 100%; padding: 10px; border-collapse: collapse;">
+<tr>
+<td style="width: 20%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
+COMIDAS
+</td>
+<td style="width: 80%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
+PLAN DETOX POR 1 D&Iacute;A
+</td>
+</tr>
+<tr>
+<td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<b style="font-size: 14px;">DESAYUNO</b><br>
+<span style="font-size: 14px;"><?php echo $hora_desayuno; ?></span>
+</td>
+<td style="width: 80%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<?php
+if(!empty($uno_opcion_1_desayuno)){
+?>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_desayuno; ?></span><br><br>
+<?php
+}
+if(!empty($uno_opcion_2_desayuno)){
+?>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_2_desayuno; ?></span><br><br>
+<?php
+}
+?>
+</td>
+</tr>
+<tr>
+<td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<b style="font-size: 12px;">MEDIA MA&Ntilde;ANA</b><br>
+<span style="font-size: 12px;"><?php echo $hora_media_manana; ?></span>
+</td>
+<td style="width: 80%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_media_manana; ?></span>
+</td>
+</tr>
+<tr>
+<td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<b style="font-size: 14px;">ALMUERZO</b><br>
+<span style="font-size: 14px;"><?php echo $hora_almuerzo; ?></span>
+</td>
+<td style="width: 80%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<?php
+if(!empty($uno_opcion_1_almuerzo)){
+?>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_almuerzo; ?></span><br><br>
+<?php
+}
+if(!empty($uno_opcion_2_almuerzo)){
+?>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_2_almuerzo; ?></span><br><br>
+<?php
+}
+?>
+</td>
+</tr>
+<tr>
+<td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<b style="font-size: 12px;">MEDIA TARDE</b><br>
+<span style="font-size: 12px;"><?php echo $hora_media_tarde; ?></span>
+</td>
+<td style="width: 80%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_media_tarde; ?></span>
+</td>
+</tr>
+<tr>
+<td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<b style="font-size: 14px;">CENA</b><br>
+<span style="font-size: 14px;"><?php echo $hora_cena; ?></span>
+</td>
+<td style="width: 80%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<br><br>
+<?php
+if(!empty($uno_opcion_1_cena)){
+?>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_1_cena; ?></span><br><br>
+<?php
+}
+if(!empty($uno_opcion_2_cena)){
+?>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<span style="font-size: 13px;"><?php echo $uno_opcion_2_cena; ?></span><br><br>
+<?php
+}
+?>
+</td>
+</tr>
+</table>
 <?php
 } else {
 ?>
@@ -96,17 +192,37 @@ Horario
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <br><br>
+<?php
+if(!empty($uno_opcion_1_desayuno)){
+?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_desayuno; ?></span><br><br>
+<?php
+}
+if(!empty($uno_opcion_2_desayuno)){
+?>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
 <span style="font-size: 13px;"><?php echo $uno_opcion_2_desayuno; ?></span><br><br>
+<?php
+}
+?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <br><br>
+<?php
+if(!empty($dos_opcion_1_desayuno)){
+?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
 <span style="font-size: 13px;"><?php echo $dos_opcion_1_desayuno; ?></span><br><br>
+<?php
+}
+if(!empty($dos_opcion_2_desayuno)){
+?>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
 <span style="font-size: 13px;"><?php echo $dos_opcion_2_desayuno; ?></span><br><br>
+<?php
+}
+?>
 </td>
 </tr>
 <tr>
@@ -128,17 +244,37 @@ Horario
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <br><br>
+<?php
+if(!empty($uno_opcion_1_almuerzo)){
+?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_almuerzo; ?></span><br><br>
+<?php
+}
+if(!empty($uno_opcion_2_almuerzo)){
+?>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
 <span style="font-size: 13px;"><?php echo $uno_opcion_2_almuerzo; ?></span><br><br>
+<?php
+}
+?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <br><br>
+<?php
+if(!empty($dos_opcion_1_almuerzo)){
+?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
 <span style="font-size: 13px;"><?php echo $dos_opcion_1_almuerzo; ?></span><br><br>
+<?php
+}
+if(!empty($dos_opcion_2_almuerzo)){
+?>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
 <span style="font-size: 13px;"><?php echo $dos_opcion_2_almuerzo; ?></span><br><br>
+<?php
+}
+?>
 </td>
 </tr>
 <tr>
@@ -160,17 +296,37 @@ Horario
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <br><br>
+<?php
+if(!empty($uno_opcion_1_cena)){
+?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_cena; ?></span><br><br>
+<?php
+}
+if(!empty($uno_opcion_2_cena)){
+?>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
 <span style="font-size: 13px;"><?php echo $uno_opcion_2_cena; ?></span><br><br>
+<?php
+}
+?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <br><br>
+<?php
+if(!empty($dos_opcion_1_cena)){
+?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
 <span style="font-size: 13px;"><?php echo $dos_opcion_1_cena; ?></span><br><br>
+<?php
+}
+if(!empty($dos_opcion_2_cena)){
+?>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
 <span style="font-size: 13px;"><?php echo $dos_opcion_2_cena; ?></span><br><br>
+<?php
+}
+?>
 </td>
 </tr>
 </table>
