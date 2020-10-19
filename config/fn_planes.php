@@ -536,7 +536,7 @@ if(empty($fn_nuevo_plan)){
 1.-01 comida especial en la semana.<br>
 2.- Diariamente, consumir 10 vasos con agua (250ml) (incluyen las bebidas de entre comidas).<br>
 3.- No a&ntilde;adir az&uacute;car rubia ni blanca a las preparaciones. De preferencia, utilizar Stevia.<br>
-3.- Si en caso, te diera hambre, consumir frutos secos (no pasas, ni man&iacute;), huevos, aceitunas, palta, tomar más bebida.<br>
+3.- Si en caso, te diera hambre, consumir frutos secos (no pasas, ni man&iacute;), huevos, aceitunas, palta, tomar m&aacute;s bebida.<br>
 4.- Dormir entre 6 a 8 horas diarias.<br>
 5.- Consumir diariamente al levantarse 01 vaso de agua caliente con zumo de 2 limones.<br>
 c/ 1 crdta de salvado de trigo.
@@ -544,13 +544,14 @@ c/ 1 crdta de salvado de trigo.
 } else {
 ?>
 <textarea id="fp_indicaciones" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 150px;">
-<b>Indicaciones:</b><br><br>
-1.-01 comida especial en la semana.<br>
-2.- Diariamente, consumir 10 vasos con agua (250ml) (incluyen las bebidas de entre comidas).<br>
-3.- No a&ntilde;adir az&uacute;car rubia ni blanca a las preparaciones. De preferencia, utilizar Stevia.<br>
-3.- Si en caso, te diera hambre, consumir frutos secos (no pasas, ni man&iacute;), huevos, aceitunas, palta, tomar más bebida.<br>
-4.- Dormir entre 6 a 8 horas diarias.<br>
-5.- Consumir diariamente al levantarse 01 vaso de agua caliente con zumo de 2 limones.<br>
+<b>Indicaciones:</b>
+
+1.-01 comida especial en la semana.
+2.- Diariamente, consumir 10 vasos con agua (250ml) (incluyen las bebidas de entre comidas).
+3.- No a&ntilde;adir az&uacute;car rubia ni blanca a las preparaciones. De preferencia, utilizar Stevia.
+3.- Si en caso, te diera hambre, consumir frutos secos (no pasas, ni man&iacute;), huevos, aceitunas, palta, tomar m&aacute;s bebida.
+4.- Dormir entre 6 a 8 horas diarias.
+5.- Consumir diariamente al levantarse 01 vaso de agua caliente con zumo de 2 limones.
 c/ 1 crdta de salvado de trigo.
 </textarea>
 <?php
