@@ -1115,6 +1115,7 @@ $title_3 = $horario_2;
 ?>
 <div class="row">
 <div class="col-md-12">
+<div style="background: rgba(242, 108, 60, 0.3); width: 100%; border-radius: 5px;">
 <b style="font-size: 13px;">Alimentos que no le gustan:</b><br>
 <span style="font-size: 13px;">
 <?php
@@ -1123,6 +1124,7 @@ $alimentos_no_gustar = $al[0];
 echo $alimentos_no_gustar;
 ?>
 </span><br><br>
+</div>
 </div>
 <div class="col-md-12">
 <?php
