@@ -1044,6 +1044,9 @@ exit();
 //3. NUEVO PLAN
 if($negocia_operacion == 3){
 
+//NUEVO PLAN
+require_once(__DIR__.'/fn_planes.php');
+
 //DATOS A CONSULTAR
 $id_paciente = (int)$_GET['id_paciente'];
 if(!empty($id_paciente)){
@@ -1112,6 +1115,11 @@ $title_3 = $horario_2;
 ?>
 <div class="row">
 <div class="col-md-9">
+<?php
+$fn_html = html_plan(0);
+echo $fn_html;
+?>
+<!--
 <table style="width: 100%; margin: 0 auto;">
 <tr>
 <td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-bottom: 0px;" colspan="2"><b><?php echo $nombre_paciente; ?></b></td>
@@ -1308,6 +1316,7 @@ $title_3 = $horario_2;
 </td>
 </tr>
 </table>
+-->
 </div>
 <div class="col-md-3">
 <table style="width: 90%; margin: 0 auto; margin-top: 110px;">
