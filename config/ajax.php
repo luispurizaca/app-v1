@@ -1115,7 +1115,8 @@ $title_3 = $horario_2;
 ?>
 <div class="row">
 <div class="col-md-12">
-<div style="background: rgba(242, 108, 60, 0.3); width: 100%; border-radius: 5px;">
+<div style="background: rgba(242, 108, 60, 0.2); width: 100%; border-radius: 5px; padding-left: 10px; margin-bottom: 10px;">
+<br>
 <b style="font-size: 13px;">Alimentos que no le gustan:</b><br>
 <span style="font-size: 13px;">
 <?php
@@ -1123,7 +1124,8 @@ $al = mysqli_fetch_array(mysqli_query($con, "SELECT alimentos_no_gustar FROM his
 $alimentos_no_gustar = $al[0];
 echo $alimentos_no_gustar;
 ?>
-</span><br><br>
+</span>
+<br>
 </div>
 </div>
 <div class="col-md-12">
