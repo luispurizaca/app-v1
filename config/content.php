@@ -3644,8 +3644,8 @@ if($view_controller == 3){
 <table style="width: 400px; margin: 0 auto; margin-top: 40px;">
 <tr>
 <td style="width: 50% !important; text-align: left; padding-left: 10px;">
-<h1></h1>
-<span style="color: #111; font-weight: bold; font-size: 13px;">Buscar un socio</span>
+<h1>Buscar un socio<</h1>
+<span style="color: #111; font-weight: bold; font-size: 13px;">Nombres o N&#176; de Socio:</span>
 </td>
 <td style="width: 50% !important; text-align: left; padding-left: 5px;">
 <input id="form_busqueda_paciente" name="form_busqueda_paciente" class="form-control n-form-control" type="text" placeholder="Buscar:">
