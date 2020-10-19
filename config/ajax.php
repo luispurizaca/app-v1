@@ -1116,11 +1116,10 @@ $title_3 = $horario_2;
 <div class="row">
 <div class="col-md-9">
 <?php
-$array = array(0);
+$array = array(0, 1);
 $fn_html = html_plan($array);
 echo $fn_html;
 ?>
-<!--
 <table style="width: 100%; margin: 0 auto;">
 <tr>
 <td style="color: #111; padding: 20px; padding-left: 0; font-size: 17px; text-align: left; padding-bottom: 0px;" colspan="2"><b><?php echo $nombre_paciente; ?></b></td>
@@ -1317,7 +1316,6 @@ echo $fn_html;
 </td>
 </tr>
 </table>
--->
 </div>
 <div class="col-md-3">
 <table style="width: 90%; margin: 0 auto; margin-top: 110px;">

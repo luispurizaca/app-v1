@@ -3,6 +3,7 @@ function html_plan($array){
 
 //PARAMETROS ARRAY
 $id_plan = (int)$array[0];
+$fn_nuevo_plan = (int)$array[1];
 
 global $con;
 
@@ -183,10 +184,26 @@ Prox. Cita: <?php echo $fecha_plan; ?>
 Horario
 </td>
 <td style="width: 40%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
-<?php echo $title_2; ?>
+<?php
+if(empty($fn_nuevo_plan)){
+echo $title_2; 
+} else {
+?>
+<input id="fp_title_2" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold;">
+<?php
+}
+?>
 </td>
 <td style="width: 40%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
-<?php echo $title_3; ?>
+<?php
+if(empty($fn_nuevo_plan)){
+echo $title_3; 
+} else {
+?>
+<input id="fp_title_3" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold;">
+<?php
+}
+?>
 </td>
 </tr>
 <tr>
