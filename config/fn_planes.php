@@ -224,6 +224,7 @@ if(empty($fn_nuevo_plan)){
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <br><br>
 <?php
+if(empty($fn_nuevo_plan)){
 if(!empty($uno_opcion_1_desayuno)){
 ?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
@@ -234,6 +235,16 @@ if(!empty($uno_opcion_2_desayuno)){
 ?>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
 <span style="font-size: 13px;"><?php echo $uno_opcion_2_desayuno; ?></span><br><br>
+<?php
+}
+} else {
+?>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<textarea id="fp_uno_opcion_1_desayuno" class="form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 100%; margin: auto;" rows="3"></textarea>
+<br><br>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<textarea id="fp_uno_opcion_2_desayuno" class="form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 100%; margin: auto;" rows="3"></textarea>
+<br><br>
 <?php
 }
 ?>
