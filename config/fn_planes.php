@@ -181,7 +181,7 @@ Prox. Cita: <?php echo $fecha_plan; ?>
 </tr>
 <tr>
 <td style="width: 20%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
-Horario
+Comidas
 </td>
 <td style="width: 40%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
 <?php
@@ -209,7 +209,17 @@ echo $title_3;
 <tr>
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
 <b style="font-size: 14px;">DESAYUNO</b><br>
+<?php
+if(empty($fn_nuevo_plan)){
+?>
 <span style="font-size: 14px;"><?php echo $hora_desayuno; ?></span>
+<?php
+} else {
+?>
+<input id="fp_hora_desayuno" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 50%; margin: auto;">
+<?php
+}
+?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <br><br>
