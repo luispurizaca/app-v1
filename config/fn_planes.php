@@ -336,6 +336,9 @@ if(empty($fn_nuevo_plan)){
 ?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<?php
+if(empty($fn_nuevo_plan)){
+?>
 <br><br>
 <?php
 if(!empty($uno_opcion_1_almuerzo)){
@@ -350,9 +353,20 @@ if(!empty($uno_opcion_2_almuerzo)){
 <span style="font-size: 13px;"><?php echo $uno_opcion_2_almuerzo; ?></span><br><br>
 <?php
 }
+} else {
+?>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<textarea id="fp_uno_opcion_1_almuerzo" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<textarea id="fp_uno_opcion_2_almuerzo" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<?php
+}
 ?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<?php
+if(empty($fn_nuevo_plan)){
+?>
 <br><br>
 <?php
 if(!empty($dos_opcion_1_almuerzo)){
@@ -365,6 +379,14 @@ if(!empty($dos_opcion_2_almuerzo)){
 ?>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
 <span style="font-size: 13px;"><?php echo $dos_opcion_2_almuerzo; ?></span><br><br>
+<?php
+}
+} else {
+?>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<textarea id="fp_dos_opcion_1_almuerzo" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<textarea id="fp_dos_opcion_2_almuerzo" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
 <?php
 }
 ?>
@@ -428,6 +450,9 @@ if(empty($fn_nuevo_plan)){
 ?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<?php
+if(empty($fn_nuevo_plan)){
+?>
 <br><br>
 <?php
 if(!empty($uno_opcion_1_cena)){
@@ -442,9 +467,20 @@ if(!empty($uno_opcion_2_cena)){
 <span style="font-size: 13px;"><?php echo $uno_opcion_2_cena; ?></span><br><br>
 <?php
 }
+} else {
+?>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<textarea id="fp_uno_opcion_1_cena" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<textarea id="fp_uno_opcion_2_cena" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<?php
+}
 ?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<?php
+if(empty($fn_nuevo_plan)){
+?>
 <br><br>
 <?php
 if(!empty($dos_opcion_1_cena)){
@@ -457,6 +493,14 @@ if(!empty($dos_opcion_2_cena)){
 ?>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
 <span style="font-size: 13px;"><?php echo $dos_opcion_2_cena; ?></span><br><br>
+<?php
+}
+} else {
+?>
+<b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
+<textarea id="fp_dos_opcion_1_cena" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
+<textarea id="fp_dos_opcion_2_cena" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
 <?php
 }
 ?>
