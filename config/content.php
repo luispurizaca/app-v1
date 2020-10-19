@@ -3643,8 +3643,12 @@ if($view_controller == 3){
 <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
 <table style="width: 400px; margin: 0 auto; margin-top: 40px;">
 <tr>
+<td style="width: 100% !important; text-align: center;" colspan="2">
+<h4 style="color: #95cf32;">Buscar un socio</h4>
+</td>
+</tr>
+<tr>
 <td style="width: 50% !important; text-align: left; padding-left: 10px;">
-<h1>Buscar un socio<</h1>
 <span style="color: #111; font-weight: bold; font-size: 13px;">Nombres o N&#176; de Socio:</span>
 </td>
 <td style="width: 50% !important; text-align: left; padding-left: 5px;">
