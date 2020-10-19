@@ -386,10 +386,30 @@ if(empty($fn_nuevo_plan)){
 ?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<?php
+if(empty($fn_nuevo_plan)){
+?>
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_media_tarde; ?></span>
+<?php
+} else {
+?>
+<textarea id="fp_uno_opcion_1_media_tarde" class="form-control" type="text" style="font-size: 11px; text-align: center; margin: auto; height: 30px;"></textarea>
+<?php
+}
+?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<?php
+if(empty($fn_nuevo_plan)){
+?>
 <span style="font-size: 13px;"><?php echo $dos_opcion_1_media_tarde; ?></span>
+<?php
+} else {
+?>
+<textarea id="fp_dos_opcion_1_media_tarde" class="form-control" type="text" style="font-size: 11px; text-align: center; margin: auto; height: 30px;"></textarea>
+<?php
+}
+?>
 </td>
 </tr>
 <tr>
