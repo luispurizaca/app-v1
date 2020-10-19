@@ -3643,16 +3643,15 @@ if($view_controller == 3){
 <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
 <table style="width: 400px; margin: 0 auto; margin-top: 40px;">
 <tr>
-<td style="width: 100% !important; text-align: center;" colspan="2">
-<h4 style="color: #95cf32;">Buscar un socio</h4>
-</td>
-</tr>
-<tr>
-<td style="width: 50% !important; text-align: left; padding-left: 10px;">
-<span style="color: #111; font-weight: bold; font-size: 13px;">Nombres o N&#176; de Socio:</span>
-</td>
-<td style="width: 50% !important; text-align: left; padding-left: 5px;">
-<input id="form_busqueda_paciente" name="form_busqueda_paciente" class="form-control n-form-control" type="text" placeholder="Buscar:">
+<td style="width: 100% !important; text-align: center;">
+<h4 style="color: #95cf32; font-size: 15px; font-weight: bold;">
+<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+</svg>
+&nbsp;BUSCAR UN SOCIO:
+</h4><br>
+<input id="form_busqueda_paciente" name="form_busqueda_paciente" class="form-control n-form-control" type="text" placeholder="N&#176; de socio / Nombres:">
 <div id="resultado_busqueda"></div>
 <script>
 //AUTOCOMPLETE
