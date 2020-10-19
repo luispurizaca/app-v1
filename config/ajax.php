@@ -1049,75 +1049,56 @@ require_once(__DIR__.'/fn_planes.php');
 
 //DATOS A CONSULTAR
 $id_paciente = (int)$_GET['id_paciente'];
-if(!empty($id_paciente)){
-$query_datos_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT nombres, apellidos FROM usuario WHERE id_tipo_usuario = 2 AND id = '$id_paciente' LIMIT 1"));
-$nombre_paciente = $query_datos_paciente[0].' '.$query_datos_paciente[1];
-}
-
 $id_plan = (int)$_GET['id_plan'];
-
-//DEPENDIENTES DEL TIPO DE PLAN DA
-if($id_plan == 1){
-$title_1 = '';
-$title_2 = 'PLAN DETOX';
-$title_3 = '';
-$style_pa = 'display: none;';
-} else {
-$title_1 = 'HORARIO';
-$title_2 = '';
-$title_3 = '';
-$style_pa = '';
-}
-
 $id_tabla = (int)$_GET['id_tabla'];
 
 //DATOS DEL PLAN DE ALIMENTACION
 $row_plan_alimentacion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE id = '$id_tabla' ORDER BY id DESC LIMIT 1"));
 
-$horario_1 = $row_plan_alimentacion['horario_1'];
-$horario_2 = $row_plan_alimentacion['horario_2'];
-$hora_desayuno = $row_plan_alimentacion['hora_desayuno'];
-$hora_media_manana = $row_plan_alimentacion['hora_media_manana'];
-$hora_almuerzo = $row_plan_alimentacion['hora_almuerzo'];
-$hora_media_tarde = $row_plan_alimentacion['hora_media_tarde'];
-$hora_cena = $row_plan_alimentacion['hora_cena'];
-
-$uno_opcion_1_desayuno = $row_plan_alimentacion['1_opcion_1_desayuno'];
-$uno_opcion_2_desayuno = $row_plan_alimentacion['1_opcion_2_desayuno'];
-$uno_opcion_1_media_manana = $row_plan_alimentacion['1_opcion_1_media_manana'];
-$uno_opcion_2_media_manana = $row_plan_alimentacion['1_opcion_2_media_manana'];
-$uno_opcion_1_almuerzo = $row_plan_alimentacion['1_opcion_1_almuerzo'];
-$uno_opcion_2_almuerzo = $row_plan_alimentacion['1_opcion_2_almuerzo'];
-$uno_opcion_1_media_tarde = $row_plan_alimentacion['1_opcion_1_media_tarde'];
-$uno_opcion_2_media_tarde = $row_plan_alimentacion['1_opcion_2_media_tarde'];
-$uno_opcion_1_cena = $row_plan_alimentacion['1_opcion_1_cena'];
-$uno_opcion_2_cena = $row_plan_alimentacion['1_opcion_2_cena'];
-
-$dos_opcion_1_desayuno = $row_plan_alimentacion['2_opcion_1_desayuno'];
-$dos_opcion_2_desayuno = $row_plan_alimentacion['2_opcion_2_desayuno'];
-$dos_opcion_1_media_manana = $row_plan_alimentacion['2_opcion_1_media_manana'];
-$dos_opcion_2_media_manana = $row_plan_alimentacion['2_opcion_2_media_manana'];
-$dos_opcion_1_almuerzo = $row_plan_alimentacion['2_opcion_1_almuerzo'];
-$dos_opcion_2_almuerzo = $row_plan_alimentacion['2_opcion_2_almuerzo'];
-$dos_opcion_1_media_tarde = $row_plan_alimentacion['2_opcion_1_media_tarde'];
-$dos_opcion_2_media_tarde = $row_plan_alimentacion['2_opcion_2_media_tarde'];
-$dos_opcion_1_cena = $row_plan_alimentacion['2_opcion_1_cena'];
-$dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
-
 //FECHA DE PLAN
 if(empty($id_tabla)){
 $nuevo_plan = 1;
 $editar = 0;
-$fecha_plan = date('Y-m-d', strtotime(date('Y-m-d').'+ 1 days'));
+$fecha_plan = date('Y-m-d');
+$fecha_envio = date('Y-m-d', strtotime(date('Y-m-d').'+ 1 days'));
+$pa_id_control = 0;
 } else {
 $nuevo_plan = 0;
 $editar = 1;
-$fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
-$title_2 = $horario_1;
-$title_3 = $horario_2;
+$fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_realizar']));
+$fecha_envio = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
+$pa_id_control = (int)$row_plan_alimentacion['id_control'];
 }
 ?>
 <div class="row">
+<div class="col-md-12">
+<div class="row">
+<div class="col-md-2">
+<b style="font-size: 13px;">Controles Disponibles:</b><br>
+<select id="fn_id_control" class="form-control" style="font-size: 12px;">
+<option value="0" selected="selected" hidden="hidden">Seleccione:</option>
+<?php
+$query_control_disponible = mysqli_query($con, "SELECT id, codigo FROM control WHERE id_paciente = '$id_paciente' AND id NOT IN (SELECT id_control FROM plan_alimentacion WHERE id_paciente = '$id_paciente') ORDER BY id DESC");
+while($row_cd = mysqli_fetch_array($query_control_disponible)){
+$cd_id = (int)$row_cd[0];
+$cd_codigo = $row_cd[1];
+?>
+<option value="<?php echo $cd_id; ?>" <?php if($pa_id_control == $cd_id){ ?> selected="selected" <?php } ?>><?php echo $cd_codigo; ?></option>
+<?php
+}
+?>
+</select>
+</div>
+<div class="col-md-2">
+<b style="font-size: 13px;">Fecha de Env&iacute;o:</b><br>
+<input id="fn_fecha_envio" type="date" class="form-control" style="font-size: 12px;" value="<?php echo $fecha_plan; ?>">
+</div>
+<div class="col-md-2">
+<b style="font-size: 13px;">Realizar el d&iacute;a:</b><br>
+<input id="id_fecha_pa" type="date" class="form-control" style="font-size: 12px;" value="<?php echo $fecha_plan; ?>">
+</div>
+</div>
+</div>
 <?php
 $al = mysqli_fetch_array(mysqli_query($con, "SELECT alimentos_no_gustar FROM historia WHERE id_paciente = '$id_paciente' LIMIT 1"));
 $alimentos_no_gustar = $al[0];
@@ -1138,34 +1119,6 @@ echo $alimentos_no_gustar;
 <?php
 }
 ?>
-<div class="col-md-12">
-<div class="row">
-<div class="col-md-2">
-<b style="font-size: 13px;">Controles Disponibles:</b><br>
-<select class="form-control" style="font-size: 12px;">
-<option value="0" selected="selected" hidden="hidden">Seleccione:</option>
-<?php
-$query_control_disponible = mysqli_query($con, "SELECT id, codigo FROM control WHERE id_paciente = '$id_paciente' AND id NOT IN (SELECT id_control FROM plan_alimentacion WHERE id_paciente = '$id_paciente') ORDER BY id DESC");
-while($row_cd = mysqli_fetch_array($query_control_disponible)){
-$cd_id = (int)$row_cd[0];
-$cd_codigo = $row_cd[1];
-?>
-<option value="<?php echo $cd_id; ?>"><?php echo $cd_codigo; ?></option>
-<?php
-}
-?>
-</select>
-</div>
-<div class="col-md-2">
-<b style="font-size: 13px;">Fecha de Env&iacute;o:</b><br>
-<input type="date" class="form-control" style="font-size: 12px;">
-</div>
-<div class="col-md-2">
-<b style="font-size: 13px;">Realizar el d&iacute;a:</b><br>
-<input type="date" class="form-control" style="font-size: 12px;">
-</div>
-</div>
-</div>
 <div class="col-md-12">
 <?php
 $array = array($id_tabla, $nuevo_plan, $id_plan, $id_paciente, $editar);
@@ -1206,6 +1159,8 @@ var fp_dos_opcion_2_cena = $('#fp_dos_opcion_2_cena').val();
 var id_paciente = <?php echo $id_paciente; ?>;
 var id_plan = <?php echo $id_plan; ?>;
 var id_tabla = <?php echo $id_tabla; ?>;
+var fn_id_control = $('#fn_id_control').val();
+var fn_fecha_envio = $('#fn_fecha_envio').val();
 
 $.ajax({
 type: 'POST',
@@ -1238,7 +1193,9 @@ fp_dos_opcion_1_cena : fp_dos_opcion_1_cena,
 fp_dos_opcion_2_cena : fp_dos_opcion_2_cena,
 id_paciente : id_paciente,
 id_plan : id_plan,
-id_tabla : id_tabla
+id_tabla : id_tabla,
+fn_id_control : fn_id_control,
+fn_fecha_envio : fn_fecha_envio
 },
 success: function(datos){
 complete_datos(id_paciente);
