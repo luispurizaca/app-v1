@@ -242,9 +242,9 @@ if(!empty($uno_opcion_2_desayuno)){
 } else {
 ?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
-<textarea id="fp_uno_opcion_1_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; width: 100%; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_uno_opcion_1_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
-<textarea id="fp_uno_opcion_2_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; width: 100%; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_uno_opcion_2_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
 <?php
 }
 ?>
@@ -270,9 +270,9 @@ if(!empty($dos_opcion_2_desayuno)){
 } else {
 ?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
-<textarea id="fp_dos_opcion_1_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; width: 100%; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_dos_opcion_1_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
-<textarea id="fp_dos_opcion_2_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; width: 100%; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_dos_opcion_2_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
 <?php
 }
 ?>
@@ -294,7 +294,17 @@ if(empty($fn_nuevo_plan)){
 ?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
+<?php
+if(empty($fn_nuevo_plan)){
+?>
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_media_manana; ?></span>
+<?php
+} else {
+?>
+<input id="fp_uno_opcion_1_media_manana" class="form-control n-form-control" type="text" style="font-size: 11px; text-align: center;">
+<?php
+}
+?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <span style="font-size: 13px;"><?php echo $dos_opcion_1_media_manana; ?></span>
