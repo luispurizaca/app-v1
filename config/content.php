@@ -1598,16 +1598,18 @@ $id_paciente = (int)$_GET['id_paciente'];
 <table style="width: 100% !important; margin: 0 auto;">
 <tr>
 <td class="td-title" style="width: 11.11% !important;">N&#176;</td>
+<td class="td-title" style="width: 11.11% !important;">Fecha a Realizar</td>
 <td class="td-title" style="width: 11.11% !important;">Fecha de env&iacute;o</td>
 <td class="td-title" style="width: 11.11% !important;">Estado</td>
 <td class="td-title" style="width: 11.11% !important;">Acciones</td>
 </tr>
 <?php
-$query_planes_de = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 1 AND id_paciente = '$id_paciente' ORDER BY id DESC");
-while($row_pa = mysqli_fetch_array($query_planes_de)){
-$codigo_plan_de = $row_pa['codigo'];
+$query_planes = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 1 AND id_paciente = '$id_paciente' ORDER BY id DESC");
+while($row_pa = mysqli_fetch_array($query_planes)){
+$codigo_plan = $row_pa['codigo'];
 $codigo_id_tabla = (int)$row_pa['id'];
-$fecha_envio_pd = date('Y-m-d', strtotime($row_pa['fecha_envio']));
+$fecha_realizar = date('d/m/Y', strtotime($row_pa['fecha_realizar']));
+$fecha_envio = date('d/m/Y', strtotime($row_pa['fecha_envio']));
 $estado_envio = (int)$row_pa['estado_envio'];
 if($estado_envio == 1){
 $texto_envio = '<span style="color: darkgreen;">Enviado</span>';
@@ -1616,20 +1618,9 @@ $texto_envio = '<span style="color: red;">Pendiente</span>';
 }
 ?>
 <tr class="tr-hover">
-<td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
-<td class="td-content" style="width: 11.11% !important;">
-<?php
-if($estado_envio == 1){
-?>
-<?php echo $fecha_envio_pd; ?>
-<?php
-} else {
-?>
-<input type="date" style="font-size: 11px; font-weight: bold; width: 120px; text-align: center;" id="id_fecha_pa" value="<?php echo $fecha_envio_pd; ?>">
-<?php
-}
-?>
-</td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_realizar; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_envio; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $texto_envio; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
 <button type="button" style="font-size: 15px; background: none; color: orange; padding: 0px; border: none;" onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1, <?php echo $codigo_id_tabla; ?>)">
@@ -1638,12 +1629,14 @@ if($estado_envio == 1){
 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
 </svg>
 </button>
+<!--
 <button type="button" style="font-size: 15px; background: none; color: red; padding: 0px; border: none;">
 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
 </svg>
 </button>
+-->
 <button type="button" style="font-size: 15px; background: none; color: darkblue; padding: 0px; border: none;" onclick="enviar_pa(<?php echo $codigo_id_tabla; ?>)">
 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cursor-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"/>
@@ -1670,16 +1663,18 @@ if($estado_envio == 1){
 <table style="width: 100% !important; margin: 0 auto;">
 <tr>
 <td class="td-title" style="width: 11.11% !important;">N&#176;</td>
+<td class="td-title" style="width: 11.11% !important;">Fecha a Realizar</td>
 <td class="td-title" style="width: 11.11% !important;">Fecha de env&iacute;o</td>
 <td class="td-title" style="width: 11.11% !important;">Estado</td>
 <td class="td-title" style="width: 11.11% !important;">Acciones</td>
 </tr>
 <?php
-$query_planes_da = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 2 AND id_paciente = '$id_paciente' ORDER BY id DESC");
-while($row_pa = mysqli_fetch_array($query_planes_da)){
-$codigo_plan_de = $row_pa['codigo'];
+$query_planes = mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE tipo_plan = 2 AND id_paciente = '$id_paciente' ORDER BY id DESC");
+while($row_pa = mysqli_fetch_array($query_planes)){
+$codigo_plan = $row_pa['codigo'];
 $codigo_id_tabla = (int)$row_pa['id'];
-$fecha_envio_pd = date('Y-m-d', strtotime($row_pa['fecha_envio']));
+$fecha_realizar = date('d/m/Y', strtotime($row_pa['fecha_realizar']));
+$fecha_envio = date('d/m/Y', strtotime($row_pa['fecha_envio']));
 $estado_envio = (int)$row_pa['estado_envio'];
 if($estado_envio == 1){
 $texto_envio = '<span style="color: darkgreen;">Enviado</span>';
@@ -1688,34 +1683,25 @@ $texto_envio = '<span style="color: red;">Pendiente</span>';
 }
 ?>
 <tr class="tr-hover">
-<td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan_de; ?></td>
-<td class="td-content" style="width: 11.11% !important;">
-<?php
-if($estado_envio == 1){
-?>
-<?php echo $fecha_envio_pd; ?>
-<?php
-} else {
-?>
-<input type="date" style="font-size: 11px; font-weight: bold; width: 120px; text-align: center;" id="id_fecha_pa" value="<?php echo $fecha_envio_pd; ?>">
-<?php
-}
-?>
-</td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_realizar; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_envio; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $texto_envio; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
-<button type="button" style="font-size: 15px; background: none; color: orange; padding: 0px; border: none;" onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 2, <?php echo $codigo_id_tabla; ?>)">
+<button type="button" style="font-size: 15px; background: none; color: orange; padding: 0px; border: none;" onclick="agregar_plan_paciente(<?php echo $id_paciente; ?>, 1, <?php echo $codigo_id_tabla; ?>)">
 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
 </svg>
 </button>
+<!--
 <button type="button" style="font-size: 15px; background: none; color: red; padding: 0px; border: none;">
 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
 <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
 </svg>
 </button>
+-->
 <button type="button" style="font-size: 15px; background: none; color: darkblue; padding: 0px; border: none;" onclick="enviar_pa(<?php echo $codigo_id_tabla; ?>)">
 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cursor-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"/>
