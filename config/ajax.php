@@ -1125,12 +1125,12 @@ $alimentos_no_gustar = $al[0];
 echo $alimentos_no_gustar;
 ?>
 </span>
-<br>
+<br><br>
 </div>
 </div>
 <div class="col-md-12">
 <?php
-$array = array(0, 1);
+$array = array(0, 1, $id_plan, $id_paciente);
 $fn_html = html_plan($array);
 echo $fn_html;
 ?>

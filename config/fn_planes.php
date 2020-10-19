@@ -4,9 +4,20 @@ function html_plan($array){
 //PARAMETROS ARRAY
 $id_plan = (int)$array[0];
 $fn_nuevo_plan = (int)$array[1];
+$fn_tipo_plan = (int)$array[2];
+$fn_id_paciente = (int)$array[3];
 
+//VARIABLE DE CONEXION
 global $con;
 
+//SI ES NUEVO PLAN
+if(empty($id_plan)){
+
+$tipo_plan = $fn_tipo_plan;
+$id_paciente = $fn_id_paciente;
+} else {
+
+//CONSULTA DATOS PLAN
 $row_plan_alimentacion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE id = '$id_plan' LIMIT 1"));
 
 $tipo_plan = (int)$row_plan_alimentacion['tipo_plan'];
@@ -46,8 +57,11 @@ $fecha_plan = date('d/m/Y', strtotime($row_plan_alimentacion['fecha_envio']));
 $title_2 = $horario_1;
 $title_3 = $horario_2;
 
-//DATOS DEL PACIENTE
+//ID DEL PACIENTE
 $id_paciente = (int)$row_plan_alimentacion['id_paciente'];
+}
+
+//DATOS DEL PACIENTE
 $query_datos_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT nombres, apellidos, correo FROM usuario WHERE id_tipo_usuario = 2 AND id = '$id_paciente' LIMIT 1"));
 
 //NOMBRE DEL PACIENTE
