@@ -203,7 +203,7 @@ if(empty($fn_nuevo_plan)){
 echo $title_2; 
 } else {
 ?>
-<input id="fp_title_2" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold;">
+<input id="fp_title_2" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold;" value="<?php echo $title_2; ?>">
 <?php
 }
 ?>
@@ -214,7 +214,7 @@ if(empty($fn_nuevo_plan)){
 echo $title_3; 
 } else {
 ?>
-<input id="fp_title_3" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold;">
+<input id="fp_title_3" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold;" value="<?php echo $title_3; ?>">
 <?php
 }
 ?>
@@ -230,7 +230,7 @@ if(empty($fn_nuevo_plan)){
 <?php
 } else {
 ?>
-<input id="fp_hora_desayuno" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;">
+<input id="fp_hora_desayuno" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;" value="<?php echo $hora_desayuno; ?>">
 <?php
 }
 ?>
@@ -256,9 +256,13 @@ if(!empty($uno_opcion_2_desayuno)){
 } else {
 ?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
-<textarea id="fp_uno_opcion_1_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_uno_opcion_1_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;">
+<?php echo $uno_opcion_1_desayuno; ?>
+</textarea>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
-<textarea id="fp_uno_opcion_2_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_uno_opcion_2_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;">
+<?php echo $uno_opcion_2_desayuno; ?>
+</textarea>
 <?php
 }
 ?>
@@ -284,9 +288,13 @@ if(!empty($dos_opcion_2_desayuno)){
 } else {
 ?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
-<textarea id="fp_dos_opcion_1_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_dos_opcion_1_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;">
+<?php echo $dos_opcion_1_desayuno; ?>
+</textarea>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
-<textarea id="fp_dos_opcion_2_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_dos_opcion_2_desayuno" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;">
+<?php echo $dos_opcion_2_desayuno; ?>
+</textarea>
 <?php
 }
 ?>
@@ -302,7 +310,7 @@ if(empty($fn_nuevo_plan)){
 <?php
 } else {
 ?>
-<input id="fp_hora_media_manana" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;">
+<input id="fp_hora_media_manana" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;" value="<?php echo $hora_media_manana; ?>">
 <?php
 }
 ?>
@@ -315,7 +323,9 @@ if(empty($fn_nuevo_plan)){
 <?php
 } else {
 ?>
-<textarea id="fp_uno_opcion_1_media_manana" class="form-control" type="text" style="font-size: 11px; text-align: center; margin: auto; height: 30px;"></textarea>
+<textarea id="fp_uno_opcion_1_media_manana" class="form-control" type="text" style="font-size: 11px; text-align: center; margin: auto; height: 30px;">
+<?php echo $uno_opcion_1_media_manana; ?>
+</textarea>
 <?php
 }
 ?>
@@ -328,7 +338,9 @@ if(empty($fn_nuevo_plan)){
 <?php
 } else {
 ?>
-<textarea id="fp_dos_opcion_1_media_manana" class="form-control" type="text" style="font-size: 11px; text-align: center; margin: auto; height: 30px;"></textarea>
+<textarea id="fp_dos_opcion_1_media_manana" class="form-control" type="text" style="font-size: 11px; text-align: center; margin: auto; height: 30px;">
+<?php echo $dos_opcion_1_media_manana; ?>
+</textarea>
 <?php
 }
 ?>
@@ -344,7 +356,7 @@ if(empty($fn_nuevo_plan)){
 <?php
 } else {
 ?>
-<input id="fp_hora_almuerzo" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;">
+<input id="fp_hora_almuerzo" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;" value="<?php echo $hora_almuerzo; ?>">
 <?php
 }
 ?>
@@ -370,9 +382,13 @@ if(!empty($uno_opcion_2_almuerzo)){
 } else {
 ?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
-<textarea id="fp_uno_opcion_1_almuerzo" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_uno_opcion_1_almuerzo" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;">
+<?php echo $uno_opcion_1_almuerzo; ?>
+</textarea>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
-<textarea id="fp_uno_opcion_2_almuerzo" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_uno_opcion_2_almuerzo" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;">
+<?php echo $uno_opcion_2_almuerzo; ?>
+</textarea>
 <?php
 }
 ?>
@@ -398,9 +414,13 @@ if(!empty($dos_opcion_2_almuerzo)){
 } else {
 ?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
-<textarea id="fp_dos_opcion_1_almuerzo" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_dos_opcion_1_almuerzo" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;">
+<?php echo $dos_opcion_1_almuerzo; ?>
+</textarea>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
-<textarea id="fp_dos_opcion_2_almuerzo" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_dos_opcion_2_almuerzo" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;">
+<?php echo $dos_opcion_2_almuerzo; ?>
+</textarea>
 <?php
 }
 ?>
@@ -416,7 +436,7 @@ if(empty($fn_nuevo_plan)){
 <?php
 } else {
 ?>
-<input id="fp_hora_media_tarde" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;">
+<input id="fp_hora_media_tarde" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;" value="<?php echo $hora_media_tarde; ?>">
 <?php
 }
 ?>
@@ -429,7 +449,9 @@ if(empty($fn_nuevo_plan)){
 <?php
 } else {
 ?>
-<textarea id="fp_uno_opcion_1_media_tarde" class="form-control" type="text" style="font-size: 11px; text-align: center; margin: auto; height: 30px;"></textarea>
+<textarea id="fp_uno_opcion_1_media_tarde" class="form-control" type="text" style="font-size: 11px; text-align: center; margin: auto; height: 30px;">
+<?php echo $uno_opcion_1_media_tarde; ?>
+</textarea>
 <?php
 }
 ?>
@@ -442,7 +464,9 @@ if(empty($fn_nuevo_plan)){
 <?php
 } else {
 ?>
-<textarea id="fp_dos_opcion_1_media_tarde" class="form-control" type="text" style="font-size: 11px; text-align: center; margin: auto; height: 30px;"></textarea>
+<textarea id="fp_dos_opcion_1_media_tarde" class="form-control" type="text" style="font-size: 11px; text-align: center; margin: auto; height: 30px;">
+<?php echo $dos_opcion_1_media_tarde; ?>
+</textarea>
 <?php
 }
 ?>
@@ -458,7 +482,7 @@ if(empty($fn_nuevo_plan)){
 <?php
 } else {
 ?>
-<input id="fp_hora_cena" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;">
+<input id="fp_hora_cena" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;" value="<?php echo $hora_cena; ?>">
 <?php
 }
 ?>
@@ -484,9 +508,13 @@ if(!empty($uno_opcion_2_cena)){
 } else {
 ?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
-<textarea id="fp_uno_opcion_1_cena" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_uno_opcion_1_cena" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;">
+<?php echo $uno_opcion_1_cena; ?>
+</textarea>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
-<textarea id="fp_uno_opcion_2_cena" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_uno_opcion_2_cena" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;">
+<?php echo $uno_opcion_2_cena; ?>
+</textarea>
 <?php
 }
 ?>
@@ -512,9 +540,13 @@ if(!empty($dos_opcion_2_cena)){
 } else {
 ?>
 <b style="font-size: 13px;">Opci&oacute;n 1:</b><br>
-<textarea id="fp_dos_opcion_1_cena" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_dos_opcion_1_cena" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;">
+<?php echo $dos_opcion_1_cena; ?>
+</textarea>
 <b style="font-size: 13px;">Opci&oacute;n 2:</b><br>
-<textarea id="fp_dos_opcion_2_cena" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;"></textarea>
+<textarea id="fp_dos_opcion_2_cena" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 90px;">
+<?php echo $dos_opcion_2_cena; ?>
+</textarea>
 <?php
 }
 ?>
