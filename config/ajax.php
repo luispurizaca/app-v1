@@ -1120,27 +1120,6 @@ $array = array(0, 1);
 $fn_html = html_plan($array);
 echo $fn_html;
 ?>
-</div>
-<div class="col-md-3">
-<table style="width: 90%; margin: 0 auto; margin-top: 110px;">
-<tr>
-<td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
-<b style="font-size: 13px;">Alimentos que no le gustan</b>
-</td>
-</tr>
-<tr>
-<td style="font-size: 12px; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
-<?php
-$al = mysqli_fetch_array(mysqli_query($con, "SELECT alimentos_no_gustar FROM historia WHERE id_paciente = '$id_paciente' LIMIT 1"));
-$alimentos_no_gustar = $al[0];
-echo $alimentos_no_gustar;
-?>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<br><br>
 <div style="text-align: center;">
 <button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar</button>
 <button onclick="complete_datos(<?php echo $id_paciente; ?>)" type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Cancelar</button>
@@ -1215,6 +1194,26 @@ complete_datos(id_paciente);
 });
 });
 </script>
+</div>
+<div class="col-md-3">
+<table style="width: 90%; margin: 0 auto; margin-top: 110px;">
+<tr>
+<td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
+<b style="font-size: 13px;">Alimentos que no le gustan</b>
+</td>
+</tr>
+<tr>
+<td style="font-size: 12px; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
+<?php
+$al = mysqli_fetch_array(mysqli_query($con, "SELECT alimentos_no_gustar FROM historia WHERE id_paciente = '$id_paciente' LIMIT 1"));
+$alimentos_no_gustar = $al[0];
+echo $alimentos_no_gustar;
+?>
+</td>
+</tr>
+</table>
+</div>
+</div>
 <?php
 exit();
 exit();
