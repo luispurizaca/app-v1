@@ -1575,10 +1575,18 @@ $id_paciente = (int)$_GET['id_paciente'];
 <div class="row">
 <div class="col-md-12 text-center">
 <button id="btn_pd" onclick="mostrar_pa(1)" type="button" style="border: 1.5px solid #95cf32; color: #95cf32; background: white; font-size: 13px; padding: 4px; font-weight: bold; margin-right: 5px;">
-Planes DETOX
+<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+</svg>
+&nbsp; Historial de P.D.
 </button>
 <button id="btn_pa" onclick="mostrar_pa(2)" type="button" style="border: 1.5px solid #95cf32; color: #95cf32; background: white; font-size: 13px; padding: 4px; font-weight: bold; margin-left: 5px;">
-Planes de ALIMENTACI&Oacute;N
+<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+</svg>
+&nbsp; Historial de P.A.
 </button>
 </div>
 <div class="col-md-12">
