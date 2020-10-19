@@ -216,7 +216,7 @@ if(empty($fn_nuevo_plan)){
 <?php
 } else {
 ?>
-<input id="fp_hora_desayuno" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 50%; margin: auto;">
+<input id="fp_hora_desayuno" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;">
 <?php
 }
 ?>
@@ -259,7 +259,17 @@ if(!empty($dos_opcion_2_desayuno)){
 <tr>
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <b style="font-size: 12px;">MEDIA MA&Ntilde;ANA</b><br>
+<?php
+if(empty($fn_nuevo_plan)){
+?>
 <span style="font-size: 12px;"><?php echo $hora_media_manana; ?></span>
+<?php
+} else {
+?>
+<input id="fp_hora_media_manana" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;">
+<?php
+}
+?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_media_manana; ?></span>
@@ -271,7 +281,17 @@ if(!empty($dos_opcion_2_desayuno)){
 <tr>
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
 <b style="font-size: 14px;">ALMUERZO</b><br>
+<?php
+if(empty($fn_nuevo_plan)){
+?>
 <span style="font-size: 14px;"><?php echo $hora_almuerzo; ?></span>
+<?php
+} else {
+?>
+<input id="fp_hora_almuerzo" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;">
+<?php
+}
+?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <br><br>
@@ -311,7 +331,17 @@ if(!empty($dos_opcion_2_almuerzo)){
 <tr>
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <b style="font-size: 12px;">MEDIA TARDE</b><br>
+<?php
+if(empty($fn_nuevo_plan)){
+?>
 <span style="font-size: 12px;"><?php echo $hora_media_tarde; ?></span>
+<?php
+} else {
+?>
+<input id="fp_hora_media_tarde" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;">
+<?php
+}
+?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_media_tarde; ?></span>
@@ -323,7 +353,17 @@ if(!empty($dos_opcion_2_almuerzo)){
 <tr>
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
 <b style="font-size: 14px;">CENA</b><br>
+<?php
+if(empty($fn_nuevo_plan)){
+?>
 <span style="font-size: 14px;"><?php echo $hora_cena; ?></span>
+<?php
+} else {
+?>
+<input id="fp_hora_cena" class="form-control n-form-control" type="text" style="font-size: 15px; text-align: center; font-weight: bold; width: 60%; margin: auto;">
+<?php
+}
+?>
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <br><br>
