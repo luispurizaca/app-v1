@@ -6,6 +6,7 @@ $id_plan = (int)$array[0];
 $fn_nuevo_plan = (int)$array[1];
 $fn_tipo_plan = (int)$array[2];
 $fn_id_paciente = (int)$array[3];
+$fn_editar = (int)$array[3];
 
 //VARIABLE DE CONEXION
 global $con;
@@ -94,7 +95,7 @@ PLAN DETOX POR 1 D&Iacute;A
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
 <b style="font-size: 14px;">DESAYUNO</b><br>
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 14px;"><?php echo $hora_desayuno; ?></span>
 <?php
@@ -107,7 +108,7 @@ if(empty($fn_nuevo_plan)){
 </td>
 <td style="width: 80%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <br><br>
 <?php
@@ -142,7 +143,7 @@ if(!empty($uno_opcion_2_desayuno)){
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <b style="font-size: 12px;">MEDIA MA&Ntilde;ANA</b><br>
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 12px;"><?php echo $hora_media_manana; ?></span>
 <?php
@@ -155,7 +156,7 @@ if(empty($fn_nuevo_plan)){
 </td>
 <td style="width: 80%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_media_manana; ?></span>
 <?php
@@ -173,7 +174,7 @@ if(empty($fn_nuevo_plan)){
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
 <b style="font-size: 14px;">ALMUERZO</b><br>
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 14px;"><?php echo $hora_almuerzo; ?></span>
 <?php
@@ -186,7 +187,7 @@ if(empty($fn_nuevo_plan)){
 </td>
 <td style="width: 80%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <br><br>
 <?php
@@ -221,7 +222,7 @@ if(!empty($uno_opcion_2_almuerzo)){
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <b style="font-size: 12px;">MEDIA TARDE</b><br>
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 12px;"><?php echo $hora_media_tarde; ?></span>
 <?php
@@ -234,7 +235,7 @@ if(empty($fn_nuevo_plan)){
 </td>
 <td style="width: 80%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_media_tarde; ?></span>
 <?php
@@ -252,7 +253,7 @@ if(empty($fn_nuevo_plan)){
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
 <b style="font-size: 14px;">CENA</b><br>
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 14px;"><?php echo $hora_cena; ?></span>
 <?php
@@ -265,7 +266,7 @@ if(empty($fn_nuevo_plan)){
 </td>
 <td style="width: 80%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <br><br>
 <?php
@@ -318,7 +319,7 @@ Comidas
 </td>
 <td style="width: 40%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 echo $title_2; 
 } else {
 ?>
@@ -329,7 +330,7 @@ echo $title_2;
 </td>
 <td style="width: 40%; color: #111; font-weight: bold; background: #95cf32; text-align: center; padding: 10px; font-size: 14px; border: 1px solid #95cf32;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 echo $title_3; 
 } else {
 ?>
@@ -343,7 +344,7 @@ echo $title_3;
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
 <b style="font-size: 14px;">DESAYUNO</b><br>
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 14px;"><?php echo $hora_desayuno; ?></span>
 <?php
@@ -356,7 +357,7 @@ if(empty($fn_nuevo_plan)){
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <br><br>
 <?php
@@ -388,7 +389,7 @@ if(!empty($uno_opcion_2_desayuno)){
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <br><br>
 <?php
@@ -423,7 +424,7 @@ if(!empty($dos_opcion_2_desayuno)){
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <b style="font-size: 12px;">MEDIA MA&Ntilde;ANA</b><br>
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 12px;"><?php echo $hora_media_manana; ?></span>
 <?php
@@ -436,7 +437,7 @@ if(empty($fn_nuevo_plan)){
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_media_manana; ?></span>
 <?php
@@ -451,7 +452,7 @@ if(empty($fn_nuevo_plan)){
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 13px;"><?php echo $dos_opcion_1_media_manana; ?></span>
 <?php
@@ -469,7 +470,7 @@ if(empty($fn_nuevo_plan)){
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
 <b style="font-size: 14px;">ALMUERZO</b><br>
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 14px;"><?php echo $hora_almuerzo; ?></span>
 <?php
@@ -482,7 +483,7 @@ if(empty($fn_nuevo_plan)){
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <br><br>
 <?php
@@ -514,7 +515,7 @@ if(!empty($uno_opcion_2_almuerzo)){
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <br><br>
 <?php
@@ -549,7 +550,7 @@ if(!empty($dos_opcion_2_almuerzo)){
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <b style="font-size: 12px;">MEDIA TARDE</b><br>
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 12px;"><?php echo $hora_media_tarde; ?></span>
 <?php
@@ -562,7 +563,7 @@ if(empty($fn_nuevo_plan)){
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 13px;"><?php echo $uno_opcion_1_media_tarde; ?></span>
 <?php
@@ -577,7 +578,7 @@ if(empty($fn_nuevo_plan)){
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: center; background: #E9E555;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 13px;"><?php echo $dos_opcion_1_media_tarde; ?></span>
 <?php
@@ -595,7 +596,7 @@ if(empty($fn_nuevo_plan)){
 <td style="width: 20%; vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
 <b style="font-size: 14px;">CENA</b><br>
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <span style="font-size: 14px;"><?php echo $hora_cena; ?></span>
 <?php
@@ -608,7 +609,7 @@ if(empty($fn_nuevo_plan)){
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <br><br>
 <?php
@@ -640,7 +641,7 @@ if(!empty($uno_opcion_2_cena)){
 </td>
 <td style="width: 40%; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <br><br>
 <?php
@@ -695,7 +696,7 @@ if(!empty($dos_opcion_2_cena)){
 <tr>
 <td style="width: 100%; color: #111; font-weight: bold; text-align: left; padding: 10px; font-size: 12px; margin-top: 0; padding-top: 0;">
 <?php
-if(empty($fn_nuevo_plan)){
+if(empty($fn_nuevo_plan) && $fn_editar != 1){
 ?>
 <b>Indicaciones:</b><br><br>
 1.-01 comida especial en la semana.<br>

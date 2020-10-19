@@ -1107,9 +1107,11 @@ $dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
 //FECHA DE PLAN
 if(empty($id_tabla)){
 $nuevo_plan = 1;
+$editar = 0;
 $fecha_plan = date('Y-m-d', strtotime(date('Y-m-d').'+ 1 days'));
 } else {
 $nuevo_plan = 0;
+$editar = 1;
 $fecha_plan = date('Y-m-d', strtotime($row_plan_alimentacion['fecha_envio']));
 $title_2 = $horario_1;
 $title_3 = $horario_2;
@@ -1138,7 +1140,7 @@ echo $alimentos_no_gustar;
 ?>
 <div class="col-md-12">
 <?php
-$array = array($id_tabla, $nuevo_plan, $id_plan, $id_paciente);
+$array = array($id_tabla, $nuevo_plan, $id_plan, $id_paciente, $editar);
 $fn_html = html_plan($array);
 echo $fn_html;
 ?>
