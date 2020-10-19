@@ -1139,6 +1139,22 @@ echo $alimentos_no_gustar;
 }
 ?>
 <div class="col-md-12">
+<label>Seleccione un Control:</label>
+<select>
+<option value="0" selected="selected" hidden="hidden">Seleccione:</option>
+<?php
+$query_control_disponible = mysqli_query($con, "SELECT id, codigo FROM control WHERE id_paciente = '$id_paciente' AND id NOT IN (SELECT id_control FROM plan_alimentacion WHERE id_paciente = '$id_paciente') ORDER BY id DESC");
+while($row_cd = mysqli_fetch_array($query)){
+$cd_id = (int)$row_cd[0];
+$cd_codigo = $row_cd[1];
+?>
+<option value="<?php echo $cd_id; ?>"><?php echo $cd_codigo; ?></option>
+<?php
+}
+?>
+</select>
+</div>
+<div class="col-md-12">
 <?php
 $array = array($id_tabla, $nuevo_plan, $id_plan, $id_paciente, $editar);
 $fn_html = html_plan($array);
