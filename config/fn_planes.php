@@ -54,6 +54,8 @@ $dos_opcion_2_media_tarde = $row_plan_alimentacion['2_opcion_2_media_tarde'];
 $dos_opcion_1_cena = $row_plan_alimentacion['2_opcion_1_cena'];
 $dos_opcion_2_cena = $row_plan_alimentacion['2_opcion_2_cena'];
 
+$fn_indicaciones = $row_plan_alimentacion['indicaciones'];
+
 $fecha_plan = date('d/m/Y', strtotime($row_plan_alimentacion['fecha_envio']));
 $title_2 = $horario_1;
 $title_3 = $horario_2;
@@ -697,28 +699,11 @@ if(!empty($dos_opcion_2_cena)){
 <td style="width: 100%; color: #111; font-weight: bold; text-align: left; padding: 10px; font-size: 12px; margin-top: 0; padding-top: 0;">
 <?php
 if(empty($fn_nuevo_plan) && $fn_editar != 1){
-?>
-<b>Indicaciones:</b><br><br>
-1.-01 comida especial en la semana.<br>
-2.- Diariamente, consumir 10 vasos con agua (250ml) (incluyen las bebidas de entre comidas).<br>
-3.- No a&ntilde;adir az&uacute;car rubia ni blanca a las preparaciones. De preferencia, utilizar Stevia.<br>
-3.- Si en caso, te diera hambre, consumir frutos secos (no pasas, ni man&iacute;), huevos, aceitunas, palta, tomar m&aacute;s bebida.<br>
-4.- Dormir entre 6 a 8 horas diarias.<br>
-5.- Consumir diariamente al levantarse 01 vaso de agua caliente con zumo de 2 limones.<br>
-c/ 1 crdta de salvado de trigo.
-<?php
+echo $fn_indicaciones;
 } else {
 ?>
-<textarea id="fp_indicaciones" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 200px;">
-INDICACIONES:
-
-1.-01 comida especial en la semana.
-2.- Diariamente, consumir 10 vasos con agua (250ml) (incluyen las bebidas de entre comidas).
-3.- No a&ntilde;adir az&uacute;car rubia ni blanca a las preparaciones. De preferencia, utilizar Stevia.
-3.- Si en caso, te diera hambre, consumir frutos secos (no pasas, ni man&iacute;), huevos, aceitunas, palta, tomar m&aacute;s bebida.
-4.- Dormir entre 6 a 8 horas diarias.
-5.- Consumir diariamente al levantarse 01 vaso de agua caliente con zumo de 2 limones.
-c/ 1 crdta de salvado de trigo.
+<textarea id="fn_indicaciones" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 200px;">
+<?php echo $fn_indicaciones; ?>
 </textarea>
 <?php
 }

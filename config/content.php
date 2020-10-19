@@ -1820,13 +1820,14 @@ $fp_dos_opcion_2_cena = $_POST['fp_dos_opcion_2_cena'];
 
 $fn_id_control = $_POST['fn_id_control'];
 $fn_fecha_envio = $_POST['fn_fecha_envio'];
+$fn_indicaciones = $_POST['fn_indicaciones'];
 
 //INSERT INTO - UPDATE
 if(empty($id_tabla)){
 mysqli_query($con, "
-INSERT INTO plan_alimentacion (tipo_plan, id_categoria, codigo, id_suscripcion, id_control, id_paciente, fecha_realizar, fecha_envio, estado_envio, date_added, hora_desayuno, hora_media_manana, hora_almuerzo, hora_media_tarde, hora_cena, horario_1, horario_2, 1_opcion_1_desayuno, 1_opcion_2_desayuno, 1_opcion_1_media_manana, 1_opcion_2_media_manana, 1_opcion_1_almuerzo, 1_opcion_2_almuerzo, 1_opcion_1_media_tarde, 1_opcion_2_media_tarde, 1_opcion_1_cena, 1_opcion_2_cena, 2_opcion_1_desayuno, 2_opcion_2_desayuno, 2_opcion_1_media_manana, 2_opcion_2_media_manana, 2_opcion_1_almuerzo, 2_opcion_2_almuerzo, 2_opcion_1_media_tarde, 2_opcion_2_media_tarde, 2_opcion_1_cena, 2_opcion_2_cena)
+INSERT INTO plan_alimentacion (tipo_plan, id_categoria, codigo, id_suscripcion, id_control, id_paciente, fecha_realizar, fecha_envio, estado_envio, date_added, hora_desayuno, hora_media_manana, hora_almuerzo, hora_media_tarde, hora_cena, horario_1, horario_2, 1_opcion_1_desayuno, 1_opcion_2_desayuno, 1_opcion_1_media_manana, 1_opcion_2_media_manana, 1_opcion_1_almuerzo, 1_opcion_2_almuerzo, 1_opcion_1_media_tarde, 1_opcion_2_media_tarde, 1_opcion_1_cena, 1_opcion_2_cena, 2_opcion_1_desayuno, 2_opcion_2_desayuno, 2_opcion_1_media_manana, 2_opcion_2_media_manana, 2_opcion_1_almuerzo, 2_opcion_2_almuerzo, 2_opcion_1_media_tarde, 2_opcion_2_media_tarde, 2_opcion_1_cena, 2_opcion_2_cena, indicaciones)
 VALUES 
-('".$id_plan."', '0', '".$codigo_registro."', '', '".$fn_id_control."', '".$id_paciente."', '".$id_fecha_pa."', '".$fn_fecha_envio."', '0', '".date('Y-m-d')."', '".$fp_hora_desayuno."', '".$fp_hora_media_manana."', '".$fp_hora_almuerzo."', '".$fp_hora_media_tarde."', '".$fp_hora_cena."', '".$fp_title_2."', '".$fp_title_3."', '".$fp_uno_opcion_1_desayuno."', '".$fp_uno_opcion_2_desayuno."', '".$fp_uno_opcion_1_media_manana."', '".$fp_uno_opcion_2_media_manana."', '".$fp_uno_opcion_1_almuerzo."', '".$fp_uno_opcion_2_almuerzo."', '".$fp_uno_opcion_1_media_tarde."', '".$fp_uno_opcion_2_media_tarde."', '".$fp_uno_opcion_1_cena."', '".$fp_uno_opcion_2_cena."', '".$fp_dos_opcion_1_desayuno."', '".$fp_dos_opcion_2_desayuno."', '".$fp_dos_opcion_1_media_manana."', '".$fp_dos_opcion_2_media_manana."', '".$fp_dos_opcion_1_almuerzo."', '".$fp_dos_opcion_2_almuerzo."', '".$fp_dos_opcion_1_media_tarde."', '".$fp_dos_opcion_2_media_tarde."', '".$fp_dos_opcion_1_cena."', '".$fp_dos_opcion_2_cena."')
+('".$id_plan."', '0', '".$codigo_registro."', '', '".$fn_id_control."', '".$id_paciente."', '".$id_fecha_pa."', '".$fn_fecha_envio."', '0', '".date('Y-m-d')."', '".$fp_hora_desayuno."', '".$fp_hora_media_manana."', '".$fp_hora_almuerzo."', '".$fp_hora_media_tarde."', '".$fp_hora_cena."', '".$fp_title_2."', '".$fp_title_3."', '".$fp_uno_opcion_1_desayuno."', '".$fp_uno_opcion_2_desayuno."', '".$fp_uno_opcion_1_media_manana."', '".$fp_uno_opcion_2_media_manana."', '".$fp_uno_opcion_1_almuerzo."', '".$fp_uno_opcion_2_almuerzo."', '".$fp_uno_opcion_1_media_tarde."', '".$fp_uno_opcion_2_media_tarde."', '".$fp_uno_opcion_1_cena."', '".$fp_uno_opcion_2_cena."', '".$fp_dos_opcion_1_desayuno."', '".$fp_dos_opcion_2_desayuno."', '".$fp_dos_opcion_1_media_manana."', '".$fp_dos_opcion_2_media_manana."', '".$fp_dos_opcion_1_almuerzo."', '".$fp_dos_opcion_2_almuerzo."', '".$fp_dos_opcion_1_media_tarde."', '".$fp_dos_opcion_2_media_tarde."', '".$fp_dos_opcion_1_cena."', '".$fp_dos_opcion_2_cena."', '".$fn_indicaciones."')
 "
 );
 } else {
@@ -1839,7 +1840,7 @@ hora_cena = '".$fp_hora_cena."', horario_1 = '".$fp_title_2."', horario_2 = '".$
 1_opcion_1_cena = '".$fp_uno_opcion_1_cena."', 1_opcion_2_cena = '".$fp_uno_opcion_2_cena."', 2_opcion_1_desayuno = '".$fp_dos_opcion_1_desayuno."',
 2_opcion_2_desayuno = '".$fp_dos_opcion_2_desayuno."', 2_opcion_1_media_manana = '".$fp_dos_opcion_1_media_manana."', 2_opcion_2_media_manana = '".$fp_dos_opcion_2_media_manana."',
 2_opcion_1_almuerzo = '".$fp_dos_opcion_1_almuerzo."', 2_opcion_2_almuerzo = '".$fp_dos_opcion_2_almuerzo."', 2_opcion_1_media_tarde = '".$fp_dos_opcion_1_media_tarde."',
-2_opcion_2_media_tarde = '".$fp_dos_opcion_2_media_tarde."', 2_opcion_1_cena = '".$fp_dos_opcion_1_cena."', 2_opcion_2_cena = '".$fp_dos_opcion_2_cena."'
+2_opcion_2_media_tarde = '".$fp_dos_opcion_2_media_tarde."', 2_opcion_1_cena = '".$fp_dos_opcion_1_cena."', 2_opcion_2_cena = '".$fp_dos_opcion_2_cena."', indicaciones = '".$fn_indicaciones."'
 WHERE id = '$id_tabla' AND id_paciente = '$id_paciente'
 "
 );

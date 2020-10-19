@@ -1160,6 +1160,7 @@ var id_plan = <?php echo $id_plan; ?>;
 var id_tabla = <?php echo $id_tabla; ?>;
 var fn_id_control = $('#fn_id_control').val();
 var fn_fecha_envio = $('#fn_fecha_envio').val();
+var fn_indicaciones = $('#fn_indicaciones').val();
 
 $.ajax({
 type: 'POST',
@@ -1194,7 +1195,8 @@ id_paciente : id_paciente,
 id_plan : id_plan,
 id_tabla : id_tabla,
 fn_id_control : fn_id_control,
-fn_fecha_envio : fn_fecha_envio
+fn_fecha_envio : fn_fecha_envio,
+fn_indicaciones : fn_indicaciones
 },
 success: function(datos){
 complete_datos(id_paciente);
