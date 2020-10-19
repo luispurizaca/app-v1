@@ -1076,7 +1076,6 @@ $pa_id_control = (int)$row_plan_alimentacion['id_control'];
 <div class="col-md-2">
 <b style="font-size: 13px;">Controles Disponibles:</b><br>
 <select id="fn_id_control" class="form-control" style="font-size: 12px;">
-<option value="0" selected="selected" hidden="hidden">Seleccione:</option>
 <?php
 $query_control_disponible = mysqli_query($con, "SELECT id, codigo FROM control WHERE id_paciente = '$id_paciente' AND id NOT IN (SELECT id_control FROM plan_alimentacion WHERE id_paciente = '$id_paciente') ORDER BY id DESC");
 while($row_cd = mysqli_fetch_array($query_control_disponible)){
