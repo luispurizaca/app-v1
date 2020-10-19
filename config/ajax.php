@@ -1120,7 +1120,7 @@ $array = array(0, 1);
 $fn_html = html_plan($array);
 echo $fn_html;
 ?>
-<div style="text-align: center;">
+<div style="text-align: center; margin-top: 25px;">
 <button id="btn_guardar_datos" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 13px;">Guardar</button>
 <button onclick="complete_datos(<?php echo $id_paciente; ?>)" type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Cancelar</button>
 </div>
