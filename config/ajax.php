@@ -1091,7 +1091,7 @@ $cd_codigo = $row_cd[1];
 </div>
 <div class="col-md-2">
 <b style="font-size: 13px;">Fecha de Env&iacute;o:</b><br>
-<input id="fn_fecha_envio" type="date" class="form-control" style="font-size: 12px;" value="<?php echo $fecha_plan; ?>">
+<input id="fn_fecha_envio" type="date" class="form-control" style="font-size: 12px;" value="<?php echo $fecha_envio; ?>">
 </div>
 <div class="col-md-2">
 <b style="font-size: 13px;">Realizar el d&iacute;a:</b><br>
