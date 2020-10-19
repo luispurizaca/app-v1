@@ -3648,7 +3648,7 @@ if($view_controller == 3){
 ?>
 <div class="card-box mb-30">
 <div class="card-box pd-20 height-100-p mb-30">
-<div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+<div style="margin-top: 30px; margin-bottom: 20px;">
 <table style="width: 400px; margin: 0 auto; margin-top: 40px;">
 <tr>
 <td style="width: 100% !important; text-align: center;">

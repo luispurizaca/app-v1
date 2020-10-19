@@ -1,5 +1,9 @@
 <?php
-function html_plan($id_plan){
+function html_plan($array){
+
+//PARAMETROS ARRAY
+$id_plan = (int)$array[0];
+
 global $con;
 
 $row_plan_alimentacion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM plan_alimentacion WHERE id = '$id_plan' LIMIT 1"));

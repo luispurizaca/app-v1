@@ -183,7 +183,8 @@ ob_start();
 ?>
 <page backtop="5mm" backbottom="5mm" backleft="5mm" backright="5mm">
 <?php
-$fn_html = html_plan($id_plan);
+$array = array($id_plan);
+$fn_html = html_plan($array);
 echo $fn_html;
 ?>
 </page>

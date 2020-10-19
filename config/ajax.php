@@ -1116,7 +1116,8 @@ $title_3 = $horario_2;
 <div class="row">
 <div class="col-md-9">
 <?php
-$fn_html = html_plan(0);
+$array = array(0);
+$fn_html = html_plan($array);
 echo $fn_html;
 ?>
 <!--
