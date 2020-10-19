@@ -543,8 +543,8 @@ c/ 1 crdta de salvado de trigo.
 <?php
 } else {
 ?>
-<textarea id="fp_indicaciones" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 150px;">
-<b>Indicaciones:</b>
+<textarea id="fp_indicaciones" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 200px;">
+INDICACIONES:
 
 1.-01 comida especial en la semana.
 2.- Diariamente, consumir 10 vasos con agua (250ml) (incluyen las bebidas de entre comidas).
