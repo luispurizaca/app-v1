@@ -1598,8 +1598,8 @@ $id_paciente = (int)$_GET['id_paciente'];
 <table style="width: 100% !important; margin: 0 auto;">
 <tr>
 <td class="td-title" style="width: 11.11% !important;">N&#176;</td>
-<td class="td-title" style="width: 11.11% !important;">Fecha a Realizar</td>
 <td class="td-title" style="width: 11.11% !important;">Fecha de env&iacute;o</td>
+<td class="td-title" style="width: 11.11% !important;">Fecha a Realizar</td>
 <td class="td-title" style="width: 11.11% !important;">Estado</td>
 <td class="td-title" style="width: 11.11% !important;">Acciones</td>
 </tr>
@@ -1619,8 +1619,8 @@ $texto_envio = '<span style="color: red;">Pendiente</span>';
 ?>
 <tr class="tr-hover">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_realizar; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_envio; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_realizar; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $texto_envio; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
 <button type="button" style="font-size: 15px; background: none; color: #95cf32; padding: 0px; border: none;" onclick="window.open('config/html2pdf/documentos/imprimir.php?id=<?php echo $codigo_id_tabla; ?>')">
@@ -1655,8 +1655,8 @@ $texto_envio = '<span style="color: red;">Pendiente</span>';
 <table style="width: 100% !important; margin: 0 auto;">
 <tr>
 <td class="td-title" style="width: 11.11% !important;">N&#176;</td>
-<td class="td-title" style="width: 11.11% !important;">Fecha a Realizar</td>
 <td class="td-title" style="width: 11.11% !important;">Fecha de env&iacute;o</td>
+<td class="td-title" style="width: 11.11% !important;">Fecha a Realizar</td>
 <td class="td-title" style="width: 11.11% !important;">Estado</td>
 <td class="td-title" style="width: 11.11% !important;">Acciones</td>
 </tr>
@@ -1676,8 +1676,8 @@ $texto_envio = '<span style="color: red;">Pendiente</span>';
 ?>
 <tr class="tr-hover">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $codigo_plan; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_realizar; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_envio; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $fecha_realizar; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $texto_envio; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
 <button type="button" style="font-size: 15px; background: none; color: #95cf32; padding: 0px; border: none;" onclick="window.open('config/html2pdf/documentos/imprimir.php?id=<?php echo $codigo_id_tabla; ?>')">

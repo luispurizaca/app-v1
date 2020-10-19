@@ -701,11 +701,25 @@ if(!empty($dos_opcion_2_cena)){
 if(empty($fn_nuevo_plan) && $fn_editar != 1){
 echo $fn_indicaciones;
 } else {
+if(empty($fn_indicaciones)){
+?>
+<textarea id="fn_indicaciones" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 200px;">
+INDICACIONES:
+
+1.-01 comida especial en la semana.
+2.- Diariamente, consumir 10 vasos con agua (250ml) (incluyen las bebidas de entre comidas).
+3.- No a&ntilde;adir az&uacute;car rubia ni blanca a las preparaciones. De preferencia, utilizar Stevia.
+3.- Si en caso, te diera hambre, consumir frutos secos (no pasas, ni man&iacute;), huevos, aceitunas, palta, tomar m&aacute;s bebida.
+4.- Dormir entre 6 a 8 horas diarias.
+</textarea>
+<?php
+} else {
 ?>
 <textarea id="fn_indicaciones" class="form-control" type="text" style="font-size: 11px; text-align: left; margin: auto; height: 200px;">
 <?php echo $fn_indicaciones; ?>
 </textarea>
 <?php
+}
 }
 ?>
 </td>
