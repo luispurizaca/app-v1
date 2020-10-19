@@ -699,7 +699,9 @@ if(!empty($dos_opcion_2_cena)){
 <td style="width: 100%; color: #111; text-align: left; padding: 10px; font-size: 12px; margin-top: 0; padding-top: 0;">
 <?php
 if(empty($fn_nuevo_plan) && $fn_editar != 1){
-echo str_replace(array('\r\n', '\n\r', '\r', '\n'), '<br />', str_replace('INDICACIONES:', '<b>INDICACIONES</b>', $fn_indicaciones));
+$fn_indicaciones = str_replace(array("\r\n", "\n\r", "\r", "\n"), "<br />", $fn_indicaciones);
+
+echo str_replace('INDICACIONES:', '<b>INDICACIONES:</b>', $fn_indicaciones);
 } else {
 if(empty($fn_indicaciones)){
 ?>
