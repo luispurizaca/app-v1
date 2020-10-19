@@ -6,7 +6,7 @@ $id_plan = (int)$array[0];
 $fn_nuevo_plan = (int)$array[1];
 $fn_tipo_plan = (int)$array[2];
 $fn_id_paciente = (int)$array[3];
-$fn_editar = (int)$array[3];
+$fn_editar = (int)$array[4];
 
 //VARIABLE DE CONEXION
 global $con;
