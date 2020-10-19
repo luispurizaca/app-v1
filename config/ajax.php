@@ -1114,7 +1114,17 @@ $title_3 = $horario_2;
 }
 ?>
 <div class="row">
-<div class="col-md-9">
+<div class="col-md-12">
+<b style="font-size: 13px;">Alimentos que no le gustan:</b><br>
+<span style="font-size: 13px;">
+<?php
+$al = mysqli_fetch_array(mysqli_query($con, "SELECT alimentos_no_gustar FROM historia WHERE id_paciente = '$id_paciente' LIMIT 1"));
+$alimentos_no_gustar = $al[0];
+echo $alimentos_no_gustar;
+?>
+</span><br><br>
+</div>
+<div class="col-md-12">
 <?php
 $array = array(0, 1);
 $fn_html = html_plan($array);
@@ -1194,24 +1204,6 @@ complete_datos(id_paciente);
 });
 });
 </script>
-</div>
-<div class="col-md-3">
-<table style="width: 90%; margin: 0 auto; margin-top: 110px;">
-<tr>
-<td style="vertical-align: middle; padding: 20px; text-align: center; border: 1px solid #95cf32;">
-<b style="font-size: 13px;">Alimentos que no le gustan</b>
-</td>
-</tr>
-<tr>
-<td style="font-size: 12px; vertical-align: middle; padding: 20px; text-align: left; border: 1px solid #95cf32;">
-<?php
-$al = mysqli_fetch_array(mysqli_query($con, "SELECT alimentos_no_gustar FROM historia WHERE id_paciente = '$id_paciente' LIMIT 1"));
-$alimentos_no_gustar = $al[0];
-echo $alimentos_no_gustar;
-?>
-</td>
-</tr>
-</table>
 </div>
 </div>
 <?php
