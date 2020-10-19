@@ -74,10 +74,6 @@ gtag('config', 'UA-119386393-1');
 </style>
 </head>
 <body class="login-page" style="background: #95cf32;">
-    <h1>Actualizando cambios v3...</h1>
-    <?php
-    exit();
-    ?>
 <div class="login-wrap d-flex align-items-center flex-wrap justify-content-center" style="height: 100%;">
 <div class="container">
 <div class="row align-items-center">
