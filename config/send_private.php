@@ -27,8 +27,10 @@ $tipo_email = (int)$_GET['tipo_email'];
 //SI ES MUJER O SI ES HOMBRE
 if($genero == 2){
 $bienvenido = 'Bienvenida';
+$texto_alineado = 'alineada';
 } else {
 $bienvenido = 'Bienvenido';
+$texto_alineado = 'alineado';
 }
 
 //ASUNTO
@@ -104,7 +106,7 @@ $bodyHtml = '
 <div style="text-align: justify ;color: #4f4f4f">
 Quiero agradecerte la confianza depositada en nuestros servicios, los cuales, est&aacute;n orientados a resolver tus metas personales de corto y mediano plazo.
 <br><br>
-Recuerda que cuanto m&aacute;s alineado est&eacute;s al mismo, lograr&aacute;s estar m&aacute;s cerca de tus objetivos personales. La disciplina es vital para lograr tus objetivos.
+Recuerda que cuanto m&aacute;s '.$texto_alineado.' est&eacute;s al mismo, lograr&aacute;s estar m&aacute;s cerca de tus objetivos personales. La disciplina es vital para lograr tus objetivos.
 <br><br>
 Te env&iacute;o el link, con tu usuario y contrase&ntilde;a para que puedas acceder a tu cuenta y registrar los datos solicitados:
 <br><br>
