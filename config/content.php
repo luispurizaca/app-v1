@@ -1572,20 +1572,20 @@ VALUES
 
 //GUARDAR IMAGENES
 $ruta_carpeta = "fotos/";
-$nombre_archivo = time() .".". pathinfo($_FILES['foto_frontal']['name'],PATHINFO_EXTENSION);
+$nombre_archivo = time() .".". pathinfo($_FILES['imagen_frontal']['name'],PATHINFO_EXTENSION);
 $ruta_guardar_archivo = $ruta_carpeta . $nombre_archivo;
 
-if(move_uploaded_file($_FILES['foto_frontal']['tmp_name'], $ruta_guardar_archivo)){
+if(move_uploaded_file($_FILES['imagen_frontal']['tmp_name'], $ruta_guardar_archivo)){
     echo "imagen cargada";
 }else{
     echo "no se pudo cargar";
 }
 
 
-$nombre_archivo = time() .".". pathinfo($_FILES['foto_perfil']['name'],PATHINFO_EXTENSION);
+$nombre_archivo = time() .".". pathinfo($_FILES['imagen_perfil']['name'],PATHINFO_EXTENSION);
 $ruta_guardar_archivo = $ruta_carpeta . $nombre_archivo;
 
-if(move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $ruta_guardar_archivo)){
+if(move_uploaded_file($_FILES['imagen_perfil']['tmp_name'], $ruta_guardar_archivo)){
     echo "imagen cargada";
 }else{
     echo "no se pudo cargar";
