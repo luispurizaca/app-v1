@@ -1288,7 +1288,7 @@ if($action == 'ajax'){
 //FILTROS
 $activos = (int)$_POST['activos'];
 $fn_id_paciente = (int)$_POST['paciente'];
-$fn_id_suscripcion = (int)$_POST['suscripcion'];
+$fn_id_suscripcion = (int)$_POST['fn_id_suscripcion'];
 $id_tipo_usuario = 2;
 $id_registro = 0;
 $n_fecha_desde = $_POST['n_fecha_desde'];
@@ -1506,12 +1506,6 @@ $fn_id_suscripcion = (int)$_POST['fn_id_suscripcion'];
 
 //OBTENER DATOS DE LA SUSCRIPCION
 $datos_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM suscripcion_programa WHERE id = '$fn_id_suscripcion' LIMIT 1"));
-
-?>
-<script>
-alert('<?php echo $fn_id_suscripcion; ?>');
-</script>
-<?php
 
 //ID CONSULTAR
 $id_registro = (int)$datos_suscripcion['id_paciente'];
