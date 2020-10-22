@@ -3616,7 +3616,6 @@ fn_id_suscripcion : <?php echo (int)$fn_id_suscripcion; ?>
 },
 success: function(datos){
 $('#reporte_tabla').html(datos).fadeIn('slow');
-alert('<?php echo (int)$fn_id_suscripcion; ?>');
 }
 });
 }
