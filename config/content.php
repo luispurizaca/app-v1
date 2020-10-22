@@ -51,7 +51,15 @@ if(empty($id_paciente)){
 $row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo FROM usuario WHERE id_tipo_usuario = '$tipo_usuario' ORDER BY id DESC LIMIT 1"));
 $codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
 
-$registro_clave = $codigo_registro.time();
+$str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+$password = "";
+//Reconstruimos la contraseña segun la longitud que se quiera
+for($i=0; $i< 6; $i++){
+//obtenemos un caracter aleatorio escogido de la cadena de caracteres
+$password .= substr($str,rand(0,62),1);
+}
+
+$registro_clave = $password;
 } else {
 
 //CODIGO DEL PACIENTE
