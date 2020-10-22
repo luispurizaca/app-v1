@@ -137,7 +137,7 @@ Te env&iacute;o el link, con tu usuario y contrase&ntilde;a para que puedas acce
 </tr>
 </table>
 <br>
-Por favor, siéntete en confianza de consultar cualquier duda que tengas.
+Por favor, si&eacute;ntete en confianza de consultar cualquier duda que tengas.
 <br><br>
 Saludos<br>
 <b>Katherine Alfaro</b><br>
