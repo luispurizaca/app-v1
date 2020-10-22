@@ -1542,6 +1542,16 @@ $frm_muslo = (float)$_POST['frm_muslo'];
 $frm_pantorrilla = (float)$_POST['frm_pantorrilla'];
 $id_paciente = (int)$_POST['id_paciente'];
 
+if(empty($frm_talla_actual) || empty($frm_peso_actual) || empty($frm_cuello) || empty($frm_brazo) || empty($frm_pecho) || empty($frm_cintura) || empty($frm_gluteo) || empty($frm_muslo) || empty($frm_pantorrilla) || empty($id_paciente)){
+?>
+<script>
+alert('Complete todas las  medidas.');
+</script>
+<?php
+exit();
+exit();
+}
+
 //ULTIMA SUSCRIPCION DEL PACIENTE
 $row_id_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT id, id_nutricionista FROM suscripcion_programa WHERE id_paciente = '$id_paciente' ORDER BY id DESC LIMIT 1"));
 $id_suscripcion = (int)$row_id_suscripcion[0];
@@ -1559,6 +1569,27 @@ VALUES
 ('".$codigo_control."', '".$id_suscripcion."', '".$id_nutricionista."', '".$id_paciente."', '".date('Y-m-d H:i:s')."', '".$frm_talla_actual."', '".$frm_peso_actual."', '".$frm_cuello."', '".$frm_brazo."', '".$frm_pecho."', '".$frm_cintura."', '".$frm_gluteo."', '".$frm_muslo."', '".$frm_pantorrilla."')
 "
 );
+
+//GUARDAR IMAGENES
+$ruta_carpeta = "fotos/";
+$nombre_archivo = time() .".". pathinfo($_FILES['foto_frontal']['name'],PATHINFO_EXTENSION);
+$ruta_guardar_archivo = $ruta_carpeta . $nombre_archivo;
+
+if(move_uploaded_file($_FILES['foto_frontal']['tmp_name'], $ruta_guardar_archivo)){
+    echo "imagen cargada";
+}else{
+    echo "no se pudo cargar";
+}
+
+
+$nombre_archivo = time() .".". pathinfo($_FILES['foto_perfil']['name'],PATHINFO_EXTENSION);
+$ruta_guardar_archivo = $ruta_carpeta . $nombre_archivo;
+
+if(move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $ruta_guardar_archivo)){
+    echo "imagen cargada";
+}else{
+    echo "no se pudo cargar";
+}
 ?>
 <script>
 location.href = 'medidas.php?success';
@@ -4839,6 +4870,12 @@ GUARDAR DATOS
 </button>
 <script>
 $('#btn_guardar_datos').on('click', function(){
+
+
+var frmData = new FormData;
+frmData.append('imagen_frontal', $('#frm_foto_frontal')[0].files[0]);
+frmData.append('imagen_perfil', $('#frm_foto_perfil')[0].files[0]);
+
 var frm_talla_actual = $('#frm_talla_actual').val();
 var frm_peso_actual = $('#frm_peso_actual').val();
 var frm_cuello = $('#frm_cuello').val();
@@ -4849,21 +4886,24 @@ var frm_gluteo = $('#frm_gluteo').val();
 var frm_muslo = $('#frm_muslo').val();
 var frm_pantorrilla = $('#frm_pantorrilla').val();
 
+frmData.append('frm_talla_actual', frm_talla_actual);
+frmData.append('frm_peso_actual', frm_peso_actual);
+frmData.append('frm_cuello', frm_cuello);
+frmData.append('frm_brazo', frm_brazo);
+frmData.append('frm_pecho', frm_pecho);
+frmData.append('frm_cintura', frm_cintura);
+frmData.append('frm_gluteo', frm_gluteo);
+frmData.append('frm_muslo', frm_muslo);
+frmData.append('frm_pantorrilla', frm_pantorrilla);
+frmData.append('id_paciente', <?php echo $_SESSION['ID_USUARIO']; ?>);
+
 $.ajax({
 type: 'POST',
 url: 'config/content.php?negocia_operacion=8',
-data: {
-frm_talla_actual : frm_talla_actual,
-frm_peso_actual : frm_peso_actual,
-frm_cuello: frm_cuello,
-frm_brazo : frm_brazo,
-frm_pecho : frm_pecho,
-frm_cintura : frm_cintura,
-frm_gluteo : frm_gluteo,
-frm_muslo : frm_muslo,
-frm_pantorrilla : frm_pantorrilla,
-id_paciente : <?php echo $_SESSION['ID_USUARIO']; ?>
-},
+data: frmData,
+processData: false,
+contentType: false,
+cache: false,
 success: function(datos){
 $('#div_guardar_control').html(datos).fadeIn('slow');
 }
