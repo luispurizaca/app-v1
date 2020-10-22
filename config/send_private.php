@@ -124,7 +124,7 @@ Te env&iacute;o el link, con tu usuario y contrase&ntilde;a para que puedas acce
 <td style="width: 70%; font-weight: bold;">www.nutrikatherinealfaro.com.pe/Mi-Espacio-Personal</td>
 </tr>
 <tr>
-<td style="width: 30%; font-weight: bold;">Usuario:</td>
+<td style="width: 30%; font-weight: bold;">N&#176; de Socio:</td>
 <td style="width: 70%; font-weight: bold;">'.$usuario.'</td>
 </tr>
 <tr>
