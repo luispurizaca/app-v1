@@ -4473,7 +4473,7 @@ Especificar:
 </tr>
 <tr class="tr-hover">
 <td class="td-content" style="width: 50% !important; text-align: left;">
-11. &#191;C&oacute;mo prefieres un plan de alimentaci&oacute;n?:
+11. &#191;C&oacute;mo prefieres tu plan de alimentaci&oacute;n?:
 </td>
 <td style="width: 50%; text-align: left;">
 <label style="width: 100%; font-size: 12px;">
