@@ -51,7 +51,7 @@ if(empty($id_paciente)){
 $row_codigo_registro = mysqli_fetch_array(mysqli_query($con, "SELECT codigo FROM usuario WHERE id_tipo_usuario = '$tipo_usuario' ORDER BY id DESC LIMIT 1"));
 $codigo_registro = $letra_add.(((int)substr($row_codigo_registro[0], 2, 100)) + 1);
 
-$registro_clave = $codigo_registro.'12345';
+$registro_clave = $codigo_registro.time();
 } else {
 
 //CODIGO DEL PACIENTE
