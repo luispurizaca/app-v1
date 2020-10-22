@@ -1507,6 +1507,8 @@ $fn_id_suscripcion = (int)$_POST['fn_id_suscripcion'];
 //OBTENER DATOS DE LA SUSCRIPCION
 $datos_suscripcion = mysqli_fetch_array(mysqli_query($con, "SELECT * FROM suscripcion_programa WHERE id = '$fn_id_suscripcion' LIMIT 1"));
 
+echo $fn_id_suscripcion;
+
 //ID CONSULTAR
 $id_registro = (int)$datos_suscripcion['id_paciente'];
 $peso_meta_suscripcion = (float)$datos_suscripcion['peso_meta'];
