@@ -151,7 +151,12 @@ suscripcion_programa.fecha_inicio AS SUSCRIPCION_FECHA_INICIO,
 suscripcion_programa.fecha_fin AS SUSCRIPCION_FECHA_FIN,
 suscripcion_programa.estado AS SUSCRIPCION_ESTADO
 FROM control, suscripcion_programa
-WHERE suscripcion_programa.id_nutricionista = '".$_SESSION['ID_USUARIO']."' AND suscripcion_programa.id = control.id_suscripcion";
+WHERE suscripcion_programa.id = control.id_suscripcion";
+
+//FILTRO NUTRICIONISTA
+if($_SESSION['ID_TIPO_USUARIO'] == 1){
+$consulta_sql_general .= " AND suscripcion_programa.id_nutricionista = '".$_SESSION['ID_USUARIO']."'";
+}
 
 //FILTRO ID PACIENTE
 if(!empty($fn_id_paciente)){

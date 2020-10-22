@@ -1218,6 +1218,9 @@ if($negocia_operacion == 4){
 $id_paciente = (int)$_GET['id_paciente'];
 $peso_meta_general = (float)$_GET['peso_meta_general'];
 mysqli_query($con, "UPDATE historia SET peso_meta = '$peso_meta_general' WHERE id_paciente = '$id_paciente'");
+
+exit();
+exit();
 }
 
 //5. TERMINAR SUSCRIPCION
@@ -1226,6 +1229,9 @@ if($negocia_operacion == 5){
 //DATOS GET
 $id_suscripcion = (int)$_GET['id_suscripcion'];
 mysqli_query($con, "UPDATE suscripcion_programa SET estado = '2' WHERE id = '$id_suscripcion'");
+
+exit();
+exit();
 }
 
 //6. ACTUALIZAR PESO META DE LA SUSCRIPCION
@@ -1235,6 +1241,9 @@ if($negocia_operacion == 6){
 $id_suscripcion = (int)$_GET['id_suscripcion'];
 $peso_meta_general = (float)$_GET['peso_meta_general'];
 mysqli_query($con, "UPDATE suscripcion_programa SET peso_meta = '$peso_meta_general' WHERE id = '$id_suscripcion'");
+
+exit();
+exit();
 }
 
 //ELIMINAR
