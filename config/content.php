@@ -3401,10 +3401,15 @@ $css_estado = 'color: #F26C3C; font-weight: bolder;';
 }
 $id = $row_por_vencer[1];
 $id_programa = $row_por_vencer[2];
+$row_datos_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre_completo FROM programa WHERE id = '$id_programa' LIMIT 1"));
+$nombre_programa = $row_datos_programa[0];
+
 $id_nutricionista = $row_por_vencer[3];
 $id_paciente = $row_por_vencer[4];
-$row_datos_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT codigo, nombres, apellidos FROM usuario WHERE id = '$id_paciente' LIMIT 1"));
+$row_datos_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT codigo, nombres, apellidos, correo FROM usuario WHERE id = '$id_paciente' LIMIT 1"));
 $mostrar_paciente = $row_datos_paciente[1].' '.$row_datos_paciente[2].' ('.$row_datos_paciente[0].')';
+$nombres_paciente = $row_datos_paciente[1];
+$correo_paciente = $row_datos_paciente[3];
 $fecha_inicio = $row_por_vencer[5];
 $fecha_fin = date('d/m/Y', strtotime($row_por_vencer[6]));
 $estado = $row_por_vencer[7];
@@ -3415,18 +3420,19 @@ $id_tipo_suscripcion = $row_por_vencer[10];
 <li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px; <?php echo $css_estado; ?>">
 <span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
 La membres&iacute;a de <?php echo $mostrar_paciente; ?> <?php echo $mostrar_verbo; ?> el <?php echo $fecha_fin; ?>.
-<br>
-<textarea>
-Espero te encuentres muy bien! Hemos logrado perder 5 KG en este mes y estoy segura que vamos a seguir avanzando hasta llegar al objetivo! Muchas felicidades!
-</textarea>
 <?php
 if($tipo_sql == 1){
 ?>
-&nbsp;&nbsp;&nbsp;<button id="btn_enviar_email_<?php echo $id; ?>" type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 11px;">Enviar recordatorio</button>
+<br>
+<textarea id="content_<?php echo $id; ?>" style="width: 100%; padding: 3px;" rows="4">
+Espero te encuentres muy bien! Hemos logrado perder 5 KG en este mes y estoy segura que vamos a seguir avanzando hasta llegar al objetivo! Muchas felicidades!
+</textarea><br>
+<button id="btn_enviar_email_<?php echo $id; ?>" type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 11px;">Enviar recordatorio</button>
 <script>
 $('#btn_enviar_email_<?php echo $id; ?>').on('click', function(){
+var content = $('#content_<?php echo $id; ?>').val();
 $.ajax({
-url: 'config/send_private.php?tipo_email=2&email_destino=luispurizaca.1908@gmail.com&nombre_paciente=Luis&nombre_programa=<?php echo $nombre_programa; ?>&usuario=<?php echo $form_codigo; ?>&clave=<?php echo $form_clave; ?>&genero=<?php echo $form_genero; ?>'
+url: 'config/send_private.php?tipo_email=2&email_destino=<?php echo $correo_paciente; ?>&nombre_paciente=<?php echo $nombres_paciente; ?>&nombre_programa=<?php echo $nombre_programa; ?>&fecha_vencimiento=<?php echo $fecha_fin; ?>&contenido='+content
 });
 location.href='index.php?mail';
 });

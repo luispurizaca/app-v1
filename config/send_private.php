@@ -12,6 +12,12 @@ $nombre_paciente = $_GET['nombre_paciente'];
 //NOMBRE DEL PROGRAMA
 $nombre_programa = $_GET['nombre_programa'];
 
+//FECHA VENCIMIENTO
+$fecha_vencimiento = $_GET['fecha_vencimiento'];
+
+//CONTENIDO
+$contenido = $_GET['contenido'];
+
 //USUARIO
 $usuario = $_GET['usuario'];
 
@@ -161,9 +167,9 @@ $bodyHtml = '
 <h3 style="color:#4f4f4f">Hola <b>'.$nombre_paciente.'</b>,</h3>
 </div>
 <div style="text-align: justify ;color: #4f4f4f">
-Espero te encuentres muy bien! Hemos logrado perder 5 kg en este mes y estoy segura que vamos a seguir avanzando hasta llegar al objetivo! Muchas felicidades!
+'.$contenido.'
 <br><br>
-Recordarte que el d&iacute;a <b>13 de agosto del 2020</b> vence tu plan <b>xxxxxxx</b>. Agradecer&eacute; enviar el voucher de tu renovaci&oacute;n a este correo: pagos@nutrikatherinealfaro.com.pe.
+Recordarte que el d&iacute;a <b>'.$fecha_vencimiento.'</b> vence tu plan <b>'.$nombre_programa.'</b>. Agradecer&eacute; enviar el voucher de tu renovaci&oacute;n a este correo: pagos@nutrikatherinealfaro.com.pe.
 <br><br>
 S&oacute;lo tendr&aacute;s &eacute;xito si crees que puedes tenerlo!
 <br><br>
