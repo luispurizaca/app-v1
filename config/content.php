@@ -4703,8 +4703,11 @@ confirmButtonText: 'OK'
 <td class="td-content" style="width: 50% !important; font-weight: bold;">Foto Perfil</td>
 <td class="td-content" style="width: 50% !important;">
 <input id="frm_foto_perfil" type="file" style="height: 25px; text-align: center; font-size: 11px;">
-<br><br>
-<span style="color: red; font-size: 8px;">(*) Es importante a&ntilde;adir tus fotos y &eacute;stas ser&aacute;n confidenciales.</span>
+</td>
+</tr>
+<tr>
+<td class="td-content" style="width: 100% !important; text-align: left !important;" colspan="2">
+<span style="color: red; font-size: 9px;">(*) Es importante a&ntilde;adir tus fotos y &eacute;stas ser&aacute;n confidenciales.</span>
 </td>
 </tr>
 </table>
