@@ -2363,16 +2363,12 @@ if($_SESSION['ID_TIPO_USUARIO'] == 2){
 <div class="row">
 <div class="col-xl-6 mb-30">
 <div class="card-box height-100-p widget-style1" style="background: #95cf32; color: white;">
-<div class="d-flex flex-wrap align-items-center">
-<span style="font-size: 15px;">Paso 1:</span><br>Completar mi historia -> <a href="historia.php" style="color: white; font-weight: bold;">Click aqu&iacute;</a><br>
-</div>
+<span style="font-size: 20px; font-weight: bold;">Paso 1:</span><br>Completar mi historia -> <a href="historia.php" style="color: white; font-weight: bold;">Click aqu&iacute;</a><br>
 </div>
 </div>
 <div class="col-xl-6 mb-30">
 <div class="card-box height-100-p widget-style1" style="background: #95cf32; color: white;">
-<div class="d-flex flex-wrap align-items-center">
-<span style="font-size: 15px;">Paso 2:</span><br>Registrar mi peso y medidas -> <a href="medidas.php" style="color: white; font-weight: bold;">Click aqu&iacute;</a><br><br>
-</div>
+<span style="font-size: 20px; font-weight: bold;">Paso 2:</span><br>Registrar mi peso y medidas -> <a href="medidas.php" style="color: white; font-weight: bold;">Click aqu&iacute;</a><br><br>
 </div>
 </div>
 </div>
@@ -4514,14 +4510,23 @@ Especificar:
 10. &#191;En qu&eacute; horarios te gustar&iacute;a<br>que programe tus comidas?:
 </td>
 <td style="width: 50%; text-align: left;">
+<div style="display: none;">
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="horario_comidas_desayuno" name="form_horario_comidas" value="1" <?php if($form_horario_comidas == 1){ ?> checked="checked" <?php } ?>> Desayuno
+<input type="radio" id="horario_comidas_desayuno" name="form_horario_comidas" value="1" checked="checked"> Desayuno
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="horario_comidas_almuerzo" name="form_horario_comidas" value="2" <?php if($form_horario_comidas == 2){ ?> checked="checked" <?php } ?>> Almuerzo 
+<input type="radio" id="horario_comidas_almuerzo" name="form_horario_comidas" value="2"> Almuerzo 
 </label>
 <label style="width: 100%; font-size: 12px;">
-<input type="radio" id="horario_comidas_cena" name="form_horario_comidas" value="3" <?php if($form_horario_comidas == 3){ ?> checked="checked" <?php } ?>> Cena 
+<input type="radio" id="horario_comidas_cena" name="form_horario_comidas" value="3"> Cena 
+</label>
+</div>
+
+
+<label style="width: 100%; font-size: 12px;">
+<textarea id="form_horario_comidas_desayuno" name="form_horario_comidas_desayuno" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" placeholder="Desayuno:"><?php echo $form_horario_comidas_desayuno; ?></textarea>
+<textarea id="form_horario_comidas_almuerzo" name="form_horario_comidas_almuerzo" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" placeholder="Almuerzo:"><?php echo $form_horario_comidas_almuerzo; ?></textarea>
+<textarea id="form_horario_comidas_cena" name="form_horario_comidas_cena" class="form-control n-form-control-text-area-plan" style="height: 50px !important; background: none; border: none;" placeholder="Cena:"><?php echo $form_horario_comidas_cena; ?></textarea>
 </label>
 </td>
 </tr>
@@ -4698,6 +4703,8 @@ confirmButtonText: 'OK'
 <td class="td-content" style="width: 50% !important; font-weight: bold;">Foto Perfil</td>
 <td class="td-content" style="width: 50% !important;">
 <input id="frm_foto_perfil" type="file" style="height: 25px; text-align: center; font-size: 11px;">
+<br><br>
+<span style="color: red; font-size: 8px;">(*) Es importante a&ntilde;adir tus fotos y &eacute;stas ser&aacute;n confidenciales.</span>
 </td>
 </tr>
 </table>
