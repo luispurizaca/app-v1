@@ -1405,6 +1405,7 @@ if($ver_pacientes == 1){
 <td class="td-title" style="width: 11.11% !important;">Fecha Cuota</td>
 <td class="td-title" style="width: 11.11% !important;">D&iacute;as Vencimiento</td>
 <td class="td-title" style="width: 11.11% !important;">Estado</td>
+<td class="td-title" style="width: 11.11% !important;">Nutricionista</td>
 <td class="td-title" style="width: 11.11% !important;">Acci&oacute;n</td>
 </tr>
 <?php
@@ -1415,6 +1416,7 @@ if($ver_pacientes == 1){
 <td class="td-title" style="width: 11.11% !important;">Paciente</td>
 <td class="td-title" style="width: 11.11% !important;">Paquete</td>
 <td class="td-title" style="width: 11.11% !important;">Plan</td>
+<td class="td-title" style="width: 11.11% !important;">Condici&oacute;n</td>
 <td class="td-title" style="width: 11.11% !important;">Fecha Inicio</td>
 <td class="td-title" style="width: 11.11% !important;">Fecha Fin</td>
 <td class="td-title" style="width: 11.11% !important;">Banco</td>
@@ -1424,8 +1426,7 @@ if($ver_pacientes == 1){
 </tr>
 <?php
 }
-?>
-<?php
+
 $array_funcion = $funcion_datos[1];
 foreach($array_funcion as $row){
 
@@ -1461,6 +1462,10 @@ $ret_correo = $row[25];
 $ret_telefono = $row[26];
 $ret_texto_estado = $row[27];
 
+//TIPO DE SUSCRIPCION
+$ret_id_tipo_suscripcion = $row[29];
+$text_tipo_suscripcion = $row[30];
+
 if($ver_pacientes == 1){
 $date1 = new DateTime(date('Y-m-d'));
 $date2 = new DateTime($row[5]);
@@ -1473,9 +1478,11 @@ $ret_dias_vencimiento = $diff->days . ' d&iacute;as';
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_venta; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paquete; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_programa; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $text_tipo_suscripcion; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_fin; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_dias_vencimiento; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_texto_estado; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_nutricionista; ?></td>
 <td class="td-content" style="width: 11.11% !important;">
 <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="eliminar(<?php echo $ret_id_suscripcion; ?>)"><i class="fa fa-trash-o" style="font-size: 13px;"></i></a>
 </td>

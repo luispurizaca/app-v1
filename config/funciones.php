@@ -106,7 +106,8 @@ suscripcion_programa.estado AS ESTADO,
 (SELECT cobro.monto FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS MONTO_VENTA,
 (SELECT cobro.id_medio_pago FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS ID_MEDIO_PAGO,
 (SELECT cobro.id_cuenta_bancaria FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS ID_CUENTA_BANCARIA,
-suscripcion_programa.id_paquete AS ID_PAQUETE
+suscripcion_programa.id_paquete AS ID_PAQUETE,
+suscripcion_programa.id_tipo_suscripcion AS ID_TIPO_SUSCRIPCION
 FROM suscripcion_programa
 WHERE suscripcion_programa.id_vendedor = '".$_SESSION['ID_USUARIO']."'";
 
@@ -119,6 +120,11 @@ $consulta_sql_general .= " HAVING 1 = 1";
 //FILTRO FECHAS
 if(!empty($n_fecha_desde) && !empty($n_fecha_hasta) && $ver_pacientes != 1){
 $consulta_sql_general .= " AND (DATE_FORMAT(FECHA_VENTA, '%Y-%m-%d') BETWEEN DATE_FORMAT('$n_fecha_desde', '%Y-%m-%d') AND DATE_FORMAT('$n_fecha_hasta', '%Y-%m-%d'))";
+}
+
+//AGRUPAR POR PACIENTE
+if($ver_pacientes == 1){
+$consulta_sql_general .= " GROUP BY suscripcion_programa.id_paciente";
 }
 
 //ORDER BY
@@ -429,16 +435,15 @@ $ret_monto_venta = $sql_general_row[8];
 $ret_id_medio_pago = $sql_general_row[9];
 $ret_id_cuenta_bancaria = $sql_general_row[10];
 $ret_id_paquete = $sql_general_row[11];
+$ret_id_tipo_suscripcion = (int)$sql_general_row[12];
 
-//CAMPOS NUEVOS
-$ret_codigo = $sql_general_row[12];
-$ret_nombres = $sql_general_row[13];
-$ret_apellidos = $sql_general_row[14];
-$ret_genero = $sql_general_row[15];
-$ret_edad_paciente = $sql_general_row[16];
-$ret_correo = $sql_general_row[17];
-$ret_telefono = $sql_general_row[18];
-$ret_texto_estado = $sql_general_row[19];
+//TIPO DE SUSCRIPCION
+if($ret_id_tipo_suscripcion == 1){
+$text_tipo_suscripcion = '<span style="color: green;">Nueva</span>';
+} else {
+$text_tipo_suscripcion = '<span style="color: darkblue;">Renovaci&oacute;n</span>';
+}
+
 
 //NOMBRE DEL PROGRAMA
 $row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM programa WHERE id = '$ret_id_programa' LIMIT 1"));
@@ -535,7 +540,9 @@ $ret_texto_edad,
 $ret_correo,
 $ret_telefono,
 $ret_texto_estado,
-$css_paciente_color
+$css_paciente_color,
+$ret_id_tipo_suscripcion,
+$text_tipo_suscripcion
 );
 }
 
