@@ -3415,6 +3415,10 @@ $id_tipo_suscripcion = $row_por_vencer[10];
 <li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px; <?php echo $css_estado; ?>">
 <span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
 La membres&iacute;a de <?php echo $mostrar_paciente; ?> <?php echo $mostrar_verbo; ?> el <?php echo $fecha_fin; ?>.
+<br>
+<textarea>
+Espero te encuentres muy bien! Hemos logrado perder 5 KG en este mes y estoy segura que vamos a seguir avanzando hasta llegar al objetivo! Muchas felicidades!
+</textarea>
 <?php
 if($tipo_sql == 1){
 ?>
