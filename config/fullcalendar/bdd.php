@@ -1,7 +1,7 @@
 <?php
 try
 {
-	$bdd = new PDO('mysql:host=localhost;dbname=calendar;charset=utf8', 'root', '');
+	$bdd = new PDO('mysql:host=nutrikatherinealfaro.com.pe;dbname=nutrikat_app-v1;charset=utf8', 'nutrikat_localhost', 'Nutrikatherinealfaro123');
 }
 catch(Exception $e)
 {
