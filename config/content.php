@@ -1946,8 +1946,6 @@ $bienv = 'Bienvenida';
 <?php echo $bienv; ?> al programa <b>ReKupera tu peso ideal</b>. Este es tu espacio personal donde podr&aacute;s
 ver el &eacute;xito de tu evoluci&oacute;n desde el inicio hasta el final!
 Agradecer&eacute; completar los pasos para activar tu plan y comenzar con este incre&iacute;ble reto!<br><br>
-Paso 1: Completar mi historia -> <a href="historia.php" style="color: #95cf32; font-weight: bold;">Click aqu&iacute;</a><br>
-Paso 2: Registrar mi peso y medidas -> <a href="medidas.php" style="color: #95cf32; font-weight: bold;">Click aqu&iacute;</a><br><br>
 Muchas gracias por sumarte a esta incre&iacute;ble experiencia que te ayudar&aacute; a mejorar tu estilo de
 vida hacia un mundo mas saludable<br><br>
 <b>Equipo ReKupera tu peso ideal by<br>
@@ -2361,199 +2359,21 @@ chart.render();
 
 //VISTA PACIENTE
 if($_SESSION['ID_TIPO_USUARIO'] == 2){
-
-//PORCENTAJE UNO
-if(empty($_SESSION['usuario_maximo_suscripciones'])){
-$porcentaje_uno = 0;
-$mostrar_uno = '0/0';
-} else {
-$porcentaje_uno = round(($_SESSION['usuario_total_suscripciones'] / $_SESSION['usuario_maximo_suscripciones']), 2) * 100;
-$mostrar_uno = $_SESSION['usuario_total_suscripciones'].'/'.$_SESSION['usuario_maximo_suscripciones'];
-}
-
-//PORCENTAJE DOS
-if(empty($_SESSION['total_controles'])){
-$porcentaje_dos = 0;
-$mostrar_dos = '0/0';
-} else {
-$porcentaje_dos = round(($_SESSION['usuario_controles_realizados'] / $_SESSION['total_controles']), 2) * 100;
-$mostrar_dos = $_SESSION['usuario_controles_realizados'].'/'.$_SESSION['total_controles'];
-}
 ?>
 <div class="row">
 <div class="col-xl-6 mb-30">
 <div class="card-box height-100-p widget-style1">
 <div class="d-flex flex-wrap align-items-center">
-<div class="progress-data">
-<div id="chart"></div>
-</div>
-<div class="widget-data">
-<div class="h4 mb-0"><?php echo $mostrar_uno; ?></div>
-<div class="weight-600 font-14">Suscripciones</div>
+Paso 1: Completar mi historia -> <a href="historia.php" style="color: #95cf32; font-weight: bold;">Click aqu&iacute;</a><br>
 </div>
 </div>
-</div>
-<script>
-var options = {
-series: [<?php echo $porcentaje_uno; ?>],
-grid: {
-padding: {
-top: 0,
-right: 0,
-bottom: 0,
-left: 0
-},
-},
-chart: {
-height: 100,
-width: 70,
-type: 'radialBar',
-},	
-plotOptions: {
-radialBar: {
-hollow: {
-size: '50%',
-},
-dataLabels: {
-name: {
-show: false,
-color: '#fff'
-},
-value: {
-show: true,
-color: '#333',
-offsetY: 5,
-fontSize: '15px'
-}
-}
-}
-},
-colors: ['#818181'],
-fill: {
-type: 'gradient',
-gradient: {
-shade: 'dark',
-type: 'diagonal1',
-shadeIntensity: 0.8,
-gradientToColors: ['#95cf32'],
-inverseColors: false,
-opacityFrom: [1, 0.2],
-opacityTo: 1,
-stops: [0, 100],
-}
-},
-states: {
-normal: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-hover: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-active: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-}
-};
-
-var chart = new ApexCharts(document.querySelector("#chart"), options);
-chart.render();
-</script>
 </div>
 <div class="col-xl-6 mb-30">
 <div class="card-box height-100-p widget-style1">
 <div class="d-flex flex-wrap align-items-center">
-<div class="progress-data">
-<div id="chart2"></div>
-</div>
-<div class="widget-data">
-<div class="h4 mb-0"><?php echo $mostrar_dos; ?></div>
-<div class="weight-600 font-14">Controles Realizados</div>
+Paso 2: Registrar mi peso y medidas -> <a href="medidas.php" style="color: #95cf32; font-weight: bold;">Click aqu&iacute;</a><br><br>
 </div>
 </div>
-</div>
-<script>
-var options = {
-series: [<?php echo $porcentaje_dos; ?>],
-grid: {
-padding: {
-top: 0,
-right: 0,
-bottom: 0,
-left: 0
-},
-},
-chart: {
-height: 100,
-width: 70,
-type: 'radialBar',
-},	
-plotOptions: {
-radialBar: {
-hollow: {
-size: '50%',
-},
-dataLabels: {
-name: {
-show: false,
-color: '#fff'
-},
-value: {
-show: true,
-color: '#333',
-offsetY: 5,
-fontSize: '15px'
-}
-}
-}
-},
-colors: ['#818181'],
-fill: {
-type: 'gradient',
-gradient: {
-shade: 'dark',
-type: 'diagonal1',
-shadeIntensity: 0.8,
-gradientToColors: ['#95cf32'],
-inverseColors: false,
-opacityFrom: [1, 0.2],
-opacityTo: 1,
-stops: [0, 100],
-}
-},
-states: {
-normal: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-hover: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-active: {
-filter: {
-type: 'none',
-value: 0,
-}
-},
-}
-};
-
-var chart = new ApexCharts(document.querySelector("#chart2"), options);
-chart.render();
-</script>
 </div>
 </div>
 <?php

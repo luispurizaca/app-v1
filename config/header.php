@@ -94,6 +94,11 @@ if($_SESSION['ID_TIPO_USUARIO'] == 1){
 </a>
 </li>
 <li>
+<a href="fullcalendar/" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Agenda</span>
+</a>
+</li>
+<li>
 <a href="configuracion.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Configuraci&oacute;n</span>
 </a>
@@ -117,6 +122,11 @@ elseif($_SESSION['ID_TIPO_USUARIO'] == 2){
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Evoluci&oacute;n</span>
 </a>
 </li>
+<li>
+<a href="fullcalendar/" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Agenda</span>
+</a>
+</li>
 <?php
 }
 elseif($_SESSION['ID_TIPO_USUARIO'] == 3){
@@ -129,6 +139,11 @@ elseif($_SESSION['ID_TIPO_USUARIO'] == 3){
 <li>
 <a href="reportes.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Reportes</span>
+</a>
+</li>
+<li>
+<a href="fullcalendar/" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Agenda</span>
 </a>
 </li>
 <?php
@@ -148,6 +163,11 @@ elseif($_SESSION['ID_TIPO_USUARIO'] == 4){
 <li>
 <a href="suscripciones.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Reporte de Ventas</span>
+</a>
+</li>
+<li>
+<a href="fullcalendar/" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Agenda</span>
 </a>
 </li>
 <?php
