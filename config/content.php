@@ -4706,7 +4706,7 @@ confirmButtonText: 'OK'
 </td>
 </tr>
 <tr>
-<td class="td-content" style="width: 100% !important; text-align: left !important;" colspan="2">
+<td class="td-content" style="width: 100% !important; text-align: center !important;" colspan="2">
 <span style="color: red; font-size: 9px;">(*) Es importante a&ntilde;adir tus fotos y &eacute;stas ser&aacute;n confidenciales.</span>
 </td>
 </tr>
