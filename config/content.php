@@ -2362,16 +2362,16 @@ if($_SESSION['ID_TIPO_USUARIO'] == 2){
 ?>
 <div class="row">
 <div class="col-xl-6 mb-30">
-<div class="card-box height-100-p widget-style1">
+<div class="card-box height-100-p widget-style1" style="background: #95cf32; color: white;">
 <div class="d-flex flex-wrap align-items-center">
-Paso 1: Completar mi historia -> <a href="historia.php" style="color: #95cf32; font-weight: bold;">Click aqu&iacute;</a><br>
+<span style="font-size: 15px;">Paso 1:</span><br>Completar mi historia -> <a href="historia.php" style="color: white; font-weight: bold;">Click aqu&iacute;</a><br>
 </div>
 </div>
 </div>
 <div class="col-xl-6 mb-30">
-<div class="card-box height-100-p widget-style1">
+<div class="card-box height-100-p widget-style1" style="background: #95cf32; color: white;">
 <div class="d-flex flex-wrap align-items-center">
-Paso 2: Registrar mi peso y medidas -> <a href="medidas.php" style="color: #95cf32; font-weight: bold;">Click aqu&iacute;</a><br><br>
+<span style="font-size: 15px;">Paso 2:</span><br>Registrar mi peso y medidas -> <a href="medidas.php" style="color: white; font-weight: bold;">Click aqu&iacute;</a><br><br>
 </div>
 </div>
 </div>
