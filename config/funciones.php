@@ -117,6 +117,7 @@ $consulta_sql_general .= " AND (DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-
 }
 
 $consulta_sql_general .= " HAVING 1 = 1";
+
 //FILTRO FECHAS
 if(!empty($n_fecha_desde) && !empty($n_fecha_hasta) && $ver_pacientes != 1){
 $consulta_sql_general .= " AND (DATE_FORMAT(FECHA_VENTA, '%Y-%m-%d') BETWEEN DATE_FORMAT('$n_fecha_desde', '%Y-%m-%d') AND DATE_FORMAT('$n_fecha_hasta', '%Y-%m-%d'))";
@@ -124,13 +125,15 @@ $consulta_sql_general .= " AND (DATE_FORMAT(FECHA_VENTA, '%Y-%m-%d') BETWEEN DAT
 
 //AGRUPAR POR PACIENTE
 if($ver_pacientes == 1){
-$consulta_sql_general .= " GROUP BY suscripcion_programa.id_paciente";
+$consulta_sql_general .= " GROUP BY ID_PACIENTE";
 }
 
 //ORDER BY
 $consulta_sql_general .= "
 ORDER BY FECHA_VENTA DESC
 ";
+
+echo $consulta_sql_general;
 }
 
 //CONSULTA CONTROLES
