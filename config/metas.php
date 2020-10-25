@@ -69,7 +69,9 @@ $title = 'Nutricionistas';
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- JQUERY <script src="src/scripts/jquery.min.js"></script> -->
-<script src="//negocia.pe/js/jquery.min.js?v=00001" type="text/javascript"></script>
+<!-- jQuery Version 1.11.1 -->
+<script src="config/fullcalendar/js/jquery.js"></script>
+
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
