@@ -80,6 +80,10 @@ $title = 'Nutricionistas';
 
 <!-- FullCalendar -->
 <link href='config/fullcalendar/css/fullcalendar.css' rel='stylesheet' />
+<script src='config/fullcalendar/js/moment.min.js'></script>
+<script src='config/fullcalendar/js/fullcalendar/fullcalendar.min.js'></script>
+<script src='config/fullcalendar/js/fullcalendar/fullcalendar.js'></script>
+<script src='config/fullcalendar/js/fullcalendar/locale/es.js'></script>
 
 <script src="vendors/scripts/core.js"></script>
 <script src="vendors/scripts/script.min.js"></script>
