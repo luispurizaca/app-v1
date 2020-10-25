@@ -184,8 +184,6 @@ $events = $req->fetchAll();
     </div>
     <!-- /.container -->
     <script>
-    $(document).ready(function() {
-
 		var date = new Date();
        var yyyy = date.getFullYear().toString();
        var mm = (date.getMonth()+1).toString().length == 1 ? "0"+(date.getMonth()+1).toString() : (date.getMonth()+1).toString();
@@ -283,9 +281,7 @@ $events = $req->fetchAll();
 				}
 			});
 		}
-		
-	});
-    </script>
+		    </script>
 			  </div>
 			  <div class="modal-footer">
 				<button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
