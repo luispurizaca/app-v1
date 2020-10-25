@@ -106,6 +106,7 @@ gtag('config', 'UA-119386393-1');
 <script src='config/fullcalendar/js/fullcalendar/fullcalendar.min.js'></script>
 <script src='config/fullcalendar/js/fullcalendar/fullcalendar.js'></script>
 <script src='config/fullcalendar/js/fullcalendar/locale/es.js'></script>
+<script src="config/fullcalendar/js/js/bootstrap.min.js"></script>
 
 <title><?php echo $title; ?></title>
 <style>
