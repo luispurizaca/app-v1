@@ -11,7 +11,7 @@ require_once(__DIR__.'/config/is_logged.php');
 require_once(__DIR__.'/config/conexion_bd.php');
 require_once(__DIR__.'/config/datos_bd.php');
 ?>
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
 <?php
