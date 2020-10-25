@@ -720,6 +720,14 @@ VALUES
 "
 );
 
+//AGENDAR PRIMERA REUNION
+mysqli_query($con, "
+INSERT INTO events (title, color, start, end, id_vendedor, id_nutricionista, id_paciente, id_suscripcion)
+VALUES 
+('Primera Cita', '#95cf32', '".$form_fecha_suscripcion."', '".$form_fecha_suscripcion."', '".$_SESSION['ID_USUARIO']."',  '".$form_id_nutricionista."', '".$ultimo_id."', '".$ultimo_id_s."')
+"
+);
+
 }
 ?>
 <script>
