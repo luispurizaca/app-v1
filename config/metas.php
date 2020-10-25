@@ -69,9 +69,7 @@ $title = 'Nutricionistas';
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- JQUERY <script src="src/scripts/jquery.min.js"></script> -->
-<!-- jQuery Version 1.11.1 -->
-<script src="config/fullcalendar/js/jquery.js"></script>
-
+<script src="//negocia.pe/js/jquery.min.js?v=00001" type="text/javascript"></script>
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
@@ -86,6 +84,8 @@ $title = 'Nutricionistas';
 <script src='config/fullcalendar/js/fullcalendar/fullcalendar.min.js'></script>
 <script src='config/fullcalendar/js/fullcalendar/fullcalendar.js'></script>
 <script src='config/fullcalendar/js/fullcalendar/locale/es.js'></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="config/fullcalendar/js/bootstrap.min.js"></script>
 
 <script src="vendors/scripts/core.js"></script>
 <script src="vendors/scripts/script.min.js"></script>
