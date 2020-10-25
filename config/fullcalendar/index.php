@@ -259,10 +259,10 @@ $events = $req->fetchAll();
                             //TITULO
                             $c_title  = $event['title'];
                             if(!empty($c_id_paciente)){
-                            $c_title .= '<br>Paciente:'.$nombre_paciente;
+                            $c_title .= '\nPaciente:'.$nombre_paciente;
                             }
                             if(!empty($c_id_nutricionista)){
-                            $c_title .= '<br>Nutricionista:'.$nombre_nutricionista;
+                            $c_title .= '\nNutricionista:'.$nombre_nutricionista;
                             }
                             
 				$start = explode(" ", $event['start']);
