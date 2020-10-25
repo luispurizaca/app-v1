@@ -1,6 +1,5 @@
 <?php
 //REQUIRES
-require_once(__DIR__.'/../config/is_logged.php');
 
 require_once('bdd.php');
 
