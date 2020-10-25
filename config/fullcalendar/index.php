@@ -69,10 +69,6 @@ $events = $req->fetchAll();
 
     <!-- Custom CSS -->
     <style>
-    body {
-        padding-top: 70px;
-        
-    }
 	#calendar {
 		max-width: 800px;
 	}
