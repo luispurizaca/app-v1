@@ -1,5 +1,8 @@
 <?php
 //REQUIRES
+require_once(__DIR__.'/../is_logged.php');
+require_once(__DIR__.'/../conexion_bd.php');
+require_once(__DIR__.'/../datos_bd.php');
 
 require_once('bdd.php');
 
