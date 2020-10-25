@@ -56,8 +56,13 @@ $events = $req->fetchAll();
 </head>
 
 <body>
-
-    <!-- Page Content -->
+<?php
+//HEADER
+require_once(__DIR__.'/../header.php');
+?>
+<div class="main-container">
+<div class="pd-ltr-15">
+<!-- Page Content -->
     <div class="container">
 
         <div class="row">
@@ -185,7 +190,8 @@ $events = $req->fetchAll();
 
     </div>
     <!-- /.container -->
-
+</div>
+</div>
     <!-- jQuery Version 1.11.1 -->
     <script src="js/jquery.js"></script>
 
