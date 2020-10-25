@@ -35,7 +35,7 @@ require_once(__DIR__.'/config/content.php');
 ?>
 
 <!-- Modal -->
-		<div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal fade" id="modal-agenda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog" role="document">
 			<div class="modal-content">			
 			  <div class="modal-header">
