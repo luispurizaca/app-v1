@@ -52,6 +52,11 @@ $events = $req->fetchAll();
 <link rel="stylesheet" type="text/css" href="../vendors/styles/icon-font.min.css">
 <link rel="stylesheet" type="text/css" href="../vendors/styles/style.css">
 
+<!-- JS -->
+<script src="../vendors/scripts/core.js"></script>
+<script src="../vendors/scripts/script.min.js"></script>
+<script src="../vendors/scripts/layout-settings.js"></script>
+
 
     <title>Inicio</title>
 
