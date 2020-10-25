@@ -78,15 +78,6 @@ $title = 'Nutricionistas';
 <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
 
-<!-- FullCalendar -->
-<link href='config/fullcalendar/css/fullcalendar.css' rel='stylesheet' />
-<script src='config/fullcalendar/js/moment.min.js'></script>
-<script src='config/fullcalendar/js/fullcalendar/fullcalendar.min.js'></script>
-<script src='config/fullcalendar/js/fullcalendar/fullcalendar.js'></script>
-<script src='config/fullcalendar/js/fullcalendar/locale/es.js'></script>
-<!-- Bootstrap Core JavaScript -->
-<script src="config/fullcalendar/js/bootstrap.min.js"></script>
-
 <script src="vendors/scripts/core.js"></script>
 <script src="vendors/scripts/script.min.js"></script>
 <script src="vendors/scripts/layout-settings.js"></script>
@@ -108,6 +99,14 @@ gtag('js', new Date());
 gtag('config', 'UA-119386393-1');
 </script>
 -->
+
+<!-- FullCalendar -->
+<link href='config/fullcalendar/css/fullcalendar.css' rel='stylesheet' />
+<script src='config/fullcalendar/js/moment.min.js'></script>
+<script src='config/fullcalendar/js/fullcalendar/fullcalendar.min.js'></script>
+<script src='config/fullcalendar/js/fullcalendar/fullcalendar.js'></script>
+<script src='config/fullcalendar/js/fullcalendar/locale/es.js'></script>
+
 <title><?php echo $title; ?></title>
 <style>
 .n-form-control{
