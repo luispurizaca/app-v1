@@ -7,7 +7,7 @@ require_once(__DIR__.'/../datos_bd.php');
 require_once('bdd.php');
 
 
-$sql = "SELECT id, title, start, end, color FROM events ";
+$sql = "SELECT id, title, start, end, color, id_nutricionista, id_paciente, id_suscripcion FROM events ";
 
 $req = $bdd->prepare($sql);
 $req->execute();
@@ -248,6 +248,23 @@ $events = $req->fetchAll();
 			events: [
 			<?php foreach($events as $event): 
 			
+                            $c_id_paciente = (int)$event['id_paciente'];                            
+                            $row_nombre_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT nombres, apellidos FROM usuario WHERE id = '$c_id_paciente' LIMIT 1"));
+                            $nombre_paciente = $row_nombre_paciente[0].' '.$row_nombre_paciente[1];
+                            
+                            $c_id_nutricionista = (int)$event['id_nutricionista'];
+                            $row_nombre_nutricionista = mysqli_fetch_array(mysqli_query($con, "SELECT nombres, apellidos FROM usuario WHERE id = '$c_id_nutricionista' LIMIT 1"));
+                            $nombre_nutricionista = $row_nombre_nutricionista[0].' '.$row_nombre_nutricionista[1];
+                            
+                            //TITULO
+                            $c_title  = $event['title'];
+                            if(!empty($c_id_paciente)){
+                            $c_title .= '<br>Paciente:'.$nombre_paciente;
+                            }
+                            if(!empty($c_id_nutricionista)){
+                            $c_title .= '<br>Nutricionista:'.$nombre_nutricionista;
+                            }
+                            
 				$start = explode(" ", $event['start']);
 				$end = explode(" ", $event['end']);
 				if($start[1] == '00:00:00'){
@@ -263,7 +280,7 @@ $events = $req->fetchAll();
 			?>
 				{
 					id: '<?php echo $event['id']; ?>',
-					title: '<?php echo $event['title']; ?>',
+					title: '<?php echo $c_title; ?>',
 					start: '<?php echo $start; ?>',
 					end: '<?php echo $end; ?>',
 					color: '<?php echo $event['color']; ?>',
