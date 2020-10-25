@@ -1,10 +1,12 @@
 <?php
-require_once('bdd.php');
-
+//REQUIRES
+require_once(__DIR__.'/../config/is_logged.php');
+require_once(__DIR__.'/../config/conexion_bd.php');
+require_once(__DIR__.'/../config/datos_bd.php');
 
 $sql = "SELECT id, title, start, end, color FROM events ";
 
-$req = $bdd->prepare($sql);
+$req = $con->prepare($sql);
 $req->execute();
 
 $events = $req->fetchAll();
