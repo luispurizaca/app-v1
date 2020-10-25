@@ -3547,18 +3547,6 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 <?php
 }
 
-//AGENDA
-if($view_controller == 8){
-?>
-<frameset rows="100%, *" frameborder="no" framespacing="0" border="0">
-<frame src="config/fullcalendar/index.php" name="mainwindow" frameborder="no" framespacing="0" marginheight="0" marginwidth="0"></frame>
-</frameset>
-<noframes>
-Su navegador no soporta frames. Le recomendamos actualizar su navegador.
-</noframes>
-<?php
-}
-
 if($view_controller == 9){
 ?>
 <div class="row">

@@ -25,10 +25,12 @@ require_once(__DIR__.'/config/header.php');
 ?>
 <div class="main-container">
 <div class="pd-ltr-15">
-<?php
-//CONTENIDO
-require_once(__DIR__.'/config/content.php');
-?>
+<frameset rows="100%, *" frameborder="no" framespacing="0" border="0">
+<frame src="config/fullcalendar/index.php" name="mainwindow" frameborder="no" framespacing="0" marginheight="0" marginwidth="0"></frame>
+</frameset>
+<noframes>
+Su navegador no soporta frames. Le recomendamos actualizar su navegador.
+</noframes>
 </div>
 </div>
 <?php
