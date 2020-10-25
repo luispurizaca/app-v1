@@ -76,6 +76,7 @@ $title = 'Nutricionistas';
 <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
 <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="src/plugins/fullcalendar/fullcalendar.css">
 <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
 
 <script src="vendors/scripts/core.js"></script>
@@ -86,6 +87,7 @@ $title = 'Nutricionistas';
 <script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 <script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 <script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<script src="src/plugins/fullcalendar/fullcalendar.min.js"></script>
 <script src="vendors/scripts/calendar-setting.js"></script>
 <script src="src/plugins/apexcharts/apexcharts.min.js"></script>
 <script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
@@ -99,15 +101,6 @@ gtag('js', new Date());
 gtag('config', 'UA-119386393-1');
 </script>
 -->
-
-<!-- FullCalendar -->
-<link href='config/fullcalendar/css/fullcalendar.css' rel='stylesheet' />
-<script src='config/fullcalendar/js/moment.min.js'></script>
-<script src='config/fullcalendar/js/fullcalendar/fullcalendar.min.js'></script>
-<script src='config/fullcalendar/js/fullcalendar/fullcalendar.js'></script>
-<script src='config/fullcalendar/js/fullcalendar/locale/es.js'></script>
-<script src="config/fullcalendar/js/bootstrap.min.js"></script>
-
 <title><?php echo $title; ?></title>
 <style>
 .n-form-control{
@@ -154,18 +147,6 @@ height: 40px !important;
 font-size: 12px !important;
 width: 100% !important;
 text-align: center;
-}
-
-
-
-
-
-#calendar {
-max-width: 800px;
-}
-.col-centered{
-float: none;
-margin: 0 auto;
 }
 </style>
 <?php
