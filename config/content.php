@@ -936,7 +936,7 @@ VALUES
 );
 
 //SEGUNDO PLAN
-if($form_total_planes == 2){
+if($form_total_planes > 1){
 
 //AGREGAR A LA BD SUSCRIPCION
 mysqli_query($con, "
@@ -960,7 +960,7 @@ VALUES
 }
 
 //TERCER PLAN
-if($form_total_planes == 3){
+if($form_total_planes > 2){
 
 //AGREGAR A LA BD SUSCRIPCION
 mysqli_query($con, "
