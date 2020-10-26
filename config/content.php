@@ -332,7 +332,7 @@ $nombre_cb = $row_id_n[1];
 </div>
 </div>
 <div class="col-md-12 col-sm-12">
-<a id="btn_abrir_plan_2" href="#" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
+<a id="btn_abrir_plan_2" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <input id="form_total_planes" type="hidden" value="1">
 <script>
 $('#btn_abrir_plan_2').on('click', function(){
@@ -410,7 +410,7 @@ $nombre_cb = $row_id_n[1];
 </div>
 <div class="col-md-12 col-sm-12">
 <div class="segundo_plan" style="display: none;">
-<a id="btn_abrir_plan_3" href="#" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
+<a id="btn_abrir_plan_3" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
 $('#btn_abrir_plan_3').on('click', function(){
 $('.tercer_plan').css('display', 'block');
