@@ -338,8 +338,14 @@ var mes_a_poner = e.getMonth() + 1;
 if(mes_a_poner <= 9){
 mes_a_poner = '0'+mes_a_poner;
 }
+
+var dia_a_poner = e.getDate();
+if(dia_a_poner <= 9){
+dia_a_poner = '0'+dia_a_poner;
+}
+
 e.setMonth(mes_a_poner);
-$('#form_fecha_suscripcion_fin').val(e.getFullYear() +"-"+ (e.getMonth()+1) +"-"+ e.getDate());
+$('#form_fecha_suscripcion_fin').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
 });
 </script>
 </div>
