@@ -1402,11 +1402,11 @@ if($ver_pacientes == 1){
 <td class="td-title" style="width: 11.11% !important;">Fecha Venta</td>
 <td class="td-title" style="width: 11.11% !important;">Paquete</td>
 <td class="td-title" style="width: 11.11% !important;">Plan</td>
+<td class="td-title" style="width: 11.11% !important;">Inicio del Plan</td>
 <td class="td-title" style="width: 11.11% !important;">Fecha Cuota</td>
 <td class="td-title" style="width: 11.11% !important;">D&iacute;as Vencimiento</td>
 <td class="td-title" style="width: 11.11% !important;">Estado</td>
 <td class="td-title" style="width: 11.11% !important;">Nutricionista</td>
-<td class="td-title" style="width: 11.11% !important;">Acci&oacute;n</td>
 </tr>
 <?php
 } else {
@@ -1422,7 +1422,6 @@ if($ver_pacientes == 1){
 <td class="td-title" style="width: 11.11% !important;">Banco</td>
 <td class="td-title" style="width: 11.11% !important;">Medio Pago</td>
 <td class="td-title" style="width: 11.11% !important;">Nutricionista</td>
-<td class="td-title" style="width: 11.11% !important;">Acci&oacute;n</td>
 </tr>
 <?php
 }
@@ -1478,13 +1477,11 @@ $ret_dias_vencimiento = $diff->days . ' d&iacute;as';
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_venta; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paquete; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_programa; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_fin; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_inicio; ?></td>
+<td class="td-content" style="width: 11.11% !important;" onclick="act_fecha_fin('<?php echo date('Y-m-d', strtotime($row[5])); ?>', <?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_fin; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_dias_vencimiento; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_texto_estado; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_nutricionista; ?></td>
-<td class="td-content" style="width: 11.11% !important;">
-<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="eliminar(<?php echo $ret_id_suscripcion; ?>)"><i class="fa fa-trash-o" style="font-size: 13px;"></i></a>
-</td>
 </tr>
 <?php
 } else {
@@ -1500,9 +1497,6 @@ $ret_dias_vencimiento = $diff->days . ' d&iacute;as';
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_cuenta_bancaria; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_medio_pago; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_nutricionista; ?></td>
-<td class="td-content" style="width: 11.11% !important;">
-<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Eliminar" onclick="eliminar(<?php echo $ret_id_suscripcion; ?>)"><i class="fa fa-trash-o" style="font-size: 13px;"></i></a>
-</td>
 </tr>
 <?php
 }

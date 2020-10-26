@@ -2213,6 +2213,15 @@ exit();
 exit();
 }
 
+//ACTUALIZAR FECHA FIN DEL PLAN
+if($negocia_operacion == 11){
+$fn_fecha_fin_plan = date('Y-m-d', strtotime($_POST['fn_fecha_fin_plan']));
+$fn_id_suscripcion_fin = (int)$_POST['fn_id_suscripcion_fin'];
+mysqli_query($con, "UPDATE suscripcion_programa SET fecha_fin = '$fn_fecha_fin_plan' WHERE id = '$fn_id_suscripcion_fin'");
+exit();
+exit();
+}
+
 if(isset($con)){
 //1. inicio.php
 
@@ -3609,9 +3618,9 @@ if($view_controller == 2 || $view_controller == 4 || $view_controller == 5 || $v
 if($view_controller == 4){
 if($ver_pacientes == 1){
 $texto_diario = 'Vencen hoy';
-$texto_semanal = 'Vencen &eacute;sta semana';
-$texto_mensual = 'Vencen &eacute;ste mes';
-$texto_anual = 'Vencen &eacute;ste a&ntilde;o';
+$texto_semanal = 'Vencen esta semana';
+$texto_mensual = 'Vencen este mes';
+$texto_anual = 'Vencen este a&ntilde;o';
 } else {
 $texto_diario = 'Ventas del d&iacute;a';
 $texto_semanal = 'Ventas de la semana';
@@ -3619,6 +3628,30 @@ $texto_mensual = 'Ventas del mes';
 $texto_anual = 'Ventas del a&ntilde;o';
 }
 ?>
+<div class="modal fade" id="modal_modificar_fecha_fin">
+<div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 0; margin-bottom: 2px;">
+<div class="modal-content">
+<div class="modal-body">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+<div class="row">
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2"></div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Fecha Fin del Plan:</label>
+<input type="date" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="fn_fecha_fin_plan">
+<input id="fn_id_suscripcion_fin" type="hidden">
+<br>
+<div style="text-align: center;">
+<button id="btn_actualizar_fecha_fin" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 12px;">Guardar</button>
+</div>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="modal fade" id="modalFechas">
 <div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 0; margin-bottom: 2px;">
 <div class="modal-content">
@@ -3711,6 +3744,32 @@ $('#filtro_mensual').css('background', '#95cf32');
 $('#filtro_anual').css('background', '#95cf32');
 $('#modalFechas').modal('hide');
 });
+
+
+function act_fecha_fin(fecha, id_suscripcion){
+$('#fn_fecha_fin_plan').val(fecha);
+$('#fn_id_suscripcion_fin').val(id_suscripcion);
+$('#modalFechas').modal();
+}
+
+
+$('#btn_actualizar_fecha_fin').on('click', function(){
+
+var fn_fecha_fin_plan = $('#fn_fecha_fin_plan').val();
+var fn_id_suscripcion_fin = $('#fn_id_suscripcion_fin').val();
+
+$.ajax({
+type: 'POST',
+url: 'config/content.php?negocia_operacion=11',
+data: {
+fn_fecha_fin_plan : fn_fecha_fin_plan,
+fn_id_suscripcion_fin : fn_id_suscripcion_fin
+},
+success: function(datos){
+alert('Fecha Actualizada');
+}
+});
+})
 </script>
 </li>
 </ul>
