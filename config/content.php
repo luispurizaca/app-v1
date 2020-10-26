@@ -336,14 +336,14 @@ $nombre_cb = $row_id_n[1];
 <input id="form_total_planes" type="hidden" value="1">
 <script>
 $('#btn_abrir_plan_2').on('click', function(){
-$('#segundo_plan').css('display', 'block');
+$('.segundo_plan').css('display', 'block');
 $('#btn_abrir_plan_2').css('display', 'none');
 $('#form_total_planes').val('2');
 });
 </script>
 </div>
-<div id="segundo_plan" style="display: none;">
 <div class="col-md-3 col-sm-6">
+<div class="segundo_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label">Segundo Plan</label>
 <select id="form_id_programa_2" name="form_id_programa_2" class="form-control n-form-control">
@@ -360,7 +360,9 @@ $nombre_plan = $row_plan[2].' ('.$row_plan[1].')';
 </select>
 </div>
 </div>
+</div>
 <div class="col-md-3 col-sm-6">
+<div class="segundo_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label">Paquete</label>
 <select id="form_id_paquete_2" name="form_id_paquete_2" class="form-control n-form-control">
@@ -369,7 +371,9 @@ $nombre_plan = $row_plan[2].' ('.$row_plan[1].')';
 </select>
 </div>
 </div>
+</div>
 <div class="col-md-3 col-sm-6">
+<div class="segundo_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label">Nutricionista</label>
 <select id="form_id_nutricionista_2" name="form_id_nutricionista_2" class="form-control n-form-control">
@@ -386,32 +390,38 @@ $nombre_cb = $row_id_n[1];
 </select>
 </div>
 </div>
+</div>
 <div class="col-md-3 col-sm-6"></div>
 <div class="col-md-3 col-sm-6">
+<div class="segundo_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label"><a href="config/fullcalendar/" target="_blank">Fecha de Inicio</a></label>
 <input id="form_fecha_suscripcion_2" name="form_fecha_suscripcion_2" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
 </div>
 </div>
+</div>
 <div class="col-md-3 col-sm-6">
+<div class="segundo_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_2" name="form_fecha_suscripcion_fin_2" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
 </div>
 </div>
+</div>
 <div class="col-md-12 col-sm-12">
+<div class="segundo_plan" style="display: none;">
 <a id="btn_abrir_plan_3" href="#" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
 $('#btn_abrir_plan_3').on('click', function(){
-$('#tercer_plan').css('display', 'block');
+$('.tercer_plan').css('display', 'block');
 $('#btn_abrir_plan_3').css('display', 'none');
 $('#form_total_planes').val('3');
 });
 </script>
 </div>
 </div>
-<div id="tercer_plan" style="display: none;">
 <div class="col-md-3 col-sm-6">
+<div class="tercer_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label">Tercer Plan</label>
 <select id="form_id_programa_3" name="form_id_programa_3" class="form-control n-form-control">
@@ -428,7 +438,9 @@ $nombre_plan = $row_plan[2].' ('.$row_plan[1].')';
 </select>
 </div>
 </div>
+</div>
 <div class="col-md-3 col-sm-6">
+<div class="tercer_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label">Paquete</label>
 <select id="form_id_paquete_3" name="form_id_paquete_3" class="form-control n-form-control">
@@ -437,7 +449,9 @@ $nombre_plan = $row_plan[2].' ('.$row_plan[1].')';
 </select>
 </div>
 </div>
+</div>
 <div class="col-md-3 col-sm-6">
+<div class="tercer_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label">Nutricionista</label>
 <select id="form_id_nutricionista_3" name="form_id_nutricionista_3" class="form-control n-form-control">
@@ -454,14 +468,18 @@ $nombre_cb = $row_id_n[1];
 </select>
 </div>
 </div>
+</div>
 <div class="col-md-3 col-sm-6"></div>
 <div class="col-md-3 col-sm-6">
+<div class="tercer_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label"><a href="config/fullcalendar/" target="_blank">Fecha de Inicio</a></label>
 <input id="form_fecha_suscripcion_3" name="form_fecha_suscripcion_3" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
 </div>
 </div>
+</div>
 <div class="col-md-3 col-sm-6">
+<div class="tercer_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_3" name="form_fecha_suscripcion_fin_3" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
