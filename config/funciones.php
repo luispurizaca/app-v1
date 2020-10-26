@@ -129,9 +129,7 @@ $consulta_sql_general .= " AND (DATE_FORMAT(FECHA_VENTA, '%Y-%m-%d') BETWEEN DAT
 }
 
 //ORDER BY
-$consulta_sql_general .= "
-ORDER BY FECHA_VENTA DESC
-";
+$consulta_sql_general .= " ORDER BY ID_SUSCRIPCION DESC";
 }
 
 //CONSULTA CONTROLES
