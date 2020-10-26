@@ -336,7 +336,7 @@ var fecha = $('#form_fecha_suscripcion').val();
 var e = new Date(fecha);
 var mes_a_poner = e.getMonth() + 1;
 if(mes_a_poner <= 9){
-mes_a_poner = '0'.e.getMonth() + 1;
+mes_a_poner = '0'+mes_a_poner;
 }
 e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin').val(e.getFullYear() +"-"+ (e.getMonth()+1) +"-"+ e.getDate());
