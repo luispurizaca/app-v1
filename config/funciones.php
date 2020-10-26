@@ -109,6 +109,7 @@ suscripcion_programa.id_paciente AS ID_PACIENTE,
 suscripcion_programa.fecha_inicio AS FECHA_INICIO,
 suscripcion_programa.fecha_fin AS FECHA_FIN,
 ";
+}
 
 $consulta_sql_general .= "
 suscripcion_programa.estado AS ESTADO,
