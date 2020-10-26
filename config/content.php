@@ -3749,7 +3749,7 @@ $('#modalFechas').modal('hide');
 function act_fecha_fin(fecha, id_suscripcion){
 $('#fn_fecha_fin_plan').val(fecha);
 $('#fn_id_suscripcion_fin').val(id_suscripcion);
-$('#modalFechas').modal();
+$('#modal_modificar_fecha_fin').modal();
 }
 
 
