@@ -334,7 +334,7 @@ $nombre_cb = $row_id_n[1];
 $('#form_fecha_suscripcion').on('change', function(){
 var fecha = $('#form_fecha_suscripcion').val();
 var e = new Date(fecha);
-var mes_a_poner = e.getMonth() + 1;
+var mes_a_poner = e.getMonth() + 2;
 if(mes_a_poner <= 9){
 mes_a_poner = '0'+mes_a_poner;
 }
