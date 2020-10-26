@@ -277,7 +277,7 @@ $('#form_direccion').val(data.domicilio_fiscal);
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label">Planes</label>
+<label class="n-label">Plan</label>
 <select id="form_id_programa" name="form_id_programa" class="form-control n-form-control">
 <?php
 $query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
@@ -331,6 +331,68 @@ $nombre_cb = $row_id_n[1];
 <input id="form_fecha_suscripcion_fin" name="form_fecha_suscripcion_fin" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
 </div>
 </div>
+<div class="col-md-12 col-sm-12">
+<a href="#" style="font-size: 14px; color: #95cf32;">Agregar otro Plan</a>
+</div>
+<div id="segundo_plan" style="display: none;">
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Plan</label>
+<select id="form_id_programa" name="form_id_programa" class="form-control n-form-control">
+<?php
+$query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
+while($row_plan = mysqli_fetch_array($query_plan)){
+$id_plan = $row_plan[0];
+$nombre_plan = $row_plan[2].' ('.$row_plan[1].')';
+?>
+<option value="<?php echo $id_plan; ?>"><?php echo $nombre_plan; ?></option>
+<?php
+}
+?>
+</select>
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Paquete</label>
+<select id="form_id_paquete" name="form_id_paquete" class="form-control n-form-control">
+<option value="1">Paquete Socio</option>
+<option value="2">Paquete Socio VIP</option>
+</select>
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Nutricionista</label>
+<select id="form_id_nutricionista" name="form_id_nutricionista" class="form-control n-form-control">
+<?php
+$query_id_n = mysqli_query($con, "SELECT id, CONCAT(apellidos, ' ', nombres) FROM usuario WHERE activo = 1 AND id_tipo_usuario = 1 ORDER BY id ASC");
+while($row_id_n = mysqli_fetch_array($query_id_n)){
+$id_cb = $row_id_n[0];
+$nombre_cb = $row_id_n[1];
+?>
+<option value="<?php echo $id_cb; ?>"><?php echo $nombre_cb; ?></option>
+<?php
+}
+?>
+</select>
+</div>
+</div>
+<div class="col-md-3 col-sm-6"></div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label"><a href="config/fullcalendar/" target="_blank">Fecha de Inicio</a></label>
+<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Fecha de Fin</label>
+<input id="form_fecha_suscripcion_fin" name="form_fecha_suscripcion_fin" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
+</div>
+</div>
+</div>
+
 </div>
 <div class="row" style="padding-top: 15px; <?php if($_SESSION['ID_TIPO_USUARIO'] == 3){ ?> display: none; <?php } ?>">
 <div class="col-md-12 col-sm-12">
