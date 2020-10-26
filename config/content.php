@@ -332,13 +332,21 @@ $nombre_cb = $row_id_n[1];
 </div>
 </div>
 <div class="col-md-12 col-sm-12">
-<a href="#" style="font-size: 14px; color: #95cf32;">Agregar otro Plan</a>
+<a id="btn_abrir_plan_2" href="#" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
+<input id="form_total_planes" type="hidden" value="1">
+<script>
+$('#btn_abrir_plan_2').on('click', function(){
+$('#segundo_plan').css('display', 'block');
+$('#btn_abrir_plan_2').css('display', 'none');
+$('#form_total_planes').val('2');
+});
+</script>
 </div>
 <div id="segundo_plan" style="display: none;">
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label">Plan</label>
-<select id="form_id_programa" name="form_id_programa" class="form-control n-form-control">
+<label class="n-label">Segundo Plan</label>
+<select id="form_id_programa_2" name="form_id_programa_2" class="form-control n-form-control">
 <?php
 $query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
 while($row_plan = mysqli_fetch_array($query_plan)){
@@ -355,7 +363,7 @@ $nombre_plan = $row_plan[2].' ('.$row_plan[1].')';
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Paquete</label>
-<select id="form_id_paquete" name="form_id_paquete" class="form-control n-form-control">
+<select id="form_id_paquete_2" name="form_id_paquete_2" class="form-control n-form-control">
 <option value="1">Paquete Socio</option>
 <option value="2">Paquete Socio VIP</option>
 </select>
@@ -364,7 +372,7 @@ $nombre_plan = $row_plan[2].' ('.$row_plan[1].')';
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Nutricionista</label>
-<select id="form_id_nutricionista" name="form_id_nutricionista" class="form-control n-form-control">
+<select id="form_id_nutricionista_2" name="form_id_nutricionista_2" class="form-control n-form-control">
 <?php
 $query_id_n = mysqli_query($con, "SELECT id, CONCAT(apellidos, ' ', nombres) FROM usuario WHERE activo = 1 AND id_tipo_usuario = 1 ORDER BY id ASC");
 while($row_id_n = mysqli_fetch_array($query_id_n)){
@@ -382,17 +390,84 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label"><a href="config/fullcalendar/" target="_blank">Fecha de Inicio</a></label>
-<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
+<input id="form_fecha_suscripcion_2" name="form_fecha_suscripcion_2" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
-<input id="form_fecha_suscripcion_fin" name="form_fecha_suscripcion_fin" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
+<input id="form_fecha_suscripcion_fin_2" name="form_fecha_suscripcion_fin_2" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
+</div>
+</div>
+<div class="col-md-12 col-sm-12">
+<a id="btn_abrir_plan_3" href="#" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
+<script>
+$('#btn_abrir_plan_3').on('click', function(){
+$('#tercer_plan').css('display', 'block');
+$('#btn_abrir_plan_3').css('display', 'none');
+$('#form_total_planes').val('3');
+});
+</script>
+</div>
+</div>
+<div id="tercer_plan" style="display: none;">
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Tercer Plan</label>
+<select id="form_id_programa_3" name="form_id_programa_3" class="form-control n-form-control">
+<?php
+$query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
+while($row_plan = mysqli_fetch_array($query_plan)){
+$id_plan = $row_plan[0];
+$nombre_plan = $row_plan[2].' ('.$row_plan[1].')';
+?>
+<option value="<?php echo $id_plan; ?>"><?php echo $nombre_plan; ?></option>
+<?php
+}
+?>
+</select>
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Paquete</label>
+<select id="form_id_paquete_3" name="form_id_paquete_3" class="form-control n-form-control">
+<option value="1">Paquete Socio</option>
+<option value="2">Paquete Socio VIP</option>
+</select>
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Nutricionista</label>
+<select id="form_id_nutricionista_3" name="form_id_nutricionista_3" class="form-control n-form-control">
+<?php
+$query_id_n = mysqli_query($con, "SELECT id, CONCAT(apellidos, ' ', nombres) FROM usuario WHERE activo = 1 AND id_tipo_usuario = 1 ORDER BY id ASC");
+while($row_id_n = mysqli_fetch_array($query_id_n)){
+$id_cb = $row_id_n[0];
+$nombre_cb = $row_id_n[1];
+?>
+<option value="<?php echo $id_cb; ?>"><?php echo $nombre_cb; ?></option>
+<?php
+}
+?>
+</select>
+</div>
+</div>
+<div class="col-md-3 col-sm-6"></div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label"><a href="config/fullcalendar/" target="_blank">Fecha de Inicio</a></label>
+<input id="form_fecha_suscripcion_3" name="form_fecha_suscripcion_3" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Fecha de Fin</label>
+<input id="form_fecha_suscripcion_fin_3" name="form_fecha_suscripcion_fin_3" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
 </div>
 </div>
 </div>
-
 </div>
 <div class="row" style="padding-top: 15px; <?php if($_SESSION['ID_TIPO_USUARIO'] == 3){ ?> display: none; <?php } ?>">
 <div class="col-md-12 col-sm-12">
@@ -525,6 +600,21 @@ var form_telefono = $('#form_telefono').val();
 var form_fecha_suscripcion_fin = $('#form_fecha_suscripcion_fin').val();
 var form_numero_operacion = $('#form_numero_operacion').val();
 
+
+var form_id_programa_2 = $('#form_id_programa_2').val();
+var form_id_paquete_2 = $('#form_id_paquete_2').val();
+var form_id_nutricionista_2 = $('#form_id_nutricionista_2').val();
+var form_fecha_suscripcion_2 = $('#form_fecha_suscripcion_2').val();
+var form_fecha_suscripcion_fin_2 = $('#form_fecha_suscripcion_fin_2').val();
+
+var form_id_programa_3 = $('#form_id_programa_3').val();
+var form_id_paquete_3 = $('#form_id_paquete_3').val();
+var form_id_nutricionista_3 = $('#form_id_nutricionista_3').val();
+var form_fecha_suscripcion_3 = $('#form_fecha_suscripcion_3').val();
+var form_fecha_suscripcion_fin_3 = $('#form_fecha_suscripcion_fin_3').val();
+
+var form_total_planes = $('#form_total_planes').val();
+
 $.ajax({
 type: 'POST',
 url: 'config/content.php?negocia_operacion=2&get_nuevo_vendedor=<?php echo $get_nuevo_vendedor; ?>',
@@ -559,7 +649,21 @@ form_id_banco : form_id_banco,
 form_id_paciente : form_id_paciente,
 form_telefono : form_telefono,
 form_fecha_suscripcion_fin : form_fecha_suscripcion_fin,
-form_numero_operacion : form_numero_operacion
+form_numero_operacion : form_numero_operacion,
+
+form_id_programa_2,
+form_id_paquete_2,
+form_id_nutricionista_2,
+form_fecha_suscripcion_2,
+form_fecha_suscripcion_fin_2,
+
+form_id_programa_3,
+form_id_paquete_3,
+form_id_nutricionista_3,
+form_fecha_suscripcion_3,
+form_fecha_suscripcion_fin_3,
+
+form_total_planes
 },
 success: function(datos){
 $('#div_guardar_paciente').html(datos).fadeIn('slow');
@@ -688,7 +792,7 @@ $form_id_paquete = $_POST['form_id_paquete'];
 $form_fecha_suscripcion = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion']));
 $form_id_nutricionista = $_POST['form_id_nutricionista'];
 $form_fecha_pago = date('Y-m-d', strtotime($_POST['form_fecha_pago']));
-$form_monto = $_POST['form_monto'];
+$form_monto = (float)$_POST['form_monto'];
 
 //SI ES PACIENTE
 if($tipo_usuario == 2){
@@ -709,6 +813,25 @@ $form_id_paciente = (int)$_POST['form_id_paciente'];
 $form_telefono = $_POST['form_telefono'];
 $form_fecha_suscripcion_fin = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion_fin']));
 $form_numero_operacion = $_POST['form_numero_operacion'];
+
+
+$form_id_programa_2 = (int)$_POST['form_id_programa_2'];
+$form_id_paquete_2 = (int)$_POST['form_id_paquete_2'];
+$form_id_nutricionista_2 = (int)$_POST['form_id_nutricionista_2'];
+$form_fecha_suscripcion_2 = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion_2']));
+$form_fecha_suscripcion_fin_2 = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion_fin_2']));
+
+$form_id_programa_3 = (int)$_POST['form_id_programa_3'];
+$form_id_paquete_3 = (int)$_POST['form_id_paquete_3'];
+$form_id_nutricionista_3 = (int)$_POST['form_id_nutricionista_3'];
+$form_fecha_suscripcion_3 = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion_3']));
+$form_fecha_suscripcion_fin_3 = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion_fin_3']));
+
+$form_total_planes = (int)$_POST['form_total_planes'];
+
+
+//DIVIDIR EL MONTO
+$form_monto = $form_monto / $form_total_planes;
 
 
 //AGREGAR A LA BD USUARIO
@@ -793,6 +916,54 @@ VALUES
 ('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$form_numero_operacion."', '".$_SESSION['ID_USUARIO']."')
 "
 );
+
+//SEGUNDO PLAN
+if($form_total_planes == 2){
+
+//AGREGAR A LA BD SUSCRIPCION
+mysqli_query($con, "
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete, id_tipo_suscripcion, peso_meta)
+VALUES 
+('".$form_id_programa_2."', '".$form_id_nutricionista_2."', '".$ultimo_id."', '".$form_fecha_suscripcion_2."', '".$form_fecha_suscripcion_fin_2."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete_2', '2', '0')
+"
+);
+
+//ULTIMO ID SUSCRIPCION
+$row_id_s = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM suscripcion_programa WHERE estado = 1 ORDER BY id DESC LIMIT 1"));
+$ultimo_id_s = (int)$row_id_s[0];
+
+//AGREGAR A LA BD COBROS
+mysqli_query($con, "
+INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria, numero_operacion, id_vendedor)
+VALUES 
+('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$form_numero_operacion."', '".$_SESSION['ID_USUARIO']."')
+"
+);
+}
+
+//TERCER PLAN
+if($form_total_planes == 3){
+
+//AGREGAR A LA BD SUSCRIPCION
+mysqli_query($con, "
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete, id_tipo_suscripcion, peso_meta)
+VALUES 
+('".$form_id_programa_3."', '".$form_id_nutricionista_3."', '".$ultimo_id."', '".$form_fecha_suscripcion_3."', '".$form_fecha_suscripcion_fin_3."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete_3', '2', '0')
+"
+);
+
+//ULTIMO ID SUSCRIPCION
+$row_id_s = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM suscripcion_programa WHERE estado = 1 ORDER BY id DESC LIMIT 1"));
+$ultimo_id_s = (int)$row_id_s[0];
+
+//AGREGAR A LA BD COBROS
+mysqli_query($con, "
+INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria, numero_operacion, id_vendedor)
+VALUES 
+('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$form_numero_operacion."', '".$_SESSION['ID_USUARIO']."')
+"
+);
+}
 
 //AGENDAR PRIMERA REUNION
 mysqli_query($con, "
