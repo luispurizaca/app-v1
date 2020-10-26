@@ -3767,6 +3767,7 @@ fn_id_suscripcion_fin : fn_id_suscripcion_fin
 },
 success: function(datos){
 alert('Fecha Actualizada');
+location.reload();
 }
 });
 })
