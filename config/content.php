@@ -334,7 +334,11 @@ $nombre_cb = $row_id_n[1];
 $('#form_fecha_suscripcion').on('change', function(){
 var fecha = $('#form_fecha_suscripcion').val();
 var e = new Date(fecha);
-e.setMonth(e.getMonth() + 1);
+var mes_a_poner = e.getMonth() + 1;
+if(mes_a_poner <= 9){
+mes_a_poner = '0'.e.getMonth() + 1;
+}
+e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin').val(e.getFullYear() +"-"+ (e.getMonth()+1) +"-"+ e.getDate());
 });
 </script>
