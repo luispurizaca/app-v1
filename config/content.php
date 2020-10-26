@@ -348,6 +348,9 @@ $nombre_cb = $row_id_n[1];
 <input id="form_fecha_pago" name="form_fecha_pago" class="form-control n-form-control" type="date" placeholder="Fecha de Pago" value="<?php echo date('Y-m-d'); ?>">
 </div>
 </div>
+<div class="col-md-3 col-sm-6"></div>
+<div class="col-md-3 col-sm-6"></div>
+<div class="col-md-3 col-sm-6"></div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Monto</label>
@@ -386,6 +389,12 @@ $nombre_cb = $row_cb[1];
 }
 ?>
 </select>
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">N&#176; de Operaci&oacute;n</label>
+<input id="form_numero_operacion" name="form_numero_operacion" class="form-control n-form-control" type="text">
 </div>
 </div>
 </div>
@@ -452,6 +461,7 @@ var form_id_banco = $('#form_id_banco').val();
 var form_id_paciente = <?php echo $id_paciente; ?>;
 var form_telefono = $('#form_telefono').val();
 var form_fecha_suscripcion_fin = $('#form_fecha_suscripcion_fin').val();
+var form_numero_operacion = $('#form_numero_operacion').val();
 
 $.ajax({
 type: 'POST',
@@ -486,7 +496,8 @@ form_id_medio_pago : form_id_medio_pago,
 form_id_banco : form_id_banco,
 form_id_paciente : form_id_paciente,
 form_telefono : form_telefono,
-form_fecha_suscripcion_fin : form_fecha_suscripcion_fin
+form_fecha_suscripcion_fin : form_fecha_suscripcion_fin,
+form_numero_operacion : form_numero_operacion
 },
 success: function(datos){
 $('#div_guardar_paciente').html(datos).fadeIn('slow');
@@ -635,6 +646,7 @@ $form_id_banco = $_POST['form_id_banco'];
 $form_id_paciente = (int)$_POST['form_id_paciente'];
 $form_telefono = $_POST['form_telefono'];
 $form_fecha_suscripcion_fin = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion_fin']));
+$form_numero_operacion = $_POST['form_numero_operacion'];
 
 
 //AGREGAR A LA BD USUARIO
@@ -714,9 +726,9 @@ $ultimo_id_s = (int)$row_id_s[0];
 
 //AGREGAR A LA BD COBROS
 mysqli_query($con, "
-INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria, id_vendedor)
+INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria, numero_operacion, id_vendedor)
 VALUES 
-('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$_SESSION['ID_USUARIO']."')
+('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$form_numero_operacion."', '".$_SESSION['ID_USUARIO']."')
 "
 );
 
