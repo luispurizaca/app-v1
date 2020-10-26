@@ -93,9 +93,13 @@ ORDER BY usuario.id DESC
 if($view_controler == 4){
 
 //CONSULTA PRINCIPAL
-$consulta_sql_general = "
-SELECT
-suscripcion_programa.id AS ID_SUSCRIPCION,
+if($ver_pacientes == 1){
+$consulta_sql_general = " SELECT MAX(suscripcion_programa.id) AS ID_SUSCRIPCION,";
+} else {
+$consulta_sql_general = " SELECT suscripcion_programa.id AS ID_SUSCRIPCION,";
+}
+
+$consulta_sql_general .= "
 suscripcion_programa.id_programa AS ID_PROGRAMA,
 suscripcion_programa.id_nutricionista AS ID_NUTRICIONISTA,
 suscripcion_programa.id_paciente AS ID_PACIENTE,
@@ -129,11 +133,9 @@ $consulta_sql_general .= " AND (DATE_FORMAT(FECHA_VENTA, '%Y-%m-%d') BETWEEN DAT
 }
 
 //ORDER BY
-if($ver_pacientes == 1){
-$consulta_sql_general .= " ORDER BY MAX(ID_SUSCRIPCION) DESC";
-} else {
-$consulta_sql_general .= " ORDER BY ID_SUSCRIPCION DESC";
-}
+$consulta_sql_general .= "
+ORDER BY FECHA_VENTA DESC
+";
 }
 
 //CONSULTA CONTROLES
