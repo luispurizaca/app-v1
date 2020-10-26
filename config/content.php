@@ -423,6 +423,24 @@ $nombre_cb = $row_id_n[1];
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_2" name="form_fecha_suscripcion_fin_2" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 2 month')); ?>">
+<script>
+$('#form_fecha_suscripcion_2').on('change', function(){
+var fecha = $('#form_fecha_suscripcion_2').val();
+var e = new Date(fecha);
+var mes_a_poner = e.getMonth() + 2;
+if(mes_a_poner <= 9){
+mes_a_poner = '0'+mes_a_poner;
+}
+
+var dia_a_poner = e.getDate();
+if(dia_a_poner <= 9){
+dia_a_poner = '0'+dia_a_poner;
+}
+
+e.setMonth(mes_a_poner);
+$('#form_fecha_suscripcion_fin_2').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
+});
+</script>
 </div>
 </div>
 </div>
@@ -502,7 +520,22 @@ $nombre_cb = $row_id_n[1];
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_3" name="form_fecha_suscripcion_fin_3" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 3 month')); ?>">
 <script>
+$('#form_fecha_suscripcion_3').on('change', function(){
+var fecha = $('#form_fecha_suscripcion_3').val();
+var e = new Date(fecha);
+var mes_a_poner = e.getMonth() + 2;
+if(mes_a_poner <= 9){
+mes_a_poner = '0'+mes_a_poner;
+}
 
+var dia_a_poner = e.getDate();
+if(dia_a_poner <= 9){
+dia_a_poner = '0'+dia_a_poner;
+}
+
+e.setMonth(mes_a_poner);
+$('#form_fecha_suscripcion_fin_3').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
+});
 </script>
 </div>
 </div>
