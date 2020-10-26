@@ -94,17 +94,23 @@ if($view_controler == 4){
 
 //CONSULTA PRINCIPAL
 if($ver_pacientes == 1){
-$consulta_sql_general = " SELECT MAX(suscripcion_programa.id) AS ID_SUSCRIPCION,";
+$consulta_sql_general = " SELECT MAX(suscripcion_programa.id) AS ID_SUSCRIPCION,
+suscripcion_programa.id_programa AS ID_PROGRAMA,
+suscripcion_programa.id_nutricionista AS ID_NUTRICIONISTA,
+suscripcion_programa.id_paciente AS ID_PACIENTE,
+MAX(suscripcion_programa.fecha_inicio) AS FECHA_INICIO,
+MAX(suscripcion_programa.fecha_fin) AS FECHA_FIN,
+";
 } else {
-$consulta_sql_general = " SELECT suscripcion_programa.id AS ID_SUSCRIPCION,";
-}
-
-$consulta_sql_general .= "
+$consulta_sql_general = " SELECT suscripcion_programa.id AS ID_SUSCRIPCION,
 suscripcion_programa.id_programa AS ID_PROGRAMA,
 suscripcion_programa.id_nutricionista AS ID_NUTRICIONISTA,
 suscripcion_programa.id_paciente AS ID_PACIENTE,
 suscripcion_programa.fecha_inicio AS FECHA_INICIO,
 suscripcion_programa.fecha_fin AS FECHA_FIN,
+";
+
+$consulta_sql_general .= "
 suscripcion_programa.estado AS ESTADO,
 (SELECT cobro.fecha_pago FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS FECHA_VENTA,
 (SELECT cobro.monto FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS MONTO_VENTA,
