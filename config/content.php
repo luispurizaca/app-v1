@@ -328,8 +328,13 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
-<input id="form_fecha_suscripcion_fin" name="form_fecha_suscripcion_fin" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
+<input id="form_fecha_suscripcion_fin" name="form_fecha_suscripcion_fin" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 1 month')); ?>">
 </div>
+<script>
+$('#form_fecha_suscripcion').on('change', function(){
+
+});
+</script>
 </div>
 <div class="col-md-12 col-sm-12">
 <a id="btn_abrir_plan_2" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
@@ -396,7 +401,7 @@ $nombre_cb = $row_id_n[1];
 <div class="segundo_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label"><a href="config/fullcalendar/" target="_blank">Fecha de Inicio</a></label>
-<input id="form_fecha_suscripcion_2" name="form_fecha_suscripcion_2" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
+<input id="form_fecha_suscripcion_2" name="form_fecha_suscripcion_2" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
 </div>
 </div>
 </div>
@@ -404,7 +409,7 @@ $nombre_cb = $row_id_n[1];
 <div class="segundo_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
-<input id="form_fecha_suscripcion_fin_2" name="form_fecha_suscripcion_fin_2" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
+<input id="form_fecha_suscripcion_fin_2" name="form_fecha_suscripcion_fin_2" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 2 month')); ?>">
 </div>
 </div>
 </div>
@@ -474,7 +479,7 @@ $nombre_cb = $row_id_n[1];
 <div class="tercer_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label"><a href="config/fullcalendar/" target="_blank">Fecha de Inicio</a></label>
-<input id="form_fecha_suscripcion_3" name="form_fecha_suscripcion_3" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
+<input id="form_fecha_suscripcion_3" name="form_fecha_suscripcion_3" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 2 month')); ?>">
 </div>
 </div>
 </div>
@@ -482,7 +487,7 @@ $nombre_cb = $row_id_n[1];
 <div class="tercer_plan" style="display: none;">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
-<input id="form_fecha_suscripcion_fin_3" name="form_fecha_suscripcion_fin_3" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
+<input id="form_fecha_suscripcion_fin_3" name="form_fecha_suscripcion_fin_3" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 3 month')); ?>">
 </div>
 </div>
 </div>
