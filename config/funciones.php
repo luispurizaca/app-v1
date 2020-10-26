@@ -136,6 +136,8 @@ $consulta_sql_general .= " AND (DATE_FORMAT(FECHA_VENTA, '%Y-%m-%d') BETWEEN DAT
 $consulta_sql_general .= "
 ORDER BY FECHA_VENTA DESC
 ";
+
+echo $consulta_sql_general;
 }
 
 //CONSULTA CONTROLES
