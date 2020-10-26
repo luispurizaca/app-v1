@@ -332,7 +332,12 @@ $nombre_cb = $row_id_n[1];
 </div>
 <script>
 $('#form_fecha_suscripcion').on('change', function(){
+var fecha = $('#form_fecha_suscripcion').val();
 
+var e = new Date();
+e.setMonth(e.getMonth() + 1);
+
+console.log(e);
 });
 </script>
 </div>
@@ -488,6 +493,9 @@ $nombre_cb = $row_id_n[1];
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_3" name="form_fecha_suscripcion_fin_3" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 3 month')); ?>">
+<script>
+
+</script>
 </div>
 </div>
 </div>
