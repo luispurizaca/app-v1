@@ -173,19 +173,28 @@ Recordarte que el d&iacute;a <b>'.$fecha_vencimiento.'</b> vence tu plan <b>'.$n
 <br><br>
 Nuestros n&uacute;meros de cuenta son:
 <br><br>
-<b>Interbank</b><br>
+<b>
+<span lang="ES-MX" style="font-family:&quot;Segoe UI Emoji&quot;,sans-serif"><img goomoji="1f4cc" data-goomoji="1f4cc" style="margin:0 0.2ex;vertical-align:middle;max-height:24px" alt="?" src="https://mail.google.com/mail/e/1f4cc" data-image-whitelisted="" class="CToWUd"></span>
+Interbank
+</b><br>
 Cuenta de ahorros soles Interbank: 2483185902363<br>
 CCI Interbank: 00324801318590236325<br>
 Datos: Jhoselin Johana Alfaro Alarc&oacute;n<br>
 DNI: 47309947
 <br><br>
-<b>BCP</b><br>
+<b>
+<span lang="ES-MX" style="font-family:&quot;Segoe UI Emoji&quot;,sans-serif"><img goomoji="1f4cc" data-goomoji="1f4cc" style="margin:0 0.2ex;vertical-align:middle;max-height:24px" alt="?" src="https://mail.google.com/mail/e/1f4cc" data-image-whitelisted="" class="CToWUd"></span>
+BCP
+</b><br>
 Cuenta de ahorros soles BCP: 19317409913069<br>
 CCI BCP: 00219311740991306914<br>
 Datos: Magaly Elena Alarc&oacute;n Quispe<br>
 DNI: 10009890
 <br><br>
-<b>Transferencia del Exterior</b><br>
+<b>
+<span lang="ES-MX" style="font-family:&quot;Segoe UI Emoji&quot;,sans-serif"><img goomoji="1f4cc" data-goomoji="1f4cc" style="margin:0 0.2ex;vertical-align:middle;max-height:24px" alt="?" src="https://mail.google.com/mail/e/1f4cc" data-image-whitelisted="" class="CToWUd"></span>
+Transferencia del Exterior
+</b><br>
 Datos: Katherine Magaly Alfaro Alarc&oacute;n<br>
 DNI: 70439997<br>
 Pa&iacute;s: Lima, Per&uacute;<br>
