@@ -171,6 +171,27 @@ $bodyHtml = '
 <br><br>
 Recordarte que el d&iacute;a <b>'.$fecha_vencimiento.'</b> vence tu plan <b>'.$nombre_programa.'</b>. Agradecer&eacute; enviar el voucher de tu renovaci&oacute;n a este correo: pagos@nutrikatherinealfaro.com.pe.
 <br><br>
+Nuestros n&uacute;meros de cuenta son:
+<br><br>
+<b>Interbank</b><br>
+Cuenta de ahorros soles Interbank: 2483185902363<br>
+CCI Interbank: 00324801318590236325<br>
+Datos: Jhoselin Johana Alfaro Alarc&oacute;n<br>
+DNI: 47309947
+<br><br>
+<b>BCP</b><br>
+Cuenta de ahorros soles BCP: 19317409913069<br>
+CCI BCP: 00219311740991306914<br>
+Datos: Magaly Elena Alarc&oacute;n Quispe<br>
+DNI: 10009890
+<br><br>
+<b>Transferencia del Exterior</b><br>
+Datos: Katherine Magaly Alfaro Alarc&oacute;n<br>
+DNI: 70439997<br>
+Pa&iacute;s: Lima, Per&uacute;<br>
+Wéstern uni&oacute;n<br>
+Interbank exterior: 2543162978137
+<br><br>
 S&oacute;lo tendr&aacute;s &eacute;xito si crees que puedes tenerlo!
 <br><br>
 Que tengas un feliz d&iacute;a
