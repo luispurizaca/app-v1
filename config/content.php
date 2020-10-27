@@ -160,10 +160,10 @@ var tipo_documento = 222;
 var tipo_documento = 111;
 }
 $.ajax({
-url: '//negocia.pe/functions/fn_consultas.php?tipo_documento='+tipo_documento+'&numero_documento='+doc,
+url: '//negocia.pe/functions/fn_consultas.php?tipo_documento='+tipo_documento+'&numero_documento='+form_numero_documento,
 dataType: "JSON",
 beforeSend: function(){
-swal('Extrayendo datos');
+swal('Obteniendo datos...');
 },
 success: function(data){
 if(tipo_documento == 111){
