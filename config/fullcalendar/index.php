@@ -274,8 +274,8 @@ $events = $req->fetchAll();
 				{
 					id: '<?php echo $event['id']; ?>',
 					title: '<?php echo $c_title; ?>',
-					 start: new Date('<?php echo date('Y', strtotime($agenda_inicio)); ?>', '<?php echo date('m', strtotime($agenda_inicio)); ?>', '<?php echo date('d', strtotime($agenda_inicio)); ?>', '<?php echo date('H', strtotime($agenda_inicio)); ?>', '<?php echo date('i', strtotime($agenda_inicio)); ?>'),
-					 end: new Date('<?php echo date('Y', strtotime($agenda_fin)); ?>', '<?php echo date('m', strtotime($agenda_fin)); ?>', '<?php echo date('d', strtotime($agenda_fin)); ?>', '<?php echo date('H', strtotime($agenda_fin)); ?>', '<?php echo date('i', strtotime($agenda_fin)); ?>'),
+					 start: new Date(<?php echo date('Y', strtotime($agenda_inicio)); ?>, <?php echo date('m', strtotime($agenda_inicio)); ?>, <?php echo date('d', strtotime($agenda_inicio)); ?>, <?php echo date('H', strtotime($agenda_inicio)); ?>, <?php echo date('i', strtotime($agenda_inicio)); ?>),
+					 end: new Date(<?php echo date('Y', strtotime($agenda_fin)); ?>, <?php echo date('m', strtotime($agenda_fin)); ?>, <?php echo date('d', strtotime($agenda_fin)); ?>, <?php echo date('H', strtotime($agenda_fin)); ?>, <?php echo date('i', strtotime($agenda_fin)); ?>),
 					color: '<?php echo $event['color']; ?>'
 				},
 			<?php endforeach; ?>
