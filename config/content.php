@@ -3578,9 +3578,7 @@ $id_tipo_suscripcion = $row_por_vencer[10];
 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-2"></div>
 <div class="col-lg-8 col-md-8 col-sm-6 col-xs-8">
 <br>
-<textarea id="content_<?php echo $id; ?>" style="width: 100%; padding: 3px;" rows="4">
-Espero te encuentres muy bien! Hemos logrado perder 5 KG en este mes y estoy segura que vamos a seguir avanzando hasta llegar al objetivo! Muchas felicidades!
-</textarea>
+<textarea class="form-control" id="content_<?php echo $id; ?>" style="width: 100%; padding: 3px;" rows="4">Espero te encuentres muy bien! Hemos logrado perder 5 KG en este mes y estoy segura que vamos a seguir avanzando hasta llegar al objetivo! Muchas felicidades!</textarea>
 <br>
 <div style="text-align: center;">
 <button id="btn_enviar_email_<?php echo $id; ?>" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 12px;">Enviar</button>
