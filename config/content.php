@@ -153,6 +153,7 @@ if(form_tipo_documento == 2 && form_numero_documento.length == 11){
 doc = 'RUC';
 }
 
+/*
 //CONSULTA NEGOCIA
 if(form_numero_documento.length == 11){
 var tipo_documento = 222;
@@ -177,6 +178,7 @@ $('#form_direccion').val(data.domicilio_fiscal);
 }
 }
 });
+*/
 }
 }
 </script>
