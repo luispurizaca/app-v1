@@ -3604,7 +3604,12 @@ location.href='index.php?mail';
 <li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px; <?php echo $css_estado; ?>">
 <span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
 La membres&iacute;a de <?php echo $mostrar_paciente; ?> <?php echo $mostrar_verbo; ?> el <?php echo $fecha_fin; ?>.
-<button type="button" class="btn" data-toggle="modal" data-target="#modal_vencimiento_<?php echo $id; ?>" style="background: #F26C3C; color: white; padding: 4px; font-size: 11px;">Enviar recordatorio</button>
+<button type="button" class="btn" data-toggle="modal" data-target="#modal_vencimiento_<?php echo $id; ?>" style="background: #F26C3C; color: white; padding: 4px; font-size: 11px;">
+<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cursor-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"></path>
+</svg>
+Enviar recordatorio
+</button>
 </li>
 <?php
 }
