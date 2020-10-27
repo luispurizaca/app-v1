@@ -3581,7 +3581,11 @@ $id_tipo_suscripcion = $row_por_vencer[10];
 <textarea class="form-control" id="content_<?php echo $id; ?>" style="width: 100%; padding: 3px;" rows="4">Espero te encuentres muy bien! Hemos logrado perder 5 KG en este mes y estoy segura que vamos a seguir avanzando hasta llegar al objetivo! Muchas felicidades!</textarea>
 <br>
 <div style="text-align: center;">
-<button id="btn_enviar_email_<?php echo $id; ?>" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 12px;">Enviar</button>
+<button id="btn_enviar_email_<?php echo $id; ?>" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 12px;">
+<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cursor-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"></path>
+</svg>Enviar
+</button>
 <script>
 $('#btn_enviar_email_<?php echo $id; ?>').on('click', function(){
 var content = $('#content_<?php echo $id; ?>').val();
