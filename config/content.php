@@ -3567,9 +3567,17 @@ $id_vendedor = $row_por_vencer[8];
 $id_paquete = $row_por_vencer[9];
 $id_tipo_suscripcion = $row_por_vencer[10];
 ?>
-<li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px; <?php echo $css_estado; ?>">
-<span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
-La membres&iacute;a de <?php echo $mostrar_paciente; ?> <?php echo $mostrar_verbo; ?> el <?php echo $fecha_fin; ?>.
+<div class="modal fade" id="modal_vencimiento_<?php echo $id; ?>">
+<div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 0; margin-bottom: 2px;">
+<div class="modal-content">
+<div class="modal-body">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+<div class="row">
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2"></div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+
 <?php
 if($tipo_sql == 1){
 ?>
@@ -3590,6 +3598,31 @@ location.href='index.php?mail';
 <?php
 }
 ?>
+
+<br>
+<div style="text-align: center;">
+<button id="btn_enviar_email_<?php echo $id; ?>" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 12px;">Enviar</button>
+<script>
+$('#btn_enviar_email_<?php echo $id; ?>').on('click', function(){
+var content = $('#content_<?php echo $id; ?>').val();
+$.ajax({
+url: 'config/send_private.php?tipo_email=2&email_destino=<?php echo $correo_paciente; ?>&nombre_paciente=<?php echo $nombres_paciente; ?>&nombre_programa=<?php echo $nombre_programa; ?>&fecha_vencimiento=<?php echo $fecha_fin; ?>&contenido='+content
+});
+location.href='index.php?mail';
+});
+</script>
+</div>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<li style="font-size: 13px; width: 100%; margin-bottom: 15px; font-weight: bold; padding-left: 25px; <?php echo $css_estado; ?>">
+<span style="font-size: 12px; font-weight: bolder;" class="dw dw-logout"></span>&nbsp;&nbsp;
+La membres&iacute;a de <?php echo $mostrar_paciente; ?> <?php echo $mostrar_verbo; ?> el <?php echo $fecha_fin; ?>.
+<button type="button" class="btn" data-toggle="modal" data-target="#modal_vencimiento_<?php echo $id; ?>" style="background: #F26C3C; color: white; padding: 4px; font-size: 11px;">Enviar recordatorio</button>
 </li>
 <?php
 }
