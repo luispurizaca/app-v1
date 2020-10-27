@@ -1477,8 +1477,8 @@ $ret_dias_vencimiento = $diff->days . ' d&iacute;as';
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_venta; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paquete; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_programa; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_inicio; ?></td>
-<td class="td-content" style="width: 11.11% !important;" onclick="act_fecha_fin('<?php echo date('Y-m-d', strtotime($row[5])); ?>', <?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_fin; ?></td>
+<td class="td-content" style="width: 11.11% !important;" onclick="act_fecha_fin(1, '<?php echo date('Y-m-d', strtotime($row[4])); ?>', <?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_inicio; ?></td>
+<td class="td-content" style="width: 11.11% !important;" onclick="act_fecha_fin(2, '<?php echo date('Y-m-d', strtotime($row[5])); ?>', <?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_fin; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_dias_vencimiento; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_texto_estado; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_nutricionista; ?></td>

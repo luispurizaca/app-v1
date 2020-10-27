@@ -2213,11 +2213,19 @@ exit();
 exit();
 }
 
-//ACTUALIZAR FECHA FIN DEL PLAN
+//ACTUALIZAR FECHAS DEL PLAN
 if($negocia_operacion == 11){
-$fn_fecha_fin_plan = date('Y-m-d', strtotime($_POST['fn_fecha_fin_plan']));
+$fn_tipo_fecha = (int)$_POST['fn_tipo_fecha'];
+$fn_fecha_plan = date('Y-m-d', strtotime($_POST['fn_fecha_fin_plan']));
 $fn_id_suscripcion_fin = (int)$_POST['fn_id_suscripcion_fin'];
-mysqli_query($con, "UPDATE suscripcion_programa SET fecha_fin = '$fn_fecha_fin_plan' WHERE id = '$fn_id_suscripcion_fin'");
+
+//FECHA A MODIFICAR
+if($fn_tipo_fecha == 1){
+$campo_update = 'fecha_inicio';
+} else {
+$campo_update = 'fecha_fin';
+}
+mysqli_query($con, "UPDATE suscripcion_programa SET $campo_update = '$fn_fecha_plan' WHERE id = '$fn_id_suscripcion_fin'");
 exit();
 exit();
 }
@@ -3660,9 +3668,10 @@ $texto_anual = 'Ventas del a&ntilde;o';
 <div class="row">
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-2"></div>
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
-<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Fecha Fin del Plan:</label>
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Actualizar Fecha:</label>
 <input type="date" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="fn_fecha_fin_plan">
 <input id="fn_id_suscripcion_fin" type="hidden">
+<input id="fn_tipo_fecha" type="hidden">
 <br>
 <div style="text-align: center;">
 <button id="btn_actualizar_fecha_fin" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 12px;">Guardar</button>
@@ -3768,7 +3777,8 @@ $('#modalFechas').modal('hide');
 });
 
 
-function act_fecha_fin(fecha, id_suscripcion){
+function act_fecha_fin(tipo_fecha, fecha, id_suscripcion){
+$('#fn_tipo_fecha').val(tipo_fecha);
 $('#fn_fecha_fin_plan').val(fecha);
 $('#fn_id_suscripcion_fin').val(id_suscripcion);
 $('#modal_modificar_fecha_fin').modal();
@@ -3777,6 +3787,7 @@ $('#modal_modificar_fecha_fin').modal();
 
 $('#btn_actualizar_fecha_fin').on('click', function(){
 
+var fn_tipo_fecha = $('#fn_tipo_fecha').val();
 var fn_fecha_fin_plan = $('#fn_fecha_fin_plan').val();
 var fn_id_suscripcion_fin = $('#fn_id_suscripcion_fin').val();
 
@@ -3785,7 +3796,8 @@ type: 'POST',
 url: 'config/content.php?negocia_operacion=11',
 data: {
 fn_fecha_fin_plan : fn_fecha_fin_plan,
-fn_id_suscripcion_fin : fn_id_suscripcion_fin
+fn_id_suscripcion_fin : fn_id_suscripcion_fin,
+fn_tipo_fecha : fn_tipo_fecha
 },
 success: function(datos){
 alert('Fecha Actualizada');
