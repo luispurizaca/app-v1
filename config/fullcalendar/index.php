@@ -213,7 +213,7 @@ $events = $req->fetchAll();
 				 language: 'es',
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month,basicWeek,basicDay',
+				right: 'month,agendaWeek,agendaDay',
 
 			},
 			defaultDate: yyyy+"-"+mm+"-"+dd,
@@ -221,6 +221,7 @@ $events = $req->fetchAll();
 			eventLimit: true, // allow "more" link when too many events
 			selectable: true,
 			selectHelper: true,
+                        defaultView: "agendaWeek",
 			select: function(start, end) {
 				
 				$('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
