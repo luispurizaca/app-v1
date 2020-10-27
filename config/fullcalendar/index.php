@@ -211,17 +211,16 @@ $events = $req->fetchAll();
 		$('#calendar').fullCalendar({
 			header: {
 				 language: 'es',
-				left: 'prev,next today',
+				left: 'prev, next today',
 				center: 'title',
-				right: 'month,agendaWeek,agendaDay',
-
+				right: 'month, agendaWeek, agendaDay'
 			},
 			defaultDate: yyyy+"-"+mm+"-"+dd,
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
 			selectable: true,
 			selectHelper: true,
-                        defaultView: "agendaWeek",
+                        defaultView: "month",
 			select: function(start, end) {
 				
 				$('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
