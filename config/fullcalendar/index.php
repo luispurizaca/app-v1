@@ -213,7 +213,7 @@ $events = $req->fetchAll();
 				 language: 'es',
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month,agendaWeek,agendaDay',
+				right: 'month,basicWeek,basicDay',
 
 			},
 			defaultDate: yyyy+"-"+mm+"-"+dd,
@@ -221,7 +221,6 @@ $events = $req->fetchAll();
 			eventLimit: true, // allow "more" link when too many events
 			selectable: true,
 			selectHelper: true,
-                        defaultView: "agendaWeek",
 			select: function(start, end) {
 				
 				$('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
@@ -266,17 +265,25 @@ $events = $req->fetchAll();
                             $c_title .= ' \nN:'.$nombre_nutricionista;
                             }
                             
-				
-                                // INICIO - FIN DEL EVENTO
-                                $agenda_inicio = $event['start'];
-                                $agenda_fin = $event['end'];
+				$start = explode(" ", $event['start']);
+				$end = explode(" ", $event['end']);
+				if($start[1] == '00:00:00'){
+					$start = $start[0];
+				}else{
+					$start = $event['start'];
+				}
+				if($end[1] == '00:00:00'){
+					$end = $end[0];
+				}else{
+					$end = $event['end'];
+				}
 			?>
 				{
 					id: '<?php echo $event['id']; ?>',
 					title: '<?php echo $c_title; ?>',
-					 start: new Date(<?php echo date('Y', strtotime($agenda_inicio)); ?>, <?php echo (int)date('m', strtotime($agenda_inicio)); ?>, <?php echo (int)date('d', strtotime($agenda_inicio)); ?>, <?php echo date('H', strtotime($agenda_inicio)); ?>, <?php echo date('i', strtotime($agenda_inicio)); ?>),
-					 end: new Date(<?php echo date('Y', strtotime($agenda_fin)); ?>, <?php echo (int)date('m', strtotime($agenda_fin)); ?>, <?php echo (int)date('d', strtotime($agenda_fin)); ?>, <?php echo date('H', strtotime($agenda_fin)); ?>, <?php echo date('i', strtotime($agenda_fin)); ?>),
-					color: '<?php echo $event['color']; ?>'
+					start: '<?php echo $start; ?>',
+					end: '<?php echo $end; ?>',
+					color: '<?php echo $event['color']; ?>',
 				},
 			<?php endforeach; ?>
 			]
