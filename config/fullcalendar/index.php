@@ -226,6 +226,8 @@ $events = $req->fetchAll();
 				$('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
 				$('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
 				$('#ModalAdd').modal('show');
+                                
+                                alert('Fecha de Inicio:'+moment(start).format('YYYY-MM-DD'));
 			},
 			eventRender: function(event, element) {
 				element.bind('dblclick', function() {
