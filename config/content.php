@@ -31,12 +31,9 @@ border-color: #95cf32 !important;
 }
 </style>
 <!-- Modal OPEN -->
-<div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" backdrop="static" keyboard="false">
 <div class="modal-dialog modal-lg" role="document" style="margin-top: 0px !important;">
 <div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-</div>
 <div class="modal-body">
 <div class="row">
 <div class="col-lg-12 text-center">
@@ -44,11 +41,14 @@ border-color: #95cf32 !important;
 </div>
 </div>
 </div>
+<div class="modal-footer" style="text-align: center; display: block;">
+<button style="border: 1px solid #95cf32; color: #95cf32;" type="button" class="btn" data-dismiss="modal" onclick="scrollreset2()">Cerrar</button>
+</div>
 </div>
 </div>
 </div>
 <!-- Modal ADD -->
-<div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" backdrop="static" keyboard="false">
 <div class="modal-dialog" role="document" style="margin-top: 0px !important;">
 <div class="modal-content">
 <form class="form-horizontal" method="POST" action="addEvent.php">
@@ -98,7 +98,7 @@ border-color: #95cf32 !important;
 </div>
 </div>
 <!-- Modal EDIT -->
-<div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" backdrop="static" keyboard="false">
 <div class="modal-dialog" role="document" style="margin-top: 0px !important;">
 <div class="modal-content">
 <form class="form-horizontal" method="POST" action="editEventTitle.php">
@@ -262,7 +262,13 @@ alert('No se pudo guardar. Inténtalo de nuevo.');
 }
 
 function scrollreset(){
-$('#ModalOpen').css('overflow-y', 'auto !important');
+$('#ModalOpen').css('overflow-y', 'scroll');
+$('body').css('overflow-y', 'hidden');
+}
+
+function scrollreset2(){
+$('#ModalOpen').css('overflow-y', 'hidden');
+$('body').css('overflow-y', 'scroll');
 }
 </script>
 <?php
