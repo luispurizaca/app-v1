@@ -114,6 +114,7 @@ exit();
 
 //FORMULARIO NUEVO REGISTRO
 if($negocia_operacion == 1){
+mysqli_query($con, "DELETE FROM events WHERE id_vendedor = 0 AND id_nutricionista = 0 AND id_paciente = 0");
 ?>
 <style>
 #calendar {
@@ -625,35 +626,9 @@ $nombre_cb = $row_id_n[1];
 </div>
 <div class="col-md-3 col-sm-6"></div>
 <div class="col-md-3 col-sm-6">
-<div class="form-group">
-<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">Fecha de Inicio</a></label>
-<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
+<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()" style="color: #95cf32;">Agendar Fecha</a></label>
 </div>
-</div>
-<div class="col-md-3 col-sm-6">
-<div class="form-group">
-<label class="n-label">Fecha de Fin</label>
-<input id="form_fecha_suscripcion_fin" name="form_fecha_suscripcion_fin" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 1 month')); ?>">
-</div>
-<script>
-$('#form_fecha_suscripcion').on('change', function(){
-var fecha = $('#form_fecha_suscripcion').val();
-var e = new Date(fecha);
-var mes_a_poner = e.getMonth() + 2;
-if(mes_a_poner <= 9){
-mes_a_poner = '0'+mes_a_poner;
-}
-
-var dia_a_poner = e.getDate();
-if(dia_a_poner <= 9){
-dia_a_poner = '0'+dia_a_poner;
-}
-
-e.setMonth(mes_a_poner);
-$('#form_fecha_suscripcion_fin').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
-});
-</script>
-</div>
+<div class="col-md-3 col-sm-6"></div>
 <div class="col-md-12 col-sm-12">
 <a id="btn_abrir_plan_2" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <input id="form_total_planes" type="hidden" value="1">
@@ -718,37 +693,11 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="segundo_plan" style="display: none;">
 <div class="form-group">
-<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">Fecha de Inicio</a></label>
-<input id="form_fecha_suscripcion_2" name="form_fecha_suscripcion_2" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
+<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()" style="color: #95cf32;">Agendar Fecha</a></label>
 </div>
 </div>
 </div>
-<div class="col-md-3 col-sm-6">
-<div class="segundo_plan" style="display: none;">
-<div class="form-group">
-<label class="n-label">Fecha de Fin</label>
-<input id="form_fecha_suscripcion_fin_2" name="form_fecha_suscripcion_fin_2" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 2 month')); ?>">
-<script>
-$('#form_fecha_suscripcion_2').on('change', function(){
-var fecha = $('#form_fecha_suscripcion_2').val();
-var e = new Date(fecha);
-var mes_a_poner = e.getMonth() + 2;
-if(mes_a_poner <= 9){
-mes_a_poner = '0'+mes_a_poner;
-}
-
-var dia_a_poner = e.getDate();
-if(dia_a_poner <= 9){
-dia_a_poner = '0'+dia_a_poner;
-}
-
-e.setMonth(mes_a_poner);
-$('#form_fecha_suscripcion_fin_2').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
-});
-</script>
-</div>
-</div>
-</div>
+<div class="col-md-3 col-sm-6"></div>
 <div class="col-md-12 col-sm-12">
 <div class="segundo_plan" style="display: none;">
 <a id="btn_abrir_plan_3" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
@@ -814,37 +763,11 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="tercer_plan" style="display: none;">
 <div class="form-group">
-<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">Fecha de Inicio</a></label>
-<input id="form_fecha_suscripcion_3" name="form_fecha_suscripcion_3" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 2 month')); ?>">
+<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()" style="color: #95cf32;">Agendar Fecha</a></label>
 </div>
 </div>
 </div>
-<div class="col-md-3 col-sm-6">
-<div class="tercer_plan" style="display: none;">
-<div class="form-group">
-<label class="n-label">Fecha de Fin</label>
-<input id="form_fecha_suscripcion_fin_3" name="form_fecha_suscripcion_fin_3" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 3 month')); ?>">
-<script>
-$('#form_fecha_suscripcion_3').on('change', function(){
-var fecha = $('#form_fecha_suscripcion_3').val();
-var e = new Date(fecha);
-var mes_a_poner = e.getMonth() + 2;
-if(mes_a_poner <= 9){
-mes_a_poner = '0'+mes_a_poner;
-}
-
-var dia_a_poner = e.getDate();
-if(dia_a_poner <= 9){
-dia_a_poner = '0'+dia_a_poner;
-}
-
-e.setMonth(mes_a_poner);
-$('#form_fecha_suscripcion_fin_3').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
-});
-</script>
-</div>
-</div>
-</div>
+<div class="col-md-3 col-sm-6"></div>
 </div>
 <div class="row" style="padding-top: 15px; <?php if($_SESSION['ID_TIPO_USUARIO'] == 3){ ?> display: none; <?php } ?>">
 <div class="col-md-12 col-sm-12">
@@ -966,7 +889,6 @@ var form_clave = $('#form_clave').val();
 var form_residencia = $('#form_residencia').val();
 var form_id_programa = $('#form_id_programa').val();
 var form_id_paquete = $('#form_id_paquete').val();
-var form_fecha_suscripcion = $('#form_fecha_suscripcion').val();
 var form_id_nutricionista = $('#form_id_nutricionista').val();
 var form_fecha_pago = $('#form_fecha_pago').val();
 var form_monto = $('#form_monto').val();
@@ -974,21 +896,16 @@ var form_id_medio_pago = $('#form_id_medio_pago').val();
 var form_id_banco = $('#form_id_banco').val();
 var form_id_paciente = <?php echo $id_paciente; ?>;
 var form_telefono = $('#form_telefono').val();
-var form_fecha_suscripcion_fin = $('#form_fecha_suscripcion_fin').val();
 var form_numero_operacion = $('#form_numero_operacion').val();
 
 
 var form_id_programa_2 = $('#form_id_programa_2').val();
 var form_id_paquete_2 = $('#form_id_paquete_2').val();
 var form_id_nutricionista_2 = $('#form_id_nutricionista_2').val();
-var form_fecha_suscripcion_2 = $('#form_fecha_suscripcion_2').val();
-var form_fecha_suscripcion_fin_2 = $('#form_fecha_suscripcion_fin_2').val();
 
 var form_id_programa_3 = $('#form_id_programa_3').val();
 var form_id_paquete_3 = $('#form_id_paquete_3').val();
 var form_id_nutricionista_3 = $('#form_id_nutricionista_3').val();
-var form_fecha_suscripcion_3 = $('#form_fecha_suscripcion_3').val();
-var form_fecha_suscripcion_fin_3 = $('#form_fecha_suscripcion_fin_3').val();
 
 var form_total_planes = $('#form_total_planes').val();
 
@@ -1017,7 +934,6 @@ form_residencia : form_residencia,
 form_tipo_usuario : 2,
 form_id_programa : form_id_programa,
 form_id_paquete : form_id_paquete,
-form_fecha_suscripcion : form_fecha_suscripcion,
 form_id_nutricionista : form_id_nutricionista,
 form_fecha_pago : form_fecha_pago,
 form_monto : form_monto,
@@ -1025,20 +941,15 @@ form_id_medio_pago : form_id_medio_pago,
 form_id_banco : form_id_banco,
 form_id_paciente : form_id_paciente,
 form_telefono : form_telefono,
-form_fecha_suscripcion_fin : form_fecha_suscripcion_fin,
 form_numero_operacion : form_numero_operacion,
 
 form_id_programa_2,
 form_id_paquete_2,
 form_id_nutricionista_2,
-form_fecha_suscripcion_2,
-form_fecha_suscripcion_fin_2,
 
 form_id_programa_3,
 form_id_paquete_3,
 form_id_nutricionista_3,
-form_fecha_suscripcion_3,
-form_fecha_suscripcion_fin_3,
 
 form_total_planes
 },
@@ -1166,7 +1077,6 @@ $form_tipo_usuario  = (int)$_POST['form_tipo_usuario'];
 
 $form_id_programa = $_POST['form_id_programa'];
 $form_id_paquete = $_POST['form_id_paquete'];
-$form_fecha_suscripcion = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion']));
 $form_id_nutricionista = $_POST['form_id_nutricionista'];
 $form_fecha_pago = date('Y-m-d', strtotime($_POST['form_fecha_pago']));
 $form_monto = (float)$_POST['form_monto'];
@@ -1188,24 +1098,50 @@ $form_id_medio_pago = $_POST['form_id_medio_pago'];
 $form_id_banco = $_POST['form_id_banco'];
 $form_id_paciente = (int)$_POST['form_id_paciente'];
 $form_telefono = $_POST['form_telefono'];
-$form_fecha_suscripcion_fin = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion_fin']));
 $form_numero_operacion = $_POST['form_numero_operacion'];
-
 
 $form_id_programa_2 = (int)$_POST['form_id_programa_2'];
 $form_id_paquete_2 = (int)$_POST['form_id_paquete_2'];
 $form_id_nutricionista_2 = (int)$_POST['form_id_nutricionista_2'];
-$form_fecha_suscripcion_2 = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion_2']));
-$form_fecha_suscripcion_fin_2 = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion_fin_2']));
 
 $form_id_programa_3 = (int)$_POST['form_id_programa_3'];
 $form_id_paquete_3 = (int)$_POST['form_id_paquete_3'];
 $form_id_nutricionista_3 = (int)$_POST['form_id_nutricionista_3'];
-$form_fecha_suscripcion_3 = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion_3']));
-$form_fecha_suscripcion_fin_3 = date('Y-m-d', strtotime($_POST['form_fecha_suscripcion_fin_3']));
 
 $form_total_planes = (int)$_POST['form_total_planes'];
 
+//VALIDAR SUSCRIPCIONES
+$query_total_planes = mysqli_query($con, "SELECT start FROM events WHERE id_vendedor = 0 AND id_nutricionista = 0 AND id_paciente = 0 ORDER BY id ASC");
+if(mysqli_num_rows($query_total_planes) < $form_total_planes){
+?>
+<script>
+alert('Agendar Fecha de Inicio del Plan');
+$('#ModalOpen').modal();
+scrollreset()
+</script>
+<?php
+exit();
+exit();
+}
+
+//FECHAS DE INICIO Y FIN DE LOS PLANES
+$ip = 1;
+while($row_planes = mysqli_fetch_array($query_total_planes)){
+$row_fecha_inicio_plan = date('Y-m-d', strtotime($row_planes[0]));
+if($ip == 1){
+$form_fecha_suscripcion = $row_fecha_inicio_plan;
+$form_fecha_suscripcion_fin = date('Y-m-d', strtotime('-1 day', strtotime(date('Y-m-d', strtotime('+1 month', strtotime($row_fecha_inicio_plan))))));
+}
+if($ip == 2){
+$form_fecha_suscripcion_2 = $row_fecha_inicio_plan;
+$form_fecha_suscripcion_fin_2 = date('Y-m-d', strtotime('-1 day', strtotime(date('Y-m-d', strtotime('+1 month', strtotime($row_fecha_inicio_plan))))));
+}
+if($ip == 3){
+$form_fecha_suscripcion_3 = $row_fecha_inicio_plan;
+$form_fecha_suscripcion_fin_3 = date('Y-m-d', strtotime('-1 day', strtotime(date('Y-m-d', strtotime('+1 month', strtotime($row_fecha_inicio_plan))))));
+}
+$ip++;
+}
 
 //DIVIDIR EL MONTO
 $form_monto = $form_monto / $form_total_planes;
@@ -1342,14 +1278,8 @@ VALUES
 );
 }
 
-//AGENDAR PRIMERA REUNION
-mysqli_query($con, "
-INSERT INTO events (title, color, start, end, id_vendedor, id_nutricionista, id_paciente, id_suscripcion)
-VALUES 
-('Primera Cita', '#95cf32', '".$form_fecha_suscripcion."', '".$form_fecha_suscripcion."', '".$_SESSION['ID_USUARIO']."',  '".$form_id_nutricionista."', '".$ultimo_id."', '".$ultimo_id_s."')
-"
-);
-
+//ACTUALIZAR AGENDA
+mysqli_query($con, "UPDATE events SET id_vendedor = '".$_SESSION['ID_USUARIO']."', id_nutricionista = '$form_id_nutricionista', id_paciente = '$ultimo_id' WHERE id_vendedor = 0 AND id_nutricionista = 0 AND id_paciente = 0");
 }
 ?>
 <script>
