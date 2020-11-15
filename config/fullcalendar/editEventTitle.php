@@ -1,9 +1,7 @@
 <?php
 // Conexion a la base de datos
 require_once('bdd.php');
-if (isset($_POST['delete']) && isset($_POST['id'])){
-	
-	
+if (isset($_POST['delete']) && isset($_POST['id']) && $_POST['delete'] == 1){
 	$id = $_POST['id'];
 	
 	$sql = "DELETE FROM events WHERE id = $id";
@@ -17,7 +15,6 @@ if (isset($_POST['delete']) && isset($_POST['id'])){
 	 print_r($query->errorInfo());
 	 die ('Erreur execute');
 	}
-	
 }elseif (isset($_POST['title']) && isset($_POST['color']) && isset($_POST['id'])){
 	
 	$id = $_POST['id'];
@@ -39,7 +36,3 @@ if (isset($_POST['delete']) && isset($_POST['id'])){
 	}
 
 }
-header('Location: index.php');
-
-	
-?>

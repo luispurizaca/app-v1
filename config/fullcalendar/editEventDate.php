@@ -1,8 +1,6 @@
 <?php
-
 // Conexion a la base de datos
 require_once('bdd.php');
-
 if (isset($_POST['Event'][0]) && isset($_POST['Event'][1]) && isset($_POST['Event'][2])){
 	
 	
@@ -27,7 +25,3 @@ if (isset($_POST['Event'][0]) && isset($_POST['Event'][1]) && isset($_POST['Even
 	}
 
 }
-//header('Location: '.$_SERVER['HTTP_REFERER']);
-
-	
-?>

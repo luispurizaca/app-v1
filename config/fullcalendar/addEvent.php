@@ -1,8 +1,6 @@
 <?php
-
 // Conexion a la base de datos
 require_once('bdd.php');
-
 if (isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) && isset($_POST['color'])){
 	
 	$title = $_POST['title'];
@@ -26,7 +24,3 @@ if (isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) && 
 	}
 
 }
-header('Location: '.$_SERVER['HTTP_REFERER']);
-
-	
-?>

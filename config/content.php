@@ -37,6 +37,7 @@ border-color: #95cf32 !important;
 <div class="modal-body">
 <div class="row">
 <div class="col-lg-12 text-center">
+<div id="resultado_agenda"></div>
 <div id="calendar" class="col-centered"></div>
 </div>
 </div>
@@ -51,7 +52,7 @@ border-color: #95cf32 !important;
 <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
 <div class="modal-dialog" role="document" style="margin-top: 0px !important;">
 <div class="modal-content">
-<form class="form-horizontal" method="POST" action="addEvent.php">
+<form class="form-horizontal">
 <div class="modal-body">
 <div class="form-group">
 <label for="title" class="col-sm-2 control-label">Titulo</label>
@@ -59,19 +60,11 @@ border-color: #95cf32 !important;
 <input type="text" name="title" class="form-control" id="title" placeholder="Titulo">
 </div>
 </div>
-<div class="form-group">
+<div class="form-group" style="display: none;">
 <label for="color" class="col-sm-2 control-label">Color</label>
 <div class="col-sm-10">
 <select name="color" class="form-control" id="color">
-<option value="">Seleccionar</option>
-<option style="color:#0071c5;" value="#0071c5">&#9724; Azul oscuro</option>
-<option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquesa</option>
-<option style="color:#008000;" value="#008000">&#9724; Verde</option>						  
-<option style="color:#FFD700;" value="#FFD700">&#9724; Amarillo</option>
-<option style="color:#FF8C00;" value="#FF8C00">&#9724; Naranja</option>
-<option style="color:#FF0000;" value="#FF0000">&#9724; Rojo</option>
-<option style="color:#000;" value="#000">&#9724; Negro</option>
-
+<option style="color: #95cf32;" value="#95cf32" selected="selected">&#9724; Predeterminado</option>
 </select>
 </div>
 </div>
@@ -87,11 +80,10 @@ border-color: #95cf32 !important;
 <input type="text" name="end" class="form-control" id="end" readonly>
 </div>
 </div>
-
 </div>
 <div class="modal-footer" style="text-align: center; display: block;">
 <button style="border: 1px solid #95cf32; color: #95cf32;" type="button" class="btn" data-dismiss="modal" onclick="scrollreset()">Cerrar</button>
-<button style="background: #95cf32; color: white;" type="submit" class="btn">Guardar</button>
+<button style="background: #95cf32; color: white;" type="button" class="btn" onclick="eventmodalAdd()">Guardar</button>
 </div>
 </form>
 </div>
@@ -101,34 +93,26 @@ border-color: #95cf32 !important;
 <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
 <div class="modal-dialog" role="document" style="margin-top: 0px !important;">
 <div class="modal-content">
-<form class="form-horizontal" method="POST" action="editEventTitle.php">
+<form class="form-horizontal">
 <div class="modal-body">
 <div class="form-group">
 <label for="title" class="col-sm-2 control-label">Titulo</label>
 <div class="col-sm-10">
-<input type="text" name="title" class="form-control" id="title" placeholder="Titulo">
+<input type="text" name="title" class="form-control" id="title2" placeholder="Titulo">
 </div>
 </div>
 <div class="form-group">
 <label for="color" class="col-sm-2 control-label">Color</label>
 <div class="col-sm-10">
-<select name="color" class="form-control" id="color">
-<option value="">Seleccionar</option>
-<option style="color:#0071c5;" value="#0071c5">&#9724; Azul oscuro</option>
-<option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquesa</option>
-<option style="color:#008000;" value="#008000">&#9724; Verde</option>						  
-<option style="color:#FFD700;" value="#FFD700">&#9724; Amarillo</option>
-<option style="color:#FF8C00;" value="#FF8C00">&#9724; Naranja</option>
-<option style="color:#FF0000;" value="#FF0000">&#9724; Rojo</option>
-<option style="color:#000;" value="#000">&#9724; Negro</option>
-
+<select name="color" class="form-control" id="color2">
+<option style="color: #95cf32;" value="#95cf32" selected="selected">&#9724; Predeterminado</option>
 </select>
 </div>
 </div>
 <div class="form-group"> 
 <div class="col-sm-offset-2 col-sm-10">
 <div class="checkbox">
-<label class="text-danger"><input type="checkbox"  name="delete"> Eliminar Evento</label>
+<label class="text-danger"><input type="checkbox" name="delete" id="delete"> Eliminar Evento</label>
 </div>
 </div>
 </div>
@@ -136,7 +120,7 @@ border-color: #95cf32 !important;
 </div>
 <div class="modal-footer" style="text-align: center; display: block;">
 <button style="border: 1px solid #95cf32; color: #95cf32;" type="button" class="btn" data-dismiss="modal" onclick="scrollreset()">Cerrar</button>
-<button style="background: #95cf32; color: white;" type="submit" class="btn">Guardar</button>
+<button style="background: #95cf32; color: white;" type="button" class="btn" onclick="eventmodalEdit()">Guardar</button>
 </div>
 </form>
 </div>
@@ -269,6 +253,41 @@ $('body').css('overflow-y', 'hidden');
 function scrollreset2(){
 $('#ModalOpen').css('overflow-y', 'hidden');
 $('body').css('overflow-y', 'scroll');
+}
+
+
+function eventmodalAdd(){
+var title = $('#title').val();
+var color = $('#color').val();
+var start = $('#start').val();
+var end = $('#end').val();
+$.ajax({
+url: 'config/fullcalendar/addEvent.php',
+type: 'POST',
+data: {title : title, color : color, start : start, end : end},
+success: function(res){
+$('#resultado_agenda').html(res);
+}
+});
+}
+function eventmodalEdit(){
+var title = $('#title2').val();
+var color = $('#color2').val();
+var delete;
+if (document.getElementById('delete').checked){
+delete = 1;
+} else {
+delete = 0;
+}
+var id = $('#id').val();
+$.ajax({
+url: 'config/fullcalendar/editEventTitle.php',
+type: 'POST',
+data: {title : title, color : color, delete : delete, id : id},
+success: function(res){
+$('#resultado_agenda').html(res);
+}
+});
 }
 </script>
 <?php
