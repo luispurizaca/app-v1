@@ -1,7 +1,7 @@
 <?php
 // Conexion a la base de datos
 require_once('bdd.php');
-if (isset($_POST['delete']) && isset($_POST['id']) && $_POST['delete'] == 1){
+if (isset($_POST['delete_event']) && isset($_POST['id']) && $_POST['delete_event'] == 1){
 	$id = $_POST['id'];
 	
 	$sql = "DELETE FROM events WHERE id = $id";

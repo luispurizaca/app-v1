@@ -112,7 +112,7 @@ border-color: #95cf32 !important;
 <div class="form-group"> 
 <div class="col-sm-offset-2 col-sm-10">
 <div class="checkbox">
-<label class="text-danger"><input type="checkbox" name="delete" id="delete"> Eliminar Evento</label>
+<label class="text-danger"><input type="checkbox" name="delete_event" id="delete_event"> Eliminar Evento</label>
 </div>
 </div>
 </div>
@@ -273,17 +273,17 @@ $('#resultado_agenda').html(res);
 function eventmodalEdit(){
 var title = $('#title2').val();
 var color = $('#color2').val();
-var delete;
-if (document.getElementById('delete').checked){
-delete = 1;
+var delete_event;
+if (document.getElementById('delete_event').checked){
+delete_event = 1;
 } else {
-delete = 0;
+delete_event = 0;
 }
 var id = $('#id').val();
 $.ajax({
 url: 'config/fullcalendar/editEventTitle.php',
 type: 'POST',
-data: {title : title, color : color, delete : delete, id : id},
+data: {title : title, color : color, delete_event : delete_event, id : id},
 success: function(res){
 $('#resultado_agenda').html(res);
 }
