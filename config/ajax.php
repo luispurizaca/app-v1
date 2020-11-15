@@ -1421,6 +1421,7 @@ if($ver_pacientes == 1){
 <td class="td-title" style="width: 11.11% !important;">Fecha Fin</td>
 <td class="td-title" style="width: 11.11% !important;">Banco</td>
 <td class="td-title" style="width: 11.11% !important;">Medio Pago</td>
+<td class="td-title" style="width: 11.11% !important;">N&#176; de Op.</td>
 <td class="td-title" style="width: 11.11% !important;">Nutricionista</td>
 </tr>
 <?php
@@ -1465,6 +1466,8 @@ $ret_texto_estado = $row[27];
 $ret_id_tipo_suscripcion = $row[29];
 $text_tipo_suscripcion = $row[30];
 
+$ret_numero_operacion = $row[31];
+
 if($ver_pacientes == 1){
 $date1 = new DateTime(date('Y-m-d'));
 $date2 = new DateTime($row[5]);
@@ -1496,6 +1499,7 @@ $ret_dias_vencimiento = $diff->days . ' d&iacute;as';
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_fin; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_cuenta_bancaria; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_medio_pago; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_numero_operacion; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_nutricionista; ?></td>
 </tr>
 <?php

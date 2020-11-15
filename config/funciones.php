@@ -461,6 +461,10 @@ $text_tipo_suscripcion = '<span style="color: darkblue;">Renovaci&oacute;n</span
 $row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM programa WHERE id = '$ret_id_programa' LIMIT 1"));
 $ret_nombre_programa = $row_nombre_programa[0];
 
+//NUMERO DE OPERACION
+$row_num_ope = mysqli_fetch_array(mysqli_query($con, "SELECT numero_operacion FROM cobro WHERE id_suscripcion = '$ret_id_suscripcion' LIMIT 1"));
+$ret_numero_operacion = $row_num_ope[0];
+
 //NOMBRE DEL PACIENTE
 $row_nombre_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT codigo, nombres, apellidos, genero, fecha_nacimiento, correo, telefono, estado FROM usuario WHERE id_tipo_usuario = 2 AND id = '$ret_id_paciente' LIMIT 1"));
 $ret_codigo = $row_nombre_paciente[0];
@@ -554,7 +558,8 @@ $ret_telefono,
 $ret_texto_estado,
 $css_paciente_color,
 $ret_id_tipo_suscripcion,
-$text_tipo_suscripcion
+$text_tipo_suscripcion,
+$ret_numero_operacion
 );
 }
 
