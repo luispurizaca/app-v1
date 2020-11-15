@@ -33,11 +33,12 @@ $events = $req->fetchAll();
 ?>
 <script>
 alert('Agendado Correctamente!');
+scrollreset();
+
 var date = new Date();
 var yyyy = date.getFullYear().toString();
 var mm = (date.getMonth()+1).toString().length == 1 ? "0"+(date.getMonth()+1).toString() : (date.getMonth()+1).toString();
 var dd  = (date.getDate()).toString().length == 1 ? "0"+(date.getDate()).toString() : (date.getDate()).toString();
-
 $('#calendar').fullCalendar({
 header: {
 language: 'es',
@@ -120,7 +121,6 @@ color: '<?php echo $event['color']; ?>',
 <?php endforeach; ?>
 ]
 });
-scrollreset();
 </script>
 <?php
 }
