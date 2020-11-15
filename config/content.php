@@ -25,6 +25,10 @@ max-width: 800px;
 float: none;
 margin: 0 auto;
 }
+.fc-unthemed th, .fc-state-active{
+background-color: #95cf32 !important;
+border-color: #95cf32 !important;
+}
 </style>
 <!-- Modal OPEN -->
 <div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
