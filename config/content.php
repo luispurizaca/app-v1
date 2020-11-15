@@ -17,10 +17,6 @@ $req->execute();
 
 $events = $req->fetchAll();
 ?>
-<!-- Bootstrap Core CSS <link href="css/bootstrap.min.css" rel="stylesheet"> -->
-
-<!-- FullCalendar -->
-<link href='config/fullcalendar/css/fullcalendar.css' rel='stylesheet' />
 <style>
 #calendar {
 max-width: 800px;
@@ -162,11 +158,6 @@ margin: 0 auto;
 </div>
 </div>
 </div>
-<!-- FullCalendar -->
-<script src='config/fullcalendar/js/moment.min.js'></script>
-<script src='config/fullcalendar/js/fullcalendar/fullcalendar.min.js'></script>
-<script src='config/fullcalendar/js/fullcalendar/fullcalendar.js'></script>
-<script src='config/fullcalendar/js/fullcalendar/locale/es.js'></script>
 <script>
 var date = new Date();
 var yyyy = date.getFullYear().toString();

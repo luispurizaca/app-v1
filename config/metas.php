@@ -91,6 +91,9 @@ $title = 'Nutricionistas';
 <script src="vendors/scripts/calendar-setting.js"></script>
 <script src="src/plugins/apexcharts/apexcharts.min.js"></script>
 <script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
+
+<!-- FullCalendar -->
+<link href='config/fullcalendar/css/fullcalendar.css' rel='stylesheet'/>
 <!-- Global site tag (gtag.js) - Google Analytics 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 <script>
