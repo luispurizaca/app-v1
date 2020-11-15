@@ -30,6 +30,29 @@ float: none;
 margin: 0 auto;
 }
 </style>
+<!-- Modal OPEN -->
+<div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+<div class="row">
+<div class="col-lg-12 text-center">
+<h1>Mi agenda</h1>
+<div id="calendar" class="col-centered">
+</div>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+<button type="submit" class="btn btn-primary">Guardar</button>
+</div>
+</div>
+</div>
+</div>
 <!-- Modal ADD -->
 <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 <div class="modal-dialog" role="document">
@@ -136,29 +159,6 @@ margin: 0 auto;
 <button type="submit" class="btn btn-primary">Guardar</button>
 </div>
 </form>
-</div>
-</div>
-</div>
-<!-- Modal OPEN -->
-<div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-</div>
-<div class="modal-body">
-<div class="row">
-<div class="col-lg-12 text-center">
-<h1>Mi agenda</h1>
-<div id="calendar" class="col-centered">
-</div>
-</div>
-</div>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-<button type="submit" class="btn btn-primary">Guardar</button>
-</div>
 </div>
 </div>
 </div>
