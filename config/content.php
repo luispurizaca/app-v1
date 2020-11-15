@@ -94,9 +94,9 @@ border-color: #95cf32 !important;
 </div>
 
 </div>
-<div class="modal-footer">
-<button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
-<button type="submit" class="btn btn-primary">Guardar</button>
+<div class="modal-footer" style="text-align: center; display: block;">
+<button style="border: 1px solid #95cf32; color: #95cf32;" type="button" class="btn" data-dismiss="modal">Cerrar</button>
+<button style="background: #95cf32; color: white;" type="submit" class="btn">Guardar</button>
 </div>
 </form>
 </div>
@@ -142,7 +142,7 @@ border-color: #95cf32 !important;
 </div>
 <input type="hidden" name="id" class="form-control" id="id">
 </div>
-<div class="modal-footer text-center">
+<div class="modal-footer" style="text-align: center; display: block;">
 <button style="border: 1px solid #95cf32; color: #95cf32;" type="button" class="btn" data-dismiss="modal">Cerrar</button>
 <button style="background: #95cf32; color: white;" type="submit" class="btn">Guardar</button>
 </div>
