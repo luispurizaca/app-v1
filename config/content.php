@@ -32,7 +32,7 @@ border-color: #95cf32 !important;
 </style>
 <!-- Modal OPEN -->
 <div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog modal-lg" role="document">
+<div class="modal-dialog modal-lg" role="document" style="margin-top: 10px !important;">
 <div class="modal-content">
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -40,15 +40,9 @@ border-color: #95cf32 !important;
 <div class="modal-body">
 <div class="row">
 <div class="col-lg-12 text-center">
-<h1>Mi agenda</h1>
-<div id="calendar" class="col-centered">
+<div id="calendar" class="col-centered"></div>
 </div>
 </div>
-</div>
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-<button type="submit" class="btn btn-primary">Guardar</button>
 </div>
 </div>
 </div>
@@ -61,7 +55,6 @@ border-color: #95cf32 !important;
 
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<h4 class="modal-title" id="myModalLabel">Agregar Evento</h4>
 </div>
 <div class="modal-body">
 
@@ -116,10 +109,8 @@ border-color: #95cf32 !important;
 <form class="form-horizontal" method="POST" action="editEventTitle.php">
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<h4 class="modal-title" id="myModalLabel">Modificar Evento</h4>
 </div>
 <div class="modal-body">
-
 <div class="form-group">
 <label for="title" class="col-sm-2 control-label">Titulo</label>
 <div class="col-sm-10">
@@ -149,14 +140,11 @@ border-color: #95cf32 !important;
 </div>
 </div>
 </div>
-
 <input type="hidden" name="id" class="form-control" id="id">
-
-
 </div>
-<div class="modal-footer">
-<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-<button type="submit" class="btn btn-primary">Guardar</button>
+<div class="modal-footer text-center">
+<button style="border: 1px solid #95cf32; color: #95cf32;" type="button" class="btn" data-dismiss="modal">Cerrar</button>
+<button style="background: #95cf32; color: white;" type="submit" class="btn">Guardar</button>
 </div>
 </form>
 </div>
