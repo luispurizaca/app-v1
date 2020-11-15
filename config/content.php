@@ -32,7 +32,7 @@ border-color: #95cf32 !important;
 </style>
 <!-- Modal OPEN -->
 <div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog modal-lg" role="document" style="margin-top: 10px !important;">
+<div class="modal-dialog modal-lg" role="document" style="margin-top: 0px !important;">
 <div class="modal-content">
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -49,15 +49,10 @@ border-color: #95cf32 !important;
 </div>
 <!-- Modal ADD -->
 <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog" role="document">
+<div class="modal-dialog" role="document" style="margin-top: 0px !important;">
 <div class="modal-content">
 <form class="form-horizontal" method="POST" action="addEvent.php">
-
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-</div>
 <div class="modal-body">
-
 <div class="form-group">
 <label for="title" class="col-sm-2 control-label">Titulo</label>
 <div class="col-sm-10">
@@ -95,7 +90,7 @@ border-color: #95cf32 !important;
 
 </div>
 <div class="modal-footer" style="text-align: center; display: block;">
-<button style="border: 1px solid #95cf32; color: #95cf32;" type="button" class="btn" data-dismiss="modal">Cerrar</button>
+<button style="border: 1px solid #95cf32; color: #95cf32;" type="button" class="btn" data-dismiss="modal" onclick="scrollreset()">Cerrar</button>
 <button style="background: #95cf32; color: white;" type="submit" class="btn">Guardar</button>
 </div>
 </form>
@@ -104,12 +99,9 @@ border-color: #95cf32 !important;
 </div>
 <!-- Modal EDIT -->
 <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog" role="document">
+<div class="modal-dialog" role="document" style="margin-top: 0px !important;">
 <div class="modal-content">
 <form class="form-horizontal" method="POST" action="editEventTitle.php">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-</div>
 <div class="modal-body">
 <div class="form-group">
 <label for="title" class="col-sm-2 control-label">Titulo</label>
@@ -143,13 +135,14 @@ border-color: #95cf32 !important;
 <input type="hidden" name="id" class="form-control" id="id">
 </div>
 <div class="modal-footer" style="text-align: center; display: block;">
-<button style="border: 1px solid #95cf32; color: #95cf32;" type="button" class="btn" data-dismiss="modal">Cerrar</button>
+<button style="border: 1px solid #95cf32; color: #95cf32;" type="button" class="btn" data-dismiss="modal" onclick="scrollreset()">Cerrar</button>
 <button style="background: #95cf32; color: white;" type="submit" class="btn">Guardar</button>
 </div>
 </form>
 </div>
 </div>
 </div>
+<!-- SCRIPT -->
 <script>
 var date = new Date();
 var yyyy = date.getFullYear().toString();
@@ -266,6 +259,10 @@ alert('No se pudo guardar. Inténtalo de nuevo.');
 }
 }
 });
+}
+
+function scrollreset(){
+$('#ModalOpen').css('overflow-y', 'auto !important');
 }
 </script>
 <?php
