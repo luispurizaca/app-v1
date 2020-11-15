@@ -32,7 +32,6 @@ $req->execute();
 $events = $req->fetchAll();
 ?>
 <script>
-alert('Agendado Correctamente!');
 $('#ModalAdd').modal('toggle');
 scrollreset();
 loadFullCalendar();

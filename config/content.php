@@ -59,8 +59,6 @@ select: function(start, end) {
 $('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
 $('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
 $('#ModalAdd').modal('show');
-
-alert('Fecha de Inicio:'+moment(start).format('YYYY-MM-DD'));
 },
 eventRender: function(event, element) {
 element.bind('dblclick', function() {
@@ -147,7 +145,7 @@ border-color: #95cf32 !important;
 </style>
 <!-- Modal OPEN -->
 <div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
-<div class="modal-dialog modal-lg" role="document" style="margin-top: 0px !important;">
+<div class="modal-dialog modal-lg" role="document" style="margin-top: 0px !important; width: 100%;">
 <div class="modal-content">
 <div class="modal-body">
 <div class="row">
