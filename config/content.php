@@ -199,7 +199,7 @@ border-color: #95cf32 !important;
 <input type="text" name="title" class="form-control" id="title2" placeholder="Titulo">
 </div>
 </div>
-<div class="form-group">
+<div class="form-group" style="display: none;">
 <label for="color" class="col-sm-2 control-label">Color</label>
 <div class="col-sm-10">
 <select name="color" class="form-control" id="color2">
@@ -718,7 +718,7 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="segundo_plan" style="display: none;">
 <div class="form-group">
-<label class="n-label"><a href="config/fullcalendar/" target="_blank">Fecha de Inicio</a></label>
+<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">Fecha de Inicio</a></label>
 <input id="form_fecha_suscripcion_2" name="form_fecha_suscripcion_2" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
 </div>
 </div>
@@ -814,7 +814,7 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="tercer_plan" style="display: none;">
 <div class="form-group">
-<label class="n-label"><a href="config/fullcalendar/" target="_blank">Fecha de Inicio</a></label>
+<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">Fecha de Inicio</a></label>
 <input id="form_fecha_suscripcion_3" name="form_fecha_suscripcion_3" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 2 month')); ?>">
 </div>
 </div>
