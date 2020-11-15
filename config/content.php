@@ -4237,7 +4237,7 @@ if($view_controller == 8){
 <div class="card-box mb-30">
 <div class="card-box pd-20 height-100-p mb-30">
 <div style="margin-top: 30px; margin-bottom: 20px;">
-<h1>Mi Agenda</h1>
+<h1 style="text-align: center;">Mi Agenda</h1><br>
 <div id="resultado_calendar"></div>
 <script>
 function loadFullCalendar(){
