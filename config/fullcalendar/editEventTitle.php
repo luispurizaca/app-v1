@@ -19,6 +19,7 @@ die ('Erreur execute');
 ?>
 <script>
 alert('Eliminado Correctamente!');
+$('#ModalEdit').modal('toggle');
 scrollreset();
 </script>
 <?php
@@ -44,6 +45,7 @@ die ('Erreur execute');
 ?>
 <script>
 alert('Actualizado Correctamente!');
+$('#ModalEdit').modal('toggle');
 scrollreset();
 </script>
 <?php

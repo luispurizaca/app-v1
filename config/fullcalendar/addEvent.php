@@ -33,6 +33,7 @@ $events = $req->fetchAll();
 ?>
 <script>
 alert('Agendado Correctamente!');
+$('#ModalAdd').modal('toggle');
 scrollreset();
 
 var date = new Date();
