@@ -31,7 +31,7 @@ border-color: #95cf32 !important;
 }
 </style>
 <!-- Modal OPEN -->
-<div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" backdrop="static" keyboard="false">
+<div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
 <div class="modal-dialog modal-lg" role="document" style="margin-top: 0px !important;">
 <div class="modal-content">
 <div class="modal-body">
@@ -48,7 +48,7 @@ border-color: #95cf32 !important;
 </div>
 </div>
 <!-- Modal ADD -->
-<div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" backdrop="static" keyboard="false">
+<div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
 <div class="modal-dialog" role="document" style="margin-top: 0px !important;">
 <div class="modal-content">
 <form class="form-horizontal" method="POST" action="addEvent.php">
@@ -98,7 +98,7 @@ border-color: #95cf32 !important;
 </div>
 </div>
 <!-- Modal EDIT -->
-<div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" backdrop="static" keyboard="false">
+<div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
 <div class="modal-dialog" role="document" style="margin-top: 0px !important;">
 <div class="modal-content">
 <form class="form-horizontal" method="POST" action="editEventTitle.php">
