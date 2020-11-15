@@ -84,7 +84,7 @@ if($_SESSION['ID_TIPO_USUARIO'] == 1){
 </a>
 </li>
 <li>
-<a href="config/fullcalendar/" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<a href="agenda.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Mi Agenda</span>
 </a>
 </li>
@@ -118,7 +118,7 @@ elseif($_SESSION['ID_TIPO_USUARIO'] == 2){
 </a>
 </li>
 <li>
-<a href="config/fullcalendar/" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<a href="agenda.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Agenda</span>
 </a>
 </li>
@@ -137,7 +137,7 @@ elseif($_SESSION['ID_TIPO_USUARIO'] == 3){
 </a>
 </li>
 <li>
-<a href="config/fullcalendar/" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<a href="agenda.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Agenda</span>
 </a>
 </li>
@@ -161,7 +161,7 @@ elseif($_SESSION['ID_TIPO_USUARIO'] == 4){
 </a>
 </li>
 <li>
-<a href="config/fullcalendar/" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
+<a href="agenda.php" class="dropdown-toggle no-arrow" style="padding: 12px 10px 12px 55px;">
 <span style="font-size: 15px;" class="micon dw dw-house-1"></span><span class="mtext" style="font-size: 13px;">Agenda</span>
 </a>
 </li>

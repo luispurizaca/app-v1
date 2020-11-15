@@ -9,9 +9,25 @@ require_once (__DIR__.'/conexion_bd.php');
 //LOAD FULL CALENDAR
 if($fullcalendar == 1){
 
+//SI ES LA AGENDA DEL REPORTE
+$reporte = (int)$_GET['reporte'];
+if($reporte == 1){
+if($_SESSION['ID_TIPO_USUARIO'] == 1){
+$where = "AND id_nutricionista = '".$_SESSION['ID_USUARIO']."'";
+} elseif($_SESSION['ID_TIPO_USUARIO'] == 2){
+$where = "AND id_paciente = '".$_SESSION['ID_USUARIO']."'";
+} elseif($_SESSION['ID_TIPO_USUARIO'] == 4){
+$where = "AND id_vendedor = '".$_SESSION['ID_USUARIO']."'";
+} else {
+$where = '';
+}
+} else {
+$where = '';
+}
+
 //PDO
 require_once('fullcalendar/bdd.php');
-$sql = "SELECT id, title, start, end, color, id_nutricionista, id_paciente, id_suscripcion FROM events ";
+$sql = "SELECT id, title, start, end, color, id_nutricionista, id_paciente, id_suscripcion FROM events WHERE 1 = 1 $where";
 
 $req = $bdd->prepare($sql);
 $req->execute();
@@ -1080,20 +1096,6 @@ $form_id_paquete = $_POST['form_id_paquete'];
 $form_id_nutricionista = $_POST['form_id_nutricionista'];
 $form_fecha_pago = date('Y-m-d', strtotime($_POST['form_fecha_pago']));
 $form_monto = (float)$_POST['form_monto'];
-
-//SI ES PACIENTE
-if($tipo_usuario == 2){
-if(empty($form_monto)){
-?>
-<script>
-alert('Ingrese: Monto');
-$('#form_monto').focus();
-</script>
-<?php
-exit();
-exit();
-}
-}
 $form_id_medio_pago = $_POST['form_id_medio_pago'];
 $form_id_banco = $_POST['form_id_banco'];
 $form_id_paciente = (int)$_POST['form_id_paciente'];
@@ -1109,6 +1111,34 @@ $form_id_paquete_3 = (int)$_POST['form_id_paquete_3'];
 $form_id_nutricionista_3 = (int)$_POST['form_id_nutricionista_3'];
 
 $form_total_planes = (int)$_POST['form_total_planes'];
+
+//VALIDACIONES DEL PACIENTE
+if($tipo_usuario == 2){
+
+//MONTO
+if(empty($form_monto)){
+?>
+<script>
+alert('Ingrese: Monto');
+$('#form_monto').focus();
+</script>
+<?php
+exit();
+exit();
+}
+
+//NRO DE OPERACION
+if(empty($form_numero_operacion)){
+?>
+<script>
+alert('Ingrese: N\u00FAmero de Operaci\u00F3n');
+$('#form_numero_operacion').focus();
+</script>
+<?php
+exit();
+exit();
+}
+}
 
 //VALIDAR SUSCRIPCIONES
 $query_total_planes = mysqli_query($con, "SELECT start FROM events WHERE id_vendedor = 0 AND id_nutricionista = 0 AND id_paciente = 0 ORDER BY id ASC");
@@ -4195,6 +4225,32 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 </table>
 <br>
 <div id="div_plan_paciente"></div>
+</div>
+</div>
+</div>
+<?php
+}
+
+//AGENDA
+if($view_controller == 8){
+?>
+<div class="card-box mb-30">
+<div class="card-box pd-20 height-100-p mb-30">
+<div style="margin-top: 30px; margin-bottom: 20px;">
+<h1>Mi Agenda</h1>
+<div id="resultado_calendar"></div>
+<script>
+function loadFullCalendar(){
+$('#resultado_calendar').html('');
+$.ajax({
+url: 'config/content.php?fullcalendar=1&reporte=1',
+success: function(res){
+$('#resultado_calendar').html(res);
+}
+});
+}
+loadFullCalendar();
+</script>
 </div>
 </div>
 </div>
