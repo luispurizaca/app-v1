@@ -737,6 +737,7 @@ $nombre_cb = $row_id_n[1];
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
+<div class="segundo_plan" style="display: none;">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_2" name="form_fecha_suscripcion_fin_2" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 2 month')); ?>">
 <script>
@@ -757,6 +758,7 @@ e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin_2').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
 });
 </script>
+</div>
 </div>
 <div class="col-md-12 col-sm-12">
 <div class="segundo_plan" style="display: none;">
