@@ -227,6 +227,7 @@ border-color: #95cf32 !important;
 <!-- SCRIPT -->
 <script>
 function loadFullCalendar(){
+$('#resultado_calendar').html('');
 $.ajax({
 url: 'config/content.php?fullcalendar=1',
 success: function(res){
