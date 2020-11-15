@@ -21,6 +21,7 @@ die ('Erreur execute');
 alert('Eliminado Correctamente!');
 $('#ModalEdit').modal('toggle');
 scrollreset();
+loadFullCalendar();
 </script>
 <?php
 }elseif (isset($_POST['title']) && isset($_POST['color']) && isset($_POST['id'])){
@@ -47,6 +48,7 @@ die ('Erreur execute');
 alert('Actualizado Correctamente!');
 $('#ModalEdit').modal('toggle');
 scrollreset();
+loadFullCalendar();
 </script>
 <?php
 }
