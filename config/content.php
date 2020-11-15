@@ -32,7 +32,7 @@ margin: 0 auto;
 </style>
 <!-- Modal OPEN -->
 <div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<div class="modal-dialog" role="document">
+<div class="modal-lg" role="document">
 <div class="modal-content">
 <div class="modal-header">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -185,7 +185,7 @@ editable: true,
 eventLimit: true, // allow "more" link when too many events
 selectable: true,
 selectHelper: true,
-defaultView: 'agendaWeek',
+defaultView: 'month',
 select: function(start, end) {
 
 $('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
