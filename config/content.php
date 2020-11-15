@@ -586,7 +586,7 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6"></div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen">Fecha de Inicio</a></label>
+<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">Fecha de Inicio</a></label>
 <input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
 </div>
 </div>
