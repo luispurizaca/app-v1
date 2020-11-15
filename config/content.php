@@ -145,7 +145,7 @@ border-color: #95cf32 !important;
 </style>
 <!-- Modal OPEN -->
 <div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
-<div class="modal-dialog modal-lg" role="document" style="margin-top: 0px !important; width: 100%;">
+<div class="modal-dialog modal-lg" role="document" style="margin-top: 0px !important;">
 <div class="modal-content">
 <div class="modal-body">
 <div class="row">
@@ -640,9 +640,33 @@ $nombre_cb = $row_id_n[1];
 </div>
 <div class="col-md-3 col-sm-6"></div>
 <div class="col-md-3 col-sm-6">
-<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()" style="color: #95cf32;">Agendar Fecha</a></label>
+<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()" style="color: #95cf32;">Fecha de Inicio</a></label>
+<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
 </div>
-<div class="col-md-3 col-sm-6"></div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Fecha de Fin</label>
+<input id="form_fecha_suscripcion_fin" name="form_fecha_suscripcion_fin" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 1 month')); ?>">
+</div>
+<script>
+$('#form_fecha_suscripcion').on('change', function(){
+var fecha = $('#form_fecha_suscripcion').val();
+var e = new Date(fecha);
+var mes_a_poner = e.getMonth() + 2;
+if(mes_a_poner <= 9){
+mes_a_poner = '0'+mes_a_poner;
+}
+
+var dia_a_poner = e.getDate();
+if(dia_a_poner <= 9){
+dia_a_poner = '0'+dia_a_poner;
+}
+
+e.setMonth(mes_a_poner);
+$('#form_fecha_suscripcion_fin').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
+});
+</script>
+</div>
 <div class="col-md-12 col-sm-12">
 <a id="btn_abrir_plan_2" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <input id="form_total_planes" type="hidden" value="1">
@@ -707,12 +731,36 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="segundo_plan" style="display: none;">
 <div class="form-group">
-<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()" style="color: #95cf32;">Agendar Fecha</a></label>
+<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()" style="color: #95cf32;">Fecha de Inicio</a></label>
+<input id="form_fecha_suscripcion_2" name="form_fecha_suscripcion_2" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
 </div>
 </div>
 </div>
-<div class="col-md-3 col-sm-6"></div>
+<div class="col-md-3 col-sm-6">
+<label class="n-label">Fecha de Fin</label>
+<input id="form_fecha_suscripcion_fin_2" name="form_fecha_suscripcion_fin_2" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 2 month')); ?>">
+<script>
+$('#form_fecha_suscripcion_2').on('change', function(){
+var fecha = $('#form_fecha_suscripcion_2').val();
+var e = new Date(fecha);
+var mes_a_poner = e.getMonth() + 2;
+if(mes_a_poner <= 9){
+mes_a_poner = '0'+mes_a_poner;
+}
+
+var dia_a_poner = e.getDate();
+if(dia_a_poner <= 9){
+dia_a_poner = '0'+dia_a_poner;
+}
+
+e.setMonth(mes_a_poner);
+$('#form_fecha_suscripcion_fin_2').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
+});
+</script>
+</div>
 <div class="col-md-12 col-sm-12">
+<div class="segundo_plan" style="display: none;">
+<div class="form-group">
 <div class="segundo_plan" style="display: none;">
 <a id="btn_abrir_plan_3" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
@@ -722,6 +770,8 @@ $('#btn_abrir_plan_3').css('display', 'none');
 $('#form_total_planes').val('3');
 });
 </script>
+</div>
+</div>
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
@@ -777,11 +827,37 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="tercer_plan" style="display: none;">
 <div class="form-group">
-<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()" style="color: #95cf32;">Agendar Fecha</a></label>
+<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()" style="color: #95cf32;">Fecha de Inicio</a></label>
+<input id="form_fecha_suscripcion_3" name="form_fecha_suscripcion_3" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 2 month')); ?>">
 </div>
 </div>
 </div>
-<div class="col-md-3 col-sm-6"></div>
+<div class="col-md-3 col-sm-6">
+<div class="tercer_plan" style="display: none;">
+<div class="form-group">
+<label class="n-label">Fecha de Fin</label>
+<input id="form_fecha_suscripcion_fin_3" name="form_fecha_suscripcion_fin_3" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 3 month')); ?>">
+<script>
+$('#form_fecha_suscripcion_3').on('change', function(){
+var fecha = $('#form_fecha_suscripcion_3').val();
+var e = new Date(fecha);
+var mes_a_poner = e.getMonth() + 2;
+if(mes_a_poner <= 9){
+mes_a_poner = '0'+mes_a_poner;
+}
+
+var dia_a_poner = e.getDate();
+if(dia_a_poner <= 9){
+dia_a_poner = '0'+dia_a_poner;
+}
+
+e.setMonth(mes_a_poner);
+$('#form_fecha_suscripcion_fin_3').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
+});
+</script>
+</div>
+</div>
+</div>
 </div>
 <div class="row" style="padding-top: 15px; <?php if($_SESSION['ID_TIPO_USUARIO'] == 3){ ?> display: none; <?php } ?>">
 <div class="col-md-12 col-sm-12">
