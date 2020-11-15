@@ -20,7 +20,7 @@ $events = $req->fetchAll();
 <!-- Bootstrap Core CSS <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 
 <!-- FullCalendar -->
-<link href='css/fullcalendar.css' rel='stylesheet' />
+<link href='config/fullcalendar/css/fullcalendar.css' rel='stylesheet' />
 <style>
 #calendar {
 max-width: 800px;
@@ -163,10 +163,10 @@ margin: 0 auto;
 </div>
 </div>
 <!-- FullCalendar -->
-<script src='fullcalendar/js/moment.min.js'></script>
-<script src='fullcalendar/js/fullcalendar/fullcalendar.min.js'></script>
-<script src='fullcalendar/js/fullcalendar/fullcalendar.js'></script>
-<script src='fullcalendar/js/fullcalendar/locale/es.js'></script>
+<script src='config/fullcalendar/js/moment.min.js'></script>
+<script src='config/fullcalendar/js/fullcalendar/fullcalendar.min.js'></script>
+<script src='config/fullcalendar/js/fullcalendar/fullcalendar.js'></script>
+<script src='config/fullcalendar/js/fullcalendar/locale/es.js'></script>
 <script>
 var date = new Date();
 var yyyy = date.getFullYear().toString();
@@ -272,7 +272,7 @@ Event[1] = start;
 Event[2] = end;
 
 $.ajax({
-url: 'fullcalendar/editEventDate.php',
+url: 'config/fullcalendar/editEventDate.php',
 type: "POST",
 data: {Event:Event},
 success: function(rep) {
