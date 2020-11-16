@@ -1201,7 +1201,7 @@ mysqli_query($con, "INSERT INTO historia (id_paciente, alimentos_no_gustar, agua
 ?>
 <script>
 $.ajax({
-url: 'config/send_private.php?tipo_email=1&email_destino=<?php echo $form_correo; ?>&nombre_paciente=<?php echo $form_nombres; ?>&nombre_programa=<?php echo $nombre_programa; ?>&usuario=<?php echo $form_codigo; ?>&clave=<?php echo $form_clave; ?>&genero=<?php echo $form_genero; ?>&id_tipo_usuario=<?php echo $tipo_usuario; ?>'
+url: 'config/send_private.php?tipo_email=1&email_destino=<?php echo $form_correo; ?>&nombre_paciente=<?php echo $form_nombres; ?>&nombre_programa=<?php echo $nombre_programa; ?>&usuario=<?php echo $form_codigo; ?>&clave=xxxxxxxxxx&genero=<?php echo $form_genero; ?>&id_tipo_usuario=<?php echo $tipo_usuario; ?>'
 });
 </script>
 <?php
