@@ -184,13 +184,13 @@ border-color: #95cf32 !important;
 <div class="form-group">
 <label for="start" class="col-sm-2 control-label">Fecha Inicial</label>
 <div class="col-sm-10">
-<input type="text" name="start" class="form-control" id="start" readonly>
+<input type="text" name="start" class="form-control" id="start">
 </div>
 </div>
 <div class="form-group">
 <label for="end" class="col-sm-2 control-label">Fecha Final</label>
 <div class="col-sm-10">
-<input type="text" name="end" class="form-control" id="end" readonly>
+<input type="text" name="end" class="form-control" id="end">
 </div>
 </div>
 </div>
@@ -3795,7 +3795,7 @@ id_paquete AS ID_PAQUETE,
 id_tipo_suscripcion AS ID_TIPO_SUSCRIPCION
 FROM suscripcion_programa 
 WHERE id_vendedor = '".$_SESSION['ID_USUARIO']."'
-AND DATE_FORMAT(fecha_fin, '%Y-%m-%d') BETWEEN DATE_SUB(CURDATE(), INTERVAL 3 DAY) AND DATE_SUB(CURDATE(), INTERVAL 1 DAY)
+AND DATE_FORMAT(fecha_fin, '%Y-%m-%d') BETWEEN DATE_SUB(CURDATE(), INTERVAL 3 DAY) AND DATE_SUB(CURDATE(), INTERVAL 7 DAY)
 ORDER BY DATE_FORMAT(fecha_fin, '%Y-%m-%d') ASC
 )
 "
