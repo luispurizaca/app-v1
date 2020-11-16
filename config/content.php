@@ -1182,7 +1182,7 @@ $suscripcion_nueva = 1;
 mysqli_query($con, "
 INSERT INTO usuario (id_tipo_usuario, codigo, correo, clave, nombres, apellidos, fecha_nacimiento, genero, estado, activo, id_tipo_documento, numero_documento, date_added, instagram, direccion, distrito, provincia, departamento, residencia, maximo_pacientes, telefono, id_vendedor)
 VALUES 
-('".$tipo_usuario."', '".$form_codigo."', '".$form_correo."', '".$form_clave."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '1', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$maximo_pacientes."', '".$form_telefono."', '".$_SESSION['ID_USUARIO']."')
+('".$tipo_usuario."', '".$form_codigo."', '".$form_correo."', '".password_hash($form_clave, PASSWORD_DEFAULT)."', '".$form_nombres."', '".$form_apellidos."', '".$form_fecha_nacimiento."', '".$form_genero."', '1', '1', '".$form_tipo_documento."', '".$form_numero_documento."', '".date('Y-m-d H:i:s')."', '".$form_instagram."', '".$form_direccion."', '".$form_distrito."', '".$form_provincia."', '".$form_departamento."', '".$form_residencia."', '".$maximo_pacientes."', '".$form_telefono."', '".$_SESSION['ID_USUARIO']."')
 "
 );
 
