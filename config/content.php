@@ -411,8 +411,8 @@ $registro_clave = $row_codigo_registro[18];
 ?>
 <div id="div_guardar_paciente"></div>
 <div class="row">
-<div class="col-md-2 hidden-xs"></div>
-<div class="col-md-8 col-xs-12">
+<div class="col-md-1 hidden-xs"></div>
+<div class="col-md-10 col-xs-12">
 <div class="pd-20 card-box mb-30">
 <div class="clearfix">
 <div class="pull-left">
@@ -588,6 +588,8 @@ $('#form_direccion').val(data.domicilio_fiscal);
 </div>
 </div>
 </div>
+</div>
+<div class="pd-20 card-box mb-30">
 <div class="row" style="padding-top: 15px; <?php if($_SESSION['ID_TIPO_USUARIO'] == 3){ ?> display: none; <?php } ?>">
 <div class="col-md-12 col-sm-12">
 <div class="form-group">
@@ -786,6 +788,8 @@ $nombre_cb = $row_id_n[1];
 </div>
 <div class="col-md-3 col-sm-6"></div>
 </div>
+</div>
+<div class="pd-20 card-box mb-30">
 <div class="row" style="padding-top: 15px; <?php if($_SESSION['ID_TIPO_USUARIO'] == 3){ ?> display: none; <?php } ?>">
 <div class="col-md-12 col-sm-12">
 <div class="form-group">
@@ -852,6 +856,8 @@ $nombre_cb = $row_cb[1];
 </div>
 </div>
 </div>
+</div>
+<div class="pd-20 card-box mb-30">
 <div class="row" style="padding-top: 15px;">
 <div class="col-md-12 col-sm-12">
 <div class="form-group">
@@ -885,7 +891,7 @@ $nombre_cb = $row_cb[1];
 </div>
 </div>
 </div>
-<div class="col-md-2 hidden-xs"></div>
+<div class="col-md-1 hidden-xs"></div>
 </div>
 <script>
 $('#btn_guardar_datos').on('click', function(){
