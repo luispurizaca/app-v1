@@ -410,10 +410,10 @@ $registro_clave = $row_codigo_registro[18];
 }
 ?>
 <div id="div_guardar_paciente"></div>
-<div class="pd-20 card-box mb-30">
 <div class="row">
 <div class="col-md-2 hidden-xs"></div>
 <div class="col-md-8 col-xs-12">
+<div class="pd-20 card-box mb-30">
 <div class="clearfix">
 <div class="pull-left">
 <h4 class="weight-500 text-capitalize" style="font-size: 17px;">
@@ -884,8 +884,8 @@ $nombre_cb = $row_cb[1];
 </div>
 </div>
 </div>
-<div class="col-md-2 hidden-xs"></div>
 </div>
+<div class="col-md-2 hidden-xs"></div>
 </div>
 <script>
 $('#btn_guardar_datos').on('click', function(){
