@@ -590,16 +590,22 @@ $('#form_direccion').val(data.domicilio_fiscal);
 </div>
 </div>
 <div class="pd-20 card-box mb-30">
-<div class="row" style="padding-top: 15px; <?php if($_SESSION['ID_TIPO_USUARIO'] == 3){ ?> display: none; <?php } ?>">
+<div style="padding-top: 15px; <?php if($_SESSION['ID_TIPO_USUARIO'] == 3){ ?> display: none; <?php } ?>">
+<div class="row">
 <div class="col-md-12 col-sm-12">
 <div class="form-group">
 <div class="pull-left">
 <h4 class="weight-500">
 <div style="color: #95cf32; font-weight: bold; font-size: 18px;">Datos de la suscripci&oacute;n</div>
+<input id="form_total_planes" type="hidden" value="1">
 </h4><hr>
 </div>
 </div>
 </div>
+</div>
+
+<div id="suscripcion_primera">
+<div class="row">
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Nombre del Plan</label>
@@ -676,7 +682,6 @@ $('#form_fecha_suscripcion_fin').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia
 </div>
 <div class="col-md-12 col-sm-12">
 <a id="btn_abrir_plan_2" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
-<input id="form_total_planes" type="hidden" value="1">
 <script>
 $('#btn_abrir_plan_2').on('click', function(){
 $('.segundo_plan').css('display', 'block');
@@ -685,6 +690,11 @@ $('#form_total_planes').val('2');
 });
 </script>
 </div>
+</div>
+</div>
+
+<div id="suscripcion_segunda">
+<div class="row">
 <div class="col-md-12 col-sm-12">
 <div class="segundo_plan" style="display: none;">
 <hr>
@@ -774,7 +784,6 @@ $('#form_fecha_suscripcion_fin_2').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 </div>
 </div>
 </div>
-<div class="col-md-3 col-sm-6"></div>
 <div class="col-md-12 col-sm-12">
 <div class="segundo_plan" style="display: none;">
 <a id="btn_abrir_plan_3" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
@@ -787,6 +796,10 @@ $('#form_total_planes').val('3');
 </script>
 </div>
 </div>
+</div>
+</div>
+<div id="suscripcion_tercera">
+<div class="row">
 <div class="col-md-12 col-sm-12">
 <div class="tercer_plan" style="display: none;">
 <hr>
@@ -876,7 +889,8 @@ $('#form_fecha_suscripcion_fin_3').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 </div>
 </div>
 </div>
-<div class="col-md-3 col-sm-6"></div>
+</div>
+</div>
 </div>
 </div>
 <div class="pd-20 card-box mb-30">
