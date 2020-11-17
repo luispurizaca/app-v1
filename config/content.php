@@ -692,8 +692,7 @@ $('#form_total_planes').val('2');
 </div>
 </div>
 </div>
-
-<div id="suscripcion_segunda">
+<div id="suscripcion_segunda" style="display: none;">
 <div class="row">
 <div class="col-md-12 col-sm-12">
 <hr>
@@ -773,7 +772,6 @@ $('#form_fecha_suscripcion_fin_2').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 </div>
 </div>
 <div class="col-md-12 col-sm-12">
-<div class="segundo_plan" style="display: none;">
 <a id="btn_abrir_plan_3" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
 $('#btn_abrir_plan_3').on('click', function(){
@@ -785,8 +783,7 @@ $('#form_total_planes').val('3');
 </div>
 </div>
 </div>
-</div>
-<div id="suscripcion_tercera">
+<div id="suscripcion_tercera" style="display: none;">
 <div class="row">
 <div class="col-md-12 col-sm-12">
 <hr>
