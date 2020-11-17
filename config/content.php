@@ -734,6 +734,11 @@ $('#form_total_planes').val('3');
 </script>
 </div>
 </div>
+<div class="col-md-12 col-sm-12">
+<div class="tercer_plan" style="display: none;">
+<hr>
+</div>
+</div>
 <div class="col-md-3 col-sm-6">
 <div class="tercer_plan" style="display: none;">
 <div class="form-group">
