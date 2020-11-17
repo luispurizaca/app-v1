@@ -411,6 +411,9 @@ $registro_clave = $row_codigo_registro[18];
 ?>
 <div id="div_guardar_paciente"></div>
 <div class="pd-20 card-box mb-30">
+<div class="row">
+<div class="col-md-2 hidden-xs"></div>
+<div class="col-md-8 col-xs-12">
 <div class="clearfix">
 <div class="pull-left">
 <h4 class="weight-500 text-capitalize" style="font-size: 17px;">
@@ -879,6 +882,9 @@ $nombre_cb = $row_cb[1];
 <button onclick="window.location='index.php'" type="button" class="btn" style="background: #F26C3C; color: white; padding: 4px; font-size: 13px;">Cancelar</button>
 </div>
 </div>
+</div>
+</div>
+<div class="col-md-2 hidden-xs"></div>
 </div>
 </div>
 <script>
