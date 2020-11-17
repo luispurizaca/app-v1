@@ -652,8 +652,8 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6"></div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">Fecha de Inicio</a></label>
-<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
+<label class="n-label">Fecha de Inicio</label>
+<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>" readonly="readonly" style="background: white; cursor: not-allowed;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
@@ -753,8 +753,8 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="segundo_plan" style="display: none;">
 <div class="form-group">
-<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">Fecha de Inicio</a></label>
-<input id="form_fecha_suscripcion_2" name="form_fecha_suscripcion_2" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
+<label class="n-label">Fecha de Inicio</label>
+<input id="form_fecha_suscripcion_2" name="form_fecha_suscripcion_2" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>" readonly="readonly" style="background: white; cursor: not-allowed;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
 </div>
 </div>
 </div>
@@ -858,8 +858,8 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="tercer_plan" style="display: none;">
 <div class="form-group">
-<label class="n-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">Fecha de Inicio</a></label>
-<input id="form_fecha_suscripcion_3" name="form_fecha_suscripcion_3" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 2 month')); ?>">
+<label class="n-label">Fecha de Inicio</label>
+<input id="form_fecha_suscripcion_3" name="form_fecha_suscripcion_3" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 2 month')); ?>" readonly="readonly" style="background: white; cursor: not-allowed;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
 </div>
 </div>
 </div>
