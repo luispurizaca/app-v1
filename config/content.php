@@ -698,7 +698,10 @@ $('#form_total_planes').val('2');
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label">Segundo Plan</label>
+<label class="n-label">
+<a href="javascript: void(0)" onclick="eliminar_suscripcion(2)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+Segundo Plan
+</label>
 <select id="form_id_programa_2" name="form_id_programa_2" class="form-control n-form-control">
 <?php
 $query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
@@ -873,7 +876,6 @@ $('#form_total_planes').val('4');
 </div>
 </div>
 </div>
-
 <div id="suscripcion_cuarta" style="display: none;">
 <div class="row">
 <div class="col-md-12 col-sm-12">
@@ -1501,6 +1503,13 @@ $('#form_fecha_suscripcion_fin_10').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ 
 </div>
 </div>
 </div>
+<script>
+function eliminar_suscripcion(id){
+if(id == 2){
+$('#suscripcion_segunda').css('display', 'none');
+}
+}
+</script>
 </div>
 </div>
 <div class="pd-20 card-box mb-30">
