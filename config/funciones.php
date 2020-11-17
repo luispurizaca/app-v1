@@ -493,6 +493,10 @@ $css_paciente_color = '#F26C3C';
 $ret_texto_estado = 'Inactivo';
 }
 
+//DIA DE NACIMIENTO
+$array_meses = array('', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+$ret_dia_cumpleanos = date('d', strtotime($ret_fecha_nacimiento)).' de '.$array_meses[(int)date('m', strtotime($ret_fecha_nacimiento))];
+
 $ret_nombre_paciente = $ret_nombres.' '.$ret_apellidos;
 
 
@@ -559,7 +563,8 @@ $ret_texto_estado,
 $css_paciente_color,
 $ret_id_tipo_suscripcion,
 $text_tipo_suscripcion,
-$ret_numero_operacion
+$ret_numero_operacion,
+$ret_dia_cumpleanos
 );
 }
 

@@ -1399,6 +1399,8 @@ if($ver_pacientes == 1){
 <tr>
 <td class="td-title" style="width: 11.11% !important;">N&#176; Socio</td>
 <td class="td-title" style="width: 11.11% !important;">Paciente</td>
+<td class="td-title" style="width: 11.11% !important;">Correo</td>
+<td class="td-title" style="width: 11.11% !important;">Cumplea&ntilde;os</td>
 <td class="td-title" style="width: 11.11% !important;">Fecha Venta</td>
 <td class="td-title" style="width: 11.11% !important;">Paquete</td>
 <td class="td-title" style="width: 11.11% !important;">Plan</td>
@@ -1466,6 +1468,7 @@ $ret_id_tipo_suscripcion = $row[29];
 $text_tipo_suscripcion = $row[30];
 
 $ret_numero_operacion = $row[31];
+$ret_dia_cumpleanos = $row[32];
 
 if($ver_pacientes == 1){
 $date1 = new DateTime(date('Y-m-d'));
@@ -1476,6 +1479,8 @@ $ret_dias_vencimiento = $diff->days . ' d&iacute;as';
 <tr class="tr-hover" style="cursor: pointer;">
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_codigo; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paciente; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_correo; ?></td>
+<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_dia_cumpleanos; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_venta; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paquete; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_programa; ?></td>
