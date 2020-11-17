@@ -792,7 +792,10 @@ $('#form_total_planes').val('3');
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label">Tercer Plan</label>
+<label class="n-label">
+<a href="javascript: void(0)" onclick="eliminar_suscripcion(3)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+Tercer Plan
+</label>
 <select id="form_id_programa_3" name="form_id_programa_3" class="form-control n-form-control">
 <?php
 $query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
@@ -883,7 +886,10 @@ $('#form_total_planes').val('4');
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label">Cuarto Plan</label>
+<label class="n-label">
+<a href="javascript: void(0)" onclick="eliminar_suscripcion(4)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+Cuarto Plan
+</label>
 <select id="form_id_programa_4" name="form_id_programa_4" class="form-control n-form-control">
 <?php
 $query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
@@ -974,7 +980,10 @@ $('#form_total_planes').val('5');
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label">Quinto Plan</label>
+<label class="n-label">
+<a href="javascript: void(0)" onclick="eliminar_suscripcion(5)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+Quinto Plan
+</label>
 <select id="form_id_programa_5" name="form_id_programa_5" class="form-control n-form-control">
 <?php
 $query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
@@ -1065,7 +1074,10 @@ $('#form_total_planes').val('6');
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label">Sexto Plan</label>
+<label class="n-label">
+<a href="javascript: void(0)" onclick="eliminar_suscripcion(6)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+Sexto Plan
+</label>
 <select id="form_id_programa_6" name="form_id_programa_6" class="form-control n-form-control">
 <?php
 $query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
@@ -1156,7 +1168,10 @@ $('#form_total_planes').val('7');
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label">S&eacute;ptimo Plan</label>
+<label class="n-label">
+<a href="javascript: void(0)" onclick="eliminar_suscripcion(7)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+S&eacute;ptimo Plan
+</label>
 <select id="form_id_programa_7" name="form_id_programa_7" class="form-control n-form-control">
 <?php
 $query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
@@ -1247,7 +1262,10 @@ $('#form_total_planes').val('8');
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label">Octavo Plan</label>
+<label class="n-label">
+<a href="javascript: void(0)" onclick="eliminar_suscripcion(8)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+Octavo Plan
+</label>
 <select id="form_id_programa_8" name="form_id_programa_8" class="form-control n-form-control">
 <?php
 $query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
@@ -1338,7 +1356,10 @@ $('#form_total_planes').val('9');
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label">Noveno Plan</label>
+<label class="n-label">
+<a href="javascript: void(0)" onclick="eliminar_suscripcion(9)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+Noveno Plan
+</label>
 <select id="form_id_programa_9" name="form_id_programa_9" class="form-control n-form-control">
 <?php
 $query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
@@ -1429,7 +1450,10 @@ $('#form_total_planes').val('10');
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
-<label class="n-label">D&eacute;cimo Plan</label>
+<label class="n-label">
+<a href="javascript: void(0)" onclick="eliminar_suscripcion(10)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+D&eacute;cimo Plan
+</label>
 <select id="form_id_programa_10" name="form_id_programa_10" class="form-control n-form-control">
 <?php
 $query_plan = mysqli_query($con, "SELECT id, nombre, nombre_completo FROM programa ORDER BY id ASC");
@@ -1507,6 +1531,30 @@ $('#form_fecha_suscripcion_fin_10').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ 
 function eliminar_suscripcion(id){
 if(id == 2){
 $('#suscripcion_segunda').css('display', 'none');
+}
+if(id == 3){
+$('#suscripcion_tercera').css('display', 'none');
+}
+if(id == 4){
+$('#suscripcion_cuarta').css('display', 'none');
+}
+if(id == 5){
+$('#suscripcion_quinta').css('display', 'none');
+}
+if(id == 6){
+$('#suscripcion_sexta').css('display', 'none');
+}
+if(id == 7){
+$('#suscripcion_septima').css('display', 'none');
+}
+if(id == 8){
+$('#suscripcion_octava').css('display', 'none');
+}
+if(id == 9){
+$('#suscripcion_novena').css('display', 'none');
+}
+if(id == 10){
+$('#suscripcion_decima').css('display', 'none');
 }
 }
 </script>
