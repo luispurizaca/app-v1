@@ -1409,7 +1409,7 @@ $('#form_fecha_suscripcion_fin_9').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 </div>
 </div>
 <div class="col-md-12 col-sm-12">
-<a id="btn_abrir_plan_4" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
+<a id="btn_abrir_plan_10" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
 $('#btn_abrir_plan_10').on('click', function(){
 $('#suscripcion_decima').css('display', 'block');
