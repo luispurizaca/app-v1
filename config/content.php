@@ -659,6 +659,11 @@ $('#form_total_planes').val('2');
 });
 </script>
 </div>
+<div class="segundo_plan" style="display: none;">
+<div class="col-md-12 col-sm-12">
+<hr>
+</div>
+</div>
 <div class="col-md-3 col-sm-6">
 <div class="segundo_plan" style="display: none;">
 <div class="form-group">
