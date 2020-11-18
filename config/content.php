@@ -4837,7 +4837,7 @@ for($i = 1; $i <= 31; $i++){
 <option value="0">Todos</option>
 <?php
 $query_plan = mysqli_query($con, "SELECT id, nombre FROM programa ORDER BY id ASC");
-while($row_plan = mysql_fetch_array($query_plan)){
+while($row_plan = mysqli_fetch_array($query_plan)){
 $row_id_plan = (int)$row_plan[0];
 $row_nombre_plan = $row_plan[1];
 ?>
