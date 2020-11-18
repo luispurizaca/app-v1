@@ -4771,8 +4771,8 @@ $texto_anual = 'Ventas del a&ntilde;o';
 <span aria-hidden="true">&times;</span>
 </button>
 <div class="row">
-<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2"></div>
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+<div class="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>
+<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
 <table style="width: 100%; border: 0; padding: 0;" cellpadding="5" cellspacing="0" border="0">
 <tr>
 <td style="width: 50%; padding: 10px; vertical-align: middle;">
@@ -4829,7 +4829,7 @@ for($i = 1; $i <= 31; $i++){
 </tr>
 </table>
 </div>
-<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2"></div>
+<div class="col-lg-1 col-md-1 col-sm-1 hidden-xs"></div>
 </div>
 </div>
 </div>
