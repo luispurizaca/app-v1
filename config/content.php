@@ -4803,15 +4803,15 @@ for($i = 1; $i <= 31; $i++){
 </select>
 <select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal; width: 50% !important;" class="form-control input-sm" id="filtro_cumple_mes">
 <option value="0" selected="selected" hidden="hidden">Mes</option>
-<option value="1">Enero</option>
-<option value="2">Febrero</option>
-<option value="3">Marzo</option>
-<option value="4">Abril</option>
-<option value="5">Mayo</option>
-<option value="6">Junio</option>
-<option value="7">Julio</option>
-<option value="8">Agosto</option>
-<option value="9">Septiembre</option>
+<option value="01">Enero</option>
+<option value="02">Febrero</option>
+<option value="03">Marzo</option>
+<option value="04">Abril</option>
+<option value="05">Mayo</option>
+<option value="06">Junio</option>
+<option value="07">Julio</option>
+<option value="08">Agosto</option>
+<option value="09">Septiembre</option>
 <option value="10">Octubre</option>
 <option value="11">Noviembre</option>
 <option value="12">Diciembre</option>
@@ -4862,6 +4862,12 @@ $row_nombre_plan = $row_plan[1];
 <tr>
 <td colspan="4" style="width: 100%; padding: 10px; vertical-align: middle; text-align: center;">
 <button id="btn_filtrar" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 12px;"><i class="fa fa-search"></i>&nbsp;&nbsp;CONSULTAR</button>
+<script>
+$('#btn_filtrar').on('click', function(){
+load(1);
+$('#modalFiltros').modal('toggle');
+});
+</script>
 </td>
 </tr>
 </table>
