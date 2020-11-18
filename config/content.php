@@ -4763,6 +4763,40 @@ $texto_anual = 'Ventas del a&ntilde;o';
 </div>
 </div>
 </div>
+<div class="modal fade" id="modalFiltros">
+<div class="modal-dialog modal-lg" role="document" style="margin-top: 0; margin-bottom: 2px;">
+<div class="modal-content">
+<div class="modal-body">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+<div class="row">
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2"></div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+<table style="width: 100%; border: 0; padding: 0;" cellpadding="5" cellspacing="0" border="0">
+<tr>
+<td style="width: 50%; padding: 10px; vertical-align: middle;">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Desde:</label>
+<input type="date" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="n_fecha_desde" placeholder="Desde">
+</td>
+<td style="width: 50%; padding: 10px; vertical-align: middle;">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Hasta:</label>
+<input type="date" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="n_fecha_hasta" placeholder="Hasta">
+</td>
+</tr>
+<tr>
+<td colspan="2" style="width: 100%; padding: 10px; vertical-align: middle; text-align: center;">
+<button id="btn_consultar_fechas" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 12px;"><i class="fa fa-search"></i>&nbsp;&nbsp;CONSULTAR</button>
+</td>
+</tr>
+</table>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-2"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <nav class="text-center">
 <ul>
 <li style="display: inline-block;">
@@ -4851,6 +4885,14 @@ location.reload();
 }
 });
 })
+</script>
+</li>
+<li style="display: inline-block; margin-left: 10px;">
+<button type="button" class="btn btn_modal_filtros" title="Filtros" style="border: none; font-size: 23px; background: transparent; padding: 0; color: #818181; outline: none;"><i class="fa fa-filter"></i></button>
+<script>
+$('.btn_modal_filtros').on('click', function(){
+$('#modalFiltros').modal();
+});
 </script>
 </li>
 </ul>
