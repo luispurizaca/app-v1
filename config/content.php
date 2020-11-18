@@ -4775,15 +4775,15 @@ $texto_anual = 'Ventas del a&ntilde;o';
 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
 <table style="width: 100%; border: 0; padding: 0;" cellpadding="5" cellspacing="0" border="0">
 <tr>
-<td style="width: 50%; padding: 10px; vertical-align: middle;">
+<td style="width: 25%; padding: 10px; vertical-align: middle;">
 <label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Socio:</label>
 <input type="text" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_socio" placeholder="Buscar:">
 </td>
-<td style="width: 50%; padding: 10px; vertical-align: middle;">
+<td style="width: 25%; padding: 10px; vertical-align: middle;">
 <label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Correo:</label>
 <input type="text" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_correo" placeholder="Buscar:">
 </td>
-<td style="width: 50%; padding: 10px; vertical-align: middle;">
+<td style="width: 25%; padding: 10px; vertical-align: middle;">
 <label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Cumplea&ntilde;os:</label>
 <div class="input-group" style="width: 100% !important;">
 <select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal; width: 50% !important;" class="form-control input-sm" id="filtro_cumple_dia">
@@ -4813,7 +4813,7 @@ for($i = 1; $i <= 31; $i++){
 </select>
 </div>
 </td>
-<td style="width: 50%; padding: 10px; vertical-align: middle;">
+<td style="width: 25%; padding: 10px; vertical-align: middle;">
 <label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Estado:</label>
 <select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_estado">
 <option value="0">Todos</option>
@@ -4824,7 +4824,7 @@ for($i = 1; $i <= 31; $i++){
 </tr>
 <tr>
 <td colspan="4" style="width: 100%; padding: 10px; vertical-align: middle; text-align: center;">
-<button id="btn_consultar_fechas" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 12px;"><i class="fa fa-search"></i>&nbsp;&nbsp;CONSULTAR</button>
+<button id="btn_filtrar" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 12px;"><i class="fa fa-search"></i>&nbsp;&nbsp;CONSULTAR</button>
 </td>
 </tr>
 </table>
