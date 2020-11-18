@@ -19,8 +19,6 @@ $per_page = $array_filtros[4];
 $id_registro = (int)$array_filtros[5];
 $fn_id_paciente = (int)$array_filtros[6];
 $fn_id_suscripcion = (int)$array_filtros[7];
-$n_fecha_desde = $array_filtros[8];
-$n_fecha_hasta = $array_filtros[9];
 $ver_pacientes = (int)$array_filtros[10];
 $ver_nutricionistas = (int)$array_filtros[11];
 $ver_vendedores = (int)$array_filtros[12];
@@ -33,6 +31,19 @@ $new_tipo_usuario = 1;
 if($ver_vendedores == 1){
 $new_tipo_usuario = 4;
 }
+
+
+
+//FILTROS MODAL
+$n_fecha_desde = $array_filtros[8];
+$n_fecha_hasta = $array_filtros[9];
+$filtro_socio = $array_filtros[13];
+$filtro_correo = $array_filtros[14];
+$filtro_cumple_dia = $array_filtros[15];
+$filtro_cumple_mes = $array_filtros[16];
+$filtro_estado = $array_filtros[17];
+$filtro_paquete = $array_filtros[18];
+$filtro_plan = $array_filtros[19];
 
 //CONSULTA PACIENTES, NUTRICIONISTAS Y VENDEDORES
 if($view_controler == 2 || $view_controler == 10 || $view_controler == 15){
@@ -92,26 +103,114 @@ ORDER BY usuario.id DESC
 //CONSULTA SUSCRIPCIONES
 if($view_controler == 4){
 
-//CONSULTA PRINCIPAL
+//CONSULTA LISTA DE SOCIOS
 if($ver_pacientes == 1){
-$consulta_sql_general = " SELECT MAX(suscripcion_programa.id) AS ID_SUSCRIPCION,
-suscripcion_programa.id_programa AS ID_PROGRAMA,
-suscripcion_programa.id_nutricionista AS ID_NUTRICIONISTA,
-suscripcion_programa.id_paciente AS ID_PACIENTE,
-MAX(suscripcion_programa.fecha_inicio) AS FECHA_INICIO,
-MAX(suscripcion_programa.fecha_fin) AS FECHA_FIN,
+$consulta_sql_general = "
+SELECT
+tb_usuario.id AS SOCIO_ID,
+tb_usuario.codigo AS SOCIO_CODIGO,
+tb_usuario.correo AS SOCIO_CORREO,
+tb_usuario.nombres AS SOCIO_NOMBRES,
+tb_usuario.apellidos AS SOCIO_APELLIDOS,
+tb_usuario.fecha_nacimiento AS SOCIO_FECHA_NACIMIENTO,
+tb_usuario.genero AS SOCIO_GENERO,
+tb_usuario.estado AS SOCIO_ESTADO,
+tb_usuario.activo AS SOCIO_ACTIVO,
+tb_usuario.id_tipo_documento AS SOCIO_ID_TIPO_DOCUMENTO,
+tb_usuario.numero_documento AS SOCIO_NUMERO_DOCUMENTO,
+tb_usuario.date_added AS SOCIO_DATE_ADDED,
+tb_usuario.instagram AS SOCIO_INSTAGRAM,
+tb_usuario.direccion AS SOCIO_DIRECCION,
+tb_usuario.distrito AS SOCIO_DISTRITO,
+tb_usuario.provincia AS SOCIO_PROVINCIA,
+tb_usuario.departamento AS SOCIO_DEPARTAMENTO,
+tb_usuario.residencia AS SOCIO_RESIDENCIA,
+tb_usuario.telefono AS SOCIO_TELEFONO,
+
+(
+SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC LIMIT 1
+) AS SUSCRIPCION_ID,
+
+(
+SELECT suscripcion_programa.id_tipo_suscripcion FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC LIMIT 1
+) AS SUSCRIPCION_ID_TIPO_SUSCRIPCION,
+
+(
+SELECT fecha_pago FROM cobro WHERE id_suscripcion IN
+(
+SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC LIMIT 1
+)
+LIMIT 1
+) AS SUSCRIPCION_FECHA_VENTA,
+
+(
+SELECT suscripcion_programa.fecha_inicio FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC LIMIT 1
+) AS SUSCRIPCION_INICIO,
+
+(
+SELECT suscripcion_programa.fecha_fin FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC LIMIT 1
+) AS SUSCRIPCION_FIN,
+
+(
+SELECT suscripcion_programa.id_programa FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC LIMIT 1
+) AS SUSCRIPCION_ID_PROGRAMA,
+
+(
+SELECT suscripcion_programa.id_paquete FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC LIMIT 1
+) AS SUSCRIPCION_ID_PAQUETE,
+
+(
+SELECT suscripcion_programa.id_nutricionista FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC LIMIT 1
+) AS SUSCRIPCION_ID_NUTRICIONISTA
+
+FROM usuario tb_usuario
+
+WHERE tb_usuario.id_tipo_usuario = 2
 ";
-} else {
+
+//SI ES VENDEDOR
+if($_SESSION['ID_TIPO_USUARIO'] == 4){
+$consulta_sql_general .= " AND (tb_usuario.id_vendedor = '".$_SESSION['ID_USUARIO']."')";
+}
+
+if(!empty($filtro_socio)){
+$consulta_sql_general .= " AND (tb_usuario.codigo LIKE '%".$filtro_socio."%' OR tb_usuario.nombres LIKE '%".$filtro_socio."%' OR tb_usuario.apellidos LIKE '%".$filtro_socio."%')";
+}
+if(!empty($filtro_correo)){
+$consulta_sql_general .= " AND (tb_usuario.correo LIKE '%".$filtro_correo."%')";
+}
+if(!empty($filtro_cumple_dia)){
+$consulta_sql_general .= " AND (DATE_FORMAT(tb_usuario.fecha_nacimiento, '%d') = '".$filtro_cumple_dia."')";
+}
+if(!empty($filtro_cumple_mes)){
+$consulta_sql_general .= " AND (DATE_FORMAT(tb_usuario.fecha_nacimiento, '%m') = '".$filtro_cumple_mes."')";
+}
+if(!empty($filtro_estado)){
+$consulta_sql_general .= " AND (tb_usuario.estado = '".$filtro_estado."')";
+}
+
+//HAVING
+$consulta_sql_general .= " HAVING 1 = 1";
+
+if(!empty($filtro_paquete)){
+$consulta_sql_general .= " AND (SUSCRIPCION_ID_PAQUETE = '".$filtro_paquete."')";
+}
+if(!empty($filtro_plan)){
+$consulta_sql_general .= " AND (SUSCRIPCION_ID_PROGRAMA = '".$filtro_plan."')";
+}
+
+//ORDER BY
+$consulta_sql_general .= " ORDER BY tb_usuario.id DESC";
+}
+
+//CONSULTA LISTA DE VENTAS
+if($ver_pacientes != 1){
 $consulta_sql_general = " SELECT suscripcion_programa.id AS ID_SUSCRIPCION,
 suscripcion_programa.id_programa AS ID_PROGRAMA,
 suscripcion_programa.id_nutricionista AS ID_NUTRICIONISTA,
 suscripcion_programa.id_paciente AS ID_PACIENTE,
 suscripcion_programa.fecha_inicio AS FECHA_INICIO,
 suscripcion_programa.fecha_fin AS FECHA_FIN,
-";
-}
-
-$consulta_sql_general .= "
 suscripcion_programa.estado AS ESTADO,
 (SELECT cobro.fecha_pago FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS FECHA_VENTA,
 (SELECT cobro.monto FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS MONTO_VENTA,
@@ -127,11 +226,6 @@ if(!empty($n_fecha_desde) && !empty($n_fecha_hasta) && $ver_pacientes == 1){
 $consulta_sql_general .= " AND (DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') BETWEEN DATE_FORMAT('$n_fecha_desde', '%Y-%m-%d') AND DATE_FORMAT('$n_fecha_hasta', '%Y-%m-%d'))";
 }
 
-//AGRUPAR POR PACIENTE
-if($ver_pacientes == 1){
-$consulta_sql_general .= " GROUP BY ID_PACIENTE";
-}
-
 $consulta_sql_general .= " HAVING 1 = 1";
 
 //FILTRO FECHAS
@@ -143,6 +237,7 @@ $consulta_sql_general .= " AND (DATE_FORMAT(FECHA_VENTA, '%Y-%m-%d') BETWEEN DAT
 $consulta_sql_general .= "
 ORDER BY FECHA_VENTA DESC
 ";
+}
 }
 
 //CONSULTA CONTROLES
@@ -435,6 +530,43 @@ $diagnostico
 
 //DATOS - SUSCRIPCIONES
 if($view_controler == 4){
+
+//LISTA DE SOCIOS
+if($ver_pacientes == 1){
+$ret_id_paciente = $sql_general_row[0];
+$SOCIO_CODIGO = $sql_general_row[1];
+$SOCIO_CORREO = $sql_general_row[2];
+$SOCIO_NOMBRES = $sql_general_row[3];
+$SOCIO_APELLIDOS = $sql_general_row[4];
+$SOCIO_FECHA_NACIMIENTO = $sql_general_row[5];
+$SOCIO_GENERO = $sql_general_row[6];
+$ret_estado = $sql_general_row[7];
+$SOCIO_ACTIVO = $sql_general_row[8];
+$SOCIO_ID_TIPO_DOCUMENTO = $sql_general_row[9];
+$SOCIO_NUMERO_DOCUMENTO = $sql_general_row[10];
+$SOCIO_DATE_ADDED = $sql_general_row[11];
+$SOCIO_INSTAGRAM = $sql_general_row[12];
+$SOCIO_DIRECCION = $sql_general_row[13];
+$SOCIO_DISTRITO = $sql_general_row[14];
+$SOCIO_PROVINCIA = $sql_general_row[15];
+$SOCIO_DEPARTAMENTO = $sql_general_row[16];
+$SOCIO_RESIDENCIA = $sql_general_row[17];
+$SOCIO_TELEFONO = $sql_general_row[18];
+$ret_id_suscripcion = $sql_general_row[19];
+$ret_id_tipo_suscripcion = $sql_general_row[20];
+$ret_fecha_venta = $sql_general_row[21];
+$ret_fecha_inicio = $sql_general_row[22];
+$ret_fecha_fin = $sql_general_row[23];
+$ret_id_programa = $sql_general_row[24];
+$ret_id_paquete = $sql_general_row[25];
+$ret_id_nutricionista = $sql_general_row[26];
+$ret_monto_venta = 0;
+$ret_id_medio_pago = 0;
+$ret_id_cuenta_bancaria = 0;
+}
+
+//LISTA DE VENTAS
+if($ver_pacientes != 1){
 $ret_id_suscripcion = (int)$sql_general_row[0];
 $ret_id_programa = (int)$sql_general_row[1];
 $ret_id_nutricionista = (int)$sql_general_row[2];
@@ -448,6 +580,7 @@ $ret_id_medio_pago = $sql_general_row[9];
 $ret_id_cuenta_bancaria = $sql_general_row[10];
 $ret_id_paquete = $sql_general_row[11];
 $ret_id_tipo_suscripcion = (int)$sql_general_row[12];
+}
 
 //TIPO DE SUSCRIPCION
 if($ret_id_tipo_suscripcion == 1){

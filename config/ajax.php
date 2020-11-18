@@ -1300,15 +1300,34 @@ $fn_id_paciente = (int)$_POST['paciente'];
 $fn_id_suscripcion = (int)$_POST['fn_id_suscripcion'];
 $id_tipo_usuario = 2;
 $id_registro = 0;
-$n_fecha_desde = $_POST['n_fecha_desde'];
-$n_fecha_hasta = $_POST['n_fecha_hasta'];
 
 $ver_pacientes = (int)$_POST['ver_pacientes'];
 $ver_nutricionistas = (int)$_POST['ver_nutricionistas'];
 $ver_vendedores = (int)$_POST['ver_vendedores'];
 
+//FILTROS MODAL
+$n_fecha_desde = $_POST['n_fecha_desde'];
+$n_fecha_hasta = $_POST['n_fecha_hasta'];
+$filtro_socio = $_POST['filtro_socio'];
+$filtro_correo = $_POST['filtro_correo'];
+$filtro_cumple_dia = $_POST['filtro_cumple_dia'];
+$filtro_cumple_mes = $_POST['filtro_cumple_mes'];
+$filtro_estado = $_POST['filtro_estado'];
+$filtro_paquete = $_POST['filtro_paquete'];
+$filtro_plan = $_POST['filtro_plan'];
+
 //ARRAY FILTROS
-$array_filtros = array($view_controller, $activos, $id_tipo_usuario, $offset, $per_page, $id_registro, $fn_id_paciente, $fn_id_suscripcion, $n_fecha_desde, $n_fecha_hasta, $ver_pacientes, $ver_nutricionistas, $ver_vendedores);
+$array_filtros = array($view_controller, $activos, $id_tipo_usuario, $offset, $per_page, $id_registro, $fn_id_paciente, $fn_id_suscripcion, $n_fecha_desde, $n_fecha_hasta, $ver_pacientes, $ver_nutricionistas, $ver_vendedores,
+
+
+$filtro_socio,
+$filtro_correo,
+$filtro_cumple_dia,
+$filtro_cumple_mes,
+$filtro_estado,
+$filtro_paquete,
+$filtro_plan
+);
 
 //FUNCION
 $funcion_datos = consulta($array_filtros);

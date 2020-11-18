@@ -4775,6 +4775,11 @@ $texto_anual = 'Ventas del a&ntilde;o';
 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
 <table style="width: 100%; border: 0; padding: 0;" cellpadding="5" cellspacing="0" border="0">
 <tr>
+<td colspan="4" style="width: 100%; padding: 10px; vertical-align: middle; text-align: center;">
+<h1 style="text-align: center; color: #95cf32;">Filtro de Resultados</h1>
+</td>
+</tr>
+<tr>
 <td style="width: 25%; padding: 10px; vertical-align: middle;">
 <label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Socio:</label>
 <input type="text" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_socio" placeholder="Buscar:">
@@ -4994,6 +4999,58 @@ $('#modalFiltros').modal();
 <script>
 //LOAD
 function load(page){
+
+var filtro_socio;
+if($('#filtro_socio').length > 0){
+filtro_socio = $('#filtro_socio').val();
+} else {
+filtro_socio = '';
+}
+
+var filtro_correo;
+if($('#filtro_correo').length > 0){
+filtro_correo = $('#filtro_correo').val();
+} else {
+filtro_correo = '';
+}
+
+var filtro_cumple_dia;
+if($('#filtro_cumple_dia').length > 0){
+filtro_cumple_dia = $('#filtro_cumple_dia').val();
+} else {
+filtro_cumple_dia = '';
+}
+
+var filtro_cumple_mes;
+if($('#filtro_cumple_mes').length > 0){
+filtro_cumple_mes = $('#filtro_cumple_mes').val();
+} else {
+filtro_cumple_mes = '';
+}
+
+var filtro_estado;
+if($('#filtro_estado').length > 0){
+filtro_estado = $('#filtro_estado').val();
+} else {
+filtro_estado = '';
+}
+
+var filtro_paquete;
+if($('#filtro_paquete').length > 0){
+filtro_paquete = $('#filtro_paquete').val();
+} else {
+filtro_paquete = '';
+}
+
+var filtro_plan;
+if($('#filtro_plan').length > 0){
+filtro_plan = $('#filtro_plan').val();
+} else {
+filtro_plan = '';
+}
+
+
+
 if($('#n_fecha_desde').length > 0){
 var n_fecha_desde = $('#n_fecha_desde').val();
 } else {
@@ -5010,12 +5067,22 @@ url: 'config/ajax.php?view_controller=<?php echo $view_controller; ?>',
 data: {
 action: 'ajax',
 page: page,
-n_fecha_desde : n_fecha_desde,
-n_fecha_hasta : n_fecha_hasta,
 ver_pacientes : <?php echo (int)$ver_pacientes; ?>,
 ver_nutricionistas: <?php echo (int)$ver_nutricionistas; ?>,
 ver_vendedores : <?php echo (int)$ver_vendedores; ?>,
-fn_id_suscripcion : <?php echo (int)$fn_id_suscripcion; ?>
+fn_id_suscripcion : <?php echo (int)$fn_id_suscripcion; ?>,
+
+
+
+n_fecha_desde : n_fecha_desde,
+n_fecha_hasta : n_fecha_hasta,
+filtro_socio : filtro_socio,
+filtro_correo : filtro_correo,
+filtro_cumple_dia : filtro_cumple_dia,
+filtro_cumple_mes : filtro_cumple_mes,
+filtro_estado : filtro_estado,
+filtro_paquete : filtro_paquete,
+filtro_plan : filtro_plan
 },
 success: function(datos){
 $('#reporte_tabla').html(datos).fadeIn('slow');
