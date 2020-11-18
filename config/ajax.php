@@ -1418,17 +1418,16 @@ if($view_controller == 4){
 if($ver_pacientes == 1){
 ?>
 <tr>
-<td class="td-title" style="width: 11.11% !important;">N&#176; Socio</td>
-<td class="td-title" style="width: 11.11% !important;">Paciente</td>
+<td class="td-title" style="width: 11.11% !important;">N&#176;</td>
+<td class="td-title" style="width: 11.11% !important;">Socio</td>
 <td class="td-title" style="width: 11.11% !important;">Correo</td>
 <td class="td-title" style="width: 11.11% !important;">Cumplea&ntilde;os</td>
 <td class="td-title" style="width: 11.11% !important;">Fecha Venta</td>
 <td class="td-title" style="width: 11.11% !important;">Paquete</td>
 <td class="td-title" style="width: 11.11% !important;">Plan</td>
-<td class="td-title" style="width: 11.11% !important;">Inicio del Plan</td>
-<td class="td-title" style="width: 11.11% !important;">Fin del Plan</td>
-<td class="td-title" style="width: 11.11% !important;">Fecha Cuota</td>
-<td class="td-title" style="width: 11.11% !important;">D&iacute;as Vencimiento</td>
+<td class="td-title" style="width: 11.11% !important;">Inicio<br>del plan</td>
+<td class="td-title" style="width: 11.11% !important;">Fin<br>del Plan<br>(Fecha Cuota)</td>
+<td class="td-title" style="width: 11.11% !important;">D&iacute;as<br>Vencimiento</td>
 <td class="td-title" style="width: 11.11% !important;">Estado</td>
 <td class="td-title" style="width: 11.11% !important;">Nutricionista</td>
 </tr>
@@ -1506,7 +1505,6 @@ $ret_dias_vencimiento = $diff->days . ' d&iacute;as';
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paquete; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_programa; ?></td>
 <td class="td-content" style="width: 11.11% !important;" onclick="act_fecha_fin(1, '<?php echo date('Y-m-d', strtotime($row[4])); ?>', <?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_inicio; ?></td>
-<td class="td-content" style="width: 11.11% !important;" onclick="act_fecha_fin(2, '<?php echo date('Y-m-d', strtotime($row[5])); ?>', <?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_fin; ?></td>
 <td class="td-content" style="width: 11.11% !important;" onclick="act_fecha_fin(2, '<?php echo date('Y-m-d', strtotime($row[5])); ?>', <?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_fin; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_dias_vencimiento; ?></td>
 <td class="td-content" style="width: 11.11% !important;"><?php echo $ret_texto_estado; ?></td>
