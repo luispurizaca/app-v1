@@ -138,7 +138,7 @@ SELECT suscripcion_programa.id_tipo_suscripcion FROM suscripcion_programa WHERE 
 (
 SELECT fecha_pago FROM cobro WHERE id_suscripcion IN
 (
-SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC LIMIT 1
+SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC
 )
 LIMIT 1
 ) AS SUSCRIPCION_FECHA_VENTA,
@@ -363,7 +363,6 @@ $consulta_sql_general_add = " LIMIT $offset, $per_page";
 $array_sql_general;
 $array_i_general = 0;
 $query_sql_general = mysqli_query($con, $consulta_sql_general.$consulta_sql_general_add);
-echo $consulta_sql_general;
 while($sql_general_row = mysqli_fetch_array($query_sql_general)){
 
 //DATOS - PACIENTES
