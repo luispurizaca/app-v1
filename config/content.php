@@ -4817,9 +4817,41 @@ for($i = 1; $i <= 31; $i++){
 <label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Estado:</label>
 <select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_estado">
 <option value="0">Todos</option>
-<option value="1">Activos</option>
-<option value="2">Suspendidos</option>
+<option value="1">Activo</option>
+<option value="2">Suspendido</option>
 </select>
+</td>
+</tr>
+<tr>
+<td style="width: 25%; padding: 10px; vertical-align: middle;">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Paquete:</label>
+<select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_paquete">
+<option value="0">Todos</option>
+<option value="1">Socio</option>
+<option value="2">VIP</option>
+</select>
+</td>
+<td style="width: 25%; padding: 10px; vertical-align: middle;">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Plan:</label>
+<select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_plan">
+<option value="0">Todos</option>
+<?php
+$query_plan = mysqli_query($con, "SELECT id, nombre FROM programa ORDER BY id ASC");
+while($row_plan = mysql_fetch_array($query_plan)){
+$row_id_plan = (int)$row_plan[0];
+$row_nombre_plan = $row_plan[1];
+?>
+<option value="<?php echo $row_id_plan; ?>"><?php echo $row_nombre_plan; ?></option>
+<?php
+}
+?>
+</select>
+</td>
+<td style="width: 25%; padding: 10px; vertical-align: middle;">
+
+</td>
+<td style="width: 25%; padding: 10px; vertical-align: middle;">
+
 </td>
 </tr>
 <tr>
