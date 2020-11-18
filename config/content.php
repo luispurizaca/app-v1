@@ -4853,7 +4853,20 @@ $row_nombre_plan = $row_plan[1];
 </select>
 </td>
 <td style="width: 25%; padding: 10px; vertical-align: middle;">
-
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Nutricionista:</label>
+<select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_id_nutricionista">
+<option value="0">Todos</option>
+<?php
+$query_nutricionista = mysqli_query($con, "SELECT id, nombres, apellidos FROM usuario WHERE id_tipo_usuario = 1 AND activo = 1 ORDER BY apellidos ASC");
+while($row_nutricionista = mysqli_fetch_array($query_nutricionista)){
+$row_id_nutricionista = (int)$row_nutricionista[0];
+$row_nombre_nutricionista = $row_nutricionista[2].' '.$row_nutricionista[1];
+?>
+<option value="<?php echo $row_id_nutricionista; ?>"><?php echo $row_nombre_nutricionista; ?></option>
+<?php
+}
+?>
+</select>
 </td>
 <td style="width: 25%; padding: 10px; vertical-align: middle;">
 
@@ -5055,6 +5068,13 @@ filtro_plan = $('#filtro_plan').val();
 filtro_plan = '';
 }
 
+var filtro_id_nutricionista;
+if($('#filtro_id_nutricionista').length > 0){
+filtro_id_nutricionista = $('#filtro_id_nutricionista').val();
+} else {
+filtro_id_nutricionista = '';
+}
+
 
 
 if($('#n_fecha_desde').length > 0){
@@ -5088,7 +5108,8 @@ filtro_cumple_dia : filtro_cumple_dia,
 filtro_cumple_mes : filtro_cumple_mes,
 filtro_estado : filtro_estado,
 filtro_paquete : filtro_paquete,
-filtro_plan : filtro_plan
+filtro_plan : filtro_plan,
+filtro_id_nutricionista : filtro_id_nutricionista
 },
 success: function(datos){
 $('#reporte_tabla').html(datos).fadeIn('slow');

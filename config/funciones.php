@@ -44,6 +44,7 @@ $filtro_cumple_mes = $array_filtros[16];
 $filtro_estado = $array_filtros[17];
 $filtro_paquete = $array_filtros[18];
 $filtro_plan = $array_filtros[19];
+$filtro_id_nutricionista = $array_filtros[20];
 
 //CONSULTA PACIENTES, NUTRICIONISTAS Y VENDEDORES
 if($view_controler == 2 || $view_controler == 10 || $view_controler == 15){
@@ -201,6 +202,9 @@ $consulta_sql_general .= " AND (SUSCRIPCION_ID_PAQUETE = '".$filtro_paquete."')"
 }
 if(!empty($filtro_plan)){
 $consulta_sql_general .= " AND (SUSCRIPCION_ID_PROGRAMA = '".$filtro_plan."')";
+}
+if(!empty($filtro_id_nutricionista)){
+$consulta_sql_general .= " AND (SUSCRIPCION_ID_NUTRICIONISTA = '".$filtro_id_nutricionista."')";
 }
 
 //ORDER BY

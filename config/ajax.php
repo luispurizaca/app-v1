@@ -1315,6 +1315,7 @@ $filtro_cumple_mes = $_POST['filtro_cumple_mes'];
 $filtro_estado = $_POST['filtro_estado'];
 $filtro_paquete = $_POST['filtro_paquete'];
 $filtro_plan = $_POST['filtro_plan'];
+$filtro_id_nutricionista = $_POST['filtro_id_nutricionista'];
 
 //ARRAY FILTROS
 $array_filtros = array($view_controller, $activos, $id_tipo_usuario, $offset, $per_page, $id_registro, $fn_id_paciente, $fn_id_suscripcion, $n_fecha_desde, $n_fecha_hasta, $ver_pacientes, $ver_nutricionistas, $ver_vendedores,
@@ -1326,7 +1327,8 @@ $filtro_cumple_dia,
 $filtro_cumple_mes,
 $filtro_estado,
 $filtro_paquete,
-$filtro_plan
+$filtro_plan,
+$filtro_id_nutricionista
 );
 
 //FUNCION
