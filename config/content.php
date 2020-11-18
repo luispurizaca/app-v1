@@ -4785,9 +4785,9 @@ $texto_anual = 'Ventas del a&ntilde;o';
 </td>
 <td style="width: 25%; padding: 10px; vertical-align: middle;">
 <label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Cumplea&ntilde;os:</label>
-<div class="input-group" style="width: 100% !important;">
+<div class="input-group" style="width: 100% !important; margin-bottom: 0 !important;">
 <select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal; width: 50% !important;" class="form-control input-sm" id="filtro_cumple_dia">
-<option value="0">D&iacute;a</option>
+<option value="0" selected="selected" hidden="hidden">D&iacute;a</option>
 <?php
 for($i = 1; $i <= 31; $i++){
 ?>
@@ -4797,7 +4797,7 @@ for($i = 1; $i <= 31; $i++){
 ?>
 </select>
 <select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal; width: 50% !important;" class="form-control input-sm" id="filtro_cumple_mes">
-<option value="0">Mes</option>
+<option value="0" selected="selected" hidden="hidden">Mes</option>
 <option value="1">Enero</option>
 <option value="2">Febrero</option>
 <option value="3">Marzo</option>
