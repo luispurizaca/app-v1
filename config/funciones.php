@@ -173,6 +173,7 @@ if($_SESSION['ID_TIPO_USUARIO'] == 4){
 $consulta_sql_general .= " AND (tb_usuario.id_vendedor = '".$_SESSION['ID_USUARIO']."')";
 }
 
+//FILTROS
 if(!empty($filtro_socio)){
 $consulta_sql_general .= " AND (tb_usuario.codigo LIKE '%".$filtro_socio."%' OR tb_usuario.nombres LIKE '%".$filtro_socio."%' OR tb_usuario.apellidos LIKE '%".$filtro_socio."%')";
 }
@@ -192,6 +193,9 @@ $consulta_sql_general .= " AND (tb_usuario.estado = '".$filtro_estado."')";
 //HAVING
 $consulta_sql_general .= " HAVING 1 = 1";
 
+if(!empty($n_fecha_desde) && !empty($n_fecha_hasta) && $ver_pacientes == 1){
+$consulta_sql_general .= " AND (DATE_FORMAT(SUSCRIPCION_FIN, '%Y-%m-%d') BETWEEN DATE_FORMAT('$n_fecha_desde', '%Y-%m-%d') AND DATE_FORMAT('$n_fecha_hasta', '%Y-%m-%d'))";
+}
 if(!empty($filtro_paquete)){
 $consulta_sql_general .= " AND (SUSCRIPCION_ID_PAQUETE = '".$filtro_paquete."')";
 }
@@ -200,7 +204,7 @@ $consulta_sql_general .= " AND (SUSCRIPCION_ID_PROGRAMA = '".$filtro_plan."')";
 }
 
 //ORDER BY
-$consulta_sql_general .= " ORDER BY tb_usuario.id DESC";
+$consulta_sql_general .= " ORDER BY SUSCRIPCION_FIN ASC";
 }
 
 //CONSULTA LISTA DE VENTAS
