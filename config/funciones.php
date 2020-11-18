@@ -363,6 +363,7 @@ $consulta_sql_general_add = " LIMIT $offset, $per_page";
 $array_sql_general;
 $array_i_general = 0;
 $query_sql_general = mysqli_query($con, $consulta_sql_general.$consulta_sql_general_add);
+echo $consulta_sql_general;
 while($sql_general_row = mysqli_fetch_array($query_sql_general)){
 
 //DATOS - PACIENTES
