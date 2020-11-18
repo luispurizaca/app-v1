@@ -4776,16 +4776,54 @@ $texto_anual = 'Ventas del a&ntilde;o';
 <table style="width: 100%; border: 0; padding: 0;" cellpadding="5" cellspacing="0" border="0">
 <tr>
 <td style="width: 50%; padding: 10px; vertical-align: middle;">
-<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Desde:</label>
-<input type="date" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="n_fecha_desde" placeholder="Desde">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Socio:</label>
+<input type="text" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_socio" placeholder="Buscar:">
 </td>
 <td style="width: 50%; padding: 10px; vertical-align: middle;">
-<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Hasta:</label>
-<input type="date" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="n_fecha_hasta" placeholder="Hasta">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Correo:</label>
+<input type="text" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_correo" placeholder="Buscar:">
+</td>
+<td style="width: 50%; padding: 10px; vertical-align: middle;">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Cumplea&ntilde;os:</label>
+<div class="input-group" style="width: 100% !important;">
+<select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal; width: 50% !important;" class="form-control input-sm" id="filtro_cumple_dia">
+<option value="0">D&iacute;a</option>
+<?php
+for($i = 1; $i <= 31; $i++){
+?>
+<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+<?php
+}
+?>
+</select>
+<select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal; width: 50% !important;" class="form-control input-sm" id="filtro_cumple_mes">
+<option value="0">Mes</option>
+<option value="1">Enero</option>
+<option value="2">Febrero</option>
+<option value="3">Marzo</option>
+<option value="4">Abril</option>
+<option value="5">Mayo</option>
+<option value="6">Junio</option>
+<option value="7">Julio</option>
+<option value="8">Agosto</option>
+<option value="9">Septiembre</option>
+<option value="10">Octubre</option>
+<option value="11">Noviembre</option>
+<option value="12">Diciembre</option>
+</select>
+</div>
+</td>
+<td style="width: 50%; padding: 10px; vertical-align: middle;">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Estado:</label>
+<select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_estado">
+<option value="0">Todos</option>
+<option value="1">Activos</option>
+<option value="2">Suspendidos</option>
+</select>
 </td>
 </tr>
 <tr>
-<td colspan="2" style="width: 100%; padding: 10px; vertical-align: middle; text-align: center;">
+<td colspan="4" style="width: 100%; padding: 10px; vertical-align: middle; text-align: center;">
 <button id="btn_consultar_fechas" type="button" class="btn" style="background: #95cf32; color: white; padding: 4px; font-size: 12px;"><i class="fa fa-search"></i>&nbsp;&nbsp;CONSULTAR</button>
 </td>
 </tr>
