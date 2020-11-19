@@ -162,7 +162,35 @@ SELECT suscripcion_programa.id_paquete FROM suscripcion_programa WHERE suscripci
 
 (
 SELECT suscripcion_programa.id_nutricionista FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC LIMIT 1
-) AS SUSCRIPCION_ID_NUTRICIONISTA
+) AS SUSCRIPCION_ID_NUTRICIONISTA,
+
+SELECT monto FROM cobro WHERE id_suscripcion IN
+(
+SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC
+)
+LIMIT 1
+) AS SUSCRIPCION_MONTO,
+
+SELECT id_medio_pago FROM cobro WHERE id_suscripcion IN
+(
+SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC
+)
+LIMIT 1
+) AS SUSCRIPCION_ID_MEDIO_PAGO,
+
+SELECT id_cuenta_bancaria FROM cobro WHERE id_suscripcion IN
+(
+SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC
+)
+LIMIT 1
+) AS SUSCRIPCION_ID_CUENTA_BANCARIA,
+
+SELECT numero_operacion FROM cobro WHERE id_suscripcion IN
+(
+SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC
+)
+LIMIT 1
+) AS SUSCRIPCION_NUMERO_OPERACION
 
 FROM usuario tb_usuario
 
@@ -194,7 +222,7 @@ $consulta_sql_general .= " AND (tb_usuario.estado = '".$filtro_estado."')";
 //HAVING
 $consulta_sql_general .= " HAVING 1 = 1";
 
-if(!empty($n_fecha_desde) && !empty($n_fecha_hasta) && $ver_pacientes == 1){
+if(!empty($n_fecha_desde) && !empty($n_fecha_hasta)){
 $consulta_sql_general .= " AND (DATE_FORMAT(SUSCRIPCION_FIN, '%Y-%m-%d') BETWEEN DATE_FORMAT('$n_fecha_desde', '%Y-%m-%d') AND DATE_FORMAT('$n_fecha_hasta', '%Y-%m-%d'))";
 }
 if(!empty($filtro_paquete)){
@@ -212,39 +240,108 @@ $consulta_sql_general .= " ORDER BY SUSCRIPCION_FIN ASC";
 }
 
 //CONSULTA LISTA DE VENTAS
-if($ver_pacientes != 1){
-$consulta_sql_general = " SELECT suscripcion_programa.id AS ID_SUSCRIPCION,
-suscripcion_programa.id_programa AS ID_PROGRAMA,
-suscripcion_programa.id_nutricionista AS ID_NUTRICIONISTA,
-suscripcion_programa.id_paciente AS ID_PACIENTE,
-suscripcion_programa.fecha_inicio AS FECHA_INICIO,
-suscripcion_programa.fecha_fin AS FECHA_FIN,
-suscripcion_programa.estado AS ESTADO,
-(SELECT cobro.fecha_pago FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS FECHA_VENTA,
-(SELECT cobro.monto FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS MONTO_VENTA,
-(SELECT cobro.id_medio_pago FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS ID_MEDIO_PAGO,
-(SELECT cobro.id_cuenta_bancaria FROM cobro WHERE cobro.id_suscripcion = suscripcion_programa.id ORDER BY cobro.id ASC LIMIT 1) AS ID_CUENTA_BANCARIA,
-suscripcion_programa.id_paquete AS ID_PAQUETE,
-suscripcion_programa.id_tipo_suscripcion AS ID_TIPO_SUSCRIPCION
-FROM suscripcion_programa
-WHERE suscripcion_programa.id_vendedor = '".$_SESSION['ID_USUARIO']."'";
+else {
+$consulta_sql_general = "
+SELECT
+(SELECT usuario.id FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_ID,
+(SELECT usuario.codigo FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_CODIGO,
+(SELECT usuario.correo FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_CORREO,
+(SELECT usuario.nombres FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_NOMBRES,
+(SELECT usuario.apellidos FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_APELLIDOS,
+(SELECT usuario.fecha_nacimiento FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_FECHA_NACIMIENTO,
+(SELECT usuario.genero FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_GENERO,
+tb_suscripcion_programa.estado AS SUSCRIPCION_ESTADO,
+(SELECT usuario.activo FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_ACTIVO,
+(SELECT usuario.id_tipo_documento FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_ID_TIPO_DOCUMENTO,
+(SELECT usuario.numero_documento FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_NUMERO_DOCUMENTO,
+(SELECT usuario.date_added FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_DATE_ADDED,
+(SELECT usuario.instagram FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_INSTAGRAM,
+(SELECT usuario.direccion FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1)AS SOCIO_DIRECCION,
+(SELECT usuario.distrito FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_DISTRITO,
+(SELECT usuario.provincia FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_PROVINCIA,
+(SELECT usuario.departamento FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_DEPARTAMENTO,
+(SELECT usuario.residencia FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_RESIDENCIA,
+(SELECT usuario.telefono FROM usuario WHERE usuario.id = tb_suscripcion_programa.id_paciente LIMIT 1) AS SOCIO_TELEFONO,
 
-//FILTRO FECHAS
-if(!empty($n_fecha_desde) && !empty($n_fecha_hasta) && $ver_pacientes == 1){
-$consulta_sql_general .= " AND (DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') BETWEEN DATE_FORMAT('$n_fecha_desde', '%Y-%m-%d') AND DATE_FORMAT('$n_fecha_hasta', '%Y-%m-%d'))";
+tb_suscripcion_programa.id AS SUSCRIPCION_ID,
+
+tb_suscripcion_programa.id_tipo_suscripcion AS SUSCRIPCION_ID_TIPO_SUSCRIPCION,
+
+(
+SELECT cobro.fecha_pago FROM cobro WHERE cobro.id_suscripcion = tb_suscripcion_programa.id LIMIT 1
+) AS SUSCRIPCION_FECHA_VENTA,
+
+tb_suscripcion_programa.fecha_inicio AS SUSCRIPCION_INICIO,
+
+tb_suscripcion_programa.fecha_fin AS SUSCRIPCION_FIN,
+
+tb_suscripcion_programa.id_programa AS SUSCRIPCION_ID_PROGRAMA,
+
+tb_suscripcion_programa.id_paquete AS SUSCRIPCION_ID_PAQUETE,
+
+tb_suscripcion_programa.id_nutricionista AS SUSCRIPCION_ID_NUTRICIONISTA,
+
+(
+SELECT cobro.monto FROM cobro WHERE cobro.id_suscripcion = tb_suscripcion_programa.id LIMIT 1
+) AS SUSCRIPCION_MONTO,
+
+(
+SELECT cobro.id_medio_pago FROM cobro WHERE cobro.id_suscripcion = tb_suscripcion_programa.id LIMIT 1
+) AS SUSCRIPCION_ID_MEDIO_PAGO,
+
+(
+SELECT cobro.id_cuenta_bancaria FROM cobro WHERE cobro.id_suscripcion = tb_suscripcion_programa.id LIMIT 1
+) AS SUSCRIPCION_ID_CUENTA_BANCARIA,
+
+(
+SELECT cobro.numero_operacion FROM cobro WHERE cobro.id_suscripcion = tb_suscripcion_programa.id LIMIT 1
+) AS SUSCRIPCION_NUMERO_OPERACION
+
+FROM suscripcion_programa tb_suscripcion_programa
+
+WHERE 1 = 1
+";
+
+//SI ES VENDEDOR
+if($_SESSION['ID_TIPO_USUARIO'] == 4){
+$consulta_sql_general .= " AND (tb_suscripcion_programa.id_vendedor = '".$_SESSION['ID_USUARIO']."')";
 }
 
+//FILTROS
+if(!empty($filtro_paquete)){
+$consulta_sql_general .= " AND (tb_suscripcion_programa.id_paquete = '".$filtro_paquete."')";
+}
+if(!empty($filtro_plan)){
+$consulta_sql_general .= " AND (tb_suscripcion_programa.id_programa = '".$filtro_plan."')";
+}
+if(!empty($filtro_id_nutricionista)){
+$consulta_sql_general .= " AND (tb_suscripcion_programa.id_nutricionista = '".$filtro_id_nutricionista."')";
+}
+
+//HAVING
 $consulta_sql_general .= " HAVING 1 = 1";
 
-//FILTRO FECHAS
-if(!empty($n_fecha_desde) && !empty($n_fecha_hasta) && $ver_pacientes != 1){
-$consulta_sql_general .= " AND (DATE_FORMAT(FECHA_VENTA, '%Y-%m-%d') BETWEEN DATE_FORMAT('$n_fecha_desde', '%Y-%m-%d') AND DATE_FORMAT('$n_fecha_hasta', '%Y-%m-%d'))";
+if(!empty($n_fecha_desde) && !empty($n_fecha_hasta)){
+$consulta_sql_general .= " AND (DATE_FORMAT(SUSCRIPCION_FECHA_VENTA, '%Y-%m-%d') BETWEEN DATE_FORMAT('$n_fecha_desde', '%Y-%m-%d') AND DATE_FORMAT('$n_fecha_hasta', '%Y-%m-%d'))";
+}
+if(!empty($filtro_socio)){
+$consulta_sql_general .= " AND (SOCIO_CODIGO LIKE '%".$filtro_socio."%' OR SOCIO_NOMBRES LIKE '%".$filtro_socio."%' OR SOCIO_APELLIDOS LIKE '%".$filtro_socio."%')";
+}
+if(!empty($filtro_correo)){
+$consulta_sql_general .= " AND (SOCIO_CORREO LIKE '%".$filtro_correo."%')";
+}
+if(!empty($filtro_cumple_dia)){
+$consulta_sql_general .= " AND (DATE_FORMAT(SOCIO_FECHA_NACIMIENTO, '%d') = '".$filtro_cumple_dia."')";
+}
+if(!empty($filtro_cumple_mes)){
+$consulta_sql_general .= " AND (DATE_FORMAT(SOCIO_FECHA_NACIMIENTO, '%m') = '".$filtro_cumple_mes."')";
+}
+if(!empty($filtro_estado)){
+$consulta_sql_general .= " AND (SOCIO_ESTADO = '".$filtro_estado."')";
 }
 
 //ORDER BY
-$consulta_sql_general .= "
-ORDER BY FECHA_VENTA DESC
-";
+$consulta_sql_general .= " ORDER BY SUSCRIPCION_FECHA_VENTA DESC";
 }
 }
 
@@ -539,8 +636,7 @@ $diagnostico
 //DATOS - SUSCRIPCIONES
 if($view_controler == 4){
 
-//LISTA DE SOCIOS
-if($ver_pacientes == 1){
+//LISTA DE SOCIOS - LISTA DE VENTAS
 $ret_id_paciente = $sql_general_row[0];
 $SOCIO_CODIGO = $sql_general_row[1];
 $SOCIO_CORREO = $sql_general_row[2];
@@ -568,27 +664,9 @@ $ret_fecha_fin = $sql_general_row[23];
 $ret_id_programa = $sql_general_row[24];
 $ret_id_paquete = $sql_general_row[25];
 $ret_id_nutricionista = $sql_general_row[26];
-$ret_monto_venta = 0;
-$ret_id_medio_pago = 0;
-$ret_id_cuenta_bancaria = 0;
-}
-
-//LISTA DE VENTAS
-if($ver_pacientes != 1){
-$ret_id_suscripcion = (int)$sql_general_row[0];
-$ret_id_programa = (int)$sql_general_row[1];
-$ret_id_nutricionista = (int)$sql_general_row[2];
-$ret_id_paciente = (int)$sql_general_row[3];
-$ret_fecha_inicio = $sql_general_row[4];
-$ret_fecha_fin = $sql_general_row[5];
-$ret_estado = (int)$sql_general_row[6];
-$ret_fecha_venta = $sql_general_row[7];
-$ret_monto_venta = $sql_general_row[8];
-$ret_id_medio_pago = $sql_general_row[9];
-$ret_id_cuenta_bancaria = $sql_general_row[10];
-$ret_id_paquete = $sql_general_row[11];
-$ret_id_tipo_suscripcion = (int)$sql_general_row[12];
-}
+$ret_monto_venta = $sql_general_row[27];
+$ret_id_medio_pago = $sql_general_row[28];
+$ret_id_cuenta_bancaria = $sql_general_row[29];
 
 //TIPO DE SUSCRIPCION
 if($ret_id_tipo_suscripcion == 1){
@@ -596,7 +674,6 @@ $text_tipo_suscripcion = '<span style="color: green;">Nueva</span>';
 } else {
 $text_tipo_suscripcion = '<span style="color: darkblue;">Renovaci&oacute;n</span>';
 }
-
 
 //NOMBRE DEL PROGRAMA
 $row_nombre_programa = mysqli_fetch_array(mysqli_query($con, "SELECT nombre FROM programa WHERE id = '$ret_id_programa' LIMIT 1"));

@@ -4730,7 +4730,7 @@ $texto_anual = 'Ventas del a&ntilde;o';
 </div>
 </div>
 <div class="modal fade" id="modalFechas">
-<div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 0; margin-bottom: 2px;">
+<div class="modal-dialog modal-lg" role="document" style="margin-top: 0; margin-bottom: 2px;">
 <div class="modal-content">
 <div class="modal-body">
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -4905,7 +4905,7 @@ $('#modalFiltros').modal('toggle');
 <button type="button" id="filtro_semanal" onclick="filtro_fechas(2)" title="Esta Semana" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;"><?php echo $texto_semanal; ?></button>
 </li>
 <li style="display: inline-block;">
-<button type="button" id="filtro_mensual" onclick="filtro_fechas(3)" title="Este Mes" style="border: none; padding: 5px; font-size: 12px; background: #818181; color: white; outline: none;"><?php echo $texto_mensual; ?></button>
+<button type="button" id="filtro_mensual" onclick="filtro_fechas(3)" title="Este Mes" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;"><?php echo $texto_mensual; ?></button>
 </li>
 <li style="display: inline-block;">
 <button type="button" id="filtro_anual" onclick="filtro_fechas(4)" title="Este Año" style="border: none; padding: 5px; font-size: 12px; background: #95cf32; color: white; outline: none;"><?php echo $texto_anual; ?></button>
