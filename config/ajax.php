@@ -1435,15 +1435,15 @@ if($ver_pacientes == 1){
 } else {
 ?>
 <tr>
-<td class="td-title" style="width: 11.11% !important;">Fecha Venta</td>
-<td class="td-title" style="width: 11.11% !important;">Paciente</td>
-<td class="td-title" style="width: 11.11% !important;">Paquete</td>
-<td class="td-title" style="width: 11.11% !important;">Plan</td>
-<td class="td-title" style="width: 11.11% !important;">Condici&oacute;n</td>
-<td class="td-title" style="width: 11.11% !important;">Banco</td>
-<td class="td-title" style="width: 11.11% !important;">Medio Pago</td>
-<td class="td-title" style="width: 11.11% !important;">N&#176; de Op.</td>
-<td class="td-title" style="width: 11.11% !important;">Nutricionista</td>
+<td class="td-title" style="width: 10% !important;">Fecha Venta</td>
+<td class="td-title" style="width: 15% !important;">Paciente</td>
+<td class="td-title" style="width: 10% !important;">Paquete</td>
+<td class="td-title" style="width: 10% !important;">Plan</td>
+<td class="td-title" style="width: 10% !important;">Condici&oacute;n</td>
+<td class="td-title" style="width: 10% !important;">Banco</td>
+<td class="td-title" style="width: 10% !important;">Medio Pago</td>
+<td class="td-title" style="width: 10% !important;">N&#176; de Op.</td>
+<td class="td-title" style="width: 15% !important;">Nutricionista</td>
 </tr>
 <?php
 }
@@ -1514,15 +1514,15 @@ $ret_dias_vencimiento = $diff->days . ' d&iacute;as';
 } else {
 ?>
 <tr class="tr-hover" style="cursor: pointer;">
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_fecha_venta; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paciente; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_paquete; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_programa; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $text_tipo_suscripcion; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_cuenta_bancaria; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_medio_pago; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_numero_operacion; ?></td>
-<td class="td-content" style="width: 11.11% !important;"><?php echo $ret_nombre_nutricionista; ?></td>
+<td class="td-content" style="width: 10% !important;"><?php echo $ret_fecha_venta; ?></td>
+<td class="td-content" style="width: 15% !important;"><?php echo $ret_nombre_paciente; ?></td>
+<td class="td-content" style="width: 10% !important;"><?php echo $ret_nombre_paquete; ?></td>
+<td class="td-content" style="width: 10% !important;"><?php echo $ret_nombre_programa; ?></td>
+<td class="td-content" style="width: 10% !important;"><?php echo $text_tipo_suscripcion; ?></td>
+<td class="td-content" style="width: 10% !important;"><?php echo $ret_nombre_cuenta_bancaria; ?></td>
+<td class="td-content" style="width: 10% !important;"><?php echo $ret_nombre_medio_pago; ?></td>
+<td class="td-content" style="width: 10% !important;"><?php echo $ret_numero_operacion; ?></td>
+<td class="td-content" style="width: 15% !important;"><?php echo $ret_nombre_nutricionista; ?></td>
 </tr>
 <?php
 }
