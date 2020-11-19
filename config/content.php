@@ -4795,8 +4795,12 @@ $texto_anual = 'Ventas del a&ntilde;o';
 <option value="0" selected="selected">D&iacute;a</option>
 <?php
 for($i = 1; $i <= 31; $i++){
+$cero = '';
+if($i <= 9){
+$cero = '0';
+}
 ?>
-<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+<option value="<?php echo $cero.$i; ?>"><?php echo $cero.$i; ?></option>
 <?php
 }
 ?>
