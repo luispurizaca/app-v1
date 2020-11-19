@@ -1413,7 +1413,7 @@ if($ret_id_tipo_usuario != 3){
 //SUSCRIPCIONES
 if($view_controller == 4){
 ?>
-<table style="width: 1100px !important; margin: 0 auto;">
+<table style="width: 1020px !important; margin: 0 auto;">
 <?php
 if($ver_pacientes == 1){
 ?>
