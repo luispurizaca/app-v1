@@ -1340,8 +1340,6 @@ $numrows_query = mysqli_query($con, $consulta);
 $numrows = mysqli_num_rows($numrows_query);
 $total_pages = ceil($numrows/$per_page);
 
-echo $consulta;
-
 if($numrows > 0){
 
 //PACIENTES Y NUTRICIONISTAS

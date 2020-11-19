@@ -164,6 +164,7 @@ SELECT suscripcion_programa.id_paquete FROM suscripcion_programa WHERE suscripci
 SELECT suscripcion_programa.id_nutricionista FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC LIMIT 1
 ) AS SUSCRIPCION_ID_NUTRICIONISTA,
 
+(
 SELECT monto FROM cobro WHERE id_suscripcion IN
 (
 SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC
@@ -171,6 +172,7 @@ SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_progr
 LIMIT 1
 ) AS SUSCRIPCION_MONTO,
 
+(
 SELECT id_medio_pago FROM cobro WHERE id_suscripcion IN
 (
 SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC
@@ -178,6 +180,7 @@ SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_progr
 LIMIT 1
 ) AS SUSCRIPCION_ID_MEDIO_PAGO,
 
+(
 SELECT id_cuenta_bancaria FROM cobro WHERE id_suscripcion IN
 (
 SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC
@@ -185,6 +188,7 @@ SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_progr
 LIMIT 1
 ) AS SUSCRIPCION_ID_CUENTA_BANCARIA,
 
+(
 SELECT numero_operacion FROM cobro WHERE id_suscripcion IN
 (
 SELECT suscripcion_programa.id FROM suscripcion_programa WHERE suscripcion_programa.id_paciente = tb_usuario.id ORDER BY DATE_FORMAT(suscripcion_programa.fecha_fin, '%Y-%m-%d') DESC
