@@ -233,93 +233,6 @@ border-color: #95cf32 !important;
 </div>
 </div>
 </div>
-<!-- SCRIPT -->
-<script>
-function loadFullCalendar(fecha){
-$('#resultado_calendar').html('');
-$.ajax({
-url: 'config/content.php?fullcalendar=1&fecha='+fecha,
-success: function(res){
-$('#resultado_calendar').html(res);
-}
-});
-}
-loadFullCalendar('<?php echo date('Y-m-d'); ?>');
-
-function edit(event){
-start = event.start.format('YYYY-MM-DD HH:mm:ss');
-if(event.end){
-end = event.end.format('YYYY-MM-DD HH:mm:ss');
-}else{
-end = start;
-}
-
-id =  event.id;
-
-Event = [];
-Event[0] = id;
-Event[1] = start;
-Event[2] = end;
-
-$.ajax({
-url: 'config/fullcalendar/editEventDate.php',
-type: "POST",
-data: {Event:Event},
-success: function(rep) {
-if(rep == 'OK'){
-alert('Evento se ha guardado correctamente');
-}else{
-alert('No se pudo guardar. Inténtalo de nuevo.'); 
-}
-}
-});
-}
-
-function scrollreset(){
-$('#ModalOpen').css('overflow-y', 'scroll');
-$('body').css('overflow-y', 'hidden');
-}
-
-function scrollreset2(){
-$('#ModalOpen').css('overflow-y', 'hidden');
-$('body').css('overflow-y', 'scroll');
-}
-
-
-function eventmodalAdd(){
-var title = $('#title').val();
-var color = $('#color').val();
-var start = $('#start').val();
-var end = $('#end').val();
-$.ajax({
-url: 'config/fullcalendar/addEvent.php',
-type: 'POST',
-data: {title : title, color : color, start : start, end : end},
-success: function(res){
-$('#resultado_agenda').html(res);
-}
-});
-}
-function eventmodalEdit(){
-var title = $('#title2').val();
-var color = $('#color2').val();
-var delete_event;
-if (document.getElementById('delete_event').checked){
-delete_event = 1;
-} else {
-delete_event = 0;
-}
-var id = $('#id').val();
-$.ajax({
-url: 'config/fullcalendar/editEventTitle.php',
-type: 'POST',
-data: {title : title, color : color, delete_event : delete_event, id : id},
-success: function(res){
-$('#resultado_agenda').html(res);
-}
-});
-}
-</script>
 <?php
 
 //TIPO DE USUARIO
@@ -451,54 +364,6 @@ $nombre_documento = $row_tipo_documento[1];
 <input id="form_fecha_nacimiento" name="form_fecha_nacimiento" class="form-control n-form-control" type="date" placeholder="Fecha de Nacimiento" value="<?php echo $registro_fecha_nacimiento; ?>">
 </div>
 </div>
-<script>
-function consultar_doc(){
-var form_tipo_documento = $('#form_tipo_documento').val();
-var form_numero_documento = $('#form_numero_documento').val();
-var doc;
-
-//FUNCIONA SOLO SI
-if((form_tipo_documento == 1 && form_numero_documento.length == 8) || (form_tipo_documento == 2 && form_numero_documento.length == 11)){
-
-//DNI
-if(form_tipo_documento == 1 && form_numero_documento.length == 8){
-doc = 'DNI';
-}
-
-//RUC
-if(form_tipo_documento == 2 && form_numero_documento.length == 11){
-doc = 'RUC';
-}
-
-/*
-//CONSULTA NEGOCIA
-if(form_numero_documento.length == 11){
-var tipo_documento = 222;
-} else {
-var tipo_documento = 111;
-}
-$.ajax({
-url: '//negocia.pe/functions/fn_consultas.php?tipo_documento='+tipo_documento+'&numero_documento='+form_numero_documento,
-dataType: "JSON",
-beforeSend: function(){
-swal('Obteniendo datos...');
-},
-success: function(data){
-if(tipo_documento == 111){
-$('#form_nombres').val(data.nombres);
-$('#form_apellidos').val(data.nombres);
-}
-if(tipo_documento == 222){
-$('#form_nombres').val(data.razon_social);
-$('#form_apellidos').val(data.nombre_comercial);
-$('#form_direccion').val(data.domicilio_fiscal);
-}
-}
-});
-*/
-}
-}
-</script>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Nombres</label>
@@ -658,7 +523,7 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Agendar Cita</label>
-<button type="button" class="btn" style="background: #95cf32; color: white; height: 25px; padding: 3px; font-size: 12px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
+<button type="button" class="btn" style="background: #95cf32; color: white; height: 25px; padding: 3px; font-size: 12px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset(); open_modal_agenda(1);">
 <i class="fa fa-calendar"></i>
 Fecha / Hora
 </button>
@@ -748,13 +613,22 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Inicio</label>
-<input id="form_fecha_suscripcion_2" name="form_fecha_suscripcion_2" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>" readonly="readonly" style="background: white; cursor: not-allowed;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
+<input id="form_fecha_suscripcion_2" name="form_fecha_suscripcion_2" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 1 month')); ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_2" name="form_fecha_suscripcion_fin_2" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 2 month')); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Agendar Cita</label>
+<button type="button" class="btn" style="background: #95cf32; color: white; height: 25px; padding: 3px; font-size: 12px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset(); open_modal_agenda(2);">
+<i class="fa fa-calendar"></i>
+Fecha / Hora
+</button>
 </div>
 </div>
 <div class="col-md-12 col-sm-12">
@@ -841,13 +715,22 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Inicio</label>
-<input id="form_fecha_suscripcion_3" name="form_fecha_suscripcion_3" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 2 month')); ?>" readonly="readonly" style="background: white; cursor: not-allowed;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
+<input id="form_fecha_suscripcion_3" name="form_fecha_suscripcion_3" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 2 month')); ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_3" name="form_fecha_suscripcion_fin_3" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 3 month')); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Agendar Cita</label>
+<button type="button" class="btn" style="background: #95cf32; color: white; height: 25px; padding: 3px; font-size: 12px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset(); open_modal_agenda(3);">
+<i class="fa fa-calendar"></i>
+Fecha / Hora
+</button>
 </div>
 </div>
 <div class="col-md-12 col-sm-12">
@@ -934,13 +817,22 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Inicio</label>
-<input id="form_fecha_suscripcion_4" name="form_fecha_suscripcion_4" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 3 month')); ?>" readonly="readonly" style="background: white; cursor: not-allowed;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
+<input id="form_fecha_suscripcion_4" name="form_fecha_suscripcion_4" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 3 month')); ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_4" name="form_fecha_suscripcion_fin_4" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 4 month')); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Agendar Cita</label>
+<button type="button" class="btn" style="background: #95cf32; color: white; height: 25px; padding: 3px; font-size: 12px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset(); open_modal_agenda(4);">
+<i class="fa fa-calendar"></i>
+Fecha / Hora
+</button>
 </div>
 </div>
 <div class="col-md-12 col-sm-12">
@@ -1027,13 +919,22 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Inicio</label>
-<input id="form_fecha_suscripcion_5" name="form_fecha_suscripcion_5" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 4 month')); ?>" readonly="readonly" style="background: white; cursor: not-allowed;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
+<input id="form_fecha_suscripcion_5" name="form_fecha_suscripcion_5" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 4 month')); ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_5" name="form_fecha_suscripcion_fin_5" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 5 month')); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Agendar Cita</label>
+<button type="button" class="btn" style="background: #95cf32; color: white; height: 25px; padding: 3px; font-size: 12px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset(); open_modal_agenda(5);">
+<i class="fa fa-calendar"></i>
+Fecha / Hora
+</button>
 </div>
 </div>
 <div class="col-md-12 col-sm-12">
@@ -1120,13 +1021,22 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Inicio</label>
-<input id="form_fecha_suscripcion_6" name="form_fecha_suscripcion_6" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 5 month')); ?>" readonly="readonly" style="background: white; cursor: not-allowed;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
+<input id="form_fecha_suscripcion_6" name="form_fecha_suscripcion_6" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 5 month')); ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_6" name="form_fecha_suscripcion_fin_6" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 6 month')); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Agendar Cita</label>
+<button type="button" class="btn" style="background: #95cf32; color: white; height: 25px; padding: 3px; font-size: 12px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset(); open_modal_agenda(6);">
+<i class="fa fa-calendar"></i>
+Fecha / Hora
+</button>
 </div>
 </div>
 <div class="col-md-12 col-sm-12">
@@ -1213,13 +1123,22 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Inicio</label>
-<input id="form_fecha_suscripcion_7" name="form_fecha_suscripcion_7" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 6 month')); ?>" readonly="readonly" style="background: white; cursor: not-allowed;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
+<input id="form_fecha_suscripcion_7" name="form_fecha_suscripcion_7" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 6 month')); ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_7" name="form_fecha_suscripcion_fin_7" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 7 month')); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Agendar Cita</label>
+<button type="button" class="btn" style="background: #95cf32; color: white; height: 25px; padding: 3px; font-size: 12px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset(); open_modal_agenda(7);">
+<i class="fa fa-calendar"></i>
+Fecha / Hora
+</button>
 </div>
 </div>
 <div class="col-md-12 col-sm-12">
@@ -1306,13 +1225,22 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Inicio</label>
-<input id="form_fecha_suscripcion_8" name="form_fecha_suscripcion_8" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 7 month')); ?>" readonly="readonly" style="background: white; cursor: not-allowed;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
+<input id="form_fecha_suscripcion_8" name="form_fecha_suscripcion_8" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 7 month')); ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_8" name="form_fecha_suscripcion_fin_8" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 8 month')); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Agendar Cita</label>
+<button type="button" class="btn" style="background: #95cf32; color: white; height: 25px; padding: 3px; font-size: 12px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset(); open_modal_agenda(8);">
+<i class="fa fa-calendar"></i>
+Fecha / Hora
+</button>
 </div>
 </div>
 <div class="col-md-12 col-sm-12">
@@ -1399,13 +1327,22 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Inicio</label>
-<input id="form_fecha_suscripcion_9" name="form_fecha_suscripcion_9" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 8 month')); ?>" readonly="readonly" style="background: white; cursor: not-allowed;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
+<input id="form_fecha_suscripcion_9" name="form_fecha_suscripcion_9" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 8 month')); ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_9" name="form_fecha_suscripcion_fin_9" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 9 month')); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Agendar Cita</label>
+<button type="button" class="btn" style="background: #95cf32; color: white; height: 25px; padding: 3px; font-size: 12px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset(); open_modal_agenda(9);">
+<i class="fa fa-calendar"></i>
+Fecha / Hora
+</button>
 </div>
 </div>
 <div class="col-md-12 col-sm-12">
@@ -1492,13 +1429,22 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Inicio</label>
-<input id="form_fecha_suscripcion_10" name="form_fecha_suscripcion_10" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 9 month')); ?>" readonly="readonly" style="background: white; cursor: not-allowed;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
+<input id="form_fecha_suscripcion_10" name="form_fecha_suscripcion_10" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d'). '+ 9 month')); ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_10" name="form_fecha_suscripcion_fin_10" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 10 month')); ?>">
+</div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Agendar Cita</label>
+<button type="button" class="btn" style="background: #95cf32; color: white; height: 25px; padding: 3px; font-size: 12px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset(); open_modal_agenda(10);">
+<i class="fa fa-calendar"></i>
+Fecha / Hora
+</button>
 </div>
 </div>
 </div>
@@ -1520,36 +1466,6 @@ dia_a_poner = '0'+dia_a_poner;
 e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin_10').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
 });
-
-function eliminar_suscripcion(id){
-if(id == 2){
-$('#suscripcion_segunda').css('display', 'none');
-}
-if(id == 3){
-$('#suscripcion_tercera').css('display', 'none');
-}
-if(id == 4){
-$('#suscripcion_cuarta').css('display', 'none');
-}
-if(id == 5){
-$('#suscripcion_quinta').css('display', 'none');
-}
-if(id == 6){
-$('#suscripcion_sexta').css('display', 'none');
-}
-if(id == 7){
-$('#suscripcion_septima').css('display', 'none');
-}
-if(id == 8){
-$('#suscripcion_octava').css('display', 'none');
-}
-if(id == 9){
-$('#suscripcion_novena').css('display', 'none');
-}
-if(id == 10){
-$('#suscripcion_decima').css('display', 'none');
-}
-}
 </script>
 </div>
 </div>
@@ -1658,6 +1574,169 @@ $nombre_cb = $row_cb[1];
 <div class="col-md-1 hidden-xs"></div>
 </div>
 <script>
+function loadFullCalendar(fecha){
+$('#resultado_calendar').html('');
+$.ajax({
+url: 'config/content.php?fullcalendar=1&fecha='+fecha,
+success: function(res){
+$('#resultado_calendar').html(res);
+}
+});
+}
+function edit(event){
+start = event.start.format('YYYY-MM-DD HH:mm:ss');
+if(event.end){
+end = event.end.format('YYYY-MM-DD HH:mm:ss');
+}else{
+end = start;
+}
+
+id =  event.id;
+
+Event = [];
+Event[0] = id;
+Event[1] = start;
+Event[2] = end;
+
+$.ajax({
+url: 'config/fullcalendar/editEventDate.php',
+type: "POST",
+data: {Event:Event},
+success: function(rep) {
+if(rep == 'OK'){
+alert('Evento se ha guardado correctamente');
+}else{
+alert('No se pudo guardar. Inténtalo de nuevo.'); 
+}
+}
+});
+}
+function scrollreset(){
+$('#ModalOpen').css('overflow-y', 'scroll');
+$('body').css('overflow-y', 'hidden');
+}
+function scrollreset2(){
+$('#ModalOpen').css('overflow-y', 'hidden');
+$('body').css('overflow-y', 'scroll');
+}
+function eventmodalAdd(){
+var title = $('#title').val();
+var color = $('#color').val();
+var start = $('#start').val();
+var end = $('#end').val();
+$.ajax({
+url: 'config/fullcalendar/addEvent.php',
+type: 'POST',
+data: {title : title, color : color, start : start, end : end},
+success: function(res){
+$('#resultado_agenda').html(res);
+}
+});
+}
+function eventmodalEdit(){
+var title = $('#title2').val();
+var color = $('#color2').val();
+var delete_event;
+if (document.getElementById('delete_event').checked){
+delete_event = 1;
+} else {
+delete_event = 0;
+}
+var id = $('#id').val();
+$.ajax({
+url: 'config/fullcalendar/editEventTitle.php',
+type: 'POST',
+data: {title : title, color : color, delete_event : delete_event, id : id},
+success: function(res){
+$('#resultado_agenda').html(res);
+}
+});
+}
+function consultar_doc(){
+var form_tipo_documento = $('#form_tipo_documento').val();
+var form_numero_documento = $('#form_numero_documento').val();
+var doc;
+
+//FUNCIONA SOLO SI
+if((form_tipo_documento == 1 && form_numero_documento.length == 8) || (form_tipo_documento == 2 && form_numero_documento.length == 11)){
+
+//DNI
+if(form_tipo_documento == 1 && form_numero_documento.length == 8){
+doc = 'DNI';
+}
+
+//RUC
+if(form_tipo_documento == 2 && form_numero_documento.length == 11){
+doc = 'RUC';
+}
+
+/*
+//CONSULTA NEGOCIA
+if(form_numero_documento.length == 11){
+var tipo_documento = 222;
+} else {
+var tipo_documento = 111;
+}
+$.ajax({
+url: '//negocia.pe/functions/fn_consultas.php?tipo_documento='+tipo_documento+'&numero_documento='+form_numero_documento,
+dataType: "JSON",
+beforeSend: function(){
+swal('Obteniendo datos...');
+},
+success: function(data){
+if(tipo_documento == 111){
+$('#form_nombres').val(data.nombres);
+$('#form_apellidos').val(data.nombres);
+}
+if(tipo_documento == 222){
+$('#form_nombres').val(data.razon_social);
+$('#form_apellidos').val(data.nombre_comercial);
+$('#form_direccion').val(data.domicilio_fiscal);
+}
+}
+});
+*/
+}
+}
+function eliminar_suscripcion(id){
+if(id == 2){
+$('#suscripcion_segunda').css('display', 'none');
+}
+if(id == 3){
+$('#suscripcion_tercera').css('display', 'none');
+}
+if(id == 4){
+$('#suscripcion_cuarta').css('display', 'none');
+}
+if(id == 5){
+$('#suscripcion_quinta').css('display', 'none');
+}
+if(id == 6){
+$('#suscripcion_sexta').css('display', 'none');
+}
+if(id == 7){
+$('#suscripcion_septima').css('display', 'none');
+}
+if(id == 8){
+$('#suscripcion_octava').css('display', 'none');
+}
+if(id == 9){
+$('#suscripcion_novena').css('display', 'none');
+}
+if(id == 10){
+$('#suscripcion_decima').css('display', 'none');
+}
+}
+function open_modal_agenda(numero){
+var fecha_open;
+if(numero == 1){
+fecha_open = $('#form_fecha_suscripcion').val();
+} else {
+fecha_open = $('#form_fecha_suscripcion_'+numero).val();
+}
+loadFullCalendar(fecha_open);
+}
+
 $('#btn_guardar_datos').on('click', function(){
 var form_codigo = $('#form_codigo').val();
 var form_nombres = $('#form_nombres').val();
