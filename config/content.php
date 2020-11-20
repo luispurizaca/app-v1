@@ -168,7 +168,7 @@ border-color: #95cf32 !important;
 <form class="form-horizontal">
 <div class="modal-body">
 <div class="form-group">
-<label for="title" class="col-sm-2 control-label">Titulo</label>
+<label for="title" class="col-sm-2 control-label">T&iacute;tulo</label>
 <div class="col-sm-10">
 <input type="text" name="title" class="form-control" id="title" placeholder="Titulo">
 </div>
@@ -652,7 +652,7 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Inicio</label>
-<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>" readonly="readonly" style="background: white; cursor: not-allowed;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
+<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>" readonly="readonly" style="background: white; cursor: not-allowed;">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
@@ -660,6 +660,15 @@ $nombre_cb = $row_id_n[1];
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin" name="form_fecha_suscripcion_fin" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 1 month')); ?>">
 </div>
+</div>
+<div class="col-md-3 col-sm-6">
+<div class="form-group">
+<label class="n-label">Agendar Cita</label>
+<button type="button" class="btn" style="background: #95cf32; color: white; height: 20px; padding: 3px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">Seleccionar Fecha</button>
+</div>
+</div>
+<div class="col-md-12 col-sm-12">
+<a id="btn_abrir_plan_2" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
 $('#form_fecha_suscripcion').on('change', function(){
 var fecha = $('#form_fecha_suscripcion').val();
@@ -677,11 +686,7 @@ dia_a_poner = '0'+dia_a_poner;
 e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
 });
-</script>
-</div>
-<div class="col-md-12 col-sm-12">
-<a id="btn_abrir_plan_2" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
-<script>
+
 $('#btn_abrir_plan_2').on('click', function(){
 $('#suscripcion_segunda').css('display', 'block');
 $(this).css('display', 'none');
@@ -753,6 +758,10 @@ $nombre_cb = $row_id_n[1];
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_2" name="form_fecha_suscripcion_fin_2" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 2 month')); ?>">
+</div>
+</div>
+<div class="col-md-12 col-sm-12">
+<a id="btn_abrir_plan_3" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
 $('#form_fecha_suscripcion_2').on('change', function(){
 var fecha = $('#form_fecha_suscripcion_2').val();
@@ -770,12 +779,7 @@ dia_a_poner = '0'+dia_a_poner;
 e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin_2').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
 });
-</script>
-</div>
-</div>
-<div class="col-md-12 col-sm-12">
-<a id="btn_abrir_plan_3" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
-<script>
+
 $('#btn_abrir_plan_3').on('click', function(){
 $('#suscripcion_tercera').css('display', 'block');
 $(this).css('display', 'none');
@@ -847,6 +851,10 @@ $nombre_cb = $row_id_n[1];
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_3" name="form_fecha_suscripcion_fin_3" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 3 month')); ?>">
+</div>
+</div>
+<div class="col-md-12 col-sm-12">
+<a id="btn_abrir_plan_4" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
 $('#form_fecha_suscripcion_3').on('change', function(){
 var fecha = $('#form_fecha_suscripcion_3').val();
@@ -864,12 +872,7 @@ dia_a_poner = '0'+dia_a_poner;
 e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin_3').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
 });
-</script>
-</div>
-</div>
-<div class="col-md-12 col-sm-12">
-<a id="btn_abrir_plan_4" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
-<script>
+
 $('#btn_abrir_plan_4').on('click', function(){
 $('#suscripcion_cuarta').css('display', 'block');
 $(this).css('display', 'none');
@@ -941,6 +944,10 @@ $nombre_cb = $row_id_n[1];
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_4" name="form_fecha_suscripcion_fin_4" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 4 month')); ?>">
+</div>
+</div>
+<div class="col-md-12 col-sm-12">
+<a id="btn_abrir_plan_5" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
 $('#form_fecha_suscripcion_4').on('change', function(){
 var fecha = $('#form_fecha_suscripcion_4').val();
@@ -958,12 +965,7 @@ dia_a_poner = '0'+dia_a_poner;
 e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin_4').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
 });
-</script>
-</div>
-</div>
-<div class="col-md-12 col-sm-12">
-<a id="btn_abrir_plan_5" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
-<script>
+
 $('#btn_abrir_plan_5').on('click', function(){
 $('#suscripcion_quinta').css('display', 'block');
 $(this).css('display', 'none');
@@ -1035,6 +1037,10 @@ $nombre_cb = $row_id_n[1];
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_5" name="form_fecha_suscripcion_fin_5" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 5 month')); ?>">
+</div>
+</div>
+<div class="col-md-12 col-sm-12">
+<a id="btn_abrir_plan_6" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
 $('#form_fecha_suscripcion_5').on('change', function(){
 var fecha = $('#form_fecha_suscripcion_5').val();
@@ -1052,12 +1058,7 @@ dia_a_poner = '0'+dia_a_poner;
 e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin_5').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
 });
-</script>
-</div>
-</div>
-<div class="col-md-12 col-sm-12">
-<a id="btn_abrir_plan_6" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
-<script>
+
 $('#btn_abrir_plan_6').on('click', function(){
 $('#suscripcion_sexta').css('display', 'block');
 $(this).css('display', 'none');
@@ -1129,6 +1130,10 @@ $nombre_cb = $row_id_n[1];
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_6" name="form_fecha_suscripcion_fin_6" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 6 month')); ?>">
+</div>
+</div>
+<div class="col-md-12 col-sm-12">
+<a id="btn_abrir_plan_7" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
 $('#form_fecha_suscripcion_6').on('change', function(){
 var fecha = $('#form_fecha_suscripcion_6').val();
@@ -1146,12 +1151,7 @@ dia_a_poner = '0'+dia_a_poner;
 e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin_6').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
 });
-</script>
-</div>
-</div>
-<div class="col-md-12 col-sm-12">
-<a id="btn_abrir_plan_7" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
-<script>
+
 $('#btn_abrir_plan_7').on('click', function(){
 $('#suscripcion_septima').css('display', 'block');
 $(this).css('display', 'none');
@@ -1223,6 +1223,10 @@ $nombre_cb = $row_id_n[1];
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_7" name="form_fecha_suscripcion_fin_7" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 7 month')); ?>">
+</div>
+</div>
+<div class="col-md-12 col-sm-12">
+<a id="btn_abrir_plan_8" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
 $('#form_fecha_suscripcion_7').on('change', function(){
 var fecha = $('#form_fecha_suscripcion_7').val();
@@ -1240,12 +1244,7 @@ dia_a_poner = '0'+dia_a_poner;
 e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin_7').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
 });
-</script>
-</div>
-</div>
-<div class="col-md-12 col-sm-12">
-<a id="btn_abrir_plan_8" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
-<script>
+
 $('#btn_abrir_plan_8').on('click', function(){
 $('#suscripcion_octava').css('display', 'block');
 $(this).css('display', 'none');
@@ -1317,6 +1316,10 @@ $nombre_cb = $row_id_n[1];
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_8" name="form_fecha_suscripcion_fin_8" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 8 month')); ?>">
+</div>
+</div>
+<div class="col-md-12 col-sm-12">
+<a id="btn_abrir_plan_9" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
 $('#form_fecha_suscripcion_8').on('change', function(){
 var fecha = $('#form_fecha_suscripcion_8').val();
@@ -1334,12 +1337,7 @@ dia_a_poner = '0'+dia_a_poner;
 e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin_8').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
 });
-</script>
-</div>
-</div>
-<div class="col-md-12 col-sm-12">
-<a id="btn_abrir_plan_9" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
-<script>
+
 $('#btn_abrir_plan_9').on('click', function(){
 $('#suscripcion_novena').css('display', 'block');
 $(this).css('display', 'none');
@@ -1411,6 +1409,10 @@ $nombre_cb = $row_id_n[1];
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_9" name="form_fecha_suscripcion_fin_9" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 9 month')); ?>">
+</div>
+</div>
+<div class="col-md-12 col-sm-12">
+<a id="btn_abrir_plan_10" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
 <script>
 $('#form_fecha_suscripcion_9').on('change', function(){
 var fecha = $('#form_fecha_suscripcion_9').val();
@@ -1428,12 +1430,7 @@ dia_a_poner = '0'+dia_a_poner;
 e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin_9').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
 });
-</script>
-</div>
-</div>
-<div class="col-md-12 col-sm-12">
-<a id="btn_abrir_plan_10" href="javascript:void(0)" style="font-size: 13px; color: #95cf32; font-weight: bold;">Agregar otro Plan</a>
-<script>
+
 $('#btn_abrir_plan_10').on('click', function(){
 $('#suscripcion_decima').css('display', 'block');
 $(this).css('display', 'none');
@@ -1505,6 +1502,10 @@ $nombre_cb = $row_id_n[1];
 <div class="form-group">
 <label class="n-label">Fecha de Fin</label>
 <input id="form_fecha_suscripcion_fin_10" name="form_fecha_suscripcion_fin_10" class="form-control n-form-control" type="date" placeholder="Fecha de Fin" value="<?php echo date('Y-m-d', strtotime(date('Y-m-d', strtotime(date('Y-m-d'). '- 1 day')). '+ 10 month')); ?>">
+</div>
+</div>
+</div>
+</div>
 <script>
 $('#form_fecha_suscripcion_10').on('change', function(){
 var fecha = $('#form_fecha_suscripcion_10').val();
@@ -1522,12 +1523,7 @@ dia_a_poner = '0'+dia_a_poner;
 e.setMonth(mes_a_poner);
 $('#form_fecha_suscripcion_fin_10').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ dia_a_poner);
 });
-</script>
-</div>
-</div>
-</div>
-</div>
-<script>
+
 function eliminar_suscripcion(id){
 if(id == 2){
 $('#suscripcion_segunda').css('display', 'none');
