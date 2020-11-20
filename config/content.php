@@ -5299,9 +5299,6 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 if($view_controller == 8){
 ?>
 <style>
-#calendar {
-max-width: 800px;
-}
 .col-centered{
 float: none;
 margin: 0 auto;
