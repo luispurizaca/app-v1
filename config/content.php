@@ -664,7 +664,10 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Agendar Cita</label>
-<button type="button" class="btn" style="background: #95cf32; color: white; height: 20px; padding: 3px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">Seleccionar Fecha</button>
+<button type="button" class="btn" style="background: #95cf32; color: white; height: 25px; padding: 3px; font-size: 12px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
+<i class="fa fa-calendar"></i>
+Seleccionar Fecha
+</button>
 </div>
 </div>
 <div class="col-md-12 col-sm-12">
