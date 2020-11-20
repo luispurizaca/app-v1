@@ -173,33 +173,42 @@ Recordarte que el d&iacute;a <b>'.$fecha_vencimiento.'</b> vence tu plan <b>'.$n
 <br><br>
 Nuestros n&uacute;meros de cuenta son:
 <br><br>
-<b>
-<span lang="ES-MX" style="font-family:&quot;Segoe UI Emoji&quot;,sans-serif"><img goomoji="1f4cc" data-goomoji="1f4cc" style="margin:0 0.2ex;vertical-align:middle;max-height:24px" alt="?" src="https://mail.google.com/mail/e/1f4cc" data-image-whitelisted="" class="CToWUd"></span>
-Interbank
-</b><br>
+<table style="width: 60%; margin: 0 auto;">
+<tr>
+<td style="width: 100%; text-align: center; background: #95cf32; color: white;">Interbank</td>
+</tr>
+<tr>
+<td>
 Cuenta de ahorros soles Interbank: 2483185902363<br>
 CCI Interbank: 00324801318590236325<br>
 Datos: Jhoselin Johana Alfaro Alarc&oacute;n<br>
 DNI: 47309947
-<br><br>
-<b>
-<span lang="ES-MX" style="font-family:&quot;Segoe UI Emoji&quot;,sans-serif"><img goomoji="1f4cc" data-goomoji="1f4cc" style="margin:0 0.2ex;vertical-align:middle;max-height:24px" alt="?" src="https://mail.google.com/mail/e/1f4cc" data-image-whitelisted="" class="CToWUd"></span>
-BCP
-</b><br>
+</td>
+</tr>
+<tr>
+<td style="width: 100%; text-align: center; background: #95cf32; color: white;">BCP</td>
+</tr>
+<tr>
+<td>
 Cuenta de ahorros soles BCP: 19317409913069<br>
 CCI BCP: 00219311740991306914<br>
 Datos: Magaly Elena Alarc&oacute;n Quispe<br>
 DNI: 10009890
-<br><br>
-<b>
-<span lang="ES-MX" style="font-family:&quot;Segoe UI Emoji&quot;,sans-serif"><img goomoji="1f4cc" data-goomoji="1f4cc" style="margin:0 0.2ex;vertical-align:middle;max-height:24px" alt="?" src="https://mail.google.com/mail/e/1f4cc" data-image-whitelisted="" class="CToWUd"></span>
-Transferencia del Exterior
-</b><br>
+</td>
+</tr>
+<tr>
+<td style="width: 100%; text-align: center; background: #95cf32; color: white;">Transferencia del Exterior</td>
+</tr>
+<tr>
+<td>
 Datos: Katherine Magaly Alfaro Alarc&oacute;n<br>
 DNI: 70439997<br>
 Pa&iacute;s: Lima, Per&uacute;<br>
 Wéstern uni&oacute;n<br>
 Interbank exterior: 2543162978137
+</td>
+</tr>
+</table>
 <br><br>
 S&oacute;lo tendr&aacute;s &eacute;xito si crees que puedes tenerlo!
 <br><br>
