@@ -171,9 +171,9 @@ $bodyHtml = '
 <br><br>
 Recordarte que el d&iacute;a <b>'.$fecha_vencimiento.'</b> vence tu plan <b>'.$nombre_programa.'</b>. Agradecer&eacute; enviar el voucher de tu renovaci&oacute;n a este correo: pagos@nutrikatherinealfaro.com.pe.
 <br><br>
-Nuestros n&uacute;meros de cuenta son:
+Nuestros n&uacute;meros de cuenta son los siguientes:
 <br><br>
-<table style="width: 60%; margin: 0 auto;">
+<table style="width: 60%; border: 1.5px solid #95cf32;">
 <tr>
 <td style="width: 100%; text-align: center; background: #95cf32; color: white;">Interbank</td>
 </tr>
