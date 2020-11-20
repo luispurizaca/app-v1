@@ -1495,7 +1495,7 @@ if($ver_pacientes == 1){
 $date1 = new DateTime(date('Y-m-d'));
 $date2 = new DateTime(date('Y-m-d', strtotime($row[5])));
 $diff = $date1->diff($date2);
-$ret_dias_vencimiento = $diff->days . ' d&iacute;as'.'<br>'.$date1.'<br>'.$date2;
+$ret_dias_vencimiento = $diff->days . ' d&iacute;as'.'<br>'.date('Y-m-d').'<br>'.date('Y-m-d', strtotime($row[5]));
 ?>
 <tr class="tr-hover" style="cursor: pointer;">
 <td class="td-content" style="width: 4% !important;"><?php echo $ret_codigo; ?></td>
