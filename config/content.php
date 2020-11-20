@@ -5298,6 +5298,19 @@ $('#div_plan_paciente').html(datos).fadeIn('slow');
 //AGENDA
 if($view_controller == 8){
 ?>
+<style>
+#calendar {
+max-width: 800px;
+}
+.col-centered{
+float: none;
+margin: 0 auto;
+}
+.fc-unthemed th, .fc-state-active{
+background-color: #95cf32 !important;
+border-color: #95cf32 !important;
+}
+</style>
 <div class="card-box mb-30">
 <div class="card-box pd-20 height-100-p mb-30">
 <div style="margin-top: 30px; margin-bottom: 20px;">
