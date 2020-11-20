@@ -1421,13 +1421,14 @@ if($ver_pacientes == 1){
 <td class="td-title" style="width: 4% !important;">N&#176;</td>
 <td class="td-title" style="width: 12% !important;">Socio</td>
 <td class="td-title" style="width: 8% !important;">Correo</td>
-<td class="td-title" style="width: 8% !important;">Cumplea&ntilde;os</td>
-<td class="td-title" style="width: 8% !important;">Fecha Venta</td>
-<td class="td-title" style="width: 8% !important;">Paquete</td>
-<td class="td-title" style="width: 8% !important;">Plan</td>
-<td class="td-title" style="width: 8% !important;">Inicio<br>del plan</td>
-<td class="td-title" style="width: 8% !important;">Fin<br>del Plan</td>
-<td class="td-title" style="width: 8% !important;">Vencimiento</td>
+<td class="td-title" style="width: 7% !important;">Cumplea&ntilde;os</td>
+<td class="td-title" style="width: 7% !important;">Fecha Venta</td>
+<td class="td-title" style="width: 7% !important;">Paquete</td>
+<td class="td-title" style="width: 7% !important;">Plan</td>
+<td class="td-title" style="width: 7% !important;">Inicio<br>del plan</td>
+<td class="td-title" style="width: 7% !important;">Fin<br>del Plan</td>
+<td class="td-title" style="width: 7% !important;">Fecha<br>cuota</td>
+<td class="td-title" style="width: 7% !important;">Vencimiento</td>
 <td class="td-title" style="width: 8% !important;">Estado</td>
 <td class="td-title" style="width: 12% !important;">Nutricionista</td>
 </tr>
@@ -1500,13 +1501,14 @@ $ret_dias_vencimiento = $diff->days . ' d&iacute;as';
 <td class="td-content" style="width: 4% !important;"><?php echo $ret_codigo; ?></td>
 <td class="td-content" style="width: 12% !important;"><?php echo $ret_nombre_paciente; ?></td>
 <td class="td-content" style="width: 8% !important;"><?php echo $ret_correo; ?></td>
-<td class="td-content" style="width: 8% !important;"><?php echo $ret_dia_cumpleanos; ?></td>
-<td class="td-content" style="width: 8% !important;"><?php echo $ret_fecha_venta; ?></td>
-<td class="td-content" style="width: 8% !important;"><?php echo $ret_nombre_paquete; ?></td>
-<td class="td-content" style="width: 8% !important;"><?php echo $ret_nombre_programa; ?></td>
-<td class="td-content" style="width: 8% !important;" onclick="act_fecha_fin(1, '<?php echo date('Y-m-d', strtotime($row[4])); ?>', <?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_inicio; ?></td>
-<td class="td-content" style="width: 8% !important;" onclick="act_fecha_fin(2, '<?php echo date('Y-m-d', strtotime($row[5])); ?>', <?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_fin; ?></td>
-<td class="td-content" style="width: 8% !important;"><?php echo $ret_dias_vencimiento; ?></td>
+<td class="td-content" style="width: 7% !important;"><?php echo $ret_dia_cumpleanos; ?></td>
+<td class="td-content" style="width: 7% !important;"><?php echo $ret_fecha_venta; ?></td>
+<td class="td-content" style="width: 7% !important;"><?php echo $ret_nombre_paquete; ?></td>
+<td class="td-content" style="width: 7% !important;"><?php echo $ret_nombre_programa; ?></td>
+<td class="td-content" style="width: 7% !important;" onclick="act_fecha_fin(1, '<?php echo date('Y-m-d', strtotime($row[4])); ?>', <?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_inicio; ?></td>
+<td class="td-content" style="width: 7% !important;" onclick="act_fecha_fin(2, '<?php echo date('Y-m-d', strtotime($row[5])); ?>', <?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_fin; ?></td>
+<td class="td-content" style="width: 7% !important;" onclick="act_fecha_fin(2, '<?php echo date('Y-m-d', strtotime($row[5])); ?>', <?php echo $ret_id_suscripcion; ?>)"><?php echo $ret_fecha_fin; ?></td>
+<td class="td-content" style="width: 7% !important;"><?php echo $ret_dias_vencimiento; ?></td>
 <td class="td-content" style="width: 8% !important;"><?php echo $ret_texto_estado; ?></td>
 <td class="td-content" style="width: 12% !important;"><?php echo $ret_nombre_nutricionista; ?></td>
 </tr>
