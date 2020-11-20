@@ -9,6 +9,9 @@ require_once (__DIR__.'/conexion_bd.php');
 //LOAD FULL CALENDAR
 if($fullcalendar == 1){
 
+//FECHA INICIAL DEL CALENDARIO
+$fecha = date('Y-m-d', strtotime($_GET['fecha']));
+
 //SI ES LA AGENDA DEL REPORTE
 $reporte = (int)$_GET['reporte'];
 if($reporte == 1){
@@ -36,11 +39,6 @@ $events = $req->fetchAll();
 ?>
 <div id="calendar" class="col-centered"></div>
 <script>
-var date = new Date();
-var yyyy = date.getFullYear().toString();
-var mm = (date.getMonth()+1).toString().length == 1 ? "0"+(date.getMonth()+1).toString() : (date.getMonth()+1).toString();
-var dd  = (date.getDate()).toString().length == 1 ? "0"+(date.getDate()).toString() : (date.getDate()).toString();
-
 $('#calendar').fullCalendar({
 header: {
 language: 'es',
@@ -48,14 +46,13 @@ left: 'prev, next today',
 center: 'title',
 right: 'month, agendaWeek, agendaDay'
 },
-defaultDate: yyyy+"-"+mm+"-"+dd,
+defaultDate: '<?php echo $fecha; ?>',
 editable: true,
 eventLimit: true, // allow "more" link when too many events
 selectable: true,
 selectHelper: true,
-defaultView: 'agendaWeek',
-select: function(start, end) {
-
+defaultView: 'agendaDay',
+select: function(start, end){
 $('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
 $('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
 $('#ModalAdd').modal('show');
@@ -69,14 +66,10 @@ $('#ModalEdit').modal('show');
 });
 },
 eventDrop: function(event, delta, revertFunc) { // si changement de position
-
 edit(event);
-
 },
 eventResize: function(event,dayDelta,minuteDelta,revertFunc) { // si changement de longueur
-
 edit(event);
-
 },
 events: [
 <?php foreach($events as $event): 
@@ -123,6 +116,7 @@ color: '<?php echo $event['color']; ?>',
 });
 </script>
 <?php
+exit();
 exit();
 }
 
@@ -241,16 +235,16 @@ border-color: #95cf32 !important;
 </div>
 <!-- SCRIPT -->
 <script>
-function loadFullCalendar(){
+function loadFullCalendar(fecha){
 $('#resultado_calendar').html('');
 $.ajax({
-url: 'config/content.php?fullcalendar=1',
+url: 'config/content.php?fullcalendar=1&fecha='+fecha,
 success: function(res){
 $('#resultado_calendar').html(res);
 }
 });
 }
-loadFullCalendar();
+loadFullCalendar('<?php echo date('Y-m-d'); ?>');
 
 function edit(event){
 start = event.start.format('YYYY-MM-DD HH:mm:ss');
@@ -652,7 +646,7 @@ $nombre_cb = $row_id_n[1];
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">Fecha de Inicio</label>
-<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>" readonly="readonly" style="background: white; cursor: not-allowed;">
+<input id="form_fecha_suscripcion" name="form_fecha_suscripcion" class="form-control n-form-control" type="date" placeholder="Fecha de Inicio" value="<?php echo date('Y-m-d'); ?>">
 </div>
 </div>
 <div class="col-md-3 col-sm-6">
@@ -666,7 +660,7 @@ $nombre_cb = $row_id_n[1];
 <label class="n-label">Agendar Cita</label>
 <button type="button" class="btn" style="background: #95cf32; color: white; height: 25px; padding: 3px; font-size: 12px;" data-toggle="modal" data-target="#ModalOpen" onclick="scrollreset()">
 <i class="fa fa-calendar"></i>
-Seleccionar Fecha
+Fecha / Hora
 </button>
 </div>
 </div>
@@ -5231,16 +5225,16 @@ if($view_controller == 8){
 <h1 style="text-align: center;">Mi Agenda</h1><br>
 <div id="resultado_calendar"></div>
 <script>
-function loadFullCalendar(){
+function loadFullCalendar(fecha){
 $('#resultado_calendar').html('');
 $.ajax({
-url: 'config/content.php?fullcalendar=1&reporte=1',
+url: 'config/content.php?fullcalendar=1&reporte=1&fecha='+fecha,
 success: function(res){
 $('#resultado_calendar').html(res);
 }
 });
 }
-loadFullCalendar();
+loadFullCalendar('<?php echo date('Y-m-d'); ?>');
 </script>
 </div>
 </div>

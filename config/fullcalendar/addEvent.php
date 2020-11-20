@@ -34,7 +34,7 @@ $events = $req->fetchAll();
 <script>
 $('#ModalAdd').modal('toggle');
 scrollreset();
-loadFullCalendar();
+loadFullCalendar('<?php echo date('Y-m-d', strtotime($start)); ?>');
 </script>
 <?php
 }

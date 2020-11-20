@@ -27,7 +27,7 @@ die ('OK');
 <script>
 alert('Actualizado Correctamente!');
 scrollreset();
-loadFullCalendar();
+loadFullCalendar('<?php echo date('Y-m-d', strtotime($start)); ?>');
 </script>
 <?php
 }
