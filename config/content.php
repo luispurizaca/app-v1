@@ -5317,14 +5317,14 @@ border-color: #95cf32 !important;
 
 
 <div class="row">
-<div class="col-md-2 col-xs-12">
+<div class="col-md-3 col-xs-12">
 <label>Buscar:</label>
 <div class="input-group">
-    <input id="form_busqueda_agenda" name="form_busqueda_agenda" class="form-control n-form-control ui-autocomplete-input" style="width: 50% !important;" type="text" placeholder="Buscar:">
-<button type="button" class="btn" style="width: 50% !important; background: #95cf32; color: white; height: 25px; padding: 2px; font-size: 13px;"><i class="fa fa-search"></i></button>
+<input id="form_busqueda_agenda" name="form_busqueda_agenda" class="form-control n-form-control ui-autocomplete-input" style="width: 80% !important;" type="text" placeholder="Buscar:">
+<button type="button" class="btn" style="width: 20% !important; background: #95cf32; color: white; height: 25px; padding: 2px; font-size: 13px;"><i class="fa fa-search"></i></button>
 </div>
 </div>
-<div class="col-md-10 hidden-xs">
+<div class="col-md-9 hidden-xs">
 
 </div>
 </div>
