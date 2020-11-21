@@ -5312,6 +5312,23 @@ border-color: #95cf32 !important;
 <div class="card-box pd-20 height-100-p mb-30">
 <div style="margin-top: 30px; margin-bottom: 20px;">
 <h1 style="text-align: center;">Mi Agenda</h1><br>
+
+
+
+
+<div class="row">
+<div class="col-md-2 col-xs-12">
+<label>Buscar:</label>
+<input id="form_busqueda_agenda" name="form_busqueda_agenda" class="form-control n-form-control ui-autocomplete-input" type="text" placeholder="Buscar:">
+</div>
+<div class="col-md-10 hidden-xs">
+
+</div>
+</div>
+
+
+
+
 <div id="resultado_calendar"></div>
 <script>
 function loadFullCalendar(fecha){
