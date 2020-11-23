@@ -5457,7 +5457,7 @@ var color = $('#color').val();
 var start = $('#start').val();
 var end = $('#end').val();
 $.ajax({
-url: 'config/fullcalendar/addEvent.php',
+url: 'config/fullcalendar/addEvent.php?id_tipo_usuario=<?php echo $_SESSION['ID_TIPO_USUARIO']; ?>&id_usuario=<?php echo $_SESSION['ID_USUARIO']; ?>',
 type: 'POST',
 data: {title : title, color : color, start : start, end : end},
 success: function(res){

@@ -7,8 +7,24 @@ if (isset($_POST['title']) && isset($_POST['start']) && isset($_POST['end']) && 
 	$start = $_POST['start'];
 	$end = $_POST['end'];
 	$color = $_POST['color'];
+        
+        $id_tipo_usuario = (int)$_GET['id_tipo_usuario'];
+        $id_usuario = (int)$_GET['id_usuario'];
+        
+        $id_vendedor = 0;
+        $id_nutricionista = 0;
+        $id_paciente = 0;
+        $id_suscripcion = 0;
+        
+        if($id_tipo_usuario == 4){
+        $id_vendedor = $id_usuario;
+        }
+        if($id_tipo_usuario == 1){
+        $id_nutricionista = $id_usuario;
+        }
+        
 
-	$sql = "INSERT INTO events(title, start, end, color) values ('$title', '$start', '$end', '$color')";
+	$sql = "INSERT INTO events(title, color, start, end, id_vendedor, id_nutricionista, id_paciente, id_suscripcion) VALUES ('$title', '$color', '$start', '$end', '$id_vendedor', '$id_nutricionista', '$id_paciente', '$id_suscripcion')";
 	
 	$query = $bdd->prepare( $sql );
 	if ($query == false) {
