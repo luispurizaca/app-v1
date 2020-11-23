@@ -38,123 +38,6 @@ $req->execute();
 $events = $req->fetchAll();
 ?>
 <div id="calendar" class="col-centered"></div>
-<script>
-$('#calendar').fullCalendar({
-header: {
-language: 'es',
-left: 'prev, next today',
-center: 'title',
-right: 'month, agendaWeek, agendaDay'
-},
-defaultDate: '<?php echo $fecha; ?>',
-editable: true,
-eventLimit: true, // allow "more" link when too many events
-selectable: true,
-selectHelper: true,
-defaultView: 'agendaDay',
-select: function(start, end){
-$('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
-$('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
-$('#ModalAdd').modal('show');
-},
-eventRender: function(event, element) {
-element.bind('dblclick', function() {
-$('#ModalEdit #id').val(event.id);
-$('#ModalEdit #title').val(event.title);
-$('#ModalEdit #color').val(event.color);
-$('#ModalEdit').modal('show');
-});
-},
-eventDrop: function(event, delta, revertFunc) { // si changement de position
-edit(event);
-},
-eventResize: function(event,dayDelta,minuteDelta,revertFunc) { // si changement de longueur
-edit(event);
-},
-events: [
-<?php foreach($events as $event): 
-
-$c_id_paciente = (int)$event['id_paciente'];                            
-$row_nombre_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT nombres, apellidos FROM usuario WHERE id = '$c_id_paciente' LIMIT 1"));
-$nombre_paciente = $row_nombre_paciente[0].' '.$row_nombre_paciente[1];
-
-$c_id_nutricionista = (int)$event['id_nutricionista'];
-$row_nombre_nutricionista = mysqli_fetch_array(mysqli_query($con, "SELECT nombres, apellidos FROM usuario WHERE id = '$c_id_nutricionista' LIMIT 1"));
-$nombre_nutricionista = $row_nombre_nutricionista[0].' '.$row_nombre_nutricionista[1];
-
-//TITULO
-$c_title  = $event['title'];
-if(!empty($c_id_paciente)){
-$c_title .= ' \nS:'.$nombre_paciente;
-}
-if(!empty($c_id_nutricionista)){
-$c_title .= ' \nN:'.$nombre_nutricionista;
-}
-
-$start = explode(" ", $event['start']);
-$end = explode(" ", $event['end']);
-if($start[1] == '00:00:00'){
-$start = $start[0];
-}else{
-$start = $event['start'];
-}
-if($end[1] == '00:00:00'){
-$end = $end[0];
-}else{
-$end = $event['end'];
-}
-?>
-{
-id: '<?php echo $event['id']; ?>',
-title: '<?php echo $c_title; ?>',
-start: '<?php echo $start; ?>',
-end: '<?php echo $end; ?>',
-color: '<?php echo $event['color']; ?>',
-},
-<?php endforeach; ?>
-]
-});
-</script>
-<?php
-exit();
-exit();
-}
-
-//FORMULARIO NUEVO REGISTRO
-if($negocia_operacion == 1){
-mysqli_query($con, "DELETE FROM events WHERE id_vendedor = 0 AND id_nutricionista = 0 AND id_paciente = 0");
-?>
-<style>
-#calendar {
-max-width: 800px;
-}
-.col-centered{
-float: none;
-margin: 0 auto;
-}
-.fc-unthemed th, .fc-state-active{
-background-color: #95cf32 !important;
-border-color: #95cf32 !important;
-}
-</style>
-<!-- Modal OPEN -->
-<div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
-<div class="modal-dialog modal-lg" role="document" style="margin-top: 0px !important;">
-<div class="modal-content">
-<div class="modal-body">
-<div class="row">
-<div class="col-lg-12 text-center">
-<div id="resultado_agenda"></div>
-<div id="resultado_calendar"></div>
-</div>
-</div>
-</div>
-<div class="modal-footer" style="text-align: center; display: block;">
-<button style="border: 1px solid #95cf32; color: #95cf32;" type="button" class="btn" data-dismiss="modal" onclick="scrollreset2()">Cerrar</button>
-</div>
-</div>
-</div>
-</div>
 <!-- Modal ADD -->
 <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
 <div class="modal-dialog" role="document" style="margin-top: 0px !important;">
@@ -233,8 +116,191 @@ border-color: #95cf32 !important;
 </div>
 </div>
 </div>
-<?php
+<script>
+$('#calendar').fullCalendar({
+header: {
+language: 'es',
+left: 'prev, next today',
+center: 'title',
+right: 'month, agendaWeek, agendaDay'
+},
+defaultDate: '<?php echo $fecha; ?>',
+editable: true,
+eventLimit: true, // allow "more" link when too many events
+selectable: true,
+selectHelper: true,
+defaultView: 'agendaDay',
+select: function(start, end){
+$('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
+$('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
+$('#ModalAdd').modal('show');
+},
+eventRender: function(event, element) {
+element.bind('dblclick', function() {
+$('#ModalEdit #id').val(event.id);
+$('#ModalEdit #title').val(event.title);
+$('#ModalEdit #color').val(event.color);
+$('#ModalEdit').modal('show');
+});
+},
+eventDrop: function(event, delta, revertFunc) { // si changement de position
+edit(event);
+},
+eventResize: function(event,dayDelta,minuteDelta,revertFunc) { // si changement de longueur
+edit(event);
+},
+events: [
+<?php foreach($events as $event): 
 
+$c_id_paciente = (int)$event['id_paciente'];                            
+$row_nombre_paciente = mysqli_fetch_array(mysqli_query($con, "SELECT nombres, apellidos FROM usuario WHERE id = '$c_id_paciente' LIMIT 1"));
+$nombre_paciente = $row_nombre_paciente[0].' '.$row_nombre_paciente[1];
+
+$c_id_nutricionista = (int)$event['id_nutricionista'];
+$row_nombre_nutricionista = mysqli_fetch_array(mysqli_query($con, "SELECT nombres, apellidos FROM usuario WHERE id = '$c_id_nutricionista' LIMIT 1"));
+$nombre_nutricionista = $row_nombre_nutricionista[0].' '.$row_nombre_nutricionista[1];
+
+//TITULO
+$c_title  = $event['title'];
+if(!empty($c_id_paciente)){
+$c_title .= ' \nS:'.$nombre_paciente;
+}
+if(!empty($c_id_nutricionista)){
+$c_title .= ' \nN:'.$nombre_nutricionista;
+}
+
+$start = explode(" ", $event['start']);
+$end = explode(" ", $event['end']);
+if($start[1] == '00:00:00'){
+$start = $start[0];
+}else{
+$start = $event['start'];
+}
+if($end[1] == '00:00:00'){
+$end = $end[0];
+}else{
+$end = $event['end'];
+}
+?>
+{
+id: '<?php echo $event['id']; ?>',
+title: '<?php echo $c_title; ?>',
+start: '<?php echo $start; ?>',
+end: '<?php echo $end; ?>',
+color: '<?php echo $event['color']; ?>',
+},
+<?php endforeach; ?>
+]
+});
+<?php
+if($_SESSION['ID_TIPO_USUARIO'] == 2){
+?>
+function edit(event){
+start = event.start.format('YYYY-MM-DD HH:mm:ss');
+if(event.end){
+end = event.end.format('YYYY-MM-DD HH:mm:ss');
+}else{
+end = start;
+}
+
+id =  event.id;
+
+Event = [];
+Event[0] = id;
+Event[1] = start;
+Event[2] = end;
+
+$.ajax({
+url: 'config/fullcalendar/editEventDate.php',
+type: "POST",
+data: {Event:Event},
+success: function(rep) {
+if(rep == 'OK'){
+alert('Evento se ha guardado correctamente');
+}else{
+alert('No se pudo guardar. Inténtalo de nuevo.'); 
+}
+}
+});
+}
+function eventmodalAdd(){
+var title = $('#title').val();
+var color = $('#color').val();
+var start = $('#start').val();
+var end = $('#end').val();
+$.ajax({
+url: 'config/fullcalendar/addEvent.php',
+type: 'POST',
+data: {title : title, color : color, start : start, end : end},
+success: function(res){
+$('#resultado_agenda').html(res);
+}
+});
+}
+function eventmodalEdit(){
+var title = $('#title2').val();
+var color = $('#color2').val();
+var delete_event;
+if (document.getElementById('delete_event').checked){
+delete_event = 1;
+} else {
+delete_event = 0;
+}
+var id = $('#id').val();
+$.ajax({
+url: 'config/fullcalendar/editEventTitle.php',
+type: 'POST',
+data: {title : title, color : color, delete_event : delete_event, id : id},
+success: function(res){
+$('#resultado_agenda').html(res);
+}
+});
+}
+<?php
+}
+?>
+</script>
+<?php
+exit();
+exit();
+}
+
+//FORMULARIO NUEVO REGISTRO
+if($negocia_operacion == 1){
+mysqli_query($con, "DELETE FROM events WHERE id_vendedor = 0 AND id_nutricionista = 0 AND id_paciente = 0");
+?>
+<style>
+#calendar {
+max-width: 800px;
+}
+.col-centered{
+float: none;
+margin: 0 auto;
+}
+.fc-unthemed th, .fc-state-active{
+background-color: #95cf32 !important;
+border-color: #95cf32 !important;
+}
+</style>
+<!-- Modal OPEN -->
+<div class="modal fade" id="ModalOpen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+<div class="modal-dialog modal-lg" role="document" style="margin-top: 0px !important;">
+<div class="modal-content">
+<div class="modal-body">
+<div class="row">
+<div class="col-lg-12 text-center">
+<div id="resultado_agenda"></div>
+<div id="resultado_calendar"></div>
+</div>
+</div>
+</div>
+<div class="modal-footer" style="text-align: center; display: block;">
+<button style="border: 1px solid #95cf32; color: #95cf32;" type="button" class="btn" data-dismiss="modal" onclick="scrollreset2()">Cerrar</button>
+</div>
+</div>
+</div>
+</div>
+<?php
 //TIPO DE USUARIO
 $id_paciente = (int)$_GET['negocia_tipo'];
 $get_nuevo_vendedor = (int)$_GET['get_nuevo_vendedor'];
@@ -1583,34 +1649,6 @@ $('#resultado_calendar').html(res);
 }
 });
 }
-function edit(event){
-start = event.start.format('YYYY-MM-DD HH:mm:ss');
-if(event.end){
-end = event.end.format('YYYY-MM-DD HH:mm:ss');
-}else{
-end = start;
-}
-
-id =  event.id;
-
-Event = [];
-Event[0] = id;
-Event[1] = start;
-Event[2] = end;
-
-$.ajax({
-url: 'config/fullcalendar/editEventDate.php',
-type: "POST",
-data: {Event:Event},
-success: function(rep) {
-if(rep == 'OK'){
-alert('Evento se ha guardado correctamente');
-}else{
-alert('No se pudo guardar. Inténtalo de nuevo.'); 
-}
-}
-});
-}
 function scrollreset(){
 $('#ModalOpen').css('overflow-y', 'scroll');
 $('body').css('overflow-y', 'hidden');
@@ -1618,39 +1656,6 @@ $('body').css('overflow-y', 'hidden');
 function scrollreset2(){
 $('#ModalOpen').css('overflow-y', 'hidden');
 $('body').css('overflow-y', 'scroll');
-}
-function eventmodalAdd(){
-var title = $('#title').val();
-var color = $('#color').val();
-var start = $('#start').val();
-var end = $('#end').val();
-$.ajax({
-url: 'config/fullcalendar/addEvent.php',
-type: 'POST',
-data: {title : title, color : color, start : start, end : end},
-success: function(res){
-$('#resultado_agenda').html(res);
-}
-});
-}
-function eventmodalEdit(){
-var title = $('#title2').val();
-var color = $('#color2').val();
-var delete_event;
-if (document.getElementById('delete_event').checked){
-delete_event = 1;
-} else {
-delete_event = 0;
-}
-var id = $('#id').val();
-$.ajax({
-url: 'config/fullcalendar/editEventTitle.php',
-type: 'POST',
-data: {title : title, color : color, delete_event : delete_event, id : id},
-success: function(res){
-$('#resultado_agenda').html(res);
-}
-});
 }
 function consultar_doc(){
 var form_tipo_documento = $('#form_tipo_documento').val();
