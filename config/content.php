@@ -5446,7 +5446,7 @@ alert('No se pudo guardar. Inténtalo de nuevo.');
 });
 }
 function scrollreset(){
-$('body').css('overflow-y', 'hidden');
+$('body').css('overflow-y', 'scroll');
 }
 function scrollreset2(){
 $('body').css('overflow-y', 'scroll');
