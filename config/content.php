@@ -2,9 +2,92 @@
 session_start();
 $negocia_operacion = (int)$_GET['negocia_operacion'];
 $fullcalendar = (int)$_GET['fullcalendar'];
+$busqueda_agenda = (int)$_GET['busqueda_agenda'];
 
 //CONEXION
 require_once (__DIR__.'/conexion_bd.php');
+
+//BUSQUEDA AGENDA
+if($busqueda_agenda == 1){
+
+$txt = (int)$_GET['txt'];
+
+//RESULTADOS
+if($_SESSION['ID_TIPO_USUARIO'] == 1){
+$where = "AND id_nutricionista = '".$_SESSION['ID_USUARIO']."'";
+} elseif($_SESSION['ID_TIPO_USUARIO'] == 2){
+$where = "AND id_paciente = '".$_SESSION['ID_USUARIO']."'";
+} elseif($_SESSION['ID_TIPO_USUARIO'] == 4){
+$where = "AND id_vendedor = '".$_SESSION['ID_USUARIO']."'";
+} else {
+$where = '';
+}
+
+$sql = "
+
+SELECT
+tb_events.id,
+tb_events.title,
+tb_events.start,
+tb_events.end,
+tb_events.color,
+tb_vendedor.nombres,
+tb_vendedor.apellidos,
+tb_nutricionista.nombres,
+tb_nutricionista.apellidos,
+tb_paciente.nombres,
+tb_paciente.apellidos
+FROM events tb_events
+INNER JOIN usuario tb_vendedor
+ON (tb_vendedor.id = tb_events.id_vendedor AND tb_vendedor.id_tipo_usuario = 4)
+INNER JOIN usuario tb_nutricionista
+ON (tb_nutricionista.id = tb_events.id_nutricionista AND tb_nutricionista.id_tipo_usuario = 1)
+INNER JOIN usuario tb_paciente
+ON (tb_paciente.id = tb_events.id_paciente AND tb_paciente.id_tipo_usuario = 2)
+WHERE 1 = 1 $where
+";
+
+//BUSCAR
+if(!empty($txt)){
+$sql .= " AND (tb_vendedor.nombres LIKE '%$txt%' OR tb_vendedor.apellidos LIKE '%$txt%')";
+$sql .= " AND (tb_nutricionista.nombres LIKE '%$txt%' OR tb_nutricionista.apellidos LIKE '%$txt%')";
+$sql .= " AND (tb_paciente.nombres LIKE '%$txt%' OR tb_paciente.apellidos LIKE '%$txt%')";
+}
+
+//ORDER BY
+$sql .= " ORDER BY tb_events.start ASC";
+
+//LIMIT
+$sql .= " LIMIT 0, 20";
+
+//QUERY
+$query_agenda = mysqli_query($con, $sql);
+?>
+<table style="width: 500px !important; margin: 0 auto;">
+<tr>
+<td class="td-title" style="width: 33% !important;">T&iacute;tulo</td>
+<td class="td-title" style="width: 33% !important;">Fecha Inicio</td>
+<td class="td-title" style="width: 33% !important;">Fecha Fin</td>
+</tr>
+<?php
+while($row_agenda = mysqli_fetch_array($query_agenda)){
+$titulo = $row_agenda[1];
+$fecha_inicio = $row_agenda[2];
+$fecha_fin = $row_agenda[3];
+?>
+<tr class="tr-hover" style="cursor: pointer;" onclick="loadFullCalendar('<?php echo date('Y-m-d', strtotime($fecha_inicio)); ?>')">
+<td class="td-title" style="width: 33% !important;"><?php echo $titulo; ?></td>
+<td class="td-title" style="width: 33% !important;"><?php echo $fecha_inicio; ?></td>
+<td class="td-title" style="width: 33% !important;"><?php echo $fecha_fin; ?></td>
+</tr>
+<?php
+}
+?>
+</table>
+<?php
+exit();
+exit();
+}
 
 //LOAD FULL CALENDAR
 if($fullcalendar == 1){
@@ -5317,7 +5400,7 @@ border-color: #95cf32 !important;
 <label>Buscar:</label>
 <div class="input-group">
 <input id="form_busqueda_agenda" name="form_busqueda_agenda" class="form-control n-form-control ui-autocomplete-input" style="width: 80% !important;" type="text" placeholder="Buscar:">
-<button type="button" class="btn" style="width: 20% !important; background: #95cf32; color: white; height: 25px; padding: 2px; font-size: 13px;"><i class="fa fa-search"></i></button>
+<button onclick="busqueda_agenda()" type="button" class="btn" style="width: 20% !important; background: #95cf32; color: white; height: 25px; padding: 2px; font-size: 13px;"><i class="fa fa-search"></i></button>
 </div>
 </div>
 <div class="col-md-9 hidden-xs"></div>
@@ -5415,8 +5498,6 @@ $('#resultado_calendar').html(res);
 });
 }
 loadFullCalendar('<?php echo date('Y-m-d'); ?>');
-
-
 function edit(event){
 start = event.start.format('YYYY-MM-DD HH:mm:ss');
 if(event.end){
@@ -5481,6 +5562,17 @@ type: 'POST',
 data: {title : title, color : color, delete_event : delete_event, id : id},
 success: function(res){
 $('#resultado_agenda').html(res);
+}
+});
+}
+
+function busqueda_agenda(){
+$('#resultado_calendar').html('');
+var txt = $('#form_busqueda_agenda').val();
+$.ajax({
+url: 'config/content.php?busqueda_agenda=1&txt='+txt,
+success: function(res){
+$('#resultado_calendar').html(res);
 }
 });
 }
