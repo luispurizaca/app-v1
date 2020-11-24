@@ -61,7 +61,7 @@ $sql .= " ORDER BY tb_events.start ASC";
 $sql .= " LIMIT 0, 20";
 
 //QUERY
-$query_agenda = mysqli_query($con, $sql);
+$query_agenda = mysqli_query($con, $sql); echo $sql;
 ?>
 <table style="width: 500px !important; margin: 0 auto;">
 <tr>
