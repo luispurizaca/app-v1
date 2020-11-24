@@ -14,11 +14,11 @@ $txt = (int)$_GET['txt'];
 
 //RESULTADOS
 if($_SESSION['ID_TIPO_USUARIO'] == 1){
-$where = "AND id_nutricionista = '".$_SESSION['ID_USUARIO']."'";
+$where = "AND tb_events.id_nutricionista = '".$_SESSION['ID_USUARIO']."'";
 } elseif($_SESSION['ID_TIPO_USUARIO'] == 2){
-$where = "AND id_paciente = '".$_SESSION['ID_USUARIO']."'";
+$where = "AND tb_events.id_paciente = '".$_SESSION['ID_USUARIO']."'";
 } elseif($_SESSION['ID_TIPO_USUARIO'] == 4){
-$where = "AND id_vendedor = '".$_SESSION['ID_USUARIO']."'";
+$where = "AND tb_events.id_vendedor = '".$_SESSION['ID_USUARIO']."'";
 } else {
 $where = '';
 }
@@ -61,7 +61,7 @@ $sql .= " ORDER BY tb_events.start ASC";
 $sql .= " LIMIT 0, 20";
 
 //QUERY
-$query_agenda = mysqli_query($con, $sql); echo $sql;
+$query_agenda = mysqli_query($con, $sql);
 ?>
 <table style="width: 500px !important; margin: 0 auto;">
 <tr>
