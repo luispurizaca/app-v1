@@ -76,9 +76,9 @@ $fecha_inicio = $row_agenda[2];
 $fecha_fin = $row_agenda[3];
 ?>
 <tr class="tr-hover" style="cursor: pointer;" onclick="loadFullCalendar('<?php echo date('Y-m-d', strtotime($fecha_inicio)); ?>')">
-<td class="td-title" style="width: 33% !important;"><?php echo $titulo; ?></td>
-<td class="td-title" style="width: 33% !important;"><?php echo $fecha_inicio; ?></td>
-<td class="td-title" style="width: 33% !important;"><?php echo $fecha_fin; ?></td>
+<td class="td-title" style="width: 33% !important; background: white; color: #333;"><?php echo $titulo; ?></td>
+<td class="td-title" style="width: 33% !important; background: white; color: #333;"><?php echo $fecha_inicio; ?></td>
+<td class="td-title" style="width: 33% !important; background: white; color: #333;"><?php echo $fecha_fin; ?></td>
 </tr>
 <?php
 }
