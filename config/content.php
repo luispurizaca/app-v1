@@ -49,9 +49,9 @@ WHERE 1 = 1 $where
 
 //BUSCAR
 if(!empty($txt)){
-$sql .= " AND (tb_vendedor.nombres LIKE '%$txt%' OR tb_vendedor.apellidos LIKE '%$txt%')";
-$sql .= " AND (tb_nutricionista.nombres LIKE '%$txt%' OR tb_nutricionista.apellidos LIKE '%$txt%')";
-$sql .= " AND (tb_paciente.nombres LIKE '%$txt%' OR tb_paciente.apellidos LIKE '%$txt%')";
+$sql .= " AND (tb_vendedor.nombres LIKE '%".$txt."%' OR tb_vendedor.apellidos LIKE '%".$txt."%')";
+$sql .= " AND (tb_nutricionista.nombres LIKE '%".$txt."%' OR tb_nutricionista.apellidos LIKE '%".$txt."%')";
+$sql .= " AND (tb_paciente.nombres LIKE '%".$txt."%' OR tb_paciente.apellidos LIKE '%".$txt."%')";
 }
 
 //ORDER BY
