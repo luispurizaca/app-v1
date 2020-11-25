@@ -776,7 +776,7 @@ $('#form_fecha_suscripcion_fin_2').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_3').on('click', function(){
 $('#suscripcion_tercera').css('display', 'block');
-$('#btn_abrir_plan_2').css('display', 'none');
+$('#eliminar_suscripcion_2').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('3');
 });
@@ -879,7 +879,7 @@ $('#form_fecha_suscripcion_fin_3').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_4').on('click', function(){
 $('#suscripcion_cuarta').css('display', 'block');
-$('#btn_abrir_plan_3').css('display', 'none');
+$('#eliminar_suscripcion_3').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('4');
 });
@@ -982,7 +982,7 @@ $('#form_fecha_suscripcion_fin_4').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_5').on('click', function(){
 $('#suscripcion_quinta').css('display', 'block');
-$('#btn_abrir_plan_4').css('display', 'none');
+$('#eliminar_suscripcion_4').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('5');
 });
@@ -1085,7 +1085,7 @@ $('#form_fecha_suscripcion_fin_5').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_6').on('click', function(){
 $('#suscripcion_sexta').css('display', 'block');
-$('#btn_abrir_plan_5').css('display', 'none');
+$('#eliminar_suscripcion_5').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('6');
 });
@@ -1188,7 +1188,7 @@ $('#form_fecha_suscripcion_fin_6').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_7').on('click', function(){
 $('#suscripcion_septima').css('display', 'block');
-$('#btn_abrir_plan_6').css('display', 'none');
+$('#eliminar_suscripcion_6').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('7');
 });
@@ -1291,7 +1291,7 @@ $('#form_fecha_suscripcion_fin_7').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_8').on('click', function(){
 $('#suscripcion_octava').css('display', 'block');
-$('#btn_abrir_plan_7').css('display', 'none');
+$('#eliminar_suscripcion_7').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('8');
 });
@@ -1394,7 +1394,7 @@ $('#form_fecha_suscripcion_fin_8').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_9').on('click', function(){
 $('#suscripcion_novena').css('display', 'block');
-$('#btn_abrir_plan_8').css('display', 'none');
+$('#eliminar_suscripcion_8').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('9');
 });
@@ -1497,7 +1497,7 @@ $('#form_fecha_suscripcion_fin_9').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_10').on('click', function(){
 $('#suscripcion_decima').css('display', 'block');
-$('#btn_abrir_plan_9').css('display', 'none');
+$('#eliminar_suscripcion_9').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('10');
 });
