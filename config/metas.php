@@ -32,7 +32,7 @@ if($view_controller == 7){
 $title = 'Recetas';
 }
 if($view_controller == 8){
-$title = 'Agendas';
+$title = 'Agenda';
 }
 if($view_controller == 9){
 $title = 'Configuraci&oacute;n';

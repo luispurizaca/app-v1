@@ -5436,7 +5436,7 @@ border-color: #95cf32 !important;
 <div style="margin-top: 30px; margin-bottom: 20px;">
 <h1 style="text-align: center;">Mi Agenda</h1><br>
 <div class="row">
-<div class="col-md-7 col-xs-12" style="padding-top: 30px;">
+<div class="col-md-7 col-xs-12" style="padding-top: 25px;">
 <div id="resultado_agenda"></div>
 <div id="resultado_calendar"></div>
 </div>
