@@ -5444,7 +5444,7 @@ border-color: #95cf32 !important;
 </div>
 <div id="resultados_tabla_agenda"></div>
 </div>
-<div class="col-md-7 col-xs-12">
+<div class="col-md-7 col-xs-12" style="padding-top: 30px;">
 <div id="resultado_agenda"></div>
 <div id="resultado_calendar"></div>
 </div>
