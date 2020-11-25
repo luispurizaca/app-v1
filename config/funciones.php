@@ -46,6 +46,10 @@ $filtro_paquete = $array_filtros[18];
 $filtro_plan = $array_filtros[19];
 $filtro_id_nutricionista = $array_filtros[20];
 
+$filtro_medio_pago = $array_filtros[21];
+$filtro_cuenta_bancaria = $array_filtros[22];
+$filtro_numero_operacion = $array_filtros[23];
+
 //CONSULTA PACIENTES, NUTRICIONISTAS Y VENDEDORES
 if($view_controler == 2 || $view_controler == 10 || $view_controler == 15){
 
@@ -239,6 +243,16 @@ if(!empty($filtro_id_nutricionista)){
 $consulta_sql_general .= " AND (SUSCRIPCION_ID_NUTRICIONISTA = '".$filtro_id_nutricionista."')";
 }
 
+if(!empty($filtro_medio_pago)){
+$consulta_sql_general .= " AND (SUSCRIPCION_ID_MEDIO_PAGO = '".$filtro_medio_pago."')";
+}
+if(!empty($filtro_cuenta_bancaria)){
+$consulta_sql_general .= " AND (SUSCRIPCION_ID_CUENTA_BANCARIA = '".$filtro_cuenta_bancaria."')";
+}
+if(!empty($filtro_numero_operacion)){
+$consulta_sql_general .= " AND (SUSCRIPCION_NUMERO_OPERACION  '".$filtro_numero_operacion."')";
+}
+
 //ORDER BY
 $consulta_sql_general .= " ORDER BY SUSCRIPCION_FIN ASC";
 }
@@ -342,6 +356,16 @@ $consulta_sql_general .= " AND (DATE_FORMAT(SOCIO_FECHA_NACIMIENTO, '%m') = '".$
 }
 if(!empty($filtro_estado)){
 $consulta_sql_general .= " AND (SOCIO_ESTADO = '".$filtro_estado."')";
+}
+
+if(!empty($filtro_medio_pago)){
+$consulta_sql_general .= " AND (SUSCRIPCION_ID_MEDIO_PAGO = '".$filtro_medio_pago."')";
+}
+if(!empty($filtro_cuenta_bancaria)){
+$consulta_sql_general .= " AND (SUSCRIPCION_ID_CUENTA_BANCARIA = '".$filtro_cuenta_bancaria."')";
+}
+if(!empty($filtro_numero_operacion)){
+$consulta_sql_general .= " AND (SUSCRIPCION_NUMERO_OPERACION  '".$filtro_numero_operacion."')";
 }
 
 //ORDER BY

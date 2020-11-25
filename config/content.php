@@ -5282,10 +5282,49 @@ $texto_anual = 'Ventas del a&ntilde;o';
 <input type="text" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_socio" placeholder="Buscar:">
 </td>
 <td style="width: 25%; padding: 10px; vertical-align: middle;">
-<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Correo:</label>
-<input type="text" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_correo" placeholder="Buscar:">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Estado:</label>
+<select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_estado">
+<option value="0">Todos</option>
+<option value="1">Activo</option>
+<option value="2">Suspendido</option>
+</select>
 </td>
 <td style="width: 25%; padding: 10px; vertical-align: middle;">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Medio de Pago:</label>
+<select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_medio_pago">
+<option value="0">Todos</option>
+<?php
+$query_medios_pago = mysqli_query($con, "SELECT id, nombre FROM medios_pago ORDER BY id ASC");
+while($row_medio = mysqli_fetch_array($query_medios_pago)){
+$row_id_medio = (int)$row_medio[0];
+$row_nombre_medio = $row_medio[1];
+?>
+<option value="<?php echo $row_id_medio; ?>"><?php echo $row_nombre_medio; ?></option>
+<?php
+}
+?>
+</select>
+<div style="display: none;">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Correo:</label>
+<input type="text" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_correo" placeholder="Buscar:">
+</div>
+</td>
+<td style="width: 25%; padding: 10px; vertical-align: middle;">
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Cuenta Bancaria:</label>
+<select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_cuenta_bancaria">
+<option value="0">Todos</option>
+<?php
+$query_cuentas = mysqli_query($con, "SELECT id, banco FROM cuenta_bancaria ORDER BY id ASC");
+while($row_cuenta = mysqli_fetch_array($query_cuentas)){
+$row_id_cuenta = (int)$row_cuenta[0];
+$row_nombre_banco = $row_cuenta[1];
+?>
+<option value="<?php echo $row_id_cuenta; ?>"><?php echo $row_nombre_banco; ?></option>
+<?php
+}
+?>
+</select>
+<div style="display: none;">
 <label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Cumplea&ntilde;os:</label>
 <div class="input-group" style="width: 100% !important; margin-bottom: 0 !important;">
 <select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal; width: 50% !important;" class="form-control input-sm" id="filtro_cumple_dia">
@@ -5319,14 +5358,7 @@ $cero = '';
 <option value="12">Diciembre</option>
 </select>
 </div>
-</td>
-<td style="width: 25%; padding: 10px; vertical-align: middle;">
-<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">Estado:</label>
-<select style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_estado">
-<option value="0">Todos</option>
-<option value="1">Activo</option>
-<option value="2">Suspendido</option>
-</select>
+</div>
 </td>
 </tr>
 <tr>
@@ -5371,7 +5403,8 @@ $row_nombre_nutricionista = $row_nutricionista[2].' '.$row_nutricionista[1];
 </select>
 </td>
 <td style="width: 25%; padding: 10px; vertical-align: middle;">
-
+<label class="control-label" style="font-weight: normal; font-size: 9.5pt; margin-bottom: 5pt;">N&#176; de Operaci&oacute;n:</label>
+<input type="text" style="height: 25px; font-size: 8pt; padding: 0; padding-left: 10px; font-weight: normal;" class="form-control input-sm" id="filtro_numero_operacion" placeholder="Buscar:">
 </td>
 </tr>
 <tr>
@@ -5577,7 +5610,26 @@ filtro_id_nutricionista = $('#filtro_id_nutricionista').val();
 filtro_id_nutricionista = '';
 }
 
+var filtro_medio_pago;
+if($('#filtro_medio_pago').length > 0){
+filtro_medio_pago = $('#filtro_medio_pago').val();
+} else {
+filtro_medio_pago = '';
+}
 
+var filtro_cuenta_bancaria;
+if($('#filtro_cuenta_bancaria').length > 0){
+filtro_cuenta_bancaria = $('#filtro_cuenta_bancaria').val();
+} else {
+filtro_cuenta_bancaria = '';
+}
+
+var filtro_numero_operacion;
+if($('#filtro_numero_operacion').length > 0){
+filtro_numero_operacion = $('#filtro_numero_operacion').val();
+} else {
+filtro_numero_operacion = '';
+}
 
 if($('#n_fecha_desde').length > 0){
 var n_fecha_desde = $('#n_fecha_desde').val();
@@ -5611,7 +5663,12 @@ filtro_cumple_mes : filtro_cumple_mes,
 filtro_estado : filtro_estado,
 filtro_paquete : filtro_paquete,
 filtro_plan : filtro_plan,
-filtro_id_nutricionista : filtro_id_nutricionista
+filtro_id_nutricionista : filtro_id_nutricionista,
+
+filtro_medio_pago : filtro_medio_pago,
+filtro_cuenta_bancaria : filtro_cuenta_bancaria,
+filtro_numero_operacion : filtro_numero_operacion
+
 },
 success: function(datos){
 $('#reporte_tabla').html(datos).fadeIn('slow');
