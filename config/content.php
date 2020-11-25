@@ -61,7 +61,7 @@ $sql .= " LIMIT 0, 20";
 //QUERY
 $query_agenda = mysqli_query($con, $sql);
 ?>
-<table style="width: 500px !important;">
+<table style="width: 90% !important;">
 <?php
 $titulo_mes_ano = '';
 while($row_agenda = mysqli_fetch_array($query_agenda)){
