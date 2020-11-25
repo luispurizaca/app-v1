@@ -10,7 +10,7 @@ require_once (__DIR__.'/conexion_bd.php');
 //BUSQUEDA AGENDA
 if($busqueda_agenda == 1){
 
-$txt = (int)$_GET['txt'];
+$txt = $_GET['txt'];
 
 //RESULTADOS
 if($_SESSION['ID_TIPO_USUARIO'] == 1){
@@ -72,14 +72,17 @@ $fecha_fin = $row_agenda[3];
 //DATOS DEL PACIETE
 $nombre_paciente = $row_agenda[9].' '.$row_agenda[10];
 
+//DATOS DEL NUTRICIONISTA
+$nombre_nutricionista = $row_agenda[7].' '.$row_agenda[8];
+
 //TITULO MES AÑO
-$meses = array('', 'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE');
+$meses = array('', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
 $nuevo_titulo_mes_ano = $meses[(int)date('m', strtotime($fecha_inicio))].' '.date('Y', strtotime($fecha_inicio));
 if($titulo_mes_ano != $nuevo_titulo_mes_ano){
 $titulo_mes_ano = $nuevo_titulo_mes_ano;
 ?>
 <tr>
-<td class="td-title" style="width: 100% !important; text-align: left; font-size: 15px;"><?php echo $titulo_mes_ano; ?></td>
+<td class="td-title" style="width: 100% !important; text-align: center; font-size: 15px;"><?php echo $titulo_mes_ano; ?></td>
 </tr>
 <?php
 }
@@ -96,8 +99,21 @@ echo $dias[date('w', strtotime($fecha_inicio))];
 </span>
 </div>
 <div style="display: inline-block; font-size: 14px;">
-<span style="width: 100%; display: block;"><?php echo $nombre_paciente; ?></span>
+<span style="width: 100%; display: block; font-weight: bold;"><?php echo $nombre_paciente; ?></span>
 <span style="width: 100%; display: block;"><?php echo date('H:i', strtotime($fecha_inicio)); ?> - <?php echo date('H:i', strtotime($fecha_fin)); ?></span>
+</div>
+<div style="display: inline-block; font-size: 14px;">
+<?php
+if(!empty($nombre_nutricionista)){
+?>
+<span style="font-weight: bold; border: 1px solid #95cf32; padding: 3px;">
+<?php
+echo $nombre_nutricionista;
+?>
+</span>
+<?php
+}
+?>
 </div>
 </td>
 </tr>
