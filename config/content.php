@@ -82,6 +82,9 @@ if($titulo_mes_ano != $nuevo_titulo_mes_ano){
 $titulo_mes_ano = $nuevo_titulo_mes_ano;
 ?>
 <tr>
+<td style="width: 100% !important;"><br></td>
+</tr>
+<tr>
 <td class="td-title" style="width: 100% !important; text-align: center; font-size: 15px;"><?php echo $titulo_mes_ano; ?></td>
 </tr>
 <?php
