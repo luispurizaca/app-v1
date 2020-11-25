@@ -5442,11 +5442,14 @@ border-color: #95cf32 !important;
 <input id="form_busqueda_agenda" name="form_busqueda_agenda" class="form-control n-form-control ui-autocomplete-input" style="width: 80% !important;" type="text" placeholder="Buscar:">
 <button onclick="busqueda_agenda()" type="button" class="btn" style="width: 20% !important; background: #95cf32; color: white; height: 25px; padding: 2px; font-size: 13px;"><i class="fa fa-search"></i></button>
 </div>
+<br>
+<div id="resultados_tabla_agenda"></div>
 </div>
-<div class="col-md-9 hidden-xs"></div>
-</div>
+<div class="col-md-9 col-xs-12">
 <div id="resultado_agenda"></div>
 <div id="resultado_calendar"></div>
+</div>
+</div>
 
 <!-- Modal ADD -->
 <div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
@@ -5612,7 +5615,7 @@ var txt = $('#form_busqueda_agenda').val();
 $.ajax({
 url: 'config/content.php?busqueda_agenda=1&txt='+txt,
 success: function(res){
-$('#resultado_calendar').html(res);
+$('#resultados_tabla_agenda').html(res);
 }
 });
 }
