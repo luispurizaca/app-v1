@@ -49,8 +49,6 @@ WHERE 1 = 1 $where
 
 //BUSCAR
 if(!empty($txt)){
-$sql .= " AND (tb_vendedor.nombres LIKE '%".$txt."%' OR tb_vendedor.apellidos LIKE '%".$txt."%')";
-$sql .= " AND (tb_nutricionista.nombres LIKE '%".$txt."%' OR tb_nutricionista.apellidos LIKE '%".$txt."%')";
 $sql .= " AND (tb_paciente.nombres LIKE '%".$txt."%' OR tb_paciente.apellidos LIKE '%".$txt."%')";
 }
 
@@ -63,22 +61,33 @@ $sql .= " LIMIT 0, 20";
 //QUERY
 $query_agenda = mysqli_query($con, $sql);
 ?>
-<table style="width: 500px !important; margin: 0 auto;">
+<table style="width: 500px !important;">
 <tr>
-<td class="td-title" style="width: 33% !important;">T&iacute;tulo</td>
-<td class="td-title" style="width: 33% !important;">Fecha Inicio</td>
-<td class="td-title" style="width: 33% !important;">Fecha Fin</td>
+<td class="td-title" style="width: 33% !important;">Resultados</td>
 </tr>
 <?php
 while($row_agenda = mysqli_fetch_array($query_agenda)){
 $titulo = $row_agenda[1];
 $fecha_inicio = $row_agenda[2];
 $fecha_fin = $row_agenda[3];
+
+//DATOS DEL PACIETE
+$nombre_paciente = $row_agenda[9].' '.$row_agenda[10];
 ?>
 <tr class="tr-hover" style="cursor: pointer;" onclick="loadFullCalendar('<?php echo date('Y-m-d', strtotime($fecha_inicio)); ?>')">
-<td class="td-title" style="width: 33% !important; background: white; color: #333;"><?php echo $titulo; ?></td>
-<td class="td-title" style="width: 33% !important; background: white; color: #333;"><?php echo $fecha_inicio; ?></td>
-<td class="td-title" style="width: 33% !important; background: white; color: #333;"><?php echo $fecha_fin; ?></td>
+<td class="td-title" style="width: 100% !important; background: white; color: #333;">
+<div style="width: 40%; display: inline-block;">
+<span style="width: 100%; display: block;"><?php echo date('d', strtotime($fecha_inicio)); ?></span>
+<?php
+$dias = array('DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB');
+?>
+<span style="width: 100%; display: block;"><?php echo $dias[date('w', strtotime($fecha_inicio))]; ?></span>
+</div>
+<div style="width: 60%; display: inline-block;">
+<span style="width: 100%; display: block;"><?php echo $nombre_paciente; ?></span>
+<span style="width: 100%; display: block;"><?php echo date('H:i', strtotime($fecha_inicio)); ?> - <?php echo date('H:i', strtotime($fecha_fin)); ?></span>
+</div>
+</td>
 </tr>
 <?php
 }
