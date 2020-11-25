@@ -250,7 +250,7 @@ if(!empty($filtro_cuenta_bancaria)){
 $consulta_sql_general .= " AND (SUSCRIPCION_ID_CUENTA_BANCARIA = '".$filtro_cuenta_bancaria."')";
 }
 if(!empty($filtro_numero_operacion)){
-$consulta_sql_general .= " AND (SUSCRIPCION_NUMERO_OPERACION  '".$filtro_numero_operacion."')";
+$consulta_sql_general .= " AND (SUSCRIPCION_NUMERO_OPERACION LIKE '%".$filtro_numero_operacion."')";
 }
 
 //ORDER BY
@@ -365,7 +365,7 @@ if(!empty($filtro_cuenta_bancaria)){
 $consulta_sql_general .= " AND (SUSCRIPCION_ID_CUENTA_BANCARIA = '".$filtro_cuenta_bancaria."')";
 }
 if(!empty($filtro_numero_operacion)){
-$consulta_sql_general .= " AND (SUSCRIPCION_NUMERO_OPERACION  '".$filtro_numero_operacion."')";
+$consulta_sql_general .= " AND (SUSCRIPCION_NUMERO_OPERACION LIKE '%".$filtro_numero_operacion."')";
 }
 
 //ORDER BY
