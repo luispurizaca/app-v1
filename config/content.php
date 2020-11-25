@@ -102,11 +102,11 @@ echo $dias[date('w', strtotime($fecha_inicio))];
 <span style="width: 100%; display: block; font-weight: bold;"><?php echo $nombre_paciente; ?></span>
 <span style="width: 100%; display: block;"><?php echo date('H:i', strtotime($fecha_inicio)); ?> - <?php echo date('H:i', strtotime($fecha_fin)); ?></span>
 </div>
-<div style="display: inline-block; font-size: 14px;">
+<div style="display: inline-block; font-size: 14px; position: absolute; margin-left: 20px; margin-top: 10px;">
 <?php
 if(!empty($nombre_nutricionista)){
 ?>
-<span style="font-weight: bold; border: 1px solid #95cf32; padding: 3px;">
+<span style="font-weight: bold; border: 1px solid #95cf32; padding: 3px; font-size: 10px;">
 <?php
 echo $nombre_nutricionista;
 ?>
