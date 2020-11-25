@@ -85,7 +85,7 @@ $titulo_mes_ano = $nuevo_titulo_mes_ano;
 <td style="width: 100% !important;"><br></td>
 </tr>
 <tr>
-<td class="td-title" style="width: 100% !important; text-align: center; font-size: 15px; background: #ECECEC; color: black; padding-left: 55px;"><?php echo $titulo_mes_ano; ?></td>
+<td class="td-title" style="width: 100% !important; text-align: left; font-size: 15px; background: #ECECEC; color: black; padding-left: 55px; font-weight: bold;"><?php echo $titulo_mes_ano; ?></td>
 </tr>
 <?php
 }
