@@ -92,9 +92,9 @@ $titulo_mes_ano = $nuevo_titulo_mes_ano;
 ?>
 <tr class="tr-hover" style="cursor: pointer;" onclick="loadFullCalendar('<?php echo date('Y-m-d', strtotime($fecha_inicio)); ?>')">
 <td class="td-title" style="width: 100% !important; background: white; color: #333; text-align: left;">
-<div style="display: inline-block; text-align: left; font-size: 15px; margin-right: 14px;">
+<div style="display: inline-block; text-align: left; font-size: 15px; width: 10%;">
 <span style="width: 100%; display: block; text-align: center; font-weight: bold;"><?php echo date('d', strtotime($fecha_inicio)); ?></span>
-<span style="width: 100%; display: block; text-align: center; width: 10%;">
+<span style="width: 100%; display: block; text-align: center;">
 <?php
 $dias = array('DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB');
 echo $dias[date('w', strtotime($fecha_inicio))];
