@@ -61,7 +61,7 @@ $sql .= " LIMIT 0, 20";
 //QUERY
 $query_agenda = mysqli_query($con, $sql);
 ?>
-<table style="width: 500px !important;">
+<table style="width: 470px !important;">
 <?php
 $titulo_mes_ano = '';
 while($row_agenda = mysqli_fetch_array($query_agenda)){
@@ -5436,16 +5436,15 @@ border-color: #95cf32 !important;
 <div style="margin-top: 30px; margin-bottom: 20px;">
 <h1 style="text-align: center;">Mi Agenda</h1><br>
 <div class="row">
-<div class="col-md-3 col-xs-12">
+<div class="col-md-5 col-xs-12">
 <label>Buscar:</label>
-<div class="input-group">
+<div class="input-group" style="width: 200px; margin-bottom: 0px;">
 <input id="form_busqueda_agenda" name="form_busqueda_agenda" class="form-control n-form-control ui-autocomplete-input" style="width: 80% !important;" type="text" placeholder="Buscar:">
 <button onclick="busqueda_agenda()" type="button" class="btn" style="width: 20% !important; background: #95cf32; color: white; height: 25px; padding: 2px; font-size: 13px;"><i class="fa fa-search"></i></button>
 </div>
-<br>
 <div id="resultados_tabla_agenda"></div>
 </div>
-<div class="col-md-9 col-xs-12">
+<div class="col-md-7 col-xs-12">
 <div id="resultado_agenda"></div>
 <div id="resultado_calendar"></div>
 </div>
