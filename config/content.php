@@ -62,10 +62,8 @@ $sql .= " LIMIT 0, 20";
 $query_agenda = mysqli_query($con, $sql);
 ?>
 <table style="width: 500px !important;">
-<tr>
-<td class="td-title" style="width: 100% !important; text-align: left; font-size: 14px;">Resultados</td>
-</tr>
 <?php
+$titulo_mes_ano = '';
 while($row_agenda = mysqli_fetch_array($query_agenda)){
 $titulo = $row_agenda[1];
 $fecha_inicio = $row_agenda[2];
@@ -73,17 +71,31 @@ $fecha_fin = $row_agenda[3];
 
 //DATOS DEL PACIETE
 $nombre_paciente = $row_agenda[9].' '.$row_agenda[10];
+
+//TITULO MES AÑO
+$meses = array('', 'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE');
+$nuevo_titulo_mes_ano = $meses[(int)date('m', strtotime($fecha_inicio))].' '.date('Y', strtotime($fecha_inicio));
+if($titulo_mes_ano != $nuevo_titulo_mes_ano){
+$titulo_mes_ano = $nuevo_titulo_mes_ano;
+?>
+<tr>
+<td class="td-title" style="width: 100% !important; text-align: left; font-size: 15px;"><?php echo $titulo_mes_ano; ?></td>
+</tr>
+<?php
+}
 ?>
 <tr class="tr-hover" style="cursor: pointer;" onclick="loadFullCalendar('<?php echo date('Y-m-d', strtotime($fecha_inicio)); ?>')">
 <td class="td-title" style="width: 100% !important; background: white; color: #333; text-align: left;">
-<div style="display: inline-block; text-align: left; font-size: 15px;">
-<span style="width: 100%; display: block;"><?php echo date('d', strtotime($fecha_inicio)); ?></span>
+<div style="display: inline-block; text-align: left; font-size: 15px; margin-right: 14px;">
+<span style="width: 100%; display: block; text-align: center; font-weight: bold;"><?php echo date('d', strtotime($fecha_inicio)); ?></span>
+<span style="width: 100%; display: block; text-align: center; margin-right: 10px;">
 <?php
 $dias = array('DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB');
+echo $dias[date('w', strtotime($fecha_inicio))];
 ?>
-<span style="width: 100%; display: block;"><?php echo $dias[date('w', strtotime($fecha_inicio))]; ?></span>
+</span>
 </div>
-<div style="display: inline-block;">
+<div style="display: inline-block; font-size: 14px;">
 <span style="width: 100%; display: block;"><?php echo $nombre_paciente; ?></span>
 <span style="width: 100%; display: block;"><?php echo date('H:i', strtotime($fecha_inicio)); ?> - <?php echo date('H:i', strtotime($fecha_fin)); ?></span>
 </div>
