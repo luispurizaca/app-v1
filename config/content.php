@@ -61,7 +61,7 @@ $sql .= " LIMIT 0, 20";
 //QUERY
 $query_agenda = mysqli_query($con, $sql);
 ?>
-<table style="width: 90% !important;">
+<table style="width: 500px !important;">
 <?php
 $titulo_mes_ano = '';
 while($row_agenda = mysqli_fetch_array($query_agenda)){
@@ -5610,7 +5610,7 @@ $('#resultado_agenda').html(res);
 }
 
 function busqueda_agenda(){
-$('#resultado_calendar').html('');
+$('#resultados_tabla_agenda').html('');
 var txt = $('#form_busqueda_agenda').val();
 $.ajax({
 url: 'config/content.php?busqueda_agenda=1&txt='+txt,
