@@ -94,18 +94,18 @@ $titulo_mes_ano = $nuevo_titulo_mes_ano;
 <td class="td-title" style="width: 100% !important; background: white; color: #333; text-align: left;">
 <div style="display: inline-block; text-align: left; font-size: 15px; margin-right: 14px;">
 <span style="width: 100%; display: block; text-align: center; font-weight: bold;"><?php echo date('d', strtotime($fecha_inicio)); ?></span>
-<span style="width: 100%; display: block; text-align: center; margin-right: 10px;">
+<span style="width: 100%; display: block; text-align: center; width: 10%;">
 <?php
 $dias = array('DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB');
 echo $dias[date('w', strtotime($fecha_inicio))];
 ?>
 </span>
 </div>
-<div style="display: inline-block; font-size: 14px;">
+<div style="display: inline-block; font-size: 14px; width: 45%;">
 <span style="width: 100%; display: block; font-weight: bold;"><?php echo $nombre_paciente; ?></span>
 <span style="width: 100%; display: block;"><?php echo date('H:i', strtotime($fecha_inicio)); ?> - <?php echo date('H:i', strtotime($fecha_fin)); ?></span>
 </div>
-<div style="display: inline-block; font-size: 14px; position: absolute; margin-left: 20px; margin-top: 10px;">
+<div style="display: inline-block; font-size: 14px; width: 40%;">
 <?php
 if(!empty($nombre_nutricionista)){
 ?>
