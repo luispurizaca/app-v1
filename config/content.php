@@ -63,7 +63,7 @@ $query_agenda = mysqli_query($con, $sql);
 ?>
 <table style="width: 500px !important;">
 <tr>
-<td class="td-title" style="width: 33% !important;">Resultados</td>
+<td class="td-title" style="width: 100% !important; text-align: left; font-size: 14px;">Resultados</td>
 </tr>
 <?php
 while($row_agenda = mysqli_fetch_array($query_agenda)){
@@ -75,15 +75,15 @@ $fecha_fin = $row_agenda[3];
 $nombre_paciente = $row_agenda[9].' '.$row_agenda[10];
 ?>
 <tr class="tr-hover" style="cursor: pointer;" onclick="loadFullCalendar('<?php echo date('Y-m-d', strtotime($fecha_inicio)); ?>')">
-<td class="td-title" style="width: 100% !important; background: white; color: #333;">
-<div style="width: 40%; display: inline-block;">
+<td class="td-title" style="width: 100% !important; background: white; color: #333; text-align: left;">
+<div style="display: inline-block; text-align: left; font-size: 15px;">
 <span style="width: 100%; display: block;"><?php echo date('d', strtotime($fecha_inicio)); ?></span>
 <?php
 $dias = array('DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB');
 ?>
 <span style="width: 100%; display: block;"><?php echo $dias[date('w', strtotime($fecha_inicio))]; ?></span>
 </div>
-<div style="width: 60%; display: inline-block;">
+<div style="display: inline-block;">
 <span style="width: 100%; display: block;"><?php echo $nombre_paciente; ?></span>
 <span style="width: 100%; display: block;"><?php echo date('H:i', strtotime($fecha_inicio)); ?> - <?php echo date('H:i', strtotime($fecha_fin)); ?></span>
 </div>
