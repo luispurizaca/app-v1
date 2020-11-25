@@ -174,7 +174,7 @@ editable: true,
 eventLimit: true, // allow "more" link when too many events
 selectable: true,
 selectHelper: true,
-defaultView: 'agendaDay',
+defaultView: 'month',
 select: function(start, end){
 $('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
 $('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
@@ -689,7 +689,7 @@ $('#form_total_planes').val('2');
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">
-<a href="javascript: void(0)" onclick="eliminar_suscripcion(2)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+<a id="eliminar_suscripcion_2" href="javascript: void(0)" onclick="eliminar_suscripcion(2)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
 Segundo Plan
 </label>
 <select id="form_id_programa_2" name="form_id_programa_2" class="form-control n-form-control">
@@ -776,6 +776,7 @@ $('#form_fecha_suscripcion_fin_2').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_3').on('click', function(){
 $('#suscripcion_tercera').css('display', 'block');
+$('#btn_abrir_plan_2').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('3');
 });
@@ -791,7 +792,7 @@ $('#form_total_planes').val('3');
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">
-<a href="javascript: void(0)" onclick="eliminar_suscripcion(3)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+<a id="eliminar_suscripcion_3" href="javascript: void(0)" onclick="eliminar_suscripcion(3)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
 Tercer Plan
 </label>
 <select id="form_id_programa_3" name="form_id_programa_3" class="form-control n-form-control">
@@ -878,6 +879,7 @@ $('#form_fecha_suscripcion_fin_3').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_4').on('click', function(){
 $('#suscripcion_cuarta').css('display', 'block');
+$('#btn_abrir_plan_3').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('4');
 });
@@ -893,7 +895,7 @@ $('#form_total_planes').val('4');
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">
-<a href="javascript: void(0)" onclick="eliminar_suscripcion(4)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+<a id="eliminar_suscripcion_4" href="javascript: void(0)" onclick="eliminar_suscripcion(4)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
 Cuarto Plan
 </label>
 <select id="form_id_programa_4" name="form_id_programa_4" class="form-control n-form-control">
@@ -980,6 +982,7 @@ $('#form_fecha_suscripcion_fin_4').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_5').on('click', function(){
 $('#suscripcion_quinta').css('display', 'block');
+$('#btn_abrir_plan_4').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('5');
 });
@@ -995,7 +998,7 @@ $('#form_total_planes').val('5');
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">
-<a href="javascript: void(0)" onclick="eliminar_suscripcion(5)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+<a id="eliminar_suscripcion_5" href="javascript: void(0)" onclick="eliminar_suscripcion(5)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
 Quinto Plan
 </label>
 <select id="form_id_programa_5" name="form_id_programa_5" class="form-control n-form-control">
@@ -1082,6 +1085,7 @@ $('#form_fecha_suscripcion_fin_5').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_6').on('click', function(){
 $('#suscripcion_sexta').css('display', 'block');
+$('#btn_abrir_plan_5').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('6');
 });
@@ -1097,7 +1101,7 @@ $('#form_total_planes').val('6');
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">
-<a href="javascript: void(0)" onclick="eliminar_suscripcion(6)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+<a id="eliminar_suscripcion_6" href="javascript: void(0)" onclick="eliminar_suscripcion(6)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
 Sexto Plan
 </label>
 <select id="form_id_programa_6" name="form_id_programa_6" class="form-control n-form-control">
@@ -1184,6 +1188,7 @@ $('#form_fecha_suscripcion_fin_6').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_7').on('click', function(){
 $('#suscripcion_septima').css('display', 'block');
+$('#btn_abrir_plan_6').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('7');
 });
@@ -1199,7 +1204,7 @@ $('#form_total_planes').val('7');
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">
-<a href="javascript: void(0)" onclick="eliminar_suscripcion(7)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+<a id="eliminar_suscripcion_7" href="javascript: void(0)" onclick="eliminar_suscripcion(7)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
 S&eacute;ptimo Plan
 </label>
 <select id="form_id_programa_7" name="form_id_programa_7" class="form-control n-form-control">
@@ -1286,6 +1291,7 @@ $('#form_fecha_suscripcion_fin_7').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_8').on('click', function(){
 $('#suscripcion_octava').css('display', 'block');
+$('#btn_abrir_plan_7').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('8');
 });
@@ -1301,7 +1307,7 @@ $('#form_total_planes').val('8');
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">
-<a href="javascript: void(0)" onclick="eliminar_suscripcion(8)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+<a id="eliminar_suscripcion_8" href="javascript: void(0)" onclick="eliminar_suscripcion(8)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
 Octavo Plan
 </label>
 <select id="form_id_programa_8" name="form_id_programa_8" class="form-control n-form-control">
@@ -1388,6 +1394,7 @@ $('#form_fecha_suscripcion_fin_8').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_9').on('click', function(){
 $('#suscripcion_novena').css('display', 'block');
+$('#btn_abrir_plan_8').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('9');
 });
@@ -1403,7 +1410,7 @@ $('#form_total_planes').val('9');
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">
-<a href="javascript: void(0)" onclick="eliminar_suscripcion(9)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+<a id="eliminar_suscripcion_9" href="javascript: void(0)" onclick="eliminar_suscripcion(9)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
 Noveno Plan
 </label>
 <select id="form_id_programa_9" name="form_id_programa_9" class="form-control n-form-control">
@@ -1490,6 +1497,7 @@ $('#form_fecha_suscripcion_fin_9').val(e.getFullYear() +"-"+ mes_a_poner +"-"+ d
 
 $('#btn_abrir_plan_10').on('click', function(){
 $('#suscripcion_decima').css('display', 'block');
+$('#btn_abrir_plan_9').css('display', 'none');
 $(this).css('display', 'none');
 $('#form_total_planes').val('10');
 });
@@ -1505,7 +1513,7 @@ $('#form_total_planes').val('10');
 <div class="col-md-3 col-sm-6">
 <div class="form-group">
 <label class="n-label">
-<a href="javascript: void(0)" onclick="eliminar_suscripcion(10)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
+<a id="eliminar_suscripcion_10" href="javascript: void(0)" onclick="eliminar_suscripcion(10)"><i class="fa fa-trash" style="font-size: 15px; color: red;"></i></a>&nbsp;
 D&eacute;cimo Plan
 </label>
 <select id="form_id_programa_10" name="form_id_programa_10" class="form-control n-form-control">
@@ -1824,30 +1832,39 @@ $('#form_direccion').val(data.domicilio_fiscal);
 function eliminar_suscripcion(id){
 if(id == 2){
 $('#suscripcion_segunda').css('display', 'none');
+$('#form_total_planes').val('1');
 }
 if(id == 3){
 $('#suscripcion_tercera').css('display', 'none');
+$('#form_total_planes').val('2');
 }
 if(id == 4){
 $('#suscripcion_cuarta').css('display', 'none');
+$('#form_total_planes').val('3');
 }
 if(id == 5){
 $('#suscripcion_quinta').css('display', 'none');
+$('#form_total_planes').val('4');
 }
 if(id == 6){
 $('#suscripcion_sexta').css('display', 'none');
+$('#form_total_planes').val('5');
 }
 if(id == 7){
 $('#suscripcion_septima').css('display', 'none');
+$('#form_total_planes').val('6');
 }
 if(id == 8){
 $('#suscripcion_octava').css('display', 'none');
+$('#form_total_planes').val('7');
 }
 if(id == 9){
 $('#suscripcion_novena').css('display', 'none');
+$('#form_total_planes').val('8');
 }
 if(id == 10){
 $('#suscripcion_decima').css('display', 'none');
+$('#form_total_planes').val('9');
 }
 }
 function open_modal_agenda(numero){
@@ -1879,9 +1896,6 @@ var form_maximo_pacientes = $('#form_maximo_pacientes').val();
 var form_correo = $('#form_correo').val();
 var form_clave = $('#form_clave').val();
 var form_residencia = $('#form_residencia').val();
-var form_id_programa = $('#form_id_programa').val();
-var form_id_paquete = $('#form_id_paquete').val();
-var form_id_nutricionista = $('#form_id_nutricionista').val();
 var form_fecha_pago = $('#form_fecha_pago').val();
 var form_monto = $('#form_monto').val();
 var form_id_medio_pago = $('#form_id_medio_pago').val();
@@ -1890,14 +1904,66 @@ var form_id_paciente = <?php echo $id_paciente; ?>;
 var form_telefono = $('#form_telefono').val();
 var form_numero_operacion = $('#form_numero_operacion').val();
 
+var form_id_programa = $('#form_id_programa').val();
+var form_id_paquete = $('#form_id_paquete').val();
+var form_id_nutricionista = $('#form_id_nutricionista').val();
+var form_fecha_suscripcion = $('#form_fecha_suscripcion').val();
+var form_fecha_suscripcion_fin = $('#form_fecha_suscripcion_fin').val();
+
 
 var form_id_programa_2 = $('#form_id_programa_2').val();
 var form_id_paquete_2 = $('#form_id_paquete_2').val();
 var form_id_nutricionista_2 = $('#form_id_nutricionista_2').val();
+var form_fecha_suscripcion_2 = $('#form_fecha_suscripcion_2').val();
+var form_fecha_suscripcion_fin_2 = $('#form_fecha_suscripcion_fin_2').val();
 
 var form_id_programa_3 = $('#form_id_programa_3').val();
 var form_id_paquete_3 = $('#form_id_paquete_3').val();
 var form_id_nutricionista_3 = $('#form_id_nutricionista_3').val();
+var form_fecha_suscripcion_3 = $('#form_fecha_suscripcion_3').val();
+var form_fecha_suscripcion_fin_3 = $('#form_fecha_suscripcion_fin_3').val();
+
+var form_id_programa_4 = $('#form_id_programa_4').val();
+var form_id_paquete_4 = $('#form_id_paquete_4').val();
+var form_id_nutricionista_4 = $('#form_id_nutricionista_4').val();
+var form_fecha_suscripcion_4 = $('#form_fecha_suscripcion_4').val();
+var form_fecha_suscripcion_fin_4 = $('#form_fecha_suscripcion_fin_4').val();
+
+var form_id_programa_5 = $('#form_id_programa_5').val();
+var form_id_paquete_5 = $('#form_id_paquete_5').val();
+var form_id_nutricionista_5 = $('#form_id_nutricionista_5').val();
+var form_fecha_suscripcion_5 = $('#form_fecha_suscripcion_5').val();
+var form_fecha_suscripcion_fin_5 = $('#form_fecha_suscripcion_fin_5').val();
+
+var form_id_programa_6 = $('#form_id_programa_6').val();
+var form_id_paquete_6 = $('#form_id_paquete_6').val();
+var form_id_nutricionista_6 = $('#form_id_nutricionista_6').val();
+var form_fecha_suscripcion_6 = $('#form_fecha_suscripcion_6').val();
+var form_fecha_suscripcion_fin_6 = $('#form_fecha_suscripcion_fin_6').val();
+
+var form_id_programa_7 = $('#form_id_programa_7').val();
+var form_id_paquete_7 = $('#form_id_paquete_7').val();
+var form_id_nutricionista_7 = $('#form_id_nutricionista_7').val();
+var form_fecha_suscripcion_7 = $('#form_fecha_suscripcion_7').val();
+var form_fecha_suscripcion_fin_7 = $('#form_fecha_suscripcion_fin_7').val();
+
+var form_id_programa_8 = $('#form_id_programa_8').val();
+var form_id_paquete_8 = $('#form_id_paquete_8').val();
+var form_id_nutricionista_8 = $('#form_id_nutricionista_8').val();
+var form_fecha_suscripcion_8 = $('#form_fecha_suscripcion_8').val();
+var form_fecha_suscripcion_fin_8 = $('#form_fecha_suscripcion_fin_8').val();
+
+var form_id_programa_9 = $('#form_id_programa_9').val();
+var form_id_paquete_9 = $('#form_id_paquete_9').val();
+var form_id_nutricionista_9 = $('#form_id_nutricionista_9').val();
+var form_fecha_suscripcion_9 = $('#form_fecha_suscripcion_9').val();
+var form_fecha_suscripcion_fin_9 = $('#form_fecha_suscripcion_fin_9').val();
+
+var form_id_programa_10 = $('#form_id_programa_10').val();
+var form_id_paquete_10 = $('#form_id_paquete_10').val();
+var form_id_nutricionista_10 = $('#form_id_nutricionista_10').val();
+var form_fecha_suscripcion_10 = $('#form_fecha_suscripcion_10').val();
+var form_fecha_suscripcion_fin_10 = $('#form_fecha_suscripcion_fin_10').val();
 
 var form_total_planes = $('#form_total_planes').val();
 
@@ -1924,9 +1990,6 @@ form_correo : form_correo,
 form_clave : form_clave,
 form_residencia : form_residencia,
 form_tipo_usuario : 2,
-form_id_programa : form_id_programa,
-form_id_paquete : form_id_paquete,
-form_id_nutricionista : form_id_nutricionista,
 form_fecha_pago : form_fecha_pago,
 form_monto : form_monto,
 form_id_medio_pago : form_id_medio_pago,
@@ -1935,13 +1998,65 @@ form_id_paciente : form_id_paciente,
 form_telefono : form_telefono,
 form_numero_operacion : form_numero_operacion,
 
-form_id_programa_2,
-form_id_paquete_2,
-form_id_nutricionista_2,
+form_id_programa : form_id_programa,
+form_id_paquete : form_id_paquete,
+form_id_nutricionista : form_id_nutricionista,
+form_fecha_suscripcion : form_fecha_suscripcion,
+form_fecha_suscripcion_fin : form_fecha_suscripcion_fin,
 
-form_id_programa_3,
-form_id_paquete_3,
-form_id_nutricionista_3,
+form_id_programa_2 : form_id_programa_2,
+form_id_paquete_2 : form_id_paquete_2,
+form_id_nutricionista_2 : form_id_nutricionista_2,
+form_fecha_suscripcion_2 : form_fecha_suscripcion_2,
+form_fecha_suscripcion_fin_2 : form_fecha_suscripcion_fin_2,
+
+form_id_programa_3 : form_id_programa_3,
+form_id_paquete_3 : form_id_paquete_3,
+form_id_nutricionista_3 : form_id_nutricionista_3,
+form_fecha_suscripcion_3 : form_fecha_suscripcion_3,
+form_fecha_suscripcion_fin_3 : form_fecha_suscripcion_fin_3,
+
+form_id_programa_4 : form_id_programa_4,
+form_id_paquete_4 : form_id_paquete_4,
+form_id_nutricionista_4 : form_id_nutricionista_4,
+form_fecha_suscripcion_4 : form_fecha_suscripcion_4,
+form_fecha_suscripcion_fin_4 : form_fecha_suscripcion_fin_4,
+
+form_id_programa_5 : form_id_programa_5,
+form_id_paquete_5 : form_id_paquete_5,
+form_id_nutricionista_5 : form_id_nutricionista_5,
+form_fecha_suscripcion_5 : form_fecha_suscripcion_5,
+form_fecha_suscripcion_fin_5 : form_fecha_suscripcion_fin_5,
+
+form_id_programa_6 : form_id_programa_6,
+form_id_paquete_6 : form_id_paquete_6,
+form_id_nutricionista_6 : form_id_nutricionista_6,
+form_fecha_suscripcion_6 : form_fecha_suscripcion_6,
+form_fecha_suscripcion_fin_6 : form_fecha_suscripcion_fin_6,
+
+form_id_programa_7 : form_id_programa_7,
+form_id_paquete_7 : form_id_paquete_7,
+form_id_nutricionista_7 : form_id_nutricionista_7,
+form_fecha_suscripcion_7 : form_fecha_suscripcion_7,
+form_fecha_suscripcion_fin_7 : form_fecha_suscripcion_fin_7,
+
+form_id_programa_8 : form_id_programa_8,
+form_id_paquete_8 : form_id_paquete_8,
+form_id_nutricionista_8 : form_id_nutricionista_8,
+form_fecha_suscripcion_8 : form_fecha_suscripcion_8,
+form_fecha_suscripcion_fin_8 : form_fecha_suscripcion_fin_8,
+
+form_id_programa_9 : form_id_programa_9,
+form_id_paquete_9 : form_id_paquete_9,
+form_id_nutricionista_9 : form_id_nutricionista_9,
+form_fecha_suscripcion_9 : form_fecha_suscripcion_9,
+form_fecha_suscripcion_fin_9 : form_fecha_suscripcion_fin_9,
+
+form_id_programa_10 : form_id_programa_10,
+form_id_paquete_10 : form_id_paquete_10,
+form_id_nutricionista_10 : form_id_nutricionista_10,
+form_fecha_suscripcion_10 : form_fecha_suscripcion_10,
+form_fecha_suscripcion_fin_10 : form_fecha_suscripcion_fin_10,
 
 form_total_planes
 },
@@ -2067,9 +2182,6 @@ exit();
 $form_residencia  = $_POST['form_residencia'];
 $form_tipo_usuario  = (int)$_POST['form_tipo_usuario'];
 
-$form_id_programa = $_POST['form_id_programa'];
-$form_id_paquete = $_POST['form_id_paquete'];
-$form_id_nutricionista = $_POST['form_id_nutricionista'];
 $form_fecha_pago = date('Y-m-d', strtotime($_POST['form_fecha_pago']));
 $form_monto = (float)$_POST['form_monto'];
 $form_id_medio_pago = $_POST['form_id_medio_pago'];
@@ -2078,13 +2190,65 @@ $form_id_paciente = (int)$_POST['form_id_paciente'];
 $form_telefono = $_POST['form_telefono'];
 $form_numero_operacion = $_POST['form_numero_operacion'];
 
+$form_id_programa = $_POST['form_id_programa'];
+$form_id_paquete = $_POST['form_id_paquete'];
+$form_id_nutricionista = $_POST['form_id_nutricionista'];
+$form_fecha_suscripcion = $_POST['form_fecha_suscripcion'];
+$form_fecha_suscripcion_fin = $_POST['form_fecha_suscripcion_fin'];
+
 $form_id_programa_2 = (int)$_POST['form_id_programa_2'];
 $form_id_paquete_2 = (int)$_POST['form_id_paquete_2'];
 $form_id_nutricionista_2 = (int)$_POST['form_id_nutricionista_2'];
+$form_fecha_suscripcion_2 = $_POST['form_fecha_suscripcion_2'];
+$form_fecha_suscripcion_fin_2 = $_POST['form_fecha_suscripcion_fin_2'];
 
 $form_id_programa_3 = (int)$_POST['form_id_programa_3'];
 $form_id_paquete_3 = (int)$_POST['form_id_paquete_3'];
 $form_id_nutricionista_3 = (int)$_POST['form_id_nutricionista_3'];
+$form_fecha_suscripcion_3 = $_POST['form_fecha_suscripcion_3'];
+$form_fecha_suscripcion_fin_3 = $_POST['form_fecha_suscripcion_fin_3'];
+
+$form_id_programa_4 = (int)$_POST['form_id_programa_4'];
+$form_id_paquete_4 = (int)$_POST['form_id_paquete_4'];
+$form_id_nutricionista_4 = (int)$_POST['form_id_nutricionista_4'];
+$form_fecha_suscripcion_4 = $_POST['form_fecha_suscripcion_4'];
+$form_fecha_suscripcion_fin_4 = $_POST['form_fecha_suscripcion_fin_4'];
+
+$form_id_programa_5 = (int)$_POST['form_id_programa_5'];
+$form_id_paquete_5 = (int)$_POST['form_id_paquete_5'];
+$form_id_nutricionista_5 = (int)$_POST['form_id_nutricionista_5'];
+$form_fecha_suscripcion_5 = $_POST['form_fecha_suscripcion_5'];
+$form_fecha_suscripcion_fin_5 = $_POST['form_fecha_suscripcion_fin_5'];
+
+$form_id_programa_6 = (int)$_POST['form_id_programa_6'];
+$form_id_paquete_6 = (int)$_POST['form_id_paquete_6'];
+$form_id_nutricionista_6 = (int)$_POST['form_id_nutricionista_6'];
+$form_fecha_suscripcion_6 = $_POST['form_fecha_suscripcion_6'];
+$form_fecha_suscripcion_fin_6 = $_POST['form_fecha_suscripcion_fin_6'];
+
+$form_id_programa_7 = (int)$_POST['form_id_programa_7'];
+$form_id_paquete_7 = (int)$_POST['form_id_paquete_7'];
+$form_id_nutricionista_7 = (int)$_POST['form_id_nutricionista_7'];
+$form_fecha_suscripcion_7 = $_POST['form_fecha_suscripcion_7'];
+$form_fecha_suscripcion_fin_7 = $_POST['form_fecha_suscripcion_fin_7'];
+
+$form_id_programa_8 = (int)$_POST['form_id_programa_8'];
+$form_id_paquete_8 = (int)$_POST['form_id_paquete_8'];
+$form_id_nutricionista_8 = (int)$_POST['form_id_nutricionista_8'];
+$form_fecha_suscripcion_8 = $_POST['form_fecha_suscripcion_8'];
+$form_fecha_suscripcion_fin_8 = $_POST['form_fecha_suscripcion_fin_8'];
+
+$form_id_programa_9 = (int)$_POST['form_id_programa_9'];
+$form_id_paquete_9 = (int)$_POST['form_id_paquete_9'];
+$form_id_nutricionista_9 = (int)$_POST['form_id_nutricionista_9'];
+$form_fecha_suscripcion_9 = $_POST['form_fecha_suscripcion_9'];
+$form_fecha_suscripcion_fin_9 = $_POST['form_fecha_suscripcion_fin_9'];
+
+$form_id_programa_10 = (int)$_POST['form_id_programa_10'];
+$form_id_paquete_10 = (int)$_POST['form_id_paquete_10'];
+$form_id_nutricionista_10 = (int)$_POST['form_id_nutricionista_10'];
+$form_fecha_suscripcion_10 = $_POST['form_fecha_suscripcion_10'];
+$form_fecha_suscripcion_fin_10 = $_POST['form_fecha_suscripcion_fin_10'];
 
 $form_total_planes = (int)$_POST['form_total_planes'];
 
@@ -2114,39 +2278,6 @@ $('#form_numero_operacion').focus();
 exit();
 exit();
 }
-}
-
-//VALIDAR SUSCRIPCIONES
-$query_total_planes = mysqli_query($con, "SELECT start FROM events WHERE id_vendedor = 0 AND id_nutricionista = 0 AND id_paciente = 0 ORDER BY id ASC");
-if(mysqli_num_rows($query_total_planes) < $form_total_planes){
-?>
-<script>
-alert('Agendar Fecha de Inicio del Plan');
-$('#ModalOpen').modal();
-scrollreset()
-</script>
-<?php
-exit();
-exit();
-}
-
-//FECHAS DE INICIO Y FIN DE LOS PLANES
-$ip = 1;
-while($row_planes = mysqli_fetch_array($query_total_planes)){
-$row_fecha_inicio_plan = date('Y-m-d', strtotime($row_planes[0]));
-if($ip == 1){
-$form_fecha_suscripcion = $row_fecha_inicio_plan;
-$form_fecha_suscripcion_fin = date('Y-m-d', strtotime('-1 day', strtotime(date('Y-m-d', strtotime('+1 month', strtotime($row_fecha_inicio_plan))))));
-}
-if($ip == 2){
-$form_fecha_suscripcion_2 = $row_fecha_inicio_plan;
-$form_fecha_suscripcion_fin_2 = date('Y-m-d', strtotime('-1 day', strtotime(date('Y-m-d', strtotime('+1 month', strtotime($row_fecha_inicio_plan))))));
-}
-if($ip == 3){
-$form_fecha_suscripcion_3 = $row_fecha_inicio_plan;
-$form_fecha_suscripcion_fin_3 = date('Y-m-d', strtotime('-1 day', strtotime(date('Y-m-d', strtotime('+1 month', strtotime($row_fecha_inicio_plan))))));
-}
-$ip++;
 }
 
 //DIVIDIR EL MONTO
@@ -2215,6 +2346,8 @@ if(empty(mysqli_num_rows($query_np))){
 mysqli_query($con, "INSERT INTO nutricionista_paciente (id_nutricionista, id_paciente) VALUES ('$form_id_nutricionista', '$ultimo_id')");
 }
 
+//PRIMER PLAN
+if($form_total_planes > 0){
 
 //AGREGAR A LA BD SUSCRIPCION
 mysqli_query($con, "
@@ -2235,6 +2368,7 @@ VALUES
 ('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$form_numero_operacion."', '".$_SESSION['ID_USUARIO']."')
 "
 );
+}
 
 //SEGUNDO PLAN
 if($form_total_planes > 1){
@@ -2268,6 +2402,174 @@ mysqli_query($con, "
 INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete, id_tipo_suscripcion, peso_meta)
 VALUES 
 ('".$form_id_programa_3."', '".$form_id_nutricionista_3."', '".$ultimo_id."', '".$form_fecha_suscripcion_3."', '".$form_fecha_suscripcion_fin_3."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete_3', '2', '0')
+"
+);
+
+//ULTIMO ID SUSCRIPCION
+$row_id_s = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM suscripcion_programa WHERE estado = 1 ORDER BY id DESC LIMIT 1"));
+$ultimo_id_s = (int)$row_id_s[0];
+
+//AGREGAR A LA BD COBROS
+mysqli_query($con, "
+INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria, numero_operacion, id_vendedor)
+VALUES 
+('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$form_numero_operacion."', '".$_SESSION['ID_USUARIO']."')
+"
+);
+}
+
+//CUARTO PLAN
+if($form_total_planes > 3){
+
+//AGREGAR A LA BD SUSCRIPCION
+mysqli_query($con, "
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete, id_tipo_suscripcion, peso_meta)
+VALUES 
+('".$form_id_programa_4."', '".$form_id_nutricionista_4."', '".$ultimo_id."', '".$form_fecha_suscripcion_4."', '".$form_fecha_suscripcion_fin_4."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete_4', '2', '0')
+"
+);
+
+//ULTIMO ID SUSCRIPCION
+$row_id_s = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM suscripcion_programa WHERE estado = 1 ORDER BY id DESC LIMIT 1"));
+$ultimo_id_s = (int)$row_id_s[0];
+
+//AGREGAR A LA BD COBROS
+mysqli_query($con, "
+INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria, numero_operacion, id_vendedor)
+VALUES 
+('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$form_numero_operacion."', '".$_SESSION['ID_USUARIO']."')
+"
+);
+}
+
+//QUINTO PLAN
+if($form_total_planes > 4){
+
+//AGREGAR A LA BD SUSCRIPCION
+mysqli_query($con, "
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete, id_tipo_suscripcion, peso_meta)
+VALUES 
+('".$form_id_programa_5."', '".$form_id_nutricionista_5."', '".$ultimo_id."', '".$form_fecha_suscripcion_5."', '".$form_fecha_suscripcion_fin_5."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete_5', '2', '0')
+"
+);
+
+//ULTIMO ID SUSCRIPCION
+$row_id_s = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM suscripcion_programa WHERE estado = 1 ORDER BY id DESC LIMIT 1"));
+$ultimo_id_s = (int)$row_id_s[0];
+
+//AGREGAR A LA BD COBROS
+mysqli_query($con, "
+INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria, numero_operacion, id_vendedor)
+VALUES 
+('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$form_numero_operacion."', '".$_SESSION['ID_USUARIO']."')
+"
+);
+}
+
+//SEXTO PLAN
+if($form_total_planes > 5){
+
+//AGREGAR A LA BD SUSCRIPCION
+mysqli_query($con, "
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete, id_tipo_suscripcion, peso_meta)
+VALUES 
+('".$form_id_programa_6."', '".$form_id_nutricionista_6."', '".$ultimo_id."', '".$form_fecha_suscripcion_6."', '".$form_fecha_suscripcion_fin_6."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete_6', '2', '0')
+"
+);
+
+//ULTIMO ID SUSCRIPCION
+$row_id_s = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM suscripcion_programa WHERE estado = 1 ORDER BY id DESC LIMIT 1"));
+$ultimo_id_s = (int)$row_id_s[0];
+
+//AGREGAR A LA BD COBROS
+mysqli_query($con, "
+INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria, numero_operacion, id_vendedor)
+VALUES 
+('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$form_numero_operacion."', '".$_SESSION['ID_USUARIO']."')
+"
+);
+}
+
+//SEPTIMO PLAN
+if($form_total_planes > 6){
+
+//AGREGAR A LA BD SUSCRIPCION
+mysqli_query($con, "
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete, id_tipo_suscripcion, peso_meta)
+VALUES 
+('".$form_id_programa_7."', '".$form_id_nutricionista_7."', '".$ultimo_id."', '".$form_fecha_suscripcion_7."', '".$form_fecha_suscripcion_fin_7."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete_7', '2', '0')
+"
+);
+
+//ULTIMO ID SUSCRIPCION
+$row_id_s = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM suscripcion_programa WHERE estado = 1 ORDER BY id DESC LIMIT 1"));
+$ultimo_id_s = (int)$row_id_s[0];
+
+//AGREGAR A LA BD COBROS
+mysqli_query($con, "
+INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria, numero_operacion, id_vendedor)
+VALUES 
+('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$form_numero_operacion."', '".$_SESSION['ID_USUARIO']."')
+"
+);
+}
+
+//OCTAVO PLAN
+if($form_total_planes > 7){
+
+//AGREGAR A LA BD SUSCRIPCION
+mysqli_query($con, "
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete, id_tipo_suscripcion, peso_meta)
+VALUES 
+('".$form_id_programa_8."', '".$form_id_nutricionista_8."', '".$ultimo_id."', '".$form_fecha_suscripcion_8."', '".$form_fecha_suscripcion_fin_8."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete_8', '2', '0')
+"
+);
+
+//ULTIMO ID SUSCRIPCION
+$row_id_s = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM suscripcion_programa WHERE estado = 1 ORDER BY id DESC LIMIT 1"));
+$ultimo_id_s = (int)$row_id_s[0];
+
+//AGREGAR A LA BD COBROS
+mysqli_query($con, "
+INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria, numero_operacion, id_vendedor)
+VALUES 
+('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$form_numero_operacion."', '".$_SESSION['ID_USUARIO']."')
+"
+);
+}
+
+//NOVENO PLAN
+if($form_total_planes > 8){
+
+//AGREGAR A LA BD SUSCRIPCION
+mysqli_query($con, "
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete, id_tipo_suscripcion, peso_meta)
+VALUES 
+('".$form_id_programa_9."', '".$form_id_nutricionista_9."', '".$ultimo_id."', '".$form_fecha_suscripcion_9."', '".$form_fecha_suscripcion_fin_9."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete_9', '2', '0')
+"
+);
+
+//ULTIMO ID SUSCRIPCION
+$row_id_s = mysqli_fetch_array(mysqli_query($con, "SELECT id FROM suscripcion_programa WHERE estado = 1 ORDER BY id DESC LIMIT 1"));
+$ultimo_id_s = (int)$row_id_s[0];
+
+//AGREGAR A LA BD COBROS
+mysqli_query($con, "
+INSERT INTO cobro (id_suscripcion, id_paciente, fecha_pago, monto, id_medio_pago, id_cuenta_bancaria, numero_operacion, id_vendedor)
+VALUES 
+('".$ultimo_id_s."', '".$ultimo_id."', '".$form_fecha_pago."', '".$form_monto."', '".$form_id_medio_pago."',  '".$form_id_banco."', '".$form_numero_operacion."', '".$_SESSION['ID_USUARIO']."')
+"
+);
+}
+
+//DECIMO PLAN
+if($form_total_planes > 9){
+
+//AGREGAR A LA BD SUSCRIPCION
+mysqli_query($con, "
+INSERT INTO suscripcion_programa (id_programa, id_nutricionista, id_paciente, fecha_inicio, fecha_fin, estado, indicaciones, id_vendedor, id_paquete, id_tipo_suscripcion, peso_meta)
+VALUES 
+('".$form_id_programa_10."', '".$form_id_nutricionista_10."', '".$ultimo_id."', '".$form_fecha_suscripcion_10."', '".$form_fecha_suscripcion_fin_10."',  '1', '', '".$_SESSION['ID_USUARIO']."', '$form_id_paquete_10', '2', '0')
 "
 );
 
