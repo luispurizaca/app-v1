@@ -85,7 +85,7 @@ $titulo_mes_ano = $nuevo_titulo_mes_ano;
 <td style="width: 100% !important;"><br></td>
 </tr>
 <tr>
-<td class="td-title" style="width: 100% !important; text-align: center; font-size: 15px;"><?php echo $titulo_mes_ano; ?></td>
+<td class="td-title" style="width: 100% !important; text-align: center; font-size: 15px; background: #ECECEC; color: black; padding-left: 55px;"><?php echo $titulo_mes_ano; ?></td>
 </tr>
 <?php
 }
@@ -94,7 +94,7 @@ $titulo_mes_ano = $nuevo_titulo_mes_ano;
 <td class="td-title" style="width: 100% !important; background: white; color: #333; text-align: left;">
 <div style="display: inline-block; text-align: left; font-size: 15px; width: 10%;">
 <span style="width: 100%; display: block; text-align: center; font-weight: bold;"><?php echo date('d', strtotime($fecha_inicio)); ?></span>
-<span style="width: 100%; display: block; text-align: center;">
+<span style="width: 100%; display: block; text-align: center; font-weight: bold;">
 <?php
 $dias = array('DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB');
 echo $dias[date('w', strtotime($fecha_inicio))];
@@ -109,7 +109,7 @@ echo $dias[date('w', strtotime($fecha_inicio))];
 <?php
 if(!empty($nombre_nutricionista)){
 ?>
-<span style="font-weight: bold; border: 1px solid #95cf32; padding: 3px; font-size: 10px;">
+<span style="border: 1px solid #95cf32; padding: 3px; font-size: 10px;">
 <?php
 echo $nombre_nutricionista;
 ?>
